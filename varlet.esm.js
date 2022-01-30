@@ -2820,6 +2820,21 @@ var props$E = {
   },
   onClick: {
     type: Function
+  },
+  xs: {
+    type: [Object, Number, String]
+  },
+  sm: {
+    type: [Object, Number, String]
+  },
+  md: {
+    type: [Object, Number, String]
+  },
+  lg: {
+    type: [Object, Number, String]
+  },
+  xl: {
+    type: [Object, Number, String]
   }
 };
 var ROW_BIND_COL_KEY = Symbol("ROW_BIND_COL_KEY");
@@ -2857,7 +2872,7 @@ function useRow() {
 }
 function render$K(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(["var-col var--box", [_ctx.span ? "var-col--span-" + _ctx.toNumber(_ctx.span) : null, _ctx.offset ? "var-col--offset-" + _ctx.toNumber(_ctx.offset) : null]]),
+    class: normalizeClass(["var-col var--box", [_ctx.span ? "var-col--span-" + _ctx.toNumber(_ctx.span) : null, _ctx.offset ? "var-col--offset-" + _ctx.toNumber(_ctx.offset) : null, ..._ctx.getSize("xs", _ctx.xs), ..._ctx.getSize("sm", _ctx.sm), ..._ctx.getSize("md", _ctx.md), ..._ctx.getSize("lg", _ctx.lg), ..._ctx.getSize("xl", _ctx.xl)]]),
     style: normalizeStyle({
       paddingLeft: _ctx.toSizeUnit(_ctx.padding.left),
       paddingRight: _ctx.toSizeUnit(_ctx.padding.right)
@@ -2878,16 +2893,35 @@ var Col = defineComponent({
     });
     var span = computed(() => toNumber(props2.span));
     var offset = computed(() => toNumber(props2.offset));
+    var xs = computed(() => props2.xs);
+    var sm = computed(() => props2.sm);
+    var md = computed(() => props2.md);
+    var lg = computed(() => props2.lg);
+    var xl = computed(() => props2.xl);
     var {
       row: row2,
       bindRow
     } = useRow();
     var colProvider = {
-      span,
-      offset,
       setPadding(pad) {
         padding.value = pad;
       }
+    };
+    var getSize = (mode, size) => {
+      if (!size)
+        return [];
+      var classes = [];
+      if (isPlainObject(size)) {
+        var {
+          span: _span,
+          offset: _offset
+        } = size;
+        _span && classes.push("var-col--span-" + mode + "-" + _span);
+        _offset && classes.push("var-col--offset-" + mode + "-" + _offset);
+      } else {
+        classes.push("var-col--span-" + mode + "-" + size);
+      }
+      return classes;
     };
     watch([() => props2.span, () => props2.offset], () => {
       row2 == null ? void 0 : row2.computePadding();
@@ -2896,7 +2930,15 @@ var Col = defineComponent({
     return {
       padding,
       toNumber,
-      toSizeUnit
+      toSizeUnit,
+      getSize,
+      span,
+      offset,
+      xs,
+      sm,
+      md,
+      lg,
+      xl
     };
   }
 });
@@ -12455,7 +12497,8 @@ function render$g(_ctx, _cache) {
     class: "var-row var--box",
     style: normalizeStyle({
       justifyContent: _ctx.justify,
-      alignItems: _ctx.align
+      alignItems: _ctx.align,
+      margin: _ctx.margin
     }),
     onClick: _cache[0] || (_cache[0] = function() {
       return _ctx.onClick && _ctx.onClick(...arguments);
@@ -12472,49 +12515,15 @@ var Row = defineComponent({
       bindCols,
       length
     } = useCols();
-    var computeGroups = () => {
-      var groups = [[]];
-      var span = 0;
-      cols.forEach((col2) => {
-        var colSpan = col2.span.value + col2.offset.value;
-        var nextSpan = span + colSpan;
-        if (nextSpan > 24) {
-          groups.push([col2]);
-          span = colSpan;
-        } else {
-          groups[groups.length - 1].push(col2);
-          span += colSpan;
-        }
-      });
-      return groups;
-    };
+    var margin = ref("0 0");
     var computePadding = () => {
-      var groups = computeGroups();
       var gutter = toPxNum(props2.gutter);
       var average = gutter / 2;
-      groups.forEach((cols2) => {
-        cols2.forEach((col2, index) => {
-          if (cols2.length <= 1) {
-            return;
-          }
-          if (index === 0) {
-            col2.setPadding({
-              left: 0,
-              right: average
-            });
-          }
-          if (index === cols2.length - 1) {
-            col2.setPadding({
-              left: average,
-              right: 0
-            });
-          }
-          if (index > 0 && index < cols2.length - 1) {
-            col2.setPadding({
-              left: average,
-              right: average
-            });
-          }
+      margin.value = "0 -" + toSizeUnit(average);
+      cols.forEach((col2) => {
+        col2.setPadding({
+          left: average,
+          right: average
         });
       });
     };
@@ -12524,6 +12533,9 @@ var Row = defineComponent({
     watch(() => length.value, computePadding);
     watch(() => props2.gutter, computePadding);
     bindCols(rowProvider);
+    return {
+      margin
+    };
   }
 });
 Row.install = function(app) {
