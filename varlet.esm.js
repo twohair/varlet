@@ -2872,7 +2872,7 @@ function useRow() {
 }
 function render$K(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(["var-col var--box", [_ctx.span ? "var-col--span-" + _ctx.toNumber(_ctx.span) : null, _ctx.offset ? "var-col--offset-" + _ctx.toNumber(_ctx.offset) : null, ..._ctx.getSize("xs", _ctx.xs), ..._ctx.getSize("sm", _ctx.sm), ..._ctx.getSize("md", _ctx.md), ..._ctx.getSize("lg", _ctx.lg), ..._ctx.getSize("xl", _ctx.xl)]]),
+    class: normalizeClass(["var-col var--box", [_ctx.span ? "var-col--span-" + _ctx.span : null, _ctx.offset ? "var-col--offset-" + _ctx.offset : null, ..._ctx.getSize("xs", _ctx.xs), ..._ctx.getSize("sm", _ctx.sm), ..._ctx.getSize("md", _ctx.md), ..._ctx.getSize("lg", _ctx.lg), ..._ctx.getSize("xl", _ctx.xl)]]),
     style: normalizeStyle({
       paddingLeft: _ctx.toSizeUnit(_ctx.padding.left),
       paddingRight: _ctx.toSizeUnit(_ctx.padding.right)
@@ -2893,11 +2893,6 @@ var Col = defineComponent({
     });
     var span = computed(() => toNumber(props2.span));
     var offset = computed(() => toNumber(props2.offset));
-    var xs = computed(() => props2.xs);
-    var sm = computed(() => props2.sm);
-    var md = computed(() => props2.md);
-    var lg = computed(() => props2.lg);
-    var xl = computed(() => props2.xl);
     var {
       row: row2,
       bindRow
@@ -2933,12 +2928,7 @@ var Col = defineComponent({
       toSizeUnit,
       getSize,
       span,
-      offset,
-      xs,
-      sm,
-      md,
-      lg,
-      xl
+      offset
     };
   }
 });
@@ -12519,7 +12509,7 @@ var Row = defineComponent({
     var computePadding = () => {
       var gutter = toPxNum(props2.gutter);
       var average = gutter / 2;
-      margin.value = "0 -" + toSizeUnit(average);
+      margin.value = "0 -" + average + "px";
       cols.forEach((col2) => {
         col2.setPadding({
           left: average,
