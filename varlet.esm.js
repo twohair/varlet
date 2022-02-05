@@ -2903,9 +2903,10 @@ var Col = defineComponent({
       }
     };
     var getSize = (mode, size) => {
-      if (!size)
-        return [];
       var classes = [];
+      if (!size) {
+        return classes;
+      }
       if (isPlainObject(size)) {
         var {
           span: _span,
@@ -12488,7 +12489,7 @@ function render$g(_ctx, _cache) {
     style: normalizeStyle({
       justifyContent: _ctx.justify,
       alignItems: _ctx.align,
-      margin: _ctx.margin
+      margin: _ctx.average ? "0 -" + _ctx.average + "px" : void 0
     }),
     onClick: _cache[0] || (_cache[0] = function() {
       return _ctx.onClick && _ctx.onClick(...arguments);
@@ -12505,15 +12506,15 @@ var Row = defineComponent({
       bindCols,
       length
     } = useCols();
-    var margin = ref("0 0");
-    var computePadding = () => {
+    var average = computed(() => {
       var gutter = toPxNum(props2.gutter);
-      var average = gutter / 2;
-      margin.value = "0 -" + average + "px";
+      return gutter / 2;
+    });
+    var computePadding = () => {
       cols.forEach((col2) => {
         col2.setPadding({
-          left: average,
-          right: average
+          left: average.value,
+          right: average.value
         });
       });
     };
@@ -12524,7 +12525,7 @@ var Row = defineComponent({
     watch(() => props2.gutter, computePadding);
     bindCols(rowProvider);
     return {
-      margin
+      average
     };
   }
 });
