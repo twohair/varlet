@@ -12682,7 +12682,7 @@ function render$f(_ctx, _cache) {
         key: l,
         onClick: _cache[0] || (_cache[0] = withModifiers(() => {
         }, ["stop"])),
-        onClose: (e) => _ctx.handleClose(l)
+        onClose: () => _ctx.handleClose(l)
       }, {
         default: withCtx(() => [createTextVNode(toDisplayString(l), 1)]),
         _: 2
