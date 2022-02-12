@@ -10356,7 +10356,7 @@ var List = defineComponent({
       var {
         bottom: detectorBottom
       } = detectorEl.value.getBoundingClientRect();
-      return detectorBottom - toPxNum(props2.offset) <= containerBottom;
+      return Math.floor(detectorBottom) - toPxNum(props2.offset) <= containerBottom;
     };
     var check2 = /* @__PURE__ */ function() {
       var _ref = _asyncToGenerator$3(function* () {
