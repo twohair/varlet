@@ -2029,7 +2029,7 @@ var Badge = defineComponent({
         dot,
         icon: icon2
       } = props2;
-      var positionBasic = (slots.default == null ? void 0 : slots.default()) && "var-badge__position var-badge--" + position;
+      var positionBasic = slots.default && "var-badge__position var-badge--" + position;
       var dotClass = dot && "var-badge__dot";
       var positionClass = getPositionClass();
       var iconClass = icon2 && "var-badge__icon";
