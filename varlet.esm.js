@@ -8016,7 +8016,7 @@ var Divider = defineComponent({
       });
     });
     var checkHasText = () => {
-      state.withText = Boolean(slots.default == null ? void 0 : slots.default().length) || Boolean(props2.description);
+      state.withText = Boolean(slots.default) || Boolean(props2.description);
     };
     onMounted(() => {
       checkHasText();
