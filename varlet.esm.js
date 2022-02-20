@@ -10518,7 +10518,7 @@ var Menu = defineComponent({
     });
     var renderTransition = () => createVNode(Transition, {
       "name": "var-menu",
-      "onAfterEnter": props2.onOpen,
+      "onAfterEnter": props2.onOpened,
       "onAfterLeave": props2.onClosed
     }, {
       default: () => [withDirectives(createVNode("div", {
