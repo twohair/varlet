@@ -14025,9 +14025,23 @@ var Space = defineComponent({
         size
       } = props2;
       var children = (_slots$default = slots.default == null ? void 0 : slots.default()) != null ? _slots$default : [];
-      var lastIndex = children.length - 1;
       var isInternalSize = internalSizeValidator(size);
       var [y, x] = getSize(size, isInternalSize);
+      var flatten = (vNodes) => {
+        var result = [];
+        vNodes.forEach((vNode) => {
+          if (vNode.type === Fragment && isArray(vNode.children)) {
+            vNode.children.forEach((item) => {
+              result.push(item);
+            });
+            return;
+          }
+          result.push(vNode);
+        });
+        return result;
+      };
+      children = flatten(children);
+      var lastIndex = children.length - 1;
       var spacers = children.map((child, index) => {
         var margin = "0";
         if (direction === "row") {
