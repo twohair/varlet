@@ -64,7 +64,6 @@ function createRipple(event) {
     return;
   }
   var task = () => {
-    var _ripple$color;
     _ripple.tasker = null;
     var {
       x,
@@ -79,7 +78,7 @@ function createRipple(event) {
     ripple2.style.transform = "translate(" + x + "px, " + y + "px) scale3d(.3, .3, .3)";
     ripple2.style.width = size + "px";
     ripple2.style.height = size + "px";
-    ripple2.style.backgroundColor = (_ripple$color = _ripple.color) != null ? _ripple$color : "currentColor";
+    _ripple.color && (ripple2.style.backgroundColor = _ripple.color);
     ripple2.dataset.createdAt = String(performance.now());
     setStyles(this);
     this.appendChild(ripple2);
