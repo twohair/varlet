@@ -1,4 +1,4 @@
-import { reactive, getCurrentInstance, watch, onBeforeMount, onUnmounted, onActivated, onDeactivated, ref, onMounted, provide, computed, inject, nextTick, createApp, onBeforeUnmount, h, isVNode, defineComponent, createVNode, Teleport, Transition, withDirectives, mergeProps, vShow, openBlock, createBlock, resolveDynamicComponent, normalizeClass, normalizeStyle, resolveComponent, resolveDirective, withCtx, createElementVNode, renderSlot, toDisplayString, createElementBlock, Fragment, renderList, createCommentVNode, onUpdated, createTextVNode, pushScopeId, popScopeId, withModifiers, normalizeProps, guardReactiveProps, vModelText, toRefs, withKeys, toRaw, TransitionGroup } from "vue";
+import { reactive, getCurrentInstance, watch, onBeforeMount, onUnmounted, onActivated, onDeactivated, ref, onMounted, provide, computed, inject, nextTick, createApp, onBeforeUnmount, h, isVNode, defineComponent, createVNode, Teleport, Transition, withDirectives, mergeProps, vShow, openBlock, createBlock, resolveDynamicComponent, normalizeClass, normalizeStyle, resolveComponent, resolveDirective, withCtx, createElementVNode, renderSlot, toDisplayString, createElementBlock, Fragment, renderList, createCommentVNode, onUpdated, createTextVNode, pushScopeId, popScopeId, withModifiers, normalizeProps, guardReactiveProps, vModelText, toRefs, withKeys, toRaw, TransitionGroup, Comment } from "vue";
 var context = {
   locks: {},
   zIndex: 2e3,
@@ -14029,6 +14029,8 @@ var Space = defineComponent({
       var flatten = (vNodes) => {
         var result = [];
         vNodes.forEach((vNode) => {
+          if (vNode.type === Comment)
+            return;
           if (vNode.type === Fragment && isArray(vNode.children)) {
             vNode.children.forEach((item) => {
               result.push(item);
