@@ -7419,13 +7419,14 @@ var DatePicker = defineComponent({
       return weekName.slice(0, 3) + ", " + monthName.slice(0, 3) + " " + chooseDay.value;
     });
     var slotProps = computed(() => {
-      var _chooseMonth$value, _chooseYear$value, _chooseMonth$value$in, _chooseMonth$value2, _chooseDay$value;
+      var _chooseMonth$value, _chooseDay$value, _chooseYear$value, _chooseMonth$value$in, _chooseMonth$value2;
       var weekIndex = dayjs(chooseYear.value + "-" + ((_chooseMonth$value = chooseMonth.value) == null ? void 0 : _chooseMonth$value.index) + "-" + chooseDay.value).day();
+      var date = chooseDay.value ? (_chooseDay$value = chooseDay.value) == null ? void 0 : _chooseDay$value.padStart(2, "0") : "";
       return {
         week: "" + weekIndex,
         year: (_chooseYear$value = chooseYear.value) != null ? _chooseYear$value : "",
         month: (_chooseMonth$value$in = (_chooseMonth$value2 = chooseMonth.value) == null ? void 0 : _chooseMonth$value2.index) != null ? _chooseMonth$value$in : "",
-        date: (_chooseDay$value = chooseDay.value) != null ? _chooseDay$value : ""
+        date
       };
     });
     var formatRange = computed(() => getChoose.value.chooseRangeDay.map((choose) => dayjs(choose).format("YYYY-MM-DD")));
