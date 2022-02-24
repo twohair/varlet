@@ -2645,8 +2645,8 @@ var CheckboxGroup = defineComponent({
         } = _ref2;
         return checkedValue.value;
       });
-      resetWithAnimation();
       var changedModelValue = uniq(checkedValues);
+      resetWithAnimation();
       (_props$onUpdateModel2 = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel2.call(props2, changedModelValue);
       return changedModelValue;
     };
@@ -2663,8 +2663,8 @@ var CheckboxGroup = defineComponent({
         } = _ref4;
         return checkedValue.value;
       });
-      resetWithAnimation();
       var changedModelValue = uniq(checkedValues);
+      resetWithAnimation();
       (_props$onUpdateModel3 = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel3.call(props2, changedModelValue);
       return changedModelValue;
     };
