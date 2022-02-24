@@ -6544,7 +6544,7 @@ function render$F(_ctx, _cache) {
     class: "var-picker-header__value",
     onClick: _cache[1] || (_cache[1] = ($event) => _ctx.$emit("check-panel"))
   }, [createVNode(Transition, {
-    name: _ctx.reverse ? "var-date-picker-reverse-translatex" : "var-date-picker-translatex"
+    name: "var-date-picker" + (_ctx.reverse ? "-reverse" : "") + "-translatex"
   }, {
     default: withCtx(() => [(openBlock(), createElementBlock("div", {
       key: _ctx.showDate
@@ -6655,7 +6655,7 @@ function render$E(_ctx, _cache) {
     onCheckPanel: _ctx.clickYear,
     onCheckDate: _ctx.checkDate
   }, null, 8, ["date", "disabled", "onCheckPanel", "onCheckDate"]), createVNode(Transition, {
-    name: _ctx.reverse ? "var-date-picker-reverse-translatex" : "var-date-picker-translatex"
+    name: "var-date-picker" + (_ctx.reverse ? "-reverse" : "") + "-translatex"
   }, {
     default: withCtx(() => [(openBlock(), createElementBlock("ul", {
       key: _ctx.panelKey
@@ -6987,7 +6987,7 @@ function render$C(_ctx, _cache) {
     onCheckPanel: _ctx.clickMonth,
     onCheckDate: _ctx.checkDate
   }, null, 8, ["date", "disabled", "onCheckPanel", "onCheckDate"]), createVNode(Transition, {
-    name: _ctx.reverse ? "var-date-picker-reverse-translatex" : "var-date-picker-translatex"
+    name: "var-date-picker" + (_ctx.reverse ? "-reverse" : "") + "-translatex"
   }, {
     default: withCtx(() => [(openBlock(), createElementBlock("div", {
       key: _ctx.panelKey
@@ -7271,7 +7271,7 @@ function render$B(_ctx, _cache) {
     class: normalizeClass(["var-date-picker-title__date", [!_ctx.isYearPanel ? "var-date-picker-title__date--active" : null, _ctx.range ? "var-date-picker-title__date--range" : null]]),
     onClick: _cache[1] || (_cache[1] = ($event) => _ctx.clickEl("date"))
   }, [createVNode(Transition, {
-    name: _ctx.multiple ? "" : _ctx.reverse ? "var-date-picker-reverse-translatey" : "var-date-picker-translatey"
+    name: _ctx.multiple ? "" : "var-date-picker" + (_ctx.reverse ? "-reverse" : "") + "-translatey"
   }, {
     default: withCtx(() => {
       var _ctx$chooseMonth, _ctx$chooseMonth2, _ctx$chooseMonth3;
