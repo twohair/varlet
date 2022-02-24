@@ -2475,6 +2475,9 @@ var Checkbox = defineComponent({
       } = props2;
       value.value = values.includes(checkedValue2) ? checkedValue2 : uncheckedValue;
     };
+    var resetWithAnimation = () => {
+      withAnimation.value = false;
+    };
     var reset = () => {
       var _props$onUpdateModel2;
       (_props$onUpdateModel2 = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel2.call(props2, props2.uncheckedValue);
@@ -2503,7 +2506,8 @@ var Checkbox = defineComponent({
       sync,
       validate,
       resetValidation,
-      reset
+      reset,
+      resetWithAnimation
     };
     bindCheckboxGroup == null ? void 0 : bindCheckboxGroup(checkboxProvider);
     bindForm == null ? void 0 : bindForm(checkboxProvider);
@@ -2630,6 +2634,9 @@ var CheckboxGroup = defineComponent({
       } = _ref;
       return sync(props2.modelValue);
     });
+    var resetWithAnimation = () => {
+      checkboxes.forEach((checkbox2) => checkbox2.resetWithAnimation());
+    };
     var checkAll2 = () => {
       var _props$onUpdateModel2;
       var checkedValues = checkboxes.map((_ref2) => {
@@ -2638,6 +2645,7 @@ var CheckboxGroup = defineComponent({
         } = _ref2;
         return checkedValue.value;
       });
+      resetWithAnimation();
       var changedModelValue = uniq(checkedValues);
       (_props$onUpdateModel2 = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel2.call(props2, changedModelValue);
       return changedModelValue;
@@ -2655,6 +2663,7 @@ var CheckboxGroup = defineComponent({
         } = _ref4;
         return checkedValue.value;
       });
+      resetWithAnimation();
       var changedModelValue = uniq(checkedValues);
       (_props$onUpdateModel3 = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel3.call(props2, changedModelValue);
       return changedModelValue;
