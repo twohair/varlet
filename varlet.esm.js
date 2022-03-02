@@ -9205,7 +9205,7 @@ var VarImagePreview = defineComponent({
       return getDistance(prevTouch, currentTouch) <= DISTANCE_OFFSET && currentTouch.timestamp - prevTouch.timestamp <= EVENT_DELAY && prevTouch.target === currentTouch.target;
     };
     var isTapTouch = (target) => {
-      if (!startTouch || !prevTouch) {
+      if (!target || !startTouch || !prevTouch) {
         return false;
       }
       return getDistance(startTouch, prevTouch) <= DISTANCE_OFFSET && (target === startTouch.target || target.parentNode === startTouch.target);
