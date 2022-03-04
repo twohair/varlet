@@ -9047,6 +9047,7 @@ var props$t = _extends$3({
 ]));
 var DISTANCE_OFFSET = 12;
 var EVENT_DELAY = 200;
+var TAP_DELAY = 500;
 var ANIMATION_DURATION = 200;
 var _hoisted_1$k = ["src", "alt"];
 var _hoisted_2$f = {
@@ -9208,7 +9209,7 @@ var VarImagePreview = defineComponent({
       if (!target || !startTouch || !prevTouch) {
         return false;
       }
-      return getDistance(startTouch, prevTouch) <= DISTANCE_OFFSET && (target === startTouch.target || target.parentNode === startTouch.target);
+      return getDistance(startTouch, prevTouch) <= DISTANCE_OFFSET && Date.now() - prevTouch.timestamp < TAP_DELAY && (target === startTouch.target || target.parentNode === startTouch.target);
     };
     var handleTouchend = (event) => {
       checker = window.setTimeout(() => {
