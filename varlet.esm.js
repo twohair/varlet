@@ -9047,7 +9047,7 @@ var props$t = _extends$3({
 ]));
 var DISTANCE_OFFSET = 12;
 var EVENT_DELAY = 200;
-var TAP_DELAY = 250;
+var TAP_DELAY = 350;
 var ANIMATION_DURATION = 200;
 var _hoisted_1$k = ["src", "alt"];
 var _hoisted_2$f = {
