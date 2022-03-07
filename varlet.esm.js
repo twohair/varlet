@@ -12257,6 +12257,9 @@ var props$f = {
     type: [String, Number],
     default: "2"
   },
+  namespace: {
+    type: String
+  },
   half: {
     type: Boolean,
     default: false
@@ -12309,11 +12312,12 @@ function render$h(_ctx, _cache) {
       onClick: ($event) => _ctx.handleClick(val, $event)
     }, [createVNode(_component_var_icon, {
       transition: 0,
+      namespace: _ctx.namespace,
       name: _ctx.getIconName(val),
       style: normalizeStyle({
         fontSize: _ctx.toSizeUnit(_ctx.size)
       })
-    }, null, 8, ["name", "style"])], 14, _hoisted_3$6)), [[_directive_ripple, {
+    }, null, 8, ["namespace", "name", "style"])], 14, _hoisted_3$6)), [[_directive_ripple, {
       disabled: _ctx.formReadonly || _ctx.readonly || _ctx.formDisabled || _ctx.disabled || !_ctx.ripple
     }]]);
   }), 128))]), createVNode(_component_var_form_details, {
