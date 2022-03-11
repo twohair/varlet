@@ -1341,7 +1341,7 @@ var _hoisted_1$I = {
   class: "var-action-sheet__title"
 };
 var _hoisted_2$t = ["onClick"];
-var _hoisted_3$i = {
+var _hoisted_3$j = {
   class: "var-action-sheet__action-name"
 };
 function render$W(_ctx, _cache) {
@@ -1386,7 +1386,7 @@ function render$W(_ctx, _cache) {
         "var-action-sheet-cover": "",
         name: action.icon,
         size: action.iconSize
-      }, null, 8, ["name", "size"])) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_3$i, toDisplayString(action.name), 1)], 14, _hoisted_2$t)), [[_directive_ripple, {
+      }, null, 8, ["name", "size"])) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_3$j, toDisplayString(action.name), 1)], 14, _hoisted_2$t)), [[_directive_ripple, {
         disabled: action.disabled
       }]]);
     }), 128))])], 16)]),
@@ -1516,7 +1516,7 @@ var _hoisted_2$s = {
   key: 0,
   class: "var-app-bar__title"
 };
-var _hoisted_3$h = {
+var _hoisted_3$i = {
   class: "var-app-bar__right"
 };
 function render$V(_ctx, _cache) {
@@ -1534,7 +1534,7 @@ function render$V(_ctx, _cache) {
     style: normalizeStyle({
       paddingLeft: _ctx.paddingLeft
     })
-  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 4)) : createCommentVNode("v-if", true)]), _ctx.titlePosition === "center" ? (openBlock(), createElementBlock("div", _hoisted_2$s, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])])) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_3$h, [_ctx.titlePosition === "right" ? (openBlock(), createElementBlock("div", {
+  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 4)) : createCommentVNode("v-if", true)]), _ctx.titlePosition === "center" ? (openBlock(), createElementBlock("div", _hoisted_2$s, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])])) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_3$i, [_ctx.titlePosition === "right" ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: "var-app-bar__title",
     style: normalizeStyle({
@@ -1607,7 +1607,7 @@ var _hoisted_2$r = {
   key: 0,
   class: "var-loading__circle"
 };
-var _hoisted_3$g = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createElementVNode("svg", {
+var _hoisted_3$h = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createElementVNode("svg", {
   viewBox: "25 25 50 50"
 }, [/* @__PURE__ */ createElementVNode("circle", {
   cx: "50",
@@ -1615,7 +1615,7 @@ var _hoisted_3$g = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createEl
   r: "20",
   fill: "none"
 })], -1));
-var _hoisted_4$a = [_hoisted_3$g];
+var _hoisted_4$a = [_hoisted_3$h];
 function render$U(_ctx, _cache) {
   return openBlock(), createElementBlock("div", _hoisted_1$G, [_ctx.$slots.default ? (openBlock(), createElementBlock("div", {
     key: 0,
@@ -2108,7 +2108,7 @@ var _hoisted_2$p = {
   key: 0,
   class: "var-card__title"
 };
-var _hoisted_3$f = {
+var _hoisted_3$g = {
   key: 0,
   class: "var-card__subtitle"
 };
@@ -2136,7 +2136,7 @@ function render$Q(_ctx, _cache) {
     }),
     src: _ctx.src,
     alt: _ctx.alt
-  }, null, 12, _hoisted_1$D)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", _hoisted_2$p, toDisplayString(_ctx.title), 1)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "subtitle", {}, () => [_ctx.subtitle ? (openBlock(), createElementBlock("div", _hoisted_3$f, toDisplayString(_ctx.subtitle), 1)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "description", {}, () => [_ctx.description ? (openBlock(), createElementBlock("div", _hoisted_4$9, toDisplayString(_ctx.description), 1)) : createCommentVNode("v-if", true)]), _ctx.$slots.extra ? (openBlock(), createElementBlock("div", _hoisted_5$7, [renderSlot(_ctx.$slots, "extra")])) : createCommentVNode("v-if", true)], 2)), [[_directive_ripple, {
+  }, null, 12, _hoisted_1$D)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", _hoisted_2$p, toDisplayString(_ctx.title), 1)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "subtitle", {}, () => [_ctx.subtitle ? (openBlock(), createElementBlock("div", _hoisted_3$g, toDisplayString(_ctx.subtitle), 1)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "description", {}, () => [_ctx.description ? (openBlock(), createElementBlock("div", _hoisted_4$9, toDisplayString(_ctx.description), 1)) : createCommentVNode("v-if", true)]), _ctx.$slots.extra ? (openBlock(), createElementBlock("div", _hoisted_5$7, [renderSlot(_ctx.$slots, "extra")])) : createCommentVNode("v-if", true)], 2)), [[_directive_ripple, {
     disabled: !_ctx.ripple
   }]]);
 }
@@ -2234,14 +2234,14 @@ var _hoisted_1$B = {
 var _hoisted_2$o = {
   class: "var-form-details__message"
 };
-var _hoisted_3$e = {
+var _hoisted_3$f = {
   class: "var-form-details__length"
 };
 function render$O(_ctx, _cache) {
   return openBlock(), createBlock(Transition, {
     name: "var-form-details"
   }, {
-    default: withCtx(() => [_ctx.errorMessage || _ctx.maxlengthText ? (openBlock(), createElementBlock("div", _hoisted_1$B, [createElementVNode("div", _hoisted_2$o, toDisplayString(_ctx.errorMessage), 1), createElementVNode("div", _hoisted_3$e, toDisplayString(_ctx.maxlengthText), 1)])) : createCommentVNode("v-if", true)]),
+    default: withCtx(() => [_ctx.errorMessage || _ctx.maxlengthText ? (openBlock(), createElementBlock("div", _hoisted_1$B, [createElementVNode("div", _hoisted_2$o, toDisplayString(_ctx.errorMessage), 1), createElementVNode("div", _hoisted_3$f, toDisplayString(_ctx.maxlengthText), 1)])) : createCommentVNode("v-if", true)]),
     _: 1
   });
 }
@@ -3125,7 +3125,7 @@ var _hoisted_1$x = {
 var _hoisted_2$n = {
   class: "var-collapse-item-header__icon"
 };
-var _hoisted_3$d = {
+var _hoisted_3$e = {
   class: "var-collapse-item__wrap"
 };
 function render$I(_ctx, _cache) {
@@ -3153,7 +3153,7 @@ function render$I(_ctx, _cache) {
     onTransitionend: _cache[1] || (_cache[1] = function() {
       return _ctx.transitionend && _ctx.transitionend(...arguments);
     })
-  }, [createElementVNode("div", _hoisted_3$d, [renderSlot(_ctx.$slots, "default")])], 544), [[vShow, _ctx.show]])], 2);
+  }, [createElementVNode("div", _hoisted_3$e, [renderSlot(_ctx.$slots, "default")])], 544), [[vShow, _ctx.show]])], 2);
 }
 var CollapseItem = defineComponent({
   render: render$I,
@@ -6980,7 +6980,7 @@ var _hoisted_1$r = {
 var _hoisted_2$j = {
   class: "var-day-picker__content"
 };
-var _hoisted_3$c = {
+var _hoisted_3$d = {
   class: "var-day-picker__head"
 };
 var _hoisted_4$8 = {
@@ -7000,7 +7000,7 @@ function render$C(_ctx, _cache) {
   }, {
     default: withCtx(() => [(openBlock(), createElementBlock("div", {
       key: _ctx.panelKey
-    }, [createElementVNode("ul", _hoisted_3$c, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.sortWeekList, (week) => {
+    }, [createElementVNode("ul", _hoisted_3$d, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.sortWeekList, (week) => {
       return openBlock(), createElementBlock("li", {
         key: week.index
       }, toDisplayString(_ctx.getDayAbbr(week.index)), 1);
@@ -9054,6 +9054,9 @@ var _hoisted_2$f = {
   key: 0,
   class: "var-image-preview__indicators"
 };
+var _hoisted_3$c = {
+  class: "var-image-preview__extra"
+};
 function render$u(_ctx, _cache) {
   var _component_var_swipe_item = resolveComponent("var-swipe-item");
   var _component_var_swipe = resolveComponent("var-swipe");
@@ -9130,7 +9133,7 @@ function render$u(_ctx, _cache) {
       name: "close-circle",
       "var-image-preview-cover": "",
       onClick: _ctx.close
-    }, null, 8, ["onClick"])) : createCommentVNode("v-if", true)])]),
+    }, null, 8, ["onClick"])) : createCommentVNode("v-if", true)]), createElementVNode("div", _hoisted_3$c, [renderSlot(_ctx.$slots, "extra")])]),
     _: 3
   }, 8, ["show", "lock-scroll", "teleport", "onOpen", "onClose", "onClosed", "onOpened", "onRouteChange"]);
 }
