@@ -84,7 +84,8 @@ ImagePreview({
       `),s("span",{class:"hljs-attr"},"size"),t("="),s("span",{class:"hljs-string"},'"small"'),t(`
       `),s("span",{class:"hljs-attr"},"color"),t("="),s("span",{class:"hljs-string"},'"#333"'),t(`
       `),s("span",{class:"hljs-attr"},"text-color"),t("="),s("span",{class:"hljs-string"},'"#fff"'),t(`
-      @`),s("span",{class:"hljs-attr"},"click"),t("="),s("span",{class:"hljs-string"},'"menuShow = true"'),t(">")]),t(`
+      @`),s("span",{class:"hljs-attr"},"click"),t("="),s("span",{class:"hljs-string"},'"menuShow = true"'),t(`
+    >`)]),t(`
       `),s("span",{class:"hljs-tag"},[t("<"),s("span",{class:"hljs-name"},"var-icon"),t(),s("span",{class:"hljs-attr"},"name"),t("="),s("span",{class:"hljs-string"},'"menu"'),t(" />")]),t(`
     `),s("span",{class:"hljs-tag"},[t("</"),s("span",{class:"hljs-name"},"var-button"),t(">")]),t(`
 
