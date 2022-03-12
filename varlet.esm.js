@@ -1337,7 +1337,7 @@ var Locale = {
   merge,
   useLocale
 };
-var _hoisted_1$I = {
+var _hoisted_1$H = {
   class: "var-action-sheet__title"
 };
 var _hoisted_2$t = ["onClick"];
@@ -1372,7 +1372,7 @@ function render$W(_ctx, _cache) {
   }), {
     default: withCtx(() => [createElementVNode("div", mergeProps({
       class: "var-action-sheet var--box"
-    }, _ctx.$attrs), [renderSlot(_ctx.$slots, "title", {}, () => [createElementVNode("div", _hoisted_1$I, toDisplayString(_ctx.dt(_ctx.title, _ctx.pack.actionSheetTitle)), 1)]), renderSlot(_ctx.$slots, "actions", {}, () => [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.actions, (action) => {
+    }, _ctx.$attrs), [renderSlot(_ctx.$slots, "title", {}, () => [createElementVNode("div", _hoisted_1$H, toDisplayString(_ctx.dt(_ctx.title, _ctx.pack.actionSheetTitle)), 1)]), renderSlot(_ctx.$slots, "actions", {}, () => [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.actions, (action) => {
       return withDirectives((openBlock(), createElementBlock("div", {
         class: normalizeClass(["var-action-sheet__action-item", [action.className, action.disabled ? "var-action-sheet--disabled" : null]]),
         key: action.name,
@@ -1509,7 +1509,7 @@ var props$P = {
     default: true
   }
 };
-var _hoisted_1$H = {
+var _hoisted_1$G = {
   class: "var-app-bar__left"
 };
 var _hoisted_2$s = {
@@ -1528,7 +1528,7 @@ function render$V(_ctx, _cache) {
       background: _ctx.color,
       color: _ctx.textColor
     })
-  }, [createElementVNode("div", _hoisted_1$H, [renderSlot(_ctx.$slots, "left"), _ctx.titlePosition === "left" ? (openBlock(), createElementBlock("div", {
+  }, [createElementVNode("div", _hoisted_1$G, [renderSlot(_ctx.$slots, "left"), _ctx.titlePosition === "left" ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: "var-app-bar__title",
     style: normalizeStyle({
@@ -1600,7 +1600,7 @@ var props$O = {
   }
 };
 var _withScopeId$2 = (n) => (pushScopeId(""), n = n(), popScopeId(), n);
-var _hoisted_1$G = {
+var _hoisted_1$F = {
   class: "var-loading"
 };
 var _hoisted_2$r = {
@@ -1617,7 +1617,7 @@ var _hoisted_3$h = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createEl
 })], -1));
 var _hoisted_4$a = [_hoisted_3$h];
 function render$U(_ctx, _cache) {
-  return openBlock(), createElementBlock("div", _hoisted_1$G, [_ctx.$slots.default ? (openBlock(), createElementBlock("div", {
+  return openBlock(), createElementBlock("div", _hoisted_1$F, [_ctx.$slots.default ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(["var-loading__content", [_ctx.loading ? "var-loading__content--active" : null]])
   }, [renderSlot(_ctx.$slots, "default")], 2)) : createCommentVNode("v-if", true), _ctx.isShow ? (openBlock(), createElementBlock("div", {
@@ -1759,7 +1759,7 @@ var props$N = {
     type: Function
   }
 };
-var _hoisted_1$F = ["disabled"];
+var _hoisted_1$E = ["disabled"];
 function render$T(_ctx, _cache) {
   var _component_var_loading = resolveComponent("var-loading");
   var _directive_ripple = resolveDirective("ripple");
@@ -1785,7 +1785,7 @@ function render$T(_ctx, _cache) {
     radius: _ctx.loadingRadius
   }, null, 8, ["type", "size", "radius"])) : createCommentVNode("v-if", true), createElementVNode("div", {
     class: normalizeClass(["var-button__content", [_ctx.loading || _ctx.pending ? "var-button--hidden" : null]])
-  }, [renderSlot(_ctx.$slots, "default")], 2)], 46, _hoisted_1$F)), [[_directive_ripple, {
+  }, [renderSlot(_ctx.$slots, "default")], 2)], 46, _hoisted_1$E)), [[_directive_ripple, {
     disabled: _ctx.disabled || !_ctx.ripple
   }]]);
 }
@@ -1985,7 +1985,7 @@ var props$L = {
     type: String
   }
 };
-var _hoisted_1$E = {
+var _hoisted_1$D = {
   class: "var-badge var--box"
 };
 var _hoisted_2$q = {
@@ -1993,7 +1993,7 @@ var _hoisted_2$q = {
 };
 function render$R(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
-  return openBlock(), createElementBlock("div", _hoisted_1$E, [createVNode(Transition, {
+  return openBlock(), createElementBlock("div", _hoisted_1$D, [createVNode(Transition, {
     name: "var-badge-fade"
   }, {
     default: withCtx(() => [withDirectives(createElementVNode("span", mergeProps(_ctx.$attrs, {
@@ -2103,7 +2103,7 @@ var props$K = {
     type: Function
   }
 };
-var _hoisted_1$D = ["src", "alt"];
+var _hoisted_1$C = ["src", "alt"];
 var _hoisted_2$p = {
   key: 0,
   class: "var-card__title"
@@ -2136,7 +2136,7 @@ function render$Q(_ctx, _cache) {
     }),
     src: _ctx.src,
     alt: _ctx.alt
-  }, null, 12, _hoisted_1$D)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", _hoisted_2$p, toDisplayString(_ctx.title), 1)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "subtitle", {}, () => [_ctx.subtitle ? (openBlock(), createElementBlock("div", _hoisted_3$g, toDisplayString(_ctx.subtitle), 1)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "description", {}, () => [_ctx.description ? (openBlock(), createElementBlock("div", _hoisted_4$9, toDisplayString(_ctx.description), 1)) : createCommentVNode("v-if", true)]), _ctx.$slots.extra ? (openBlock(), createElementBlock("div", _hoisted_5$7, [renderSlot(_ctx.$slots, "extra")])) : createCommentVNode("v-if", true)], 2)), [[_directive_ripple, {
+  }, null, 12, _hoisted_1$C)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", _hoisted_2$p, toDisplayString(_ctx.title), 1)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "subtitle", {}, () => [_ctx.subtitle ? (openBlock(), createElementBlock("div", _hoisted_3$g, toDisplayString(_ctx.subtitle), 1)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "description", {}, () => [_ctx.description ? (openBlock(), createElementBlock("div", _hoisted_4$9, toDisplayString(_ctx.description), 1)) : createCommentVNode("v-if", true)]), _ctx.$slots.extra ? (openBlock(), createElementBlock("div", _hoisted_5$7, [renderSlot(_ctx.$slots, "extra")])) : createCommentVNode("v-if", true)], 2)), [[_directive_ripple, {
     disabled: !_ctx.ripple
   }]]);
 }
@@ -2183,7 +2183,7 @@ var props$J = {
     type: String
   }
 };
-var _hoisted_1$C = {
+var _hoisted_1$B = {
   class: "var-cell__content"
 };
 function render$P(_ctx, _cache) {
@@ -2196,7 +2196,7 @@ function render$P(_ctx, _cache) {
   }, [renderSlot(_ctx.$slots, "icon", {}, () => [createVNode(_component_var_icon, {
     class: "var--flex",
     name: _ctx.icon
-  }, null, 8, ["name"])])], 2)) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_1$C, [createElementVNode("div", {
+  }, null, 8, ["name"])])], 2)) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_1$B, [createElementVNode("div", {
     class: normalizeClass(["var-cell__title", [_ctx.titleClass ? _ctx.titleClass : null]])
   }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 2), _ctx.$slots.desc || _ctx.desc ? (openBlock(), createElementBlock("div", {
     key: 0,
@@ -2227,7 +2227,7 @@ var props$I = {
     default: ""
   }
 };
-var _hoisted_1$B = {
+var _hoisted_1$A = {
   key: 0,
   class: "var-form-details"
 };
@@ -2241,7 +2241,7 @@ function render$O(_ctx, _cache) {
   return openBlock(), createBlock(Transition, {
     name: "var-form-details"
   }, {
-    default: withCtx(() => [_ctx.errorMessage || _ctx.maxlengthText ? (openBlock(), createElementBlock("div", _hoisted_1$B, [createElementVNode("div", _hoisted_2$o, toDisplayString(_ctx.errorMessage), 1), createElementVNode("div", _hoisted_3$f, toDisplayString(_ctx.maxlengthText), 1)])) : createCommentVNode("v-if", true)]),
+    default: withCtx(() => [_ctx.errorMessage || _ctx.maxlengthText ? (openBlock(), createElementBlock("div", _hoisted_1$A, [createElementVNode("div", _hoisted_2$o, toDisplayString(_ctx.errorMessage), 1), createElementVNode("div", _hoisted_3$f, toDisplayString(_ctx.maxlengthText), 1)])) : createCommentVNode("v-if", true)]),
     _: 1
   });
 }
@@ -2355,7 +2355,7 @@ function useFormItems() {
     bindFormItems: bindChildren
   };
 }
-var _hoisted_1$A = {
+var _hoisted_1$z = {
   class: "var-checkbox"
 };
 function render$N(_ctx, _cache) {
@@ -2367,7 +2367,7 @@ function render$N(_ctx, _cache) {
     onClick: _cache[0] || (_cache[0] = function() {
       return _ctx.handleClick && _ctx.handleClick(...arguments);
     })
-  }, [createElementVNode("div", _hoisted_1$A, [withDirectives((openBlock(), createElementBlock("div", {
+  }, [createElementVNode("div", _hoisted_1$z, [withDirectives((openBlock(), createElementBlock("div", {
     class: normalizeClass(["var-checkbox__action", [_ctx.checked ? "var-checkbox--checked" : "var-checkbox--unchecked", _ctx.errorMessage || _ctx.checkboxGroupErrorMessage ? "var-checkbox--error" : null, _ctx.formDisabled || _ctx.disabled ? "var-checkbox--disabled" : null]]),
     style: normalizeStyle({
       color: _ctx.checked ? _ctx.checkedColor : _ctx.uncheckedColor
@@ -2559,12 +2559,12 @@ var props$G = {
     type: Function
   }
 };
-var _hoisted_1$z = {
+var _hoisted_1$y = {
   class: "var-checkbox-group__wrap"
 };
 function render$M(_ctx, _cache) {
   var _component_var_form_details = resolveComponent("var-form-details");
-  return openBlock(), createElementBlock("div", _hoisted_1$z, [createElementVNode("div", {
+  return openBlock(), createElementBlock("div", _hoisted_1$y, [createElementVNode("div", {
     class: normalizeClass(["var-checkbox-group", ["var-checkbox-group--" + _ctx.direction]])
   }, [renderSlot(_ctx.$slots, "default")], 2), createVNode(_component_var_form_details, {
     "error-message": _ctx.errorMessage
@@ -2979,11 +2979,11 @@ var props$D = {
     type: Function
   }
 };
-var _hoisted_1$y = {
+var _hoisted_1$x = {
   class: "var-collapse"
 };
 function render$J(_ctx, _cache) {
-  return openBlock(), createElementBlock("div", _hoisted_1$y, [renderSlot(_ctx.$slots, "default")]);
+  return openBlock(), createElementBlock("div", _hoisted_1$x, [renderSlot(_ctx.$slots, "default")]);
 }
 var Collapse = defineComponent({
   render: render$J,
@@ -3119,7 +3119,7 @@ var props$C = {
     default: false
   }
 };
-var _hoisted_1$x = {
+var _hoisted_1$w = {
   class: "var-collapse-item-header__title"
 };
 var _hoisted_2$n = {
@@ -3139,7 +3139,7 @@ function render$I(_ctx, _cache) {
   }, [createElementVNode("div", {
     class: "var-collapse-item-header",
     onClick: _cache[0] || (_cache[0] = ($event) => _ctx.toggle())
-  }, [createElementVNode("div", _hoisted_1$x, [renderSlot(_ctx.$slots, "title", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])]), createElementVNode("div", _hoisted_2$n, [renderSlot(_ctx.$slots, "icon", {}, () => [createVNode(_component_var_icon, {
+  }, [createElementVNode("div", _hoisted_1$w, [renderSlot(_ctx.$slots, "title", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])]), createElementVNode("div", _hoisted_2$n, [renderSlot(_ctx.$slots, "icon", {}, () => [createVNode(_component_var_icon, {
     name: _ctx.icon,
     transition: 250,
     class: normalizeClass({
@@ -3265,11 +3265,11 @@ var SECOND = 1e3;
 var MINUTE = 60 * SECOND;
 var HOUR = 60 * MINUTE;
 var DAY = 24 * HOUR;
-var _hoisted_1$w = {
+var _hoisted_1$v = {
   class: "var-countdown"
 };
 function render$H(_ctx, _cache) {
-  return openBlock(), createElementBlock("div", _hoisted_1$w, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps(_ctx.timeData)), () => [createTextVNode(toDisplayString(_ctx.showTime), 1)])]);
+  return openBlock(), createElementBlock("div", _hoisted_1$v, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps(_ctx.timeData)), () => [createTextVNode(toDisplayString(_ctx.showTime), 1)])]);
 }
 var Countdown = defineComponent({
   render: render$H,
@@ -5717,7 +5717,7 @@ var props$A = {
 };
 var SPEED = 100;
 var DELAY = 600;
-var _hoisted_1$v = {
+var _hoisted_1$u = {
   class: "var-counter var--box"
 };
 var _hoisted_2$m = ["inputmode", "readonly", "disabled"];
@@ -5725,7 +5725,7 @@ function render$G(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_form_details = resolveComponent("var-form-details");
   var _directive_ripple = resolveDirective("ripple");
-  return openBlock(), createElementBlock("div", _hoisted_1$v, [createElementVNode("div", mergeProps({
+  return openBlock(), createElementBlock("div", _hoisted_1$u, [createElementVNode("div", mergeProps({
     class: ["var-counter__controller var-elevation--2", [_ctx.disabled || _ctx.formDisabled ? "var-counter--disabled" : null, _ctx.errorMessage ? "var-counter--error" : null]],
     style: {
       background: _ctx.color ? _ctx.color : void 0
@@ -6523,6 +6523,10 @@ var props$z = {
     type: Boolean,
     default: false
   },
+  touchable: {
+    type: Boolean,
+    default: true
+  },
   onChange: {
     type: Function
   },
@@ -6530,13 +6534,13 @@ var props$z = {
     type: Function
   }
 };
-var _hoisted_1$u = {
+var _hoisted_1$t = {
   class: "var-picker-header"
 };
 function render$F(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_button = resolveComponent("var-button");
-  return openBlock(), createElementBlock("div", _hoisted_1$u, [createVNode(_component_var_button, {
+  return openBlock(), createElementBlock("div", _hoisted_1$t, [createVNode(_component_var_button, {
     round: "",
     text: "",
     style: {
@@ -6618,6 +6622,8 @@ var PanelHeader = defineComponent({
       return pack.value.lang === "zh-CN" ? previewYear + " " + monthName : monthName + " " + previewYear;
     });
     var checkDate = (checkType) => {
+      if (checkType === "prev" && props2.disabled.left || checkType === "next" && props2.disabled.right)
+        return;
       emit("check-date", checkType);
       reverse.value = checkType === "prev";
       forwardOrBackNum.value += checkType === "prev" ? -1 : 1;
@@ -6648,7 +6654,7 @@ function _extends$8() {
 }
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
-var _hoisted_1$t = {
+var _hoisted_1$s = {
   class: "var-month-picker__panel"
 };
 var _hoisted_2$l = {
@@ -6657,7 +6663,8 @@ var _hoisted_2$l = {
 function render$E(_ctx, _cache) {
   var _component_panel_header = resolveComponent("panel-header");
   var _component_var_button = resolveComponent("var-button");
-  return openBlock(), createElementBlock("div", _hoisted_1$t, [createElementVNode("div", _hoisted_2$l, [createVNode(_component_panel_header, {
+  return openBlock(), createElementBlock("div", _hoisted_1$s, [createElementVNode("div", _hoisted_2$l, [createVNode(_component_panel_header, {
+    ref: "headerEl",
     type: "month",
     date: _ctx.preview,
     disabled: _ctx.panelBtnDisabled,
@@ -6723,6 +6730,7 @@ var MonthPickerPanel = defineComponent({
     var [currentYear, currentMonth] = props2.current.split("-");
     var reverse = ref(false);
     var panelKey = ref(0);
+    var headerEl = ref(null);
     var panelBtnDisabled = reactive({
       left: false,
       right: false
@@ -6849,6 +6857,9 @@ var MonthPickerPanel = defineComponent({
       panelKey.value += checkType === "prev" ? -1 : 1;
       emit("check-preview", "year", checkType);
     };
+    var forwardRef = (checkType) => {
+      headerEl.value.checkDate(checkType);
+    };
     watch(() => props2.preview.previewYear, (year) => {
       var {
         componentProps: {
@@ -6866,9 +6877,11 @@ var MonthPickerPanel = defineComponent({
     return {
       pack,
       MONTH_LIST,
+      headerEl,
       reverse,
       panelKey,
       panelBtnDisabled,
+      forwardRef,
       buttonProps,
       getMonthAbbr,
       chooseMonth,
@@ -6876,12 +6889,12 @@ var MonthPickerPanel = defineComponent({
     };
   }
 });
-var _hoisted_1$s = {
+var _hoisted_1$r = {
   class: "var-year-picker__panel"
 };
 var _hoisted_2$k = ["onClick"];
 function render$D(_ctx, _cache) {
-  return openBlock(), createElementBlock("ul", _hoisted_1$s, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.yearList, (year) => {
+  return openBlock(), createElementBlock("ul", _hoisted_1$r, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.yearList, (year) => {
     return openBlock(), createElementBlock("li", {
       key: year,
       class: normalizeClass([year === _ctx.toNumber(_ctx.preview) ? "var-year-picker__panel--active" : null]),
@@ -6974,7 +6987,7 @@ function _extends$7() {
 }
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
-var _hoisted_1$r = {
+var _hoisted_1$q = {
   class: "var-day-picker__panel"
 };
 var _hoisted_2$j = {
@@ -6989,7 +7002,8 @@ var _hoisted_4$8 = {
 function render$C(_ctx, _cache) {
   var _component_panel_header = resolveComponent("panel-header");
   var _component_var_button = resolveComponent("var-button");
-  return openBlock(), createElementBlock("div", _hoisted_1$r, [createElementVNode("div", _hoisted_2$j, [createVNode(_component_panel_header, {
+  return openBlock(), createElementBlock("div", _hoisted_1$q, [createElementVNode("div", _hoisted_2$j, [createVNode(_component_panel_header, {
+    ref: "headerEl",
     type: "day",
     date: _ctx.preview,
     disabled: _ctx.panelBtnDisabled,
@@ -7063,6 +7077,7 @@ var DayPickerPanel = defineComponent({
     var days = ref([]);
     var reverse = ref(false);
     var panelKey = ref(0);
+    var headerEl = ref(null);
     var panelBtnDisabled = reactive({
       left: false,
       right: false
@@ -7235,6 +7250,9 @@ var DayPickerPanel = defineComponent({
     var chooseDay = (day) => {
       emit("choose-day", day);
     };
+    var forwardRef = (checkType) => {
+      headerEl.value.checkDate(checkType);
+    };
     onMounted(() => {
       initDate();
       initHeader();
@@ -7246,9 +7264,11 @@ var DayPickerPanel = defineComponent({
     return {
       days,
       reverse,
+      headerEl,
       panelKey,
       sortWeekList,
       panelBtnDisabled,
+      forwardRef,
       filterDay,
       getDayAbbr,
       checkDate,
@@ -7257,9 +7277,6 @@ var DayPickerPanel = defineComponent({
     };
   }
 });
-var _hoisted_1$q = {
-  class: "var-date-picker-body"
-};
 function render$B(_ctx, _cache) {
   var _component_year_picker_panel = resolveComponent("year-picker-panel");
   var _component_month_picker_panel = resolveComponent("month-picker-panel");
@@ -7309,16 +7326,28 @@ function render$B(_ctx, _cache) {
       }, _ctx.slotProps)), () => [createTextVNode(toDisplayString(_ctx.getDateTitle), 1)])]))];
     }),
     _: 3
-  }, 8, ["name"])], 2)], 4), createElementVNode("div", _hoisted_1$q, [createVNode(Transition, {
+  }, 8, ["name"])], 2)], 4), createElementVNode("div", {
+    class: "var-date-picker-body",
+    onTouchstart: _cache[2] || (_cache[2] = function() {
+      return _ctx.handleTouchstart && _ctx.handleTouchstart(...arguments);
+    }),
+    onTouchmove: _cache[3] || (_cache[3] = function() {
+      return _ctx.handleTouchmove && _ctx.handleTouchmove(...arguments);
+    }),
+    onTouchend: _cache[4] || (_cache[4] = function() {
+      return _ctx.handleTouchend && _ctx.handleTouchend(...arguments);
+    })
+  }, [createVNode(Transition, {
     name: "var-date-picker-panel-fade"
   }, {
-    default: withCtx(() => [_ctx.isYearPanel ? (openBlock(), createBlock(_component_year_picker_panel, {
+    default: withCtx(() => [_ctx.getPanelType === "year" ? (openBlock(), createBlock(_component_year_picker_panel, {
       key: 0,
       "component-props": _ctx.componentProps,
       preview: _ctx.previewYear,
       onChooseYear: _ctx.getChooseYear
-    }, null, 8, ["component-props", "preview", "onChooseYear"])) : !_ctx.isYearPanel && _ctx.type === "month" || _ctx.isMonthPanel ? (openBlock(), createBlock(_component_month_picker_panel, {
+    }, null, 8, ["component-props", "preview", "onChooseYear"])) : _ctx.getPanelType === "month" ? (openBlock(), createBlock(_component_month_picker_panel, {
       key: 1,
+      ref: "monthPanelEl",
       current: _ctx.currentDate,
       choose: _ctx.getChoose,
       preview: _ctx.getPreview,
@@ -7326,8 +7355,9 @@ function render$B(_ctx, _cache) {
       "component-props": _ctx.componentProps,
       onChooseMonth: _ctx.getChooseMonth,
       onCheckPreview: _ctx.checkPreview
-    }, null, 8, ["current", "choose", "preview", "click-year", "component-props", "onChooseMonth", "onCheckPreview"])) : !_ctx.isYearPanel && !_ctx.isMonthPanel && _ctx.type === "date" ? (openBlock(), createBlock(_component_day_picker_panel, {
+    }, null, 8, ["current", "choose", "preview", "click-year", "component-props", "onChooseMonth", "onCheckPreview"])) : _ctx.getPanelType === "date" ? (openBlock(), createBlock(_component_day_picker_panel, {
       key: 2,
+      ref: "dayPanelEl",
       current: _ctx.currentDate,
       choose: _ctx.getChoose,
       preview: _ctx.getPreview,
@@ -7337,7 +7367,7 @@ function render$B(_ctx, _cache) {
       onCheckPreview: _ctx.checkPreview
     }, null, 8, ["current", "choose", "preview", "component-props", "click-month", "onChooseDay", "onCheckPreview"])) : createCommentVNode("v-if", true)]),
     _: 1
-  })])], 2);
+  })], 32)], 2);
 }
 var DatePicker = defineComponent({
   render: render$B,
@@ -7349,6 +7379,10 @@ var DatePicker = defineComponent({
   },
   props: props$z,
   setup(props2) {
+    var startX = 0;
+    var startY = 0;
+    var checkType = "";
+    var touchDirection;
     var currentDate = dayjs().format("YYYY-MM-D");
     var [currentYear, currentMonth] = currentDate.split("-");
     var monthDes = MONTH_LIST.find((month) => month.index === currentMonth);
@@ -7365,6 +7399,8 @@ var DatePicker = defineComponent({
     var chooseDays = ref([]);
     var chooseRangeMonth = ref([]);
     var chooseRangeDay = ref([]);
+    var monthPanelEl = ref(null);
+    var dayPanelEl = ref(null);
     var componentProps = reactive({
       allowedDates: props2.allowedDates,
       type: props2.type,
@@ -7427,6 +7463,18 @@ var DatePicker = defineComponent({
         return chooseMonth.value.index + "-" + showDay + " " + weekName.slice(0, 3);
       return weekName.slice(0, 3) + ", " + monthName.slice(0, 3) + " " + chooseDay.value;
     });
+    var getPanelType = computed(() => {
+      if (isYearPanel.value)
+        return "year";
+      if (props2.type === "month" || isMonthPanel.value)
+        return "month";
+      if (props2.type === "date")
+        return "date";
+      return "";
+    });
+    var isUntouchable = computed(() => {
+      return !props2.touchable || ["", "year"].includes(getPanelType.value);
+    });
     var slotProps = computed(() => {
       var _chooseMonth$value, _chooseDay$value, _chooseYear$value, _chooseMonth$value$in, _chooseMonth$value2;
       var weekIndex = dayjs(chooseYear.value + "-" + ((_chooseMonth$value = chooseMonth.value) == null ? void 0 : _chooseMonth$value.index) + "-" + chooseDay.value).day();
@@ -7453,6 +7501,38 @@ var DatePicker = defineComponent({
         isYearPanel.value = false;
         isMonthPanel.value = false;
       }
+    };
+    var handleTouchstart = (event) => {
+      if (isUntouchable.value)
+        return;
+      var {
+        clientX,
+        clientY
+      } = event.touches[0];
+      startX = clientX;
+      startY = clientY;
+    };
+    var getDirection = (x, y) => {
+      return x >= y && x > 20 ? "x" : "y";
+    };
+    var handleTouchmove = (event) => {
+      if (isUntouchable.value)
+        return;
+      var {
+        clientX,
+        clientY
+      } = event.touches[0];
+      var x = clientX - startX;
+      var y = clientY - startY;
+      touchDirection = getDirection(Math.abs(x), Math.abs(y));
+      checkType = x > 0 ? "prev" : "next";
+    };
+    var handleTouchend = () => {
+      if (isUntouchable.value || touchDirection !== "x")
+        return;
+      var componentRef = getPanelType.value === "month" ? monthPanelEl : dayPanelEl;
+      componentRef.value.forwardRef(checkType);
+      resetState();
     };
     var updateRange = (date, type) => {
       var rangeDate = type === "month" ? chooseRangeMonth : chooseRangeDay;
@@ -7540,8 +7620,8 @@ var DatePicker = defineComponent({
       isYearPanel.value = false;
       isMonthPanel.value = true;
     };
-    var checkPreview = (type, checkType) => {
-      var changeValue = checkType === "prev" ? -1 : 1;
+    var checkPreview = (type, checkType2) => {
+      var changeValue = checkType2 === "prev" ? -1 : 1;
       if (type === "year") {
         previewYear.value = "" + (toNumber(previewYear.value) + changeValue);
       } else {
@@ -7608,6 +7688,12 @@ var DatePicker = defineComponent({
       previewMonth.value = monthDes2;
       previewYear.value = yearValue;
     };
+    var resetState = () => {
+      startY = 0;
+      startX = 0;
+      checkType = "";
+      touchDirection = void 0;
+    };
     watch(() => props2.modelValue, (value) => {
       if (!checkValue() || invalidFormatDate(value) || !value)
         return;
@@ -7626,7 +7712,10 @@ var DatePicker = defineComponent({
     }, {
       immediate: true
     });
+    watch(getPanelType, resetState);
     return {
+      monthPanelEl,
+      dayPanelEl,
       reverse,
       currentDate,
       chooseMonth,
@@ -7637,12 +7726,16 @@ var DatePicker = defineComponent({
       isMonthPanel,
       getMonthTitle,
       getDateTitle,
+      getPanelType,
       getChoose,
       getPreview,
       componentProps,
       slotProps,
       formatRange,
       clickEl,
+      handleTouchstart,
+      handleTouchmove,
+      handleTouchend,
       getChooseDay,
       getChooseMonth,
       getChooseYear,
