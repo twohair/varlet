@@ -84,7 +84,6 @@ ImagePreview({
       `),s("span",{class:"hljs-attr"},"color"),t("="),s("span",{class:"hljs-string"},'"#fff"'),t(`
       @`),s("span",{class:"hljs-attr"},"click"),t("="),s("span",{class:"hljs-string"},'"menuShow = true"'),t(`
     />`)]),t(`
-
     `),s("span",{class:"hljs-tag"},[t("<"),s("span",{class:"hljs-name"},"var-action-sheet"),t(),s("span",{class:"hljs-attr"},":actions"),t("="),s("span",{class:"hljs-string"},'"actions"'),t(),s("span",{class:"hljs-attr"},"v-model:show"),t("="),s("span",{class:"hljs-string"},'"menuShow"'),t(" />")]),t(`
   `),s("span",{class:"hljs-tag"},[t("</"),s("span",{class:"hljs-name"},"template"),t(">")]),t(`
 `),s("span",{class:"hljs-tag"},[t("</"),s("span",{class:"hljs-name"},"var-image-preview"),t(">")]),t(`
