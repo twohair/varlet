@@ -16205,7 +16205,7 @@ function render(_ctx, _cache) {
   var _component_var_form_details = resolveComponent("var-form-details");
   var _component_var_popup = resolveComponent("var-popup");
   var _directive_ripple = resolveDirective("ripple");
-  return openBlock(), createElementBlock("div", _hoisted_1, [createElementVNode("div", _hoisted_2, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.renderFileList, (f) => {
+  return openBlock(), createElementBlock("div", _hoisted_1, [createElementVNode("div", _hoisted_2, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.files, (f) => {
     return withDirectives((openBlock(), createElementBlock("div", {
       class: normalizeClass(["var-uploader__file var-elevation--2", [f.state === "loading" ? "var-uploader--loading" : null]]),
       key: f.id,
@@ -16312,13 +16312,14 @@ var Uploader = defineComponent({
       validate: v,
       resetValidation
     } = useValidation();
-    var renderFileList = computed(() => {
+    var files = computed(() => {
       var {
         modelValue,
         hideList
       } = props2;
-      if (hideList)
+      if (hideList) {
         return [];
+      }
       return modelValue;
     });
     var preview = (varFile) => {
@@ -16413,8 +16414,8 @@ var Uploader = defineComponent({
           var limit = Math.min(varFiles2.length, toNumber(maxlength) - modelValue.length);
           return varFiles2.slice(0, limit);
         };
-        var files = getFiles(event);
-        var varFiles = files.map(createVarFile);
+        var files2 = getFiles(event);
+        var varFiles = files2.map(createVarFile);
         varFiles = maxsize != null ? getValidSizeVarFile(varFiles) : varFiles;
         varFiles = maxlength != null ? getValidLengthVarFiles(varFiles) : varFiles;
         var resolvedVarFiles = yield Promise.all(getResolvers(varFiles));
@@ -16502,7 +16503,7 @@ var Uploader = defineComponent({
       deep: true
     });
     return {
-      renderFileList,
+      files,
       showPreview,
       currentPreview,
       errorMessage,
