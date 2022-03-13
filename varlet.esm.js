@@ -6684,7 +6684,7 @@ function render$E(_ctx, _cache) {
         "var-month-picker-cover": "",
         ripple: false
       }, _extends$8({}, _ctx.buttonProps(month.index)), {
-        onClick: ($event) => _ctx.chooseMonth(month)
+        onClick: (event) => _ctx.chooseMonth(month, event)
       }), {
         default: withCtx(() => [createTextVNode(toDisplayString(_ctx.getMonthAbbr(month.index)), 1)]),
         _: 2
@@ -6841,15 +6841,20 @@ var MonthPickerPanel = defineComponent({
       };
       var isCover = textColorOrCover().startsWith("var-date-picker");
       return {
-        disabled,
         outline: computeOutline(),
         text: computeText(),
         color: !computeText() ? color : "",
         textColor: isCover ? "" : textColorOrCover(),
-        "var-date-picker-color-cover": isCover
+        "var-date-picker-color-cover": isCover,
+        class: {
+          "var-month-picker__button-disabled": disabled
+        }
       };
     };
-    var chooseMonth = (month) => {
+    var chooseMonth = (month, event) => {
+      var buttonEl = event.currentTarget;
+      if (buttonEl.classList.contains("var-month-picker__button-disabled"))
+        return;
       emit("choose-month", month);
     };
     var checkDate = (checkType) => {
@@ -7030,7 +7035,7 @@ function render$C(_ctx, _cache) {
         round: "",
         ripple: false
       }, _extends$7({}, _ctx.buttonProps(day)), {
-        onClick: ($event) => _ctx.chooseDay(day)
+        onClick: (event) => _ctx.chooseDay(day, event)
       }), {
         default: withCtx(() => [createTextVNode(toDisplayString(_ctx.filterDay(day)), 1)]),
         _: 2
@@ -7235,11 +7240,13 @@ var DayPickerPanel = defineComponent({
       };
       var isCover = textColorOrCover().startsWith("var-date-picker");
       return {
-        disabled,
         text: computeText(),
         outline: computeOutline(),
         textColor: isCover ? "" : textColorOrCover(),
-        "var-date-picker-color-cover": isCover
+        "var-date-picker-color-cover": isCover,
+        class: {
+          "var-day-picker__button-disabled": disabled
+        }
       };
     };
     var checkDate = (checkType) => {
@@ -7247,7 +7254,10 @@ var DayPickerPanel = defineComponent({
       panelKey.value += checkType === "prev" ? -1 : 1;
       emit("check-preview", "month", checkType);
     };
-    var chooseDay = (day) => {
+    var chooseDay = (day, event) => {
+      var buttonEl = event.currentTarget;
+      if (buttonEl.classList.contains("var-day-picker__button-disabled"))
+        return;
       emit("choose-day", day);
     };
     var forwardRef = (checkType) => {
@@ -7531,8 +7541,10 @@ var DatePicker = defineComponent({
       if (isUntouchable.value || touchDirection !== "x")
         return;
       var componentRef = getPanelType.value === "month" ? monthPanelEl : dayPanelEl;
-      componentRef.value.forwardRef(checkType);
-      resetState();
+      nextTickFrame(() => {
+        componentRef.value.forwardRef(checkType);
+        resetState();
+      });
     };
     var updateRange = (date, type) => {
       var rangeDate = type === "month" ? chooseRangeMonth : chooseRangeDay;
