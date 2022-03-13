@@ -16133,6 +16133,10 @@ var props = {
   rules: {
     type: Array
   },
+  hideList: {
+    type: Boolean,
+    default: false
+  },
   onBeforeRead: {
     type: Function
   },
@@ -16201,7 +16205,7 @@ function render(_ctx, _cache) {
   var _component_var_form_details = resolveComponent("var-form-details");
   var _component_var_popup = resolveComponent("var-popup");
   var _directive_ripple = resolveDirective("ripple");
-  return openBlock(), createElementBlock("div", _hoisted_1, [createElementVNode("div", _hoisted_2, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.modelValue, (f) => {
+  return openBlock(), createElementBlock("div", _hoisted_1, [createElementVNode("div", _hoisted_2, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.renderFileList, (f) => {
     return withDirectives((openBlock(), createElementBlock("div", {
       class: normalizeClass(["var-uploader__file var-elevation--2", [f.state === "loading" ? "var-uploader--loading" : null]]),
       key: f.id,
@@ -16308,6 +16312,15 @@ var Uploader = defineComponent({
       validate: v,
       resetValidation
     } = useValidation();
+    var renderFileList = computed(() => {
+      var {
+        modelValue,
+        hideList
+      } = props2;
+      if (hideList)
+        return [];
+      return modelValue;
+    });
     var preview = (varFile) => {
       var {
         disabled,
@@ -16489,6 +16502,7 @@ var Uploader = defineComponent({
       deep: true
     });
     return {
+      renderFileList,
       showPreview,
       currentPreview,
       errorMessage,
