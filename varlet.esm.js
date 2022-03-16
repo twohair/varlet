@@ -9899,9 +9899,9 @@ var IndexBar = defineComponent({
     };
     var handleScroll = () => {
       var {
-        scrollTop,
         scrollHeight
       } = scrollEl.value;
+      var scrollTop = getScrollTop(scrollEl.value);
       var {
         offsetTop
       } = barEl.value;
