@@ -891,10 +891,16 @@ function getTop$1(element) {
   return top + (document.body.scrollTop || document.documentElement.scrollTop);
 }
 function getScrollTop(element) {
+  if (element === document.documentElement || element === document.body) {
+    return document.body.scrollTop || document.documentElement.scrollTop;
+  }
   var top = "scrollTop" in element ? element.scrollTop : element.pageYOffset;
   return Math.max(top, 0);
 }
 function getScrollLeft(element) {
+  if (element === document.documentElement || element === document.body) {
+    return document.body.scrollLeft || document.documentElement.scrollLeft;
+  }
   var left = "scrollLeft" in element ? element.scrollLeft : element.pageXOffset;
   return Math.max(left, 0);
 }
@@ -9972,7 +9978,7 @@ var IndexBar = defineComponent({
       var _scroller$value;
       yield doubleRaf();
       scroller2.value = getParentScroller(barEl.value);
-      scrollEl.value = scroller2.value === window ? scroller2.value.document.documentElement : scroller2.value;
+      scrollEl.value = scroller2.value === window ? scroller2.value.document.body : scroller2.value;
       (_scroller$value = scroller2.value) == null ? void 0 : _scroller$value.addEventListener("scroll", handleScroll);
     }));
     onBeforeUnmount(() => {
