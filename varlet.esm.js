@@ -891,16 +891,10 @@ function getTop$1(element) {
   return top + (document.body.scrollTop || document.documentElement.scrollTop);
 }
 function getScrollTop(element) {
-  if (element === document.documentElement || element === document.body) {
-    return document.body.scrollTop || document.documentElement.scrollTop;
-  }
   var top = "scrollTop" in element ? element.scrollTop : element.pageYOffset;
   return Math.max(top, 0);
 }
 function getScrollLeft(element) {
-  if (element === document.documentElement || element === document.body) {
-    return document.body.scrollLeft || document.documentElement.scrollLeft;
-  }
   var left = "scrollLeft" in element ? element.scrollLeft : element.pageXOffset;
   return Math.max(left, 0);
 }
@@ -9878,7 +9872,6 @@ var IndexBar = defineComponent({
       indexAnchors,
       bindIndexAnchors
     } = useIndexAnchors();
-    var scrollEl = ref(null);
     var clickedName = ref("");
     var scroller2 = ref(null);
     var barEl = ref(null);
@@ -9904,10 +9897,8 @@ var IndexBar = defineComponent({
       props2.onChange == null ? void 0 : props2.onChange(anchorName);
     };
     var handleScroll = () => {
-      var {
-        scrollHeight
-      } = scrollEl.value;
-      var scrollTop = getScrollTop(scrollEl.value);
+      var scrollTop = getScrollTop(scroller2.value);
+      var scrollHeight = scroller2.value === window ? document.body.scrollHeight : scroller2.value.scrollHeight;
       var {
         offsetTop
       } = barEl.value;
@@ -9942,10 +9933,10 @@ var IndexBar = defineComponent({
         if (!indexAnchor)
           return;
         var top = indexAnchor.ownTop.value - stickyOffsetTop.value + offsetTop;
-        var left = getScrollLeft(scrollEl.value);
+        var left = getScrollLeft(scroller2.value);
         clickedName.value = anchorName;
         emitEvent(anchorName);
-        yield scrollTo(scrollEl.value, {
+        yield scrollTo(scroller2.value, {
           left,
           top,
           animation: easeInOutCubic,
@@ -9975,15 +9966,13 @@ var IndexBar = defineComponent({
       });
     }));
     onMounted(/* @__PURE__ */ _asyncToGenerator$4(function* () {
-      var _scroller$value;
       yield doubleRaf();
       scroller2.value = getParentScroller(barEl.value);
-      scrollEl.value = scroller2.value === window ? scroller2.value.document.body : scroller2.value;
-      (_scroller$value = scroller2.value) == null ? void 0 : _scroller$value.addEventListener("scroll", handleScroll);
+      scroller2.value.addEventListener("scroll", handleScroll);
     }));
     onBeforeUnmount(() => {
-      var _scroller$value2;
-      (_scroller$value2 = scroller2.value) == null ? void 0 : _scroller$value2.removeEventListener("scroll", handleScroll);
+      var _scroller$value;
+      (_scroller$value = scroller2.value) == null ? void 0 : _scroller$value.removeEventListener("scroll", handleScroll);
     });
     return {
       barEl,
