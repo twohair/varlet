@@ -12676,6 +12676,10 @@ var props$d = {
     type: Boolean,
     default: false
   },
+  offsetY: {
+    type: [String, Number],
+    default: 0
+  },
   chip: {
     type: Boolean,
     default: false
@@ -12968,7 +12972,7 @@ var Select = defineComponent({
         return;
       }
       wrapWidth.value = getWrapWidth();
-      offsetY.value = getOffsetY();
+      offsetY.value = getOffsetY() + toPxNum(props2.offsetY);
       isFocus.value = true;
       onFocus == null ? void 0 : onFocus();
       validateWithTrigger("onFocus");
