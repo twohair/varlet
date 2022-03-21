@@ -1873,7 +1873,10 @@ var props$M = {
 function render$S(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_button = resolveComponent("var-button");
-  return openBlock(), createElementBlock("div", {
+  return openBlock(), createBlock(Teleport, {
+    to: "body",
+    disabled: _ctx.disabled
+  }, [createElementVNode("div", {
     class: normalizeClass(["var-back-top", [_ctx.show ? "var-back-top--active" : null]]),
     ref: "backTopEl",
     style: normalizeStyle({
@@ -1892,7 +1895,7 @@ function render$S(_ctx, _cache) {
       name: "chevron-up"
     })]),
     _: 1
-  })])], 6);
+  })])], 6)], 8, ["disabled"]);
 }
 var BackTop = defineComponent({
   render: render$S,
@@ -1905,6 +1908,7 @@ var BackTop = defineComponent({
   setup(props2) {
     var show = ref(false);
     var backTopEl = ref(null);
+    var disabled = ref(true);
     var target;
     var click = (event) => {
       props2.onClick == null ? void 0 : props2.onClick(event);
@@ -1930,19 +1934,20 @@ var BackTop = defineComponent({
         }
         return el;
       }
-      if (isObject(target2)) {
+      if (isObject(target2))
         return target2;
-      }
       throw Error('[Varlet] BackTop: type of prop "target" should be a selector or an element object');
     };
     onMounted(() => {
       target = props2.target ? getTarget() : getParentScroller(backTopEl.value);
       target.addEventListener("scroll", throttleScroll);
+      disabled.value = false;
     });
     onBeforeUnmount(() => {
       target.removeEventListener("scroll", throttleScroll);
     });
     return {
+      disabled,
       show,
       backTopEl,
       toSizeUnit,
