@@ -13079,6 +13079,8 @@ var Select = defineComponent({
       computeLabel();
     };
     var focus = () => {
+      wrapWidth.value = getWrapWidth();
+      offsetY.value = getOffsetY() + toPxNum(props2.offsetY);
       isFocus.value = true;
     };
     var blur = () => {
