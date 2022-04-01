@@ -134,6 +134,9 @@ function kebabCase(str) {
   var ret = str.replace(/([A-Z])/g, " $1").trim();
   return ret.split(" ").join("-").toLowerCase();
 }
+function condition(bool, truthy, falsy) {
+  return bool ? truthy : falsy;
+}
 function asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -912,24 +915,21 @@ function exposeApis(apis) {
 }
 function createNamespace(name) {
   var namespace = "var-" + name;
-  var createBEM = (block, mod2, elevation2) => {
-    if (isNumber(elevation2))
-      return "var-elevation--" + elevation2;
-    if (isBool(mod2) && mod2)
-      return "var--" + block;
-    if (!block && !mod2)
+  var createBEM = (mod2) => {
+    if (!mod2)
       return namespace;
-    if (block && !mod2)
-      return namespace + "__" + block;
-    if (!block && mod2)
-      return namespace + "--" + mod2;
-    return namespace + "__" + block + "--" + mod2;
+    return mod2.startsWith("--") ? "" + namespace + mod2 : namespace + "__" + mod2;
   };
-  var classes = function() {
-    for (var _len = arguments.length, arg = new Array(_len), _key = 0; _key < _len; _key++) {
-      arg[_key] = arguments[_key];
-    }
-    return arg.filter((value) => value).join(" ");
+  var classes = (arg) => {
+    return arg.reduce((pre, cur) => {
+      if (!cur)
+        return pre;
+      if (isArray(cur)) {
+        var result = condition(cur[0], cur[1], cur[2]);
+        return result ? pre + " " + result : pre;
+      }
+      return pre + " " + cur;
+    }, "");
   };
   return {
     n: createBEM,
@@ -937,11 +937,11 @@ function createNamespace(name) {
   };
 }
 function call(fn) {
-  for (var _len2 = arguments.length, arg = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-    arg[_key2 - 1] = arguments[_key2];
+  for (var _len = arguments.length, arg = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    arg[_key - 1] = arguments[_key];
   }
   if (fn)
-    fn(...arg);
+    return fn(...arg);
 }
 function _extends$b() {
   _extends$b = Object.assign || function(target) {
@@ -1377,7 +1377,7 @@ var Locale = {
   merge,
   useLocale
 };
-var _hoisted_1$G = ["onClick"];
+var _hoisted_1$H = ["onClick"];
 function render$W(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_popup = resolveComponent("var-popup");
@@ -1405,12 +1405,12 @@ function render$W(_ctx, _cache) {
     onRouteChange: _ctx.onRouteChange
   }), {
     default: withCtx(() => [createElementVNode("div", mergeProps({
-      class: _ctx.classes(_ctx.n(), _ctx.n("box", true))
+      class: _ctx.classes([_ctx.n(), "var--box"])
     }, _ctx.$attrs), [renderSlot(_ctx.$slots, "title", {}, () => [createElementVNode("div", {
       class: normalizeClass(_ctx.n("title"))
     }, toDisplayString(_ctx.dt(_ctx.title, _ctx.pack.actionSheetTitle)), 3)]), renderSlot(_ctx.$slots, "actions", {}, () => [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.actions, (action) => {
       return withDirectives((openBlock(), createElementBlock("div", {
-        class: normalizeClass(_ctx.classes(_ctx.n("action-item"), action.className, action.disabled && _ctx.n("", "disabled"))),
+        class: normalizeClass(_ctx.classes([_ctx.n("action-item"), action.className, [action.disabled, _ctx.n("--disabled")]])),
         key: action.name,
         style: normalizeStyle({
           color: action.color
@@ -1424,7 +1424,7 @@ function render$W(_ctx, _cache) {
         size: action.iconSize
       }, null, 8, ["class", "name", "size"])) : createCommentVNode("v-if", true), createElementVNode("div", {
         class: normalizeClass(_ctx.n("action-name"))
-      }, toDisplayString(action.name), 3)], 14, _hoisted_1$G)), [[_directive_ripple, {
+      }, toDisplayString(action.name), 3)], 14, _hoisted_1$H)), [[_directive_ripple, {
         disabled: action.disabled
       }]]);
     }), 128))])], 16)]),
@@ -1450,7 +1450,6 @@ var VarActionSheet = defineComponent({
     } = createNamespace("action-sheet");
     var popupShow = ref(false);
     var handleSelect = (action) => {
-      var _props$onUpdateShow;
       if (action.disabled) {
         return;
       }
@@ -1458,8 +1457,8 @@ var VarActionSheet = defineComponent({
         closeOnClickAction,
         onSelect
       } = props2;
-      onSelect == null ? void 0 : onSelect(action);
-      closeOnClickAction && ((_props$onUpdateShow = props2["onUpdate:show"]) == null ? void 0 : _props$onUpdateShow.call(props2, false));
+      call(onSelect, action);
+      closeOnClickAction && call(props2["onUpdate:show"], false);
     };
     watch(() => props2.show, (newValue) => {
       popupShow.value = newValue;
@@ -1553,33 +1552,38 @@ var props$P = {
     default: true
   }
 };
+var _hoisted_1$G = {
+  class: "var-app-bar__left"
+};
+var _hoisted_2$s = {
+  key: 0,
+  class: "var-app-bar__title"
+};
+var _hoisted_3$i = {
+  class: "var-app-bar__right"
+};
 function render$V(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(_ctx.classes(_ctx.n(), _ctx.elevation && _ctx.n("", "", 3))),
+    class: normalizeClass(["var-app-bar", {
+      "var-elevation--3": _ctx.elevation
+    }]),
     style: normalizeStyle({
       background: _ctx.color,
       color: _ctx.textColor
     })
-  }, [createElementVNode("div", {
-    class: normalizeClass(_ctx.n("left"))
-  }, [renderSlot(_ctx.$slots, "left"), _ctx.titlePosition === "left" ? (openBlock(), createElementBlock("div", {
+  }, [createElementVNode("div", _hoisted_1$G, [renderSlot(_ctx.$slots, "left"), _ctx.titlePosition === "left" ? (openBlock(), createElementBlock("div", {
     key: 0,
-    class: normalizeClass(_ctx.n("title")),
+    class: "var-app-bar__title",
     style: normalizeStyle({
       paddingLeft: _ctx.paddingLeft
     })
-  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 6)) : createCommentVNode("v-if", true)], 2), _ctx.titlePosition === "center" ? (openBlock(), createElementBlock("div", {
+  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 4)) : createCommentVNode("v-if", true)]), _ctx.titlePosition === "center" ? (openBlock(), createElementBlock("div", _hoisted_2$s, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])])) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_3$i, [_ctx.titlePosition === "right" ? (openBlock(), createElementBlock("div", {
     key: 0,
-    class: normalizeClass(_ctx.n("title"))
-  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 2)) : createCommentVNode("v-if", true), createElementVNode("div", {
-    class: normalizeClass(_ctx.n("right"))
-  }, [_ctx.titlePosition === "right" ? (openBlock(), createElementBlock("div", {
-    key: 0,
-    class: normalizeClass(_ctx.n("title")),
+    class: "var-app-bar__title",
     style: normalizeStyle({
       paddingRight: _ctx.paddingRight
     })
-  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 6)) : createCommentVNode("v-if", true), renderSlot(_ctx.$slots, "right")], 2)], 6);
+  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 4)) : createCommentVNode("v-if", true), renderSlot(_ctx.$slots, "right")])], 6);
 }
 var AppBar = defineComponent({
   render: render$V,
@@ -1589,10 +1593,6 @@ var AppBar = defineComponent({
     var {
       slots
     } = _ref;
-    var {
-      n,
-      classes
-    } = createNamespace("app-bar");
     var paddingLeft = ref();
     var paddingRight = ref();
     var computePadding = () => {
@@ -1602,8 +1602,6 @@ var AppBar = defineComponent({
     onMounted(computePadding);
     onUpdated(computePadding);
     return {
-      n,
-      classes,
       paddingLeft,
       paddingRight
     };
@@ -1829,7 +1827,7 @@ function render$T(_ctx, _cache) {
     size: _ctx.loadingSize,
     radius: _ctx.loadingRadius
   }, null, 8, ["class", "type", "size", "radius"])) : createCommentVNode("v-if", true), createElementVNode("div", {
-    class: normalizeClass(_ctx.classes(_ctx.n("content"), (_ctx.loading || _ctx.pending) && _ctx.n("", "hidden")))
+    class: normalizeClass(_ctx.classes([_ctx.n("content"), [_ctx.loading || _ctx.pending, _ctx.n("--hidden")]]))
   }, [renderSlot(_ctx.$slots, "default")], 2)], 46, _hoisted_1$E)), [[_directive_ripple, {
     disabled: _ctx.disabled || !_ctx.ripple
   }]]);
@@ -1850,7 +1848,7 @@ var Button = defineComponent({
       classes
     } = createNamespace("button");
     var pending = ref(false);
-    var buttonClass = computed(() => classes(n(), n("box", true), n("", props2.size), props2.block ? classes(n("flex", true), n("", "block")) : n("inline-flex", true), props2.disabled && n("", "disabled"), props2.text ? classes(n("", "text"), n("", "text-" + props2.type)) : classes(n("", "", 2), n("", props2.type)), props2.text && props2.disabled && n("", "text-disabled"), props2.round && n("", "round"), props2.outline && n("", "outline")));
+    var buttonClass = computed(() => classes([n(), "var--box", n("--" + props2.size), [props2.block, "var--flex " + n("--block"), "var--inline-flex"], [props2.disabled, n("--disabled")], [props2.text, n("--text-" + props2.type) + " " + n("--text"), n("--" + props2.type) + " var-elevation--2"], [props2.text && props2.disabled, n("--text-disabled")], [props2.round, n("--round")], [props2.outline, n("--outline")]]));
     var attemptAutoLoading = (result) => {
       if (props2.autoLoading) {
         pending.value = true;
@@ -1957,7 +1955,7 @@ var BackTop = defineComponent({
     var disabled = ref(true);
     var target;
     var click = (event) => {
-      call(props2.onClick, event);
+      props2.onClick == null ? void 0 : props2.onClick(event);
       var left = getScrollLeft(target);
       scrollTo(target, {
         left,
