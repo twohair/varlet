@@ -920,20 +920,10 @@ function createNamespace(name) {
       return namespace;
     return mod2.startsWith("--") ? "" + namespace + mod2 : namespace + "__" + mod2;
   };
-  var classes = (arg) => {
-    return arg.reduce((pre, cur) => {
-      if (!cur)
-        return pre;
-      if (isArray(cur)) {
-        var result = condition(cur[0], cur[1], cur[2]);
-        return result ? pre + " " + result : pre;
-      }
-      return pre + " " + cur;
-    }, "");
-  };
+  var classes2 = (classes3) => classes3.map((className) => isArray(className) ? condition(className[0], className[1], className[2]) : className);
   return {
     n: createBEM,
-    classes
+    classes: classes2
   };
 }
 function call(fn) {
@@ -1377,6 +1367,10 @@ var Locale = {
   merge,
   useLocale
 };
+var {
+  n: n$1,
+  classes: classes$1
+} = createNamespace("action-sheet");
 var _hoisted_1$H = ["onClick"];
 function render$W(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
@@ -1444,10 +1438,6 @@ var VarActionSheet = defineComponent({
   inheritAttrs: false,
   props: props$Q,
   setup(props2) {
-    var {
-      n,
-      classes
-    } = createNamespace("action-sheet");
     var popupShow = ref(false);
     var handleSelect = (action) => {
       if (action.disabled) {
@@ -1466,8 +1456,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n,
-      classes,
+      n: n$1,
+      classes: classes$1,
       popupShow,
       pack,
       dt,
@@ -1642,7 +1632,7 @@ var props$O = {
     default: false
   }
 };
-var _withScopeId$2 = (n) => (pushScopeId(""), n = n(), popScopeId(), n);
+var _withScopeId$2 = (n2) => (pushScopeId(""), n2 = n2(), popScopeId(), n2);
 var _hoisted_1$F = {
   class: "var-loading"
 };
@@ -1802,6 +1792,10 @@ var props$N = {
     type: Function
   }
 };
+var {
+  n,
+  classes
+} = createNamespace("button");
 var _hoisted_1$E = ["disabled"];
 function render$T(_ctx, _cache) {
   var _component_var_loading = resolveComponent("var-loading");
@@ -1843,10 +1837,6 @@ var Button = defineComponent({
   },
   props: props$N,
   setup(props2) {
-    var {
-      n,
-      classes
-    } = createNamespace("button");
     var pending = ref(false);
     var buttonClass = computed(() => classes([n(), "var--box", n("--" + props2.size), [props2.block, "var--flex " + n("--block"), "var--inline-flex"], [props2.disabled, n("--disabled")], [props2.text, n("--text-" + props2.type) + " " + n("--text"), n("--" + props2.type) + " var-elevation--2"], [props2.text && props2.disabled, n("--text-disabled")], [props2.round, n("--round")], [props2.outline, n("--outline")]]));
     var attemptAutoLoading = (result) => {
@@ -2967,21 +2957,21 @@ var Col = defineComponent({
       }
     };
     var getSize = (mode, size) => {
-      var classes = [];
+      var classes2 = [];
       if (!size) {
-        return classes;
+        return classes2;
       }
       if (isPlainObject(size)) {
         var {
           span: _span,
           offset: _offset
         } = size;
-        _span && classes.push("var-col--span-" + mode + "-" + _span);
-        _offset && classes.push("var-col--offset-" + mode + "-" + _offset);
+        _span && classes2.push("var-col--span-" + mode + "-" + _span);
+        _offset && classes2.push("var-col--offset-" + mode + "-" + _offset);
       } else {
-        classes.push("var-col--span-" + mode + "-" + size);
+        classes2.push("var-col--span-" + mode + "-" + size);
       }
-      return classes;
+      return classes2;
     };
     watch([() => props2.span, () => props2.offset], () => {
       row2 == null ? void 0 : row2.computePadding();
@@ -3478,25 +3468,25 @@ P.cosine = P.cos = function() {
   return finalise(quadrant == 2 || quadrant == 3 ? x.neg() : x, pr, rm, true);
 };
 P.cubeRoot = P.cbrt = function() {
-  var e, m, n, r, rep, s, sd, t, t3, t3plusx, x = this, Ctor = x.constructor;
+  var e, m, n2, r, rep, s, sd, t, t3, t3plusx, x = this, Ctor = x.constructor;
   if (!x.isFinite() || x.isZero())
     return new Ctor(x);
   external = false;
   s = x.s * mathpow(x.s * x, 1 / 3);
   if (!s || Math.abs(s) == 1 / 0) {
-    n = digitsToString(x.d);
+    n2 = digitsToString(x.d);
     e = x.e;
-    if (s = (e - n.length + 1) % 3)
-      n += s == 1 || s == -2 ? "0" : "00";
-    s = mathpow(n, 1 / 3);
+    if (s = (e - n2.length + 1) % 3)
+      n2 += s == 1 || s == -2 ? "0" : "00";
+    s = mathpow(n2, 1 / 3);
     e = mathfloor((e + 1) / 3) - (e % 3 == (e < 0 ? -1 : 2));
     if (s == 1 / 0) {
-      n = "5e" + e;
+      n2 = "5e" + e;
     } else {
-      n = s.toExponential();
-      n = n.slice(0, n.indexOf("e") + 1) + e;
+      n2 = s.toExponential();
+      n2 = n2.slice(0, n2.indexOf("e") + 1) + e;
     }
-    r = new Ctor(n);
+    r = new Ctor(n2);
     r.s = x.s;
   } else {
     r = new Ctor(s.toString());
@@ -3507,9 +3497,9 @@ P.cubeRoot = P.cbrt = function() {
     t3 = t.times(t).times(t);
     t3plusx = t3.plus(x);
     r = divide(t3plusx.plus(x).times(t), t3plusx.plus(t3), sd + 2, 1);
-    if (digitsToString(t.d).slice(0, sd) === (n = digitsToString(r.d)).slice(0, sd)) {
-      n = n.slice(sd - 3, sd + 1);
-      if (n == "9999" || !rep && n == "4999") {
+    if (digitsToString(t.d).slice(0, sd) === (n2 = digitsToString(r.d)).slice(0, sd)) {
+      n2 = n2.slice(sd - 3, sd + 1);
+      if (n2 == "9999" || !rep && n2 == "4999") {
         if (!rep) {
           finalise(t, e + 1, 0);
           if (t.times(t).times(t).eq(x)) {
@@ -3520,7 +3510,7 @@ P.cubeRoot = P.cbrt = function() {
         sd += 4;
         rep = 1;
       } else {
-        if (!+n || !+n.slice(1) && n.charAt(0) == "5") {
+        if (!+n2 || !+n2.slice(1) && n2.charAt(0) == "5") {
           finalise(r, e + 1, 1);
           m = !r.times(r).times(r).eq(x);
         }
@@ -3532,18 +3522,18 @@ P.cubeRoot = P.cbrt = function() {
   return finalise(r, e, Ctor.rounding, m);
 };
 P.decimalPlaces = P.dp = function() {
-  var w, d = this.d, n = NaN;
+  var w, d = this.d, n2 = NaN;
   if (d) {
     w = d.length - 1;
-    n = (w - mathfloor(this.e / LOG_BASE)) * LOG_BASE;
+    n2 = (w - mathfloor(this.e / LOG_BASE)) * LOG_BASE;
     w = d[w];
     if (w)
       for (; w % 10 == 0; w /= 10)
-        n--;
-    if (n < 0)
-      n = 0;
+        n2--;
+    if (n2 < 0)
+      n2 = 0;
   }
-  return n;
+  return n2;
 };
 P.dividedBy = P.div = function(y) {
   return divide(this, new this.constructor(y));
@@ -3566,7 +3556,7 @@ P.greaterThanOrEqualTo = P.gte = function(y) {
   return k == 1 || k === 0;
 };
 P.hyperbolicCosine = P.cosh = function() {
-  var k, n, pr, rm, len, x = this, Ctor = x.constructor, one = new Ctor(1);
+  var k, n2, pr, rm, len, x = this, Ctor = x.constructor, one = new Ctor(1);
   if (!x.isFinite())
     return new Ctor(x.s ? 1 / 0 : NaN);
   if (x.isZero())
@@ -3578,12 +3568,12 @@ P.hyperbolicCosine = P.cosh = function() {
   len = x.d.length;
   if (len < 32) {
     k = Math.ceil(len / 3);
-    n = (1 / tinyPow(4, k)).toString();
+    n2 = (1 / tinyPow(4, k)).toString();
   } else {
     k = 16;
-    n = "2.3283064365386962890625e-10";
+    n2 = "2.3283064365386962890625e-10";
   }
-  x = taylorSeries(Ctor, 1, x.times(n), new Ctor(1), true);
+  x = taylorSeries(Ctor, 1, x.times(n2), new Ctor(1), true);
   var cosh2_x, i = k, d8 = new Ctor(8);
   for (; i--; ) {
     cosh2_x = x.times(x);
@@ -3719,7 +3709,7 @@ P.inverseSine = P.asin = function() {
   return x.times(2);
 };
 P.inverseTangent = P.atan = function() {
-  var i, j, k, n, px, t, r, wpr, x2, x = this, Ctor = x.constructor, pr = Ctor.precision, rm = Ctor.rounding;
+  var i, j, k, n2, px, t, r, wpr, x2, x = this, Ctor = x.constructor, pr = Ctor.precision, rm = Ctor.rounding;
   if (!x.isFinite()) {
     if (!x.s)
       return new Ctor(NaN);
@@ -3742,15 +3732,15 @@ P.inverseTangent = P.atan = function() {
     x = x.div(x.times(x).plus(1).sqrt().plus(1));
   external = false;
   j = Math.ceil(wpr / LOG_BASE);
-  n = 1;
+  n2 = 1;
   x2 = x.times(x);
   r = new Ctor(x);
   px = x;
   for (; i !== -1; ) {
     px = px.times(x2);
-    t = r.minus(px.div(n += 2));
+    t = r.minus(px.div(n2 += 2));
     px = px.times(x2);
-    r = t.plus(px.div(n += 2));
+    r = t.plus(px.div(n2 += 2));
     if (r.d[j] !== void 0)
       for (i = j; r.d[i] === t.d[i] && i--; )
         ;
@@ -4059,25 +4049,25 @@ P.sine = P.sin = function() {
   return finalise(quadrant > 2 ? x.neg() : x, pr, rm, true);
 };
 P.squareRoot = P.sqrt = function() {
-  var m, n, sd, r, rep, t, x = this, d = x.d, e = x.e, s = x.s, Ctor = x.constructor;
+  var m, n2, sd, r, rep, t, x = this, d = x.d, e = x.e, s = x.s, Ctor = x.constructor;
   if (s !== 1 || !d || !d[0]) {
     return new Ctor(!s || s < 0 && (!d || d[0]) ? NaN : d ? x : 1 / 0);
   }
   external = false;
   s = Math.sqrt(+x);
   if (s == 0 || s == 1 / 0) {
-    n = digitsToString(d);
-    if ((n.length + e) % 2 == 0)
-      n += "0";
-    s = Math.sqrt(n);
+    n2 = digitsToString(d);
+    if ((n2.length + e) % 2 == 0)
+      n2 += "0";
+    s = Math.sqrt(n2);
     e = mathfloor((e + 1) / 2) - (e < 0 || e % 2);
     if (s == 1 / 0) {
-      n = "5e" + e;
+      n2 = "5e" + e;
     } else {
-      n = s.toExponential();
-      n = n.slice(0, n.indexOf("e") + 1) + e;
+      n2 = s.toExponential();
+      n2 = n2.slice(0, n2.indexOf("e") + 1) + e;
     }
-    r = new Ctor(n);
+    r = new Ctor(n2);
   } else {
     r = new Ctor(s.toString());
   }
@@ -4085,9 +4075,9 @@ P.squareRoot = P.sqrt = function() {
   for (; ; ) {
     t = r;
     r = t.plus(divide(x, t, sd + 2, 1)).times(0.5);
-    if (digitsToString(t.d).slice(0, sd) === (n = digitsToString(r.d)).slice(0, sd)) {
-      n = n.slice(sd - 3, sd + 1);
-      if (n == "9999" || !rep && n == "4999") {
+    if (digitsToString(t.d).slice(0, sd) === (n2 = digitsToString(r.d)).slice(0, sd)) {
+      n2 = n2.slice(sd - 3, sd + 1);
+      if (n2 == "9999" || !rep && n2 == "4999") {
         if (!rep) {
           finalise(t, e + 1, 0);
           if (t.times(t).eq(x)) {
@@ -4098,7 +4088,7 @@ P.squareRoot = P.sqrt = function() {
         sd += 4;
         rep = 1;
       } else {
-        if (!+n || !+n.slice(1) && n.charAt(0) == "5") {
+        if (!+n2 || !+n2.slice(1) && n2.charAt(0) == "5") {
           finalise(r, e + 1, 1);
           m = !r.times(r).eq(x);
         }
@@ -4212,7 +4202,7 @@ P.toFixed = function(dp, rm) {
   return x.isNeg() && !x.isZero() ? "-" + str : str;
 };
 P.toFraction = function(maxD) {
-  var d, d0, d1, d2, e, k, n, n0, n1, pr, q, r, x = this, xd = x.d, Ctor = x.constructor;
+  var d, d0, d1, d2, e, k, n2, n0, n1, pr, q, r, x = this, xd = x.d, Ctor = x.constructor;
   if (!xd)
     return new Ctor(x);
   n1 = d0 = new Ctor(1);
@@ -4224,17 +4214,17 @@ P.toFraction = function(maxD) {
   if (maxD == null) {
     maxD = e > 0 ? d : n1;
   } else {
-    n = new Ctor(maxD);
-    if (!n.isInt() || n.lt(n1))
-      throw Error(invalidArgument + n);
-    maxD = n.gt(d) ? e > 0 ? d : n1 : n;
+    n2 = new Ctor(maxD);
+    if (!n2.isInt() || n2.lt(n1))
+      throw Error(invalidArgument + n2);
+    maxD = n2.gt(d) ? e > 0 ? d : n1 : n2;
   }
   external = false;
-  n = new Ctor(digitsToString(xd));
+  n2 = new Ctor(digitsToString(xd));
   pr = Ctor.precision;
   Ctor.precision = e = xd.length * LOG_BASE * 2;
   for (; ; ) {
-    q = divide(n, d, 0, 1, 1);
+    q = divide(n2, d, 0, 1, 1);
     d2 = d0.plus(q.times(d1));
     if (d2.cmp(maxD) == 1)
       break;
@@ -4244,8 +4234,8 @@ P.toFraction = function(maxD) {
     n1 = n0.plus(q.times(d2));
     n0 = d2;
     d2 = d;
-    d = n.minus(q.times(d2));
-    n = d2;
+    d = n2.minus(q.times(d2));
+    n2 = d2;
   }
   d2 = divide(maxD.minus(d0), d1, 0, 1, 1);
   n0 = n0.plus(d2.times(n1));
@@ -4822,20 +4812,20 @@ function getZeroString(k) {
     zs += "0";
   return zs;
 }
-function intPow(Ctor, x, n, pr) {
+function intPow(Ctor, x, n2, pr) {
   var isTruncated, r = new Ctor(1), k = Math.ceil(pr / LOG_BASE + 4);
   external = false;
   for (; ; ) {
-    if (n % 2) {
+    if (n2 % 2) {
       r = r.times(x);
       if (truncate(r.d, k))
         isTruncated = true;
     }
-    n = mathfloor(n / 2);
-    if (n === 0) {
-      n = r.d.length - 1;
-      if (isTruncated && r.d[n] === 0)
-        ++r.d[n];
+    n2 = mathfloor(n2 / 2);
+    if (n2 === 0) {
+      n2 = r.d.length - 1;
+      if (isTruncated && r.d[n2] === 0)
+        ++r.d[n2];
       break;
     }
     x = x.times(x);
@@ -4844,8 +4834,8 @@ function intPow(Ctor, x, n, pr) {
   external = true;
   return r;
 }
-function isOdd(n) {
-  return n.d[n.d.length - 1] & 1;
+function isOdd(n2) {
+  return n2.d[n2.d.length - 1] & 1;
 }
 function maxOrMin(Ctor, args, ltgt) {
   var y, x = new Ctor(args[0]), i = 0;
@@ -4906,7 +4896,7 @@ function naturalExponential(x, sd) {
   }
 }
 function naturalLogarithm(y, sd) {
-  var c, c0, denominator, e, numerator, rep, sum2, t, wpr, x1, x2, n = 1, guard = 10, x = y, xd = x.d, Ctor = x.constructor, rm = Ctor.rounding, pr = Ctor.precision;
+  var c, c0, denominator, e, numerator, rep, sum2, t, wpr, x1, x2, n2 = 1, guard = 10, x = y, xd = x.d, Ctor = x.constructor, rm = Ctor.rounding, pr = Ctor.precision;
   if (x.s < 0 || !xd || !xd[0] || !x.e && xd[0] == 1 && xd.length == 1) {
     return new Ctor(xd && !xd[0] ? -1 / 0 : x.s != 1 ? NaN : xd ? 0 : x);
   }
@@ -4924,7 +4914,7 @@ function naturalLogarithm(y, sd) {
       x = x.times(y);
       c = digitsToString(x.d);
       c0 = c.charAt(0);
-      n++;
+      n2++;
     }
     e = x.e;
     if (c0 > 1) {
@@ -4950,7 +4940,7 @@ function naturalLogarithm(y, sd) {
       sum2 = sum2.times(2);
       if (e !== 0)
         sum2 = sum2.plus(getLn10(Ctor, wpr + 2, pr).times(e + ""));
-      sum2 = divide(sum2, new Ctor(n), wpr, 1);
+      sum2 = divide(sum2, new Ctor(n2), wpr, 1);
       if (sd == null) {
         if (checkRoundingDigits(sum2.d, wpr - guard, rm, rep)) {
           Ctor.precision = wpr += guard;
@@ -5095,15 +5085,15 @@ function sine(Ctor, x) {
   }
   return x;
 }
-function taylorSeries(Ctor, n, x, y, isHyperbolic) {
+function taylorSeries(Ctor, n2, x, y, isHyperbolic) {
   var j, t, u, x2, pr = Ctor.precision, k = Math.ceil(pr / LOG_BASE);
   external = false;
   x2 = x.times(x);
   u = new Ctor(y);
   for (; ; ) {
-    t = divide(u.times(x2), new Ctor(n++ * n++), pr, 1);
+    t = divide(u.times(x2), new Ctor(n2++ * n2++), pr, 1);
     u = isHyperbolic ? y.plus(t) : y.minus(t);
-    y = divide(t.times(x2), new Ctor(n++ * n++), pr, 1);
+    y = divide(t.times(x2), new Ctor(n2++ * n2++), pr, 1);
     t = u.plus(y);
     if (t.d[k] !== void 0) {
       for (j = k; t.d[j] === u.d[j] && j--; )
@@ -5121,10 +5111,10 @@ function taylorSeries(Ctor, n, x, y, isHyperbolic) {
   return t;
 }
 function tinyPow(b, e) {
-  var n = b;
+  var n2 = b;
   while (--e)
-    n *= b;
-  return n;
+    n2 *= b;
+  return n2;
 }
 function toLessThanHalfPi(Ctor, x) {
   var t, isNeg = x.s < 0, pi = getPi(Ctor, Ctor.precision, 1), halfPi = pi.times(0.5);
@@ -5531,18 +5521,18 @@ function floor(x) {
   return finalise(x = new this(x), x.e + 1, 3);
 }
 function hypot() {
-  var i, n, t = new this(0);
+  var i, n2, t = new this(0);
   external = false;
   for (i = 0; i < arguments.length; ) {
-    n = new this(arguments[i++]);
-    if (!n.d) {
-      if (n.s) {
+    n2 = new this(arguments[i++]);
+    if (!n2.d) {
+      if (n2.s) {
         external = true;
         return new this(1 / 0);
       }
-      t = n;
+      t = n2;
     } else if (t.d) {
-      t = t.plus(n.times(n));
+      t = t.plus(n2.times(n2));
     }
   }
   external = true;
@@ -5579,7 +5569,7 @@ function pow(x, y) {
   return new this(x).pow(y);
 }
 function random(sd) {
-  var d, e, k, n, i = 0, r = new this(1), rd = [];
+  var d, e, k, n2, i = 0, r = new this(1), rd = [];
   if (sd === void 0)
     sd = this.precision;
   else
@@ -5591,21 +5581,21 @@ function random(sd) {
   } else if (crypto.getRandomValues) {
     d = crypto.getRandomValues(new Uint32Array(k));
     for (; i < k; ) {
-      n = d[i];
-      if (n >= 429e7) {
+      n2 = d[i];
+      if (n2 >= 429e7) {
         d[i] = crypto.getRandomValues(new Uint32Array(1))[0];
       } else {
-        rd[i++] = n % 1e7;
+        rd[i++] = n2 % 1e7;
       }
     }
   } else if (crypto.randomBytes) {
     d = crypto.randomBytes(k *= 4);
     for (; i < k; ) {
-      n = d[i] + (d[i + 1] << 8) + (d[i + 2] << 16) + ((d[i + 3] & 127) << 24);
-      if (n >= 214e7) {
+      n2 = d[i] + (d[i + 1] << 8) + (d[i + 2] << 16) + ((d[i + 3] & 127) << 24);
+      if (n2 >= 214e7) {
         crypto.randomBytes(4).copy(d, i);
       } else {
-        rd.push(n % 1e7);
+        rd.push(n2 % 1e7);
         i += 4;
       }
     }
@@ -5616,8 +5606,8 @@ function random(sd) {
   k = rd[--i];
   sd %= LOG_BASE;
   if (k && sd) {
-    n = mathpow(10, LOG_BASE - sd);
-    rd[i] = (k / n | 0) * n;
+    n2 = mathpow(10, LOG_BASE - sd);
+    rd[i] = (k / n2 | 0) * n2;
   }
   for (; rd[i] === 0; i--)
     rd.pop();
@@ -5628,7 +5618,7 @@ function random(sd) {
     e = -1;
     for (; rd[0] === 0; e -= LOG_BASE)
       rd.shift();
-    for (k = 1, n = rd[0]; n >= 10; n /= 10)
+    for (k = 1, n2 = rd[0]; n2 >= 10; n2 /= 10)
       k++;
     if (k < LOG_BASE)
       e -= LOG_BASE - k;
@@ -6125,8 +6115,8 @@ var monthDiff = function monthDiff2(a, b) {
   var anchor2 = a.clone().add(wholeMonthDiff + (c ? -1 : 1), M);
   return +(-(wholeMonthDiff + (b - anchor) / (c ? anchor - anchor2 : anchor2 - anchor)) || 0);
 };
-var absFloor = function absFloor2(n) {
-  return n < 0 ? Math.ceil(n) || 0 : Math.floor(n);
+var absFloor = function absFloor2(n2) {
+  return n2 < 0 ? Math.ceil(n2) || 0 : Math.floor(n2);
 };
 var prettyUnit = function prettyUnit2(u) {
   var special = {
@@ -6339,9 +6329,9 @@ var Dayjs = /* @__PURE__ */ function() {
     var _this2 = this, _C$MIN$C$H$C$S$unit;
     number = Number(number);
     var unit = Utils.p(units);
-    var instanceFactorySet = function instanceFactorySet2(n) {
+    var instanceFactorySet = function instanceFactorySet2(n2) {
       var d = dayjs(_this2);
-      return Utils.w(d.date(d.date() + Math.round(n * number)), _this2);
+      return Utils.w(d.date(d.date() + Math.round(n2 * number)), _this2);
     };
     if (unit === M) {
       return this.set(M, this.$M + number);
@@ -13228,7 +13218,7 @@ var props$c = {
     default: () => []
   }
 };
-var _withScopeId$1 = (n) => (pushScopeId(""), n = n(), popScopeId(), n);
+var _withScopeId$1 = (n2) => (pushScopeId(""), n2 = n2(), popScopeId(), n2);
 var _hoisted_1$8 = {
   class: "var--box var-skeleton"
 };
@@ -15786,7 +15776,7 @@ var Clock = defineComponent({
     };
   }
 });
-var _withScopeId = (n) => (pushScopeId(""), n = n(), popScopeId(), n);
+var _withScopeId = (n2) => (pushScopeId(""), n2 = n2(), popScopeId(), n2);
 var _hoisted_1$1 = {
   class: "var-time-picker-title__time"
 };
