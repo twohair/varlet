@@ -134,8 +134,8 @@ function kebabCase(str) {
   var ret = str.replace(/([A-Z])/g, " $1").trim();
   return ret.split(" ").join("-").toLowerCase();
 }
-function condition(bool, truthy, falsy) {
-  return bool ? truthy : falsy;
+function ternary(condition, truthy, falsy) {
+  return condition ? truthy : falsy;
 }
 function asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, key, arg) {
   try {
@@ -915,20 +915,31 @@ function exposeApis(apis) {
 }
 function createNamespace(name) {
   var namespace = "var-" + name;
-  var createBEM = (mod2) => {
-    if (!mod2)
+  var createBEM = (suffix) => {
+    if (!suffix)
       return namespace;
-    return mod2.startsWith("--") ? "" + namespace + mod2 : namespace + "__" + mod2;
+    return suffix.startsWith("--") ? "" + namespace + suffix : namespace + "__" + suffix;
   };
-  var classes2 = (classes3) => classes3.map((className) => isArray(className) ? condition(className[0], className[1], className[2]) : className);
+  var classes2 = function() {
+    for (var _len = arguments.length, classes3 = new Array(_len), _key = 0; _key < _len; _key++) {
+      classes3[_key] = arguments[_key];
+    }
+    return classes3.map((className) => {
+      if (isArray(className)) {
+        var [condition, truthy, falsy = null] = className;
+        return ternary(condition, truthy, falsy);
+      }
+      return className;
+    });
+  };
   return {
     n: createBEM,
     classes: classes2
   };
 }
 function call(fn) {
-  for (var _len = arguments.length, arg = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    arg[_key - 1] = arguments[_key];
+  for (var _len2 = arguments.length, arg = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+    arg[_key2 - 1] = arguments[_key2];
   }
   if (fn)
     return fn(...arg);
@@ -1387,10 +1398,7 @@ function render$W(_ctx, _cache) {
     teleport: _ctx.teleport,
     show: _ctx.popupShow
   }, {
-    "onUpdate:show": (value) => {
-      var _ctx$$props$onUpdate, _ctx$$props;
-      return (_ctx$$props$onUpdate = (_ctx$$props = _ctx.$props)["onUpdate:show"]) == null ? void 0 : _ctx$$props$onUpdate.call(_ctx$$props, value);
-    }
+    "onUpdate:show": (value) => _ctx.call(_ctx.$props["onUpdate:show"], value)
   }, {
     onOpen: _ctx.onOpen,
     onClose: _ctx.onClose,
@@ -1399,12 +1407,12 @@ function render$W(_ctx, _cache) {
     onRouteChange: _ctx.onRouteChange
   }), {
     default: withCtx(() => [createElementVNode("div", mergeProps({
-      class: _ctx.classes([_ctx.n(), "var--box"])
+      class: _ctx.classes(_ctx.n(), "var--box")
     }, _ctx.$attrs), [renderSlot(_ctx.$slots, "title", {}, () => [createElementVNode("div", {
       class: normalizeClass(_ctx.n("title"))
     }, toDisplayString(_ctx.dt(_ctx.title, _ctx.pack.actionSheetTitle)), 3)]), renderSlot(_ctx.$slots, "actions", {}, () => [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.actions, (action) => {
       return withDirectives((openBlock(), createElementBlock("div", {
-        class: normalizeClass(_ctx.classes([_ctx.n("action-item"), action.className, [action.disabled, _ctx.n("--disabled")]])),
+        class: normalizeClass(_ctx.classes(_ctx.n("action-item"), action.className, [action.disabled, _ctx.n("--disabled")])),
         key: action.name,
         style: normalizeStyle({
           color: action.color
@@ -1458,6 +1466,7 @@ var VarActionSheet = defineComponent({
     return {
       n: n$1,
       classes: classes$1,
+      call,
       popupShow,
       pack,
       dt,
@@ -1801,7 +1810,7 @@ function render$T(_ctx, _cache) {
   var _component_var_loading = resolveComponent("var-loading");
   var _directive_ripple = resolveDirective("ripple");
   return withDirectives((openBlock(), createElementBlock("button", {
-    class: normalizeClass(_ctx.buttonClass),
+    class: normalizeClass(_ctx.classes(_ctx.n(), "var--box", _ctx.n("--" + _ctx.size), [_ctx.block, "var--flex " + _ctx.n("--block"), "var--inline-flex"], [_ctx.disabled, _ctx.n("--disabled")], [_ctx.text, _ctx.n("--text-" + _ctx.type) + " " + _ctx.n("--text"), _ctx.n("--" + _ctx.type) + " var-elevation--2"], [_ctx.text && _ctx.disabled, _ctx.n("--text-disabled")], [_ctx.round, _ctx.n("--round")], [_ctx.outline, _ctx.n("--outline")])),
     style: normalizeStyle({
       color: _ctx.textColor,
       background: _ctx.color
@@ -1821,7 +1830,7 @@ function render$T(_ctx, _cache) {
     size: _ctx.loadingSize,
     radius: _ctx.loadingRadius
   }, null, 8, ["class", "type", "size", "radius"])) : createCommentVNode("v-if", true), createElementVNode("div", {
-    class: normalizeClass(_ctx.classes([_ctx.n("content"), [_ctx.loading || _ctx.pending, _ctx.n("--hidden")]]))
+    class: normalizeClass(_ctx.classes(_ctx.n("content"), [_ctx.loading || _ctx.pending, _ctx.n("--hidden")]))
   }, [renderSlot(_ctx.$slots, "default")], 2)], 46, _hoisted_1$E)), [[_directive_ripple, {
     disabled: _ctx.disabled || !_ctx.ripple
   }]]);
@@ -1838,7 +1847,6 @@ var Button = defineComponent({
   props: props$N,
   setup(props2) {
     var pending = ref(false);
-    var buttonClass = computed(() => classes([n(), "var--box", n("--" + props2.size), [props2.block, "var--flex " + n("--block"), "var--inline-flex"], [props2.disabled, n("--disabled")], [props2.text, n("--text-" + props2.type) + " " + n("--text"), n("--" + props2.type) + " var-elevation--2"], [props2.text && props2.disabled, n("--text-disabled")], [props2.round, n("--round")], [props2.outline, n("--outline")]]));
     var attemptAutoLoading = (result) => {
       if (props2.autoLoading) {
         pending.value = true;
@@ -1872,7 +1880,6 @@ var Button = defineComponent({
     return {
       n,
       classes,
-      buttonClass,
       pending,
       handleClick,
       handleTouchstart
