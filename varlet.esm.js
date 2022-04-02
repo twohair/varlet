@@ -134,9 +134,6 @@ function kebabCase(str) {
   var ret = str.replace(/([A-Z])/g, " $1").trim();
   return ret.split(" ").join("-").toLowerCase();
 }
-function ternary(condition, truthy, falsy) {
-  return condition ? truthy : falsy;
-}
 function asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -927,7 +924,7 @@ function createNamespace(name) {
     return classes3.map((className) => {
       if (isArray(className)) {
         var [condition, truthy, falsy = null] = className;
-        return ternary(condition, truthy, falsy);
+        return condition ? truthy : falsy;
       }
       return className;
     });
