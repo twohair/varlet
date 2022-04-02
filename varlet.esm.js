@@ -1376,8 +1376,8 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$1,
-  classes: classes$1
+  n: n$2,
+  classes: classes$2
 } = createNamespace("action-sheet");
 var _hoisted_1$H = ["onClick"];
 function render$W(_ctx, _cache) {
@@ -1461,8 +1461,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$1,
-      classes: classes$1,
+      n: n$2,
+      classes: classes$2,
       call,
       popupShow,
       pack,
@@ -1551,11 +1551,11 @@ var props$P = {
 var _hoisted_1$G = {
   class: "var-app-bar__left"
 };
-var _hoisted_2$s = {
+var _hoisted_2$r = {
   key: 0,
   class: "var-app-bar__title"
 };
-var _hoisted_3$i = {
+var _hoisted_3$h = {
   class: "var-app-bar__right"
 };
 function render$V(_ctx, _cache) {
@@ -1573,7 +1573,7 @@ function render$V(_ctx, _cache) {
     style: normalizeStyle({
       paddingLeft: _ctx.paddingLeft
     })
-  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 4)) : createCommentVNode("v-if", true)]), _ctx.titlePosition === "center" ? (openBlock(), createElementBlock("div", _hoisted_2$s, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])])) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_3$i, [_ctx.titlePosition === "right" ? (openBlock(), createElementBlock("div", {
+  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 4)) : createCommentVNode("v-if", true)]), _ctx.titlePosition === "center" ? (openBlock(), createElementBlock("div", _hoisted_2$r, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])])) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_3$h, [_ctx.titlePosition === "right" ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: "var-app-bar__title",
     style: normalizeStyle({
@@ -1642,11 +1642,11 @@ var _withScopeId$2 = (n2) => (pushScopeId(""), n2 = n2(), popScopeId(), n2);
 var _hoisted_1$F = {
   class: "var-loading"
 };
-var _hoisted_2$r = {
+var _hoisted_2$q = {
   key: 0,
   class: "var-loading__circle"
 };
-var _hoisted_3$h = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createElementVNode("svg", {
+var _hoisted_3$g = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createElementVNode("svg", {
   viewBox: "25 25 50 50"
 }, [/* @__PURE__ */ createElementVNode("circle", {
   cx: "50",
@@ -1654,7 +1654,7 @@ var _hoisted_3$h = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createEl
   r: "20",
   fill: "none"
 })], -1));
-var _hoisted_4$a = [_hoisted_3$h];
+var _hoisted_4$9 = [_hoisted_3$g];
 function render$U(_ctx, _cache) {
   return openBlock(), createElementBlock("div", _hoisted_1$F, [_ctx.$slots.default ? (openBlock(), createElementBlock("div", {
     key: 0,
@@ -1662,14 +1662,14 @@ function render$U(_ctx, _cache) {
   }, [renderSlot(_ctx.$slots, "default")], 2)) : createCommentVNode("v-if", true), _ctx.isShow ? (openBlock(), createElementBlock("div", {
     key: 1,
     class: normalizeClass(["var--box var-loading__body", [_ctx.$slots.default ? "var-loading__inside" : null]])
-  }, [_ctx.type === "circle" ? (openBlock(), createElementBlock("div", _hoisted_2$r, [createElementVNode("span", {
+  }, [_ctx.type === "circle" ? (openBlock(), createElementBlock("div", _hoisted_2$q, [createElementVNode("span", {
     class: "var-loading__circle-block",
     style: normalizeStyle({
       width: _ctx.getRadius * 2 + "px",
       height: _ctx.getRadius * 2 + "px",
       color: _ctx.color
     })
-  }, _hoisted_4$a, 4)])) : createCommentVNode("v-if", true), (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.loadingTypeDict, (nums, key) => {
+  }, _hoisted_4$9, 4)])) : createCommentVNode("v-if", true), (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.loadingTypeDict, (nums, key) => {
     return openBlock(), createElementBlock(Fragment, {
       key
     }, [_ctx.type === key ? (openBlock(), createElementBlock("div", {
@@ -1799,8 +1799,8 @@ var props$N = {
   }
 };
 var {
-  n,
-  classes
+  n: n$1,
+  classes: classes$1
 } = createNamespace("button");
 var _hoisted_1$E = ["disabled"];
 function render$T(_ctx, _cache) {
@@ -1875,8 +1875,8 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n,
-      classes,
+      n: n$1,
+      classes: classes$1,
       pending,
       handleClick,
       handleTouchstart
@@ -2038,7 +2038,7 @@ var props$L = {
 var _hoisted_1$D = {
   class: "var-badge var--box"
 };
-var _hoisted_2$q = {
+var _hoisted_2$p = {
   key: 1
 };
 function render$R(_ctx, _cache) {
@@ -2055,7 +2055,7 @@ function render$R(_ctx, _cache) {
       key: 0,
       name: _ctx.icon,
       size: "10px"
-    }, null, 8, ["name"])) : (openBlock(), createElementBlock("span", _hoisted_2$q, toDisplayString(_ctx.values), 1))], 16), [[vShow, !_ctx.hidden]])]),
+    }, null, 8, ["name"])) : (openBlock(), createElementBlock("span", _hoisted_2$p, toDisplayString(_ctx.values), 1))], 16), [[vShow, !_ctx.hidden]])]),
     _: 1
   }), renderSlot(_ctx.$slots, "default")]);
 }
@@ -2153,40 +2153,40 @@ var props$K = {
     type: Function
   }
 };
+var {
+  n,
+  classes
+} = createNamespace("card");
 var _hoisted_1$C = ["src", "alt"];
-var _hoisted_2$p = {
-  key: 0,
-  class: "var-card__title"
-};
-var _hoisted_3$g = {
-  key: 0,
-  class: "var-card__subtitle"
-};
-var _hoisted_4$9 = {
-  key: 0,
-  class: "var-card__description"
-};
-var _hoisted_5$7 = {
-  key: 0,
-  class: "var-card__footer"
-};
 function render$Q(_ctx, _cache) {
   var _directive_ripple = resolveDirective("ripple");
   return withDirectives((openBlock(), createElementBlock("div", {
-    class: normalizeClass(["var-card", [_ctx.elevation ? "var-elevation--" + _ctx.elevation : "var-elevation--2"]]),
+    class: normalizeClass(_ctx.classes(_ctx.n(), [_ctx.elevation, "var-elevation--" + _ctx.elevation, "var-elevation--2"])),
     onClick: _cache[0] || (_cache[0] = function() {
       return _ctx.onClick && _ctx.onClick(...arguments);
     })
   }, [renderSlot(_ctx.$slots, "image", {}, () => [_ctx.src ? (openBlock(), createElementBlock("img", {
     key: 0,
-    class: "var-card__image",
+    class: normalizeClass(_ctx.n("image")),
     style: normalizeStyle({
       objectFit: _ctx.fit,
       height: _ctx.toSizeUnit(_ctx.height)
     }),
     src: _ctx.src,
     alt: _ctx.alt
-  }, null, 12, _hoisted_1$C)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", _hoisted_2$p, toDisplayString(_ctx.title), 1)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "subtitle", {}, () => [_ctx.subtitle ? (openBlock(), createElementBlock("div", _hoisted_3$g, toDisplayString(_ctx.subtitle), 1)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "description", {}, () => [_ctx.description ? (openBlock(), createElementBlock("div", _hoisted_4$9, toDisplayString(_ctx.description), 1)) : createCommentVNode("v-if", true)]), _ctx.$slots.extra ? (openBlock(), createElementBlock("div", _hoisted_5$7, [renderSlot(_ctx.$slots, "extra")])) : createCommentVNode("v-if", true)], 2)), [[_directive_ripple, {
+  }, null, 14, _hoisted_1$C)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", {
+    key: 0,
+    class: normalizeClass(_ctx.n("title"))
+  }, toDisplayString(_ctx.title), 3)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "subtitle", {}, () => [_ctx.subtitle ? (openBlock(), createElementBlock("div", {
+    key: 0,
+    class: normalizeClass(_ctx.n("subtitle"))
+  }, toDisplayString(_ctx.subtitle), 3)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "description", {}, () => [_ctx.description ? (openBlock(), createElementBlock("div", {
+    key: 0,
+    class: normalizeClass(_ctx.n("description"))
+  }, toDisplayString(_ctx.description), 3)) : createCommentVNode("v-if", true)]), _ctx.$slots.extra ? (openBlock(), createElementBlock("div", {
+    key: 0,
+    class: normalizeClass(_ctx.n("footer"))
+  }, [renderSlot(_ctx.$slots, "extra")], 2)) : createCommentVNode("v-if", true)], 2)), [[_directive_ripple, {
     disabled: !_ctx.ripple
   }]]);
 }
@@ -2199,6 +2199,8 @@ var Card = defineComponent({
   props: props$K,
   setup() {
     return {
+      n,
+      classes,
       toSizeUnit
     };
   }
