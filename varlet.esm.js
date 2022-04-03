@@ -1376,10 +1376,10 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$6,
-  classes: classes$6
+  n: n$7,
+  classes: classes$7
 } = createNamespace("action-sheet");
-var _hoisted_1$G = ["onClick"];
+var _hoisted_1$F = ["onClick"];
 function render$W(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_popup = resolveComponent("var-popup");
@@ -1423,7 +1423,7 @@ function render$W(_ctx, _cache) {
         size: action.iconSize
       }, null, 8, ["class", "name", "size"])) : createCommentVNode("v-if", true), createElementVNode("div", {
         class: normalizeClass(_ctx.n("action-name"))
-      }, toDisplayString(action.name), 3)], 14, _hoisted_1$G)), [[_directive_ripple, {
+      }, toDisplayString(action.name), 3)], 14, _hoisted_1$F)), [[_directive_ripple, {
         disabled: action.disabled
       }]]);
     }), 128))])], 16)]),
@@ -1461,8 +1461,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$6,
-      classes: classes$6,
+      n: n$7,
+      classes: classes$7,
       call,
       popupShow,
       pack,
@@ -1548,7 +1548,7 @@ var props$P = {
     default: true
   }
 };
-var _hoisted_1$F = {
+var _hoisted_1$E = {
   class: "var-app-bar__left"
 };
 var _hoisted_2$q = {
@@ -1567,7 +1567,7 @@ function render$V(_ctx, _cache) {
       background: _ctx.color,
       color: _ctx.textColor
     })
-  }, [createElementVNode("div", _hoisted_1$F, [renderSlot(_ctx.$slots, "left"), _ctx.titlePosition === "left" ? (openBlock(), createElementBlock("div", {
+  }, [createElementVNode("div", _hoisted_1$E, [renderSlot(_ctx.$slots, "left"), _ctx.titlePosition === "left" ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: "var-app-bar__title",
     style: normalizeStyle({
@@ -1639,7 +1639,7 @@ var props$O = {
   }
 };
 var _withScopeId$1 = (n2) => (pushScopeId(""), n2 = n2(), popScopeId(), n2);
-var _hoisted_1$E = {
+var _hoisted_1$D = {
   class: "var-loading"
 };
 var _hoisted_2$p = {
@@ -1656,7 +1656,7 @@ var _hoisted_3$e = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createEl
 })], -1));
 var _hoisted_4$7 = [_hoisted_3$e];
 function render$U(_ctx, _cache) {
-  return openBlock(), createElementBlock("div", _hoisted_1$E, [_ctx.$slots.default ? (openBlock(), createElementBlock("div", {
+  return openBlock(), createElementBlock("div", _hoisted_1$D, [_ctx.$slots.default ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(["var-loading__content", [_ctx.loading ? "var-loading__content--active" : null]])
   }, [renderSlot(_ctx.$slots, "default")], 2)) : createCommentVNode("v-if", true), _ctx.isShow ? (openBlock(), createElementBlock("div", {
@@ -1799,10 +1799,10 @@ var props$N = {
   }
 };
 var {
-  n: n$5,
-  classes: classes$5
+  n: n$6,
+  classes: classes$6
 } = createNamespace("button");
-var _hoisted_1$D = ["disabled"];
+var _hoisted_1$C = ["disabled"];
 function render$T(_ctx, _cache) {
   var _component_var_loading = resolveComponent("var-loading");
   var _directive_ripple = resolveDirective("ripple");
@@ -1828,7 +1828,7 @@ function render$T(_ctx, _cache) {
     radius: _ctx.loadingRadius
   }, null, 8, ["class", "type", "size", "radius"])) : createCommentVNode("v-if", true), createElementVNode("div", {
     class: normalizeClass(_ctx.classes(_ctx.n("content"), [_ctx.loading || _ctx.pending, _ctx.n("--hidden")]))
-  }, [renderSlot(_ctx.$slots, "default")], 2)], 46, _hoisted_1$D)), [[_directive_ripple, {
+  }, [renderSlot(_ctx.$slots, "default")], 2)], 46, _hoisted_1$C)), [[_directive_ripple, {
     disabled: _ctx.disabled || !_ctx.ripple
   }]]);
 }
@@ -1875,8 +1875,8 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n: n$5,
-      classes: classes$5,
+      n: n$6,
+      classes: classes$6,
       pending,
       handleClick,
       handleTouchstart
@@ -2035,7 +2035,7 @@ var props$L = {
     type: String
   }
 };
-var _hoisted_1$C = {
+var _hoisted_1$B = {
   class: "var-badge var--box"
 };
 var _hoisted_2$o = {
@@ -2043,7 +2043,7 @@ var _hoisted_2$o = {
 };
 function render$R(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
-  return openBlock(), createElementBlock("div", _hoisted_1$C, [createVNode(Transition, {
+  return openBlock(), createElementBlock("div", _hoisted_1$B, [createVNode(Transition, {
     name: "var-badge-fade"
   }, {
     default: withCtx(() => [withDirectives(createElementVNode("span", mergeProps(_ctx.$attrs, {
@@ -2154,10 +2154,10 @@ var props$K = {
   }
 };
 var {
-  n: n$4,
-  classes: classes$4
+  n: n$5,
+  classes: classes$5
 } = createNamespace("card");
-var _hoisted_1$B = ["src", "alt"];
+var _hoisted_1$A = ["src", "alt"];
 function render$Q(_ctx, _cache) {
   var _directive_ripple = resolveDirective("ripple");
   return withDirectives((openBlock(), createElementBlock("div", {
@@ -2174,7 +2174,7 @@ function render$Q(_ctx, _cache) {
     }),
     src: _ctx.src,
     alt: _ctx.alt
-  }, null, 14, _hoisted_1$B)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", {
+  }, null, 14, _hoisted_1$A)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(_ctx.n("title"))
   }, toDisplayString(_ctx.title), 3)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "subtitle", {}, () => [_ctx.subtitle ? (openBlock(), createElementBlock("div", {
@@ -2199,8 +2199,8 @@ var Card = defineComponent({
   props: props$K,
   setup() {
     return {
-      n: n$4,
-      classes: classes$4,
+      n: n$5,
+      classes: classes$5,
       toSizeUnit
     };
   }
@@ -2235,27 +2235,30 @@ var props$J = {
     type: String
   }
 };
-var _hoisted_1$A = {
-  class: "var-cell__content"
-};
+var {
+  n: n$4,
+  classes: classes$4
+} = createNamespace("cell");
 function render$P(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(["var-cell", [_ctx.border ? "var-cell--border" : null]])
+    class: normalizeClass(_ctx.classes(_ctx.n(), [_ctx.border, _ctx.n("--border")]))
   }, [_ctx.$slots.icon || _ctx.icon ? (openBlock(), createElementBlock("div", {
     key: 0,
-    class: normalizeClass(["var-cell__icon", [_ctx.iconClass ? _ctx.iconClass : null]])
+    class: normalizeClass(_ctx.classes(_ctx.n("icon"), [_ctx.iconClass, _ctx.iconClass]))
   }, [renderSlot(_ctx.$slots, "icon", {}, () => [createVNode(_component_var_icon, {
     class: "var--flex",
     name: _ctx.icon
-  }, null, 8, ["name"])])], 2)) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_1$A, [createElementVNode("div", {
-    class: normalizeClass(["var-cell__title", [_ctx.titleClass ? _ctx.titleClass : null]])
+  }, null, 8, ["name"])])], 2)) : createCommentVNode("v-if", true), createElementVNode("div", {
+    class: normalizeClass(_ctx.n("content"))
+  }, [createElementVNode("div", {
+    class: normalizeClass(_ctx.classes(_ctx.n("title"), [_ctx.titleClass, _ctx.titleClass]))
   }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 2), _ctx.$slots.desc || _ctx.desc ? (openBlock(), createElementBlock("div", {
     key: 0,
-    class: normalizeClass(["var-cell__desc", [_ctx.descClass ? _ctx.descClass : null]])
-  }, [renderSlot(_ctx.$slots, "desc", {}, () => [createTextVNode(toDisplayString(_ctx.desc), 1)])], 2)) : createCommentVNode("v-if", true)]), _ctx.$slots.extra ? (openBlock(), createElementBlock("div", {
+    class: normalizeClass(_ctx.classes(_ctx.n("desc"), [_ctx.descClass, _ctx.descClass]))
+  }, [renderSlot(_ctx.$slots, "desc", {}, () => [createTextVNode(toDisplayString(_ctx.desc), 1)])], 2)) : createCommentVNode("v-if", true)], 2), _ctx.$slots.extra ? (openBlock(), createElementBlock("div", {
     key: 1,
-    class: normalizeClass(["var-cell__extra", [_ctx.extraClass ? _ctx.extraClass : null]])
+    class: normalizeClass(_ctx.classes(_ctx.n("extra"), [_ctx.extraClass, _ctx.extraClass]))
   }, [renderSlot(_ctx.$slots, "extra")], 2)) : createCommentVNode("v-if", true)], 2);
 }
 var Cell = defineComponent({
@@ -2264,7 +2267,13 @@ var Cell = defineComponent({
   components: {
     VarIcon: Icon
   },
-  props: props$J
+  props: props$J,
+  setup() {
+    return {
+      n: n$4,
+      classes: classes$4
+    };
+  }
 });
 Cell.install = function(app) {
   app.component(Cell.name, Cell);
