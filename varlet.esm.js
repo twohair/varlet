@@ -1113,8 +1113,8 @@ function _asyncToGenerator$9(fn) {
   };
 }
 var {
-  n: n$8,
-  classes: classes$8
+  n: n$9,
+  classes: classes$9
 } = createNamespace("icon");
 function render$X(_ctx, _cache) {
   return openBlock(), createBlock(resolveDynamicComponent(_ctx.isURL(_ctx.name) ? "img" : "i"), {
@@ -1161,8 +1161,8 @@ var Icon = defineComponent({
       immediate: true
     });
     return {
-      n: n$8,
-      classes: classes$8,
+      n: n$9,
+      classes: classes$9,
       nextName,
       shrinking,
       isURL,
@@ -1382,8 +1382,8 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$7,
-  classes: classes$7
+  n: n$8,
+  classes: classes$8
 } = createNamespace("action-sheet");
 var _hoisted_1$F = ["onClick"];
 function render$W(_ctx, _cache) {
@@ -1467,8 +1467,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$7,
-      classes: classes$7,
+      n: n$8,
+      classes: classes$8,
       call,
       popupShow,
       pack,
@@ -1805,8 +1805,8 @@ var props$N = {
   }
 };
 var {
-  n: n$6,
-  classes: classes$6
+  n: n$7,
+  classes: classes$7
 } = createNamespace("button");
 var _hoisted_1$C = ["disabled"];
 function render$T(_ctx, _cache) {
@@ -1881,8 +1881,8 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n: n$6,
-      classes: classes$6,
+      n: n$7,
+      classes: classes$7,
       pending,
       handleClick,
       handleTouchstart
@@ -2160,8 +2160,8 @@ var props$K = {
   }
 };
 var {
-  n: n$5,
-  classes: classes$5
+  n: n$6,
+  classes: classes$6
 } = createNamespace("card");
 var _hoisted_1$A = ["src", "alt"];
 function render$Q(_ctx, _cache) {
@@ -2205,8 +2205,8 @@ var Card = defineComponent({
   props: props$K,
   setup() {
     return {
-      n: n$5,
-      classes: classes$5,
+      n: n$6,
+      classes: classes$6,
       toSizeUnit
     };
   }
@@ -2242,8 +2242,8 @@ var props$J = {
   }
 };
 var {
-  n: n$4,
-  classes: classes$4
+  n: n$5,
+  classes: classes$5
 } = createNamespace("cell");
 function render$P(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
@@ -2276,8 +2276,8 @@ var Cell = defineComponent({
   props: props$J,
   setup() {
     return {
-      n: n$4,
-      classes: classes$4
+      n: n$5,
+      classes: classes$5
     };
   }
 });
@@ -8601,13 +8601,17 @@ var props$v = {
     type: Function
   }
 };
+var {
+  n: n$4,
+  classes: classes$4
+} = createNamespace("image");
 var _hoisted_1$l = ["alt", "lazy-error", "lazy-loading"];
 var _hoisted_2$g = ["alt", "src"];
 function render$x(_ctx, _cache) {
   var _directive_lazy = resolveDirective("lazy");
   var _directive_ripple = resolveDirective("ripple");
   return withDirectives((openBlock(), createElementBlock("div", {
-    class: normalizeClass(["var-image var--box", [!_ctx.block ? "var--inline-block" : null]]),
+    class: normalizeClass(_ctx.classes(_ctx.n(), "var--box", [!_ctx.block, "var--inline-block"])),
     style: normalizeStyle({
       width: _ctx.toSizeUnit(_ctx.width),
       height: _ctx.toSizeUnit(_ctx.height),
@@ -8615,7 +8619,7 @@ function render$x(_ctx, _cache) {
     })
   }, [_ctx.lazy ? withDirectives((openBlock(), createElementBlock("img", {
     key: 0,
-    class: "var-image__image",
+    class: normalizeClass(_ctx.n("image")),
     alt: _ctx.alt,
     "lazy-error": _ctx.error,
     "lazy-loading": _ctx.loading,
@@ -8631,9 +8635,9 @@ function render$x(_ctx, _cache) {
     onClick: _cache[2] || (_cache[2] = function() {
       return _ctx.onClick && _ctx.onClick(...arguments);
     })
-  }, null, 44, _hoisted_1$l)), [[_directive_lazy, _ctx.src]]) : (openBlock(), createElementBlock("img", {
+  }, null, 46, _hoisted_1$l)), [[_directive_lazy, _ctx.src]]) : (openBlock(), createElementBlock("img", {
     key: 1,
-    class: "var-image__image",
+    class: normalizeClass(_ctx.n("image")),
     alt: _ctx.alt,
     style: normalizeStyle({
       objectFit: _ctx.fit
@@ -8648,7 +8652,7 @@ function render$x(_ctx, _cache) {
     onClick: _cache[5] || (_cache[5] = function() {
       return _ctx.onClick && _ctx.onClick(...arguments);
     })
-  }, null, 44, _hoisted_2$g))], 6)), [[_directive_ripple, {
+  }, null, 46, _hoisted_2$g))], 6)), [[_directive_ripple, {
     disabled: !_ctx.ripple
   }]]);
 }
@@ -8669,10 +8673,10 @@ var Image$1 = defineComponent({
         onError
       } = props2;
       if (lazy) {
-        el._lazy.state === "success" && (onLoad == null ? void 0 : onLoad(e));
-        el._lazy.state === "error" && (onError == null ? void 0 : onError(e));
+        el._lazy.state === "success" && call(onLoad, e);
+        el._lazy.state === "error" && call(onError, e);
       } else {
-        onLoad == null ? void 0 : onLoad(e);
+        call(onLoad, e);
       }
     };
     var handleError = (e) => {
@@ -8680,9 +8684,11 @@ var Image$1 = defineComponent({
         lazy,
         onError
       } = props2;
-      !lazy && (onError == null ? void 0 : onError(e));
+      !lazy && call(onError, e);
     };
     return {
+      n: n$4,
+      classes: classes$4,
       toSizeUnit,
       handleLoad,
       handleError
