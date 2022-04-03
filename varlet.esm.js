@@ -1376,8 +1376,8 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$4,
-  classes: classes$4
+  n: n$5,
+  classes: classes$5
 } = createNamespace("action-sheet");
 var _hoisted_1$G = ["onClick"];
 function render$W(_ctx, _cache) {
@@ -1461,8 +1461,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$4,
-      classes: classes$4,
+      n: n$5,
+      classes: classes$5,
       call,
       popupShow,
       pack,
@@ -1799,8 +1799,8 @@ var props$N = {
   }
 };
 var {
-  n: n$3,
-  classes: classes$3
+  n: n$4,
+  classes: classes$4
 } = createNamespace("button");
 var _hoisted_1$D = ["disabled"];
 function render$T(_ctx, _cache) {
@@ -1875,8 +1875,8 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n: n$3,
-      classes: classes$3,
+      n: n$4,
+      classes: classes$4,
       pending,
       handleClick,
       handleTouchstart
@@ -2154,8 +2154,8 @@ var props$K = {
   }
 };
 var {
-  n: n$2,
-  classes: classes$2
+  n: n$3,
+  classes: classes$3
 } = createNamespace("card");
 var _hoisted_1$B = ["src", "alt"];
 function render$Q(_ctx, _cache) {
@@ -2199,8 +2199,8 @@ var Card = defineComponent({
   props: props$K,
   setup() {
     return {
-      n: n$2,
-      classes: classes$2,
+      n: n$3,
+      classes: classes$3,
       toSizeUnit
     };
   }
@@ -13225,8 +13225,8 @@ var props$c = {
   }
 };
 var {
-  n: n$1,
-  classes: classes$1
+  n: n$2,
+  classes: classes$2
 } = createNamespace("skeleton");
 function render$e(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -13292,8 +13292,8 @@ var Skeleton = defineComponent({
   props: props$c,
   setup() {
     return {
-      n: n$1,
-      classes: classes$1,
+      n: n$2,
+      classes: classes$2,
       toSizeUnit,
       toNumber
     };
@@ -14163,6 +14163,10 @@ var props$9 = {
     default: false
   }
 };
+var {
+  n: n$1,
+  classes: classes$1
+} = createNamespace("space");
 var internalSizes = {
   mini: [4, 4],
   small: [6, 6],
@@ -14180,7 +14184,7 @@ var Space = defineComponent({
       return isInternalSize ? internalSizes[size] : isArray(size) ? size.map(toPxNum) : [toPxNum(size), toPxNum(size)];
     };
     return () => {
-      var _slots$default;
+      var _call;
       var {
         inline,
         justify,
@@ -14189,7 +14193,7 @@ var Space = defineComponent({
         direction,
         size
       } = props2;
-      var children = (_slots$default = slots.default == null ? void 0 : slots.default()) != null ? _slots$default : [];
+      var children = (_call = call(slots.default)) != null ? _call : [];
       var isInternalSize = internalSizeValidator(size);
       var [y, x] = getSize(size, isInternalSize);
       var flatten = (vNodes) => {
@@ -14240,7 +14244,7 @@ var Space = defineComponent({
         }, [child]);
       });
       return createVNode("div", {
-        "class": ["var-space", "var--box", inline ? "var-space--inline" : null],
+        "class": classes$1(n$1(), "var--box", [inline, n$1("--inline")]),
         "style": {
           flexDirection: direction,
           justifyContent: justify,
