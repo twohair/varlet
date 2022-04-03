@@ -3068,10 +3068,9 @@ var Collapse = defineComponent({
       return props2.accordion ? null : props2.modelValue.filter((name) => name !== value);
     };
     var updateItem = (value, isExpand) => {
-      var _props$onUpdateModel;
       var modelValue = getValue(value, isExpand);
-      (_props$onUpdateModel = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel.call(props2, modelValue);
-      props2.onChange == null ? void 0 : props2.onChange(modelValue);
+      call(props2["onUpdate:modelValue"], modelValue);
+      call(props2.onChange, modelValue);
     };
     var matchName = () => {
       if (props2.accordion) {
