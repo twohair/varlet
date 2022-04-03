@@ -1376,8 +1376,8 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$3,
-  classes: classes$3
+  n: n$4,
+  classes: classes$4
 } = createNamespace("action-sheet");
 var _hoisted_1$G = ["onClick"];
 function render$W(_ctx, _cache) {
@@ -1461,8 +1461,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$3,
-      classes: classes$3,
+      n: n$4,
+      classes: classes$4,
       call,
       popupShow,
       pack,
@@ -1799,8 +1799,8 @@ var props$N = {
   }
 };
 var {
-  n: n$2,
-  classes: classes$2
+  n: n$3,
+  classes: classes$3
 } = createNamespace("button");
 var _hoisted_1$D = ["disabled"];
 function render$T(_ctx, _cache) {
@@ -1875,8 +1875,8 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n: n$2,
-      classes: classes$2,
+      n: n$3,
+      classes: classes$3,
       pending,
       handleClick,
       handleTouchstart
@@ -2154,8 +2154,8 @@ var props$K = {
   }
 };
 var {
-  n: n$1,
-  classes: classes$1
+  n: n$2,
+  classes: classes$2
 } = createNamespace("card");
 var _hoisted_1$B = ["src", "alt"];
 function render$Q(_ctx, _cache) {
@@ -2199,8 +2199,8 @@ var Card = defineComponent({
   props: props$K,
   setup() {
     return {
-      n: n$1,
-      classes: classes$1,
+      n: n$2,
+      classes: classes$2,
       toSizeUnit
     };
   }
@@ -13225,8 +13225,8 @@ var props$c = {
   }
 };
 var {
-  n,
-  classes
+  n: n$1,
+  classes: classes$1
 } = createNamespace("skeleton");
 function render$e(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -13292,8 +13292,8 @@ var Skeleton = defineComponent({
   props: props$c,
   setup() {
     return {
-      n,
-      classes,
+      n: n$1,
+      classes: classes$1,
       toSizeUnit,
       toNumber
     };
@@ -16228,57 +16228,58 @@ function _asyncToGenerator(fn) {
     });
   };
 }
+var {
+  n,
+  classes
+} = createNamespace("uploader");
 var fid = 0;
-var _hoisted_1 = {
-  class: "var-uploader var--box"
-};
-var _hoisted_2 = {
-  class: "var-uploader__file-list"
-};
-var _hoisted_3 = ["onClick"];
-var _hoisted_4 = {
-  class: "var-uploader__file-name"
-};
-var _hoisted_5 = ["onClick"];
-var _hoisted_6 = ["src", "alt"];
-var _hoisted_7 = ["multiple", "accept", "capture", "disabled"];
-var _hoisted_8 = ["src"];
+var _hoisted_1 = ["onClick"];
+var _hoisted_2 = ["onClick"];
+var _hoisted_3 = ["src", "alt"];
+var _hoisted_4 = ["multiple", "accept", "capture", "disabled"];
+var _hoisted_5 = ["src"];
 function render(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_form_details = resolveComponent("var-form-details");
   var _component_var_popup = resolveComponent("var-popup");
   var _directive_ripple = resolveDirective("ripple");
-  return openBlock(), createElementBlock("div", _hoisted_1, [createElementVNode("div", _hoisted_2, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.files, (f) => {
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(_ctx.classes(_ctx.n(), "var--box"))
+  }, [createElementVNode("div", {
+    class: normalizeClass(_ctx.n("file-list"))
+  }, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.files, (f) => {
     return withDirectives((openBlock(), createElementBlock("div", {
-      class: normalizeClass(["var-uploader__file var-elevation--2", [f.state === "loading" ? "var-uploader--loading" : null]]),
+      class: normalizeClass(_ctx.classes(_ctx.n("file"), "var-elevation--2", [f.state === "loading", _ctx.n("--loading")])),
       key: f.id,
       onClick: ($event) => _ctx.preview(f)
-    }, [createElementVNode("div", _hoisted_4, toDisplayString(f.name || f.url), 1), _ctx.removable ? (openBlock(), createElementBlock("div", {
+    }, [createElementVNode("div", {
+      class: normalizeClass(_ctx.n("file-name"))
+    }, toDisplayString(f.name || f.url), 3), _ctx.removable ? (openBlock(), createElementBlock("div", {
       key: 0,
-      class: "var-uploader__file-close",
+      class: normalizeClass(_ctx.n("file-close")),
       onClick: withModifiers(($event) => _ctx.handleRemove(f), ["stop"])
     }, [createVNode(_component_var_icon, {
-      class: "var-uploader__file-close-icon",
+      class: normalizeClass(_ctx.n("file-close-icon")),
       "var-uploader-cover": "",
       name: "delete"
-    })], 8, _hoisted_5)) : createCommentVNode("v-if", true), f.cover ? (openBlock(), createElementBlock("img", {
+    }, null, 8, ["class"])], 10, _hoisted_2)) : createCommentVNode("v-if", true), f.cover ? (openBlock(), createElementBlock("img", {
       key: 1,
-      class: "var-uploader__file-cover",
+      class: normalizeClass(_ctx.n("file-cover")),
       style: normalizeStyle({
         objectFit: f.fit
       }),
       src: f.cover,
       alt: f.name
-    }, null, 12, _hoisted_6)) : createCommentVNode("v-if", true), createElementVNode("div", {
-      class: normalizeClass(["var-uploader__file-indicator", [f.state === "success" ? "var-uploader--success" : null, f.state === "error" ? "var-uploader--error" : null]])
-    }, null, 2)], 10, _hoisted_3)), [[_directive_ripple, {
+    }, null, 14, _hoisted_3)) : createCommentVNode("v-if", true), createElementVNode("div", {
+      class: normalizeClass(_ctx.classes(_ctx.n("file-indicator"), [f.state === "success", _ctx.n("--success")], [f.state === "error", _ctx.n("--error")]))
+    }, null, 2)], 10, _hoisted_1)), [[_directive_ripple, {
       disabled: _ctx.disabled || _ctx.formDisabled || _ctx.readonly || _ctx.formReadonly || !_ctx.ripple
     }]]);
   }), 128)), !_ctx.maxlength || _ctx.modelValue.length < _ctx.maxlength ? withDirectives((openBlock(), createElementBlock("div", {
     key: 0,
-    class: normalizeClass(["var--relative", [!_ctx.$slots.default ? "var-uploader__action var-elevation--2" : null, _ctx.disabled || _ctx.formDisabled ? "var-uploader--disabled" : null]])
+    class: normalizeClass(_ctx.classes("var--relative", [!_ctx.$slots.default, _ctx.n("action") + " var-elevation--2"], [_ctx.disabled || _ctx.formDisabled, _ctx.n("--disabled")]))
   }, [createElementVNode("input", {
-    class: "var-uploader__action-input",
+    class: normalizeClass(_ctx.n("action-input")),
     type: "file",
     multiple: _ctx.multiple,
     accept: _ctx.accept,
@@ -16287,17 +16288,17 @@ function render(_ctx, _cache) {
     onChange: _cache[0] || (_cache[0] = function() {
       return _ctx.handleChange && _ctx.handleChange(...arguments);
     })
-  }, null, 40, _hoisted_7), renderSlot(_ctx.$slots, "default", {}, () => [createVNode(_component_var_icon, {
-    class: "var-uploader__action-icon",
+  }, null, 42, _hoisted_4), renderSlot(_ctx.$slots, "default", {}, () => [createVNode(_component_var_icon, {
+    class: normalizeClass(_ctx.n("action-icon")),
     "var-uploader-cover": "",
     name: "plus"
-  })])], 2)), [[_directive_ripple, {
+  }, null, 8, ["class"])])], 2)), [[_directive_ripple, {
     disabled: _ctx.disabled || _ctx.formDisabled || _ctx.readonly || _ctx.formReadonly || !_ctx.ripple || _ctx.$slots.default
-  }]]) : createCommentVNode("v-if", true)]), createVNode(_component_var_form_details, {
+  }]]) : createCommentVNode("v-if", true)], 2), createVNode(_component_var_form_details, {
     "error-message": _ctx.errorMessage,
     "maxlength-text": _ctx.maxlengthText
   }, null, 8, ["error-message", "maxlength-text"]), createVNode(_component_var_popup, {
-    class: "var-uploader__preview",
+    class: normalizeClass(_ctx.n("preview")),
     "var-uploader-cover": "",
     position: "center",
     show: _ctx.showPreview,
@@ -16308,7 +16309,7 @@ function render(_ctx, _cache) {
       var _ctx$currentPreview, _ctx$currentPreview2;
       return [_ctx.currentPreview && _ctx.isHTMLSupportVideo((_ctx$currentPreview = _ctx.currentPreview) == null ? void 0 : _ctx$currentPreview.url) ? (openBlock(), createElementBlock("video", {
         key: 0,
-        class: "var-uploader__preview-video",
+        class: normalizeClass(_ctx.n("preview-video")),
         playsinline: "true",
         "webkit-playsinline": "true",
         "x5-playsinline": "true",
@@ -16316,10 +16317,10 @@ function render(_ctx, _cache) {
         "x5-video-player-fullscreen": "false",
         controls: "",
         src: (_ctx$currentPreview2 = _ctx.currentPreview) == null ? void 0 : _ctx$currentPreview2.url
-      }, null, 8, _hoisted_8)) : createCommentVNode("v-if", true)];
+      }, null, 10, _hoisted_5)) : createCommentVNode("v-if", true)];
     }),
     _: 1
-  }, 8, ["show"])]);
+  }, 8, ["class", "show"])], 2);
 }
 var Uploader = defineComponent({
   render,
@@ -16431,7 +16432,6 @@ var Uploader = defineComponent({
     };
     var handleChange = /* @__PURE__ */ function() {
       var _ref = _asyncToGenerator(function* (event) {
-        var _props$onUpdateModel;
         var {
           maxsize,
           maxlength,
@@ -16447,7 +16447,7 @@ var Uploader = defineComponent({
         var getValidSizeVarFile = (varFiles2) => {
           return varFiles2.filter((varFile) => {
             if (varFile.file.size > toNumber(maxsize)) {
-              onOversize == null ? void 0 : onOversize(reactive(varFile));
+              call(onOversize, reactive(varFile));
               return false;
             }
             return true;
@@ -16474,9 +16474,9 @@ var Uploader = defineComponent({
           } = _ref3;
           return varFile;
         });
-        (_props$onUpdateModel = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel.call(props2, [...modelValue, ...validVarFiles]);
+        call(props2["onUpdate:modelValue"], [...modelValue, ...validVarFiles]);
         event.target.value = "";
-        validVarFiles.forEach((varFile) => onAfterRead == null ? void 0 : onAfterRead(reactive(varFile)));
+        validVarFiles.forEach((varFile) => call(onAfterRead, reactive(varFile)));
       });
       return function handleChange2(_x) {
         return _ref.apply(this, arguments);
@@ -16484,7 +16484,6 @@ var Uploader = defineComponent({
     }();
     var handleRemove = /* @__PURE__ */ function() {
       var _ref4 = _asyncToGenerator(function* (removedVarFile) {
-        var _props$onUpdateModel2;
         var {
           disabled,
           readonly,
@@ -16499,9 +16498,9 @@ var Uploader = defineComponent({
           return;
         }
         var expectedFiles = modelValue.filter((varFile) => varFile !== removedVarFile);
-        onRemove == null ? void 0 : onRemove(removedVarFile);
+        call(onRemove, removedVarFile);
         validateWithTrigger("onRemove");
-        (_props$onUpdateModel2 = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel2.call(props2, expectedFiles);
+        call(props2["onUpdate:modelValue"], expectedFiles);
       });
       return function handleRemove2(_x2) {
         return _ref4.apply(this, arguments);
@@ -16528,9 +16527,8 @@ var Uploader = defineComponent({
     var callReset = false;
     var validate = () => v(props2.rules, props2.modelValue, varFileUtils);
     var reset = () => {
-      var _props$onUpdateModel3;
       callReset = true;
-      (_props$onUpdateModel3 = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel3.call(props2, []);
+      call(props2["onUpdate:modelValue"], []);
       resetValidation();
     };
     var uploaderProvider = {
@@ -16539,6 +16537,7 @@ var Uploader = defineComponent({
       reset
     };
     bindForm == null ? void 0 : bindForm(uploaderProvider);
+    call(bindForm, uploaderProvider);
     watch(() => props2.modelValue, () => {
       !callReset && validateWithTrigger("onChange");
       callReset = false;
@@ -16546,6 +16545,8 @@ var Uploader = defineComponent({
       deep: true
     });
     return {
+      n,
+      classes,
       files,
       showPreview,
       currentPreview,
