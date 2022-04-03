@@ -1112,9 +1112,13 @@ function _asyncToGenerator$9(fn) {
     });
   };
 }
+var {
+  n: n$8,
+  classes: classes$8
+} = createNamespace("icon");
 function render$X(_ctx, _cache) {
   return openBlock(), createBlock(resolveDynamicComponent(_ctx.isURL(_ctx.name) ? "img" : "i"), {
-    class: normalizeClass(["var-icon", [_ctx.namespace + "--set", _ctx.isURL(_ctx.name) ? "var-icon__image" : _ctx.namespace + "-" + _ctx.nextName, _ctx.shrinking ? "var-icon--shrinking" : null]]),
+    class: normalizeClass(_ctx.classes(_ctx.n(), _ctx.namespace + "--set", [_ctx.isURL(_ctx.name), _ctx.n("image"), _ctx.namespace + "-" + _ctx.nextName], [_ctx.shrinking, _ctx.n("--shrinking")])),
     style: normalizeStyle({
       color: _ctx.color,
       transition: "transform " + _ctx.toNumber(_ctx.transition) + "ms",
@@ -1157,6 +1161,8 @@ var Icon = defineComponent({
       immediate: true
     });
     return {
+      n: n$8,
+      classes: classes$8,
       nextName,
       shrinking,
       isURL,
