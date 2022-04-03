@@ -16536,7 +16536,6 @@ var Uploader = defineComponent({
       resetValidation,
       reset
     };
-    bindForm == null ? void 0 : bindForm(uploaderProvider);
     call(bindForm, uploaderProvider);
     watch(() => props2.modelValue, () => {
       !callReset && validateWithTrigger("onChange");
