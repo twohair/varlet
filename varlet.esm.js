@@ -1113,8 +1113,8 @@ function _asyncToGenerator$9(fn) {
   };
 }
 var {
-  n: n$h,
-  classes: classes$e
+  n: n$i,
+  classes: classes$f
 } = createNamespace("icon");
 function render$X(_ctx, _cache) {
   return openBlock(), createBlock(resolveDynamicComponent(_ctx.isURL(_ctx.name) ? "img" : "i"), {
@@ -1161,8 +1161,8 @@ var Icon = defineComponent({
       immediate: true
     });
     return {
-      n: n$h,
-      classes: classes$e,
+      n: n$i,
+      classes: classes$f,
       nextName,
       shrinking,
       isURL,
@@ -1382,8 +1382,8 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$g,
-  classes: classes$d
+  n: n$h,
+  classes: classes$e
 } = createNamespace("action-sheet");
 var _hoisted_1$C = ["onClick"];
 function render$W(_ctx, _cache) {
@@ -1467,8 +1467,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$g,
-      classes: classes$d,
+      n: n$h,
+      classes: classes$e,
       call,
       popupShow,
       pack,
@@ -1805,8 +1805,8 @@ var props$N = {
   }
 };
 var {
-  n: n$f,
-  classes: classes$c
+  n: n$g,
+  classes: classes$d
 } = createNamespace("button");
 var _hoisted_1$z = ["disabled"];
 function render$T(_ctx, _cache) {
@@ -1881,8 +1881,8 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n: n$f,
-      classes: classes$c,
+      n: n$g,
+      classes: classes$d,
       pending,
       handleClick,
       handleTouchstart
@@ -2160,8 +2160,8 @@ var props$K = {
   }
 };
 var {
-  n: n$e,
-  classes: classes$b
+  n: n$f,
+  classes: classes$c
 } = createNamespace("card");
 var _hoisted_1$x = ["src", "alt"];
 function render$Q(_ctx, _cache) {
@@ -2205,8 +2205,8 @@ var Card = defineComponent({
   props: props$K,
   setup() {
     return {
-      n: n$e,
-      classes: classes$b,
+      n: n$f,
+      classes: classes$c,
       toSizeUnit
     };
   }
@@ -2242,8 +2242,8 @@ var props$J = {
   }
 };
 var {
-  n: n$d,
-  classes: classes$a
+  n: n$e,
+  classes: classes$b
 } = createNamespace("cell");
 function render$P(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
@@ -2276,8 +2276,8 @@ var Cell = defineComponent({
   props: props$J,
   setup() {
     return {
-      n: n$d,
-      classes: classes$a
+      n: n$e,
+      classes: classes$b
     };
   }
 });
@@ -2946,8 +2946,8 @@ function useRow() {
   };
 }
 var {
-  n: n$c,
-  classes: classes$9
+  n: n$d,
+  classes: classes$a
 } = createNamespace("col");
 function render$K(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -2991,10 +2991,10 @@ var Col = defineComponent({
           span: _span,
           offset: _offset
         } = size;
-        _span && classes2.push(n$c("--span-" + mode + "-" + _span));
-        _offset && classes2.push(n$c("--offset-" + mode + "-" + _offset));
+        _span && classes2.push(n$d("--span-" + mode + "-" + _span));
+        _offset && classes2.push(n$d("--offset-" + mode + "-" + _offset));
       } else {
-        classes2.push(n$c("--span-" + mode + "-" + size));
+        classes2.push(n$d("--span-" + mode + "-" + size));
       }
       return classes2;
     };
@@ -3003,8 +3003,8 @@ var Col = defineComponent({
     });
     call(bindRow, colProvider);
     return {
-      n: n$c,
-      classes: classes$9,
+      n: n$d,
+      classes: classes$a,
       padding,
       toNumber,
       toSizeUnit,
@@ -8259,7 +8259,7 @@ function _asyncToGenerator$8(fn) {
   };
 }
 var {
-  n: n$b
+  n: n$c
 } = createNamespace("form");
 function render$y(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -8309,7 +8309,7 @@ var Form = defineComponent({
     };
     bindFormItems(formProvider);
     return {
-      n: n$b,
+      n: n$c,
       validate,
       reset,
       resetValidation
@@ -8611,8 +8611,8 @@ var props$v = {
   }
 };
 var {
-  n: n$a,
-  classes: classes$8
+  n: n$b,
+  classes: classes$9
 } = createNamespace("image");
 var _hoisted_1$j = ["alt", "lazy-error", "lazy-loading"];
 var _hoisted_2$e = ["alt", "src"];
@@ -8696,8 +8696,8 @@ var Image$1 = defineComponent({
       !lazy && call(onError, e);
     };
     return {
-      n: n$a,
-      classes: classes$8,
+      n: n$b,
+      classes: classes$9,
       toSizeUnit,
       handleLoad,
       handleError
@@ -10158,8 +10158,8 @@ var props$p = {
   }
 };
 var {
-  n: n$9,
-  classes: classes$7
+  n: n$a,
+  classes: classes$8
 } = createNamespace("input");
 var _hoisted_1$f = ["id", "disabled", "type", "value", "maxlength", "rows"];
 var _hoisted_2$a = ["id", "disabled", "type", "value", "maxlength"];
@@ -10320,10 +10320,10 @@ var Input = defineComponent({
         modelValue
       } = props2;
       if (!hint && !isEmpty(modelValue)) {
-        return n$9("--placeholder-hidden");
+        return n$a("--placeholder-hidden");
       }
       if (hint && (!isEmpty(modelValue) || isFocus.value)) {
-        return n$9("--placeholder-hint");
+        return n$a("--placeholder-hint");
       }
     };
     var handleFocus = (e) => {
@@ -10401,8 +10401,8 @@ var Input = defineComponent({
       maxlengthText,
       formDisabled: form == null ? void 0 : form.disabled,
       formReadonly: form == null ? void 0 : form.readonly,
-      n: n$9,
-      classes: classes$7,
+      n: n$a,
+      classes: classes$8,
       call,
       isEmpty,
       computePlaceholderState,
@@ -10493,8 +10493,8 @@ function _asyncToGenerator$3(fn) {
   };
 }
 var {
-  n: n$8,
-  classes: classes$6
+  n: n$9,
+  classes: classes$7
 } = createNamespace("list");
 function render$p(_ctx, _cache) {
   var _component_var_loading = resolveComponent("var-loading");
@@ -10585,8 +10585,8 @@ var List = defineComponent({
       isNumber,
       load,
       check: check2,
-      n: n$8,
-      classes: classes$6
+      n: n$9,
+      classes: classes$7
     };
   }
 });
@@ -11317,8 +11317,8 @@ var props$k = _extends$2({
   }
 }, pickProps(props$S, ["show", "onUpdate:show", "closeOnClickOverlay", "teleport", "onOpen", "onClose", "onOpened", "onClosed", "onClickOverlay", "onRouteChange"]));
 var {
-  n: n$7,
-  classes: classes$5
+  n: n$8,
+  classes: classes$6
 } = createNamespace("picker");
 var MOMENTUM_RECORD_TIME = 300;
 var MOMENTUM_ALLOW_DISTANCE = 15;
@@ -11641,8 +11641,8 @@ var VarPicker = defineComponent({
       immediate: true
     });
     return {
-      n: n$7,
-      classes: classes$5,
+      n: n$8,
+      classes: classes$6,
       pack,
       optionHeight,
       optionCount,
@@ -12483,7 +12483,7 @@ var props$f = {
   }
 };
 var {
-  n: n$6
+  n: n$7
 } = createNamespace("rate");
 var _hoisted_1$8 = ["onClick"];
 function render$h(_ctx, _cache) {
@@ -12554,10 +12554,10 @@ var Rate = defineComponent({
         color
       } = transformValue(val);
       return {
-        [n$6("content")]: true,
-        [n$6("--disabled")]: form == null ? void 0 : form.disabled.value,
-        [n$6("--error")]: errorMessage.value,
-        [n$6("--primary")]: type !== "empty" && !color
+        [n$7("content")]: true,
+        [n$7("--disabled")]: form == null ? void 0 : form.disabled.value,
+        [n$7("--error")]: errorMessage.value,
+        [n$7("--primary")]: type !== "empty" && !color
       };
     };
     var getIconName = (val) => {
@@ -12653,7 +12653,7 @@ var Rate = defineComponent({
       resetValidation,
       toSizeUnit,
       toNumber,
-      n: n$6
+      n: n$7
     };
   }
 });
@@ -12685,9 +12685,13 @@ var props$e = {
     type: Function
   }
 };
+var {
+  n: n$6,
+  classes: classes$5
+} = createNamespace("row");
 function render$g(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
-    class: "var-row var--box",
+    class: normalizeClass(_ctx.classes(_ctx.n(), "var--box")),
     style: normalizeStyle({
       justifyContent: _ctx.justify,
       alignItems: _ctx.align,
@@ -12696,7 +12700,7 @@ function render$g(_ctx, _cache) {
     onClick: _cache[0] || (_cache[0] = function() {
       return _ctx.onClick && _ctx.onClick(...arguments);
     })
-  }, [renderSlot(_ctx.$slots, "default")], 4);
+  }, [renderSlot(_ctx.$slots, "default")], 6);
 }
 var Row = defineComponent({
   render: render$g,
@@ -12727,6 +12731,8 @@ var Row = defineComponent({
     watch(() => props2.gutter, computePadding);
     bindCols(rowProvider);
     return {
+      n: n$6,
+      classes: classes$5,
       average
     };
   }
