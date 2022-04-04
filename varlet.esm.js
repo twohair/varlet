@@ -1404,7 +1404,7 @@ function render$W(_ctx, _cache) {
     teleport: _ctx.teleport,
     show: _ctx.popupShow
   }, {
-    "onUpdate:show": (value) => _ctx.call(_ctx.$props["onUpdate:show"], value)
+    "onUpdate:show": _ctx.handlePopupUpdateShow
   }, {
     onOpen: _ctx.onOpen,
     onClose: _ctx.onClose,
@@ -1464,6 +1464,7 @@ var VarActionSheet = defineComponent({
       call(onSelect, action);
       closeOnClickAction && call(props2["onUpdate:show"], false);
     };
+    var handlePopupUpdateShow = (value) => call(props2["onUpdate:show"], value);
     watch(() => props2.show, (newValue) => {
       popupShow.value = newValue;
     }, {
@@ -1472,7 +1473,7 @@ var VarActionSheet = defineComponent({
     return {
       n: n$I,
       classes: classes$A,
-      call,
+      handlePopupUpdateShow,
       popupShow,
       pack,
       dt,
