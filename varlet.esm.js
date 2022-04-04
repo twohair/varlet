@@ -1113,8 +1113,8 @@ function _asyncToGenerator$9(fn) {
   };
 }
 var {
-  n: n$p,
-  classes: classes$l
+  n: n$u,
+  classes: classes$p
 } = createNamespace("icon");
 function render$X(_ctx, _cache) {
   return openBlock(), createBlock(resolveDynamicComponent(_ctx.isURL(_ctx.name) ? "img" : "i"), {
@@ -1161,8 +1161,8 @@ var Icon = defineComponent({
       immediate: true
     });
     return {
-      n: n$p,
-      classes: classes$l,
+      n: n$u,
+      classes: classes$p,
       nextName,
       shrinking,
       isURL,
@@ -1382,10 +1382,10 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$o,
-  classes: classes$k
+  n: n$t,
+  classes: classes$o
 } = createNamespace("action-sheet");
-var _hoisted_1$z = ["onClick"];
+var _hoisted_1$w = ["onClick"];
 function render$W(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_popup = resolveComponent("var-popup");
@@ -1429,7 +1429,7 @@ function render$W(_ctx, _cache) {
         size: action.iconSize
       }, null, 8, ["class", "name", "size"])) : createCommentVNode("v-if", true), createElementVNode("div", {
         class: normalizeClass(_ctx.n("action-name"))
-      }, toDisplayString(action.name), 3)], 14, _hoisted_1$z)), [[_directive_ripple, {
+      }, toDisplayString(action.name), 3)], 14, _hoisted_1$w)), [[_directive_ripple, {
         disabled: action.disabled
       }]]);
     }), 128))])], 16)]),
@@ -1467,8 +1467,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$o,
-      classes: classes$k,
+      n: n$t,
+      classes: classes$o,
       call,
       popupShow,
       pack,
@@ -1554,14 +1554,14 @@ var props$P = {
     default: true
   }
 };
-var _hoisted_1$y = {
+var _hoisted_1$v = {
   class: "var-app-bar__left"
 };
-var _hoisted_2$l = {
+var _hoisted_2$i = {
   key: 0,
   class: "var-app-bar__title"
 };
-var _hoisted_3$a = {
+var _hoisted_3$9 = {
   class: "var-app-bar__right"
 };
 function render$V(_ctx, _cache) {
@@ -1573,13 +1573,13 @@ function render$V(_ctx, _cache) {
       background: _ctx.color,
       color: _ctx.textColor
     })
-  }, [createElementVNode("div", _hoisted_1$y, [renderSlot(_ctx.$slots, "left"), _ctx.titlePosition === "left" ? (openBlock(), createElementBlock("div", {
+  }, [createElementVNode("div", _hoisted_1$v, [renderSlot(_ctx.$slots, "left"), _ctx.titlePosition === "left" ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: "var-app-bar__title",
     style: normalizeStyle({
       paddingLeft: _ctx.paddingLeft
     })
-  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 4)) : createCommentVNode("v-if", true)]), _ctx.titlePosition === "center" ? (openBlock(), createElementBlock("div", _hoisted_2$l, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])])) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_3$a, [_ctx.titlePosition === "right" ? (openBlock(), createElementBlock("div", {
+  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 4)) : createCommentVNode("v-if", true)]), _ctx.titlePosition === "center" ? (openBlock(), createElementBlock("div", _hoisted_2$i, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])])) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_3$9, [_ctx.titlePosition === "right" ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: "var-app-bar__title",
     style: normalizeStyle({
@@ -1645,14 +1645,14 @@ var props$O = {
   }
 };
 var _withScopeId$1 = (n2) => (pushScopeId(""), n2 = n2(), popScopeId(), n2);
-var _hoisted_1$x = {
+var _hoisted_1$u = {
   class: "var-loading"
 };
-var _hoisted_2$k = {
+var _hoisted_2$h = {
   key: 0,
   class: "var-loading__circle"
 };
-var _hoisted_3$9 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createElementVNode("svg", {
+var _hoisted_3$8 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createElementVNode("svg", {
   viewBox: "25 25 50 50"
 }, [/* @__PURE__ */ createElementVNode("circle", {
   cx: "50",
@@ -1660,22 +1660,22 @@ var _hoisted_3$9 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createEl
   r: "20",
   fill: "none"
 })], -1));
-var _hoisted_4$3 = [_hoisted_3$9];
+var _hoisted_4$2 = [_hoisted_3$8];
 function render$U(_ctx, _cache) {
-  return openBlock(), createElementBlock("div", _hoisted_1$x, [_ctx.$slots.default ? (openBlock(), createElementBlock("div", {
+  return openBlock(), createElementBlock("div", _hoisted_1$u, [_ctx.$slots.default ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(["var-loading__content", [_ctx.loading ? "var-loading__content--active" : null]])
   }, [renderSlot(_ctx.$slots, "default")], 2)) : createCommentVNode("v-if", true), _ctx.isShow ? (openBlock(), createElementBlock("div", {
     key: 1,
     class: normalizeClass(["var--box var-loading__body", [_ctx.$slots.default ? "var-loading__inside" : null]])
-  }, [_ctx.type === "circle" ? (openBlock(), createElementBlock("div", _hoisted_2$k, [createElementVNode("span", {
+  }, [_ctx.type === "circle" ? (openBlock(), createElementBlock("div", _hoisted_2$h, [createElementVNode("span", {
     class: "var-loading__circle-block",
     style: normalizeStyle({
       width: _ctx.getRadius * 2 + "px",
       height: _ctx.getRadius * 2 + "px",
       color: _ctx.color
     })
-  }, _hoisted_4$3, 4)])) : createCommentVNode("v-if", true), (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.loadingTypeDict, (nums, key) => {
+  }, _hoisted_4$2, 4)])) : createCommentVNode("v-if", true), (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.loadingTypeDict, (nums, key) => {
     return openBlock(), createElementBlock(Fragment, {
       key
     }, [_ctx.type === key ? (openBlock(), createElementBlock("div", {
@@ -1805,10 +1805,10 @@ var props$N = {
   }
 };
 var {
-  n: n$n,
-  classes: classes$j
+  n: n$s,
+  classes: classes$n
 } = createNamespace("button");
-var _hoisted_1$w = ["disabled"];
+var _hoisted_1$t = ["disabled"];
 function render$T(_ctx, _cache) {
   var _component_var_loading = resolveComponent("var-loading");
   var _directive_ripple = resolveDirective("ripple");
@@ -1834,7 +1834,7 @@ function render$T(_ctx, _cache) {
     radius: _ctx.loadingRadius
   }, null, 8, ["class", "type", "size", "radius"])) : createCommentVNode("v-if", true), createElementVNode("div", {
     class: normalizeClass(_ctx.classes(_ctx.n("content"), [_ctx.loading || _ctx.pending, _ctx.n("--hidden")]))
-  }, [renderSlot(_ctx.$slots, "default")], 2)], 46, _hoisted_1$w)), [[_directive_ripple, {
+  }, [renderSlot(_ctx.$slots, "default")], 2)], 46, _hoisted_1$t)), [[_directive_ripple, {
     disabled: _ctx.disabled || !_ctx.ripple
   }]]);
 }
@@ -1881,8 +1881,8 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n: n$n,
-      classes: classes$j,
+      n: n$s,
+      classes: classes$n,
       pending,
       handleClick,
       handleTouchstart
@@ -2041,15 +2041,15 @@ var props$L = {
     type: String
   }
 };
-var _hoisted_1$v = {
+var _hoisted_1$s = {
   class: "var-badge var--box"
 };
-var _hoisted_2$j = {
+var _hoisted_2$g = {
   key: 1
 };
 function render$R(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
-  return openBlock(), createElementBlock("div", _hoisted_1$v, [createVNode(Transition, {
+  return openBlock(), createElementBlock("div", _hoisted_1$s, [createVNode(Transition, {
     name: "var-badge-fade"
   }, {
     default: withCtx(() => [withDirectives(createElementVNode("span", mergeProps(_ctx.$attrs, {
@@ -2061,7 +2061,7 @@ function render$R(_ctx, _cache) {
       key: 0,
       name: _ctx.icon,
       size: "10px"
-    }, null, 8, ["name"])) : (openBlock(), createElementBlock("span", _hoisted_2$j, toDisplayString(_ctx.values), 1))], 16), [[vShow, !_ctx.hidden]])]),
+    }, null, 8, ["name"])) : (openBlock(), createElementBlock("span", _hoisted_2$g, toDisplayString(_ctx.values), 1))], 16), [[vShow, !_ctx.hidden]])]),
     _: 1
   }), renderSlot(_ctx.$slots, "default")]);
 }
@@ -2160,10 +2160,10 @@ var props$K = {
   }
 };
 var {
-  n: n$m,
-  classes: classes$i
+  n: n$r,
+  classes: classes$m
 } = createNamespace("card");
-var _hoisted_1$u = ["src", "alt"];
+var _hoisted_1$r = ["src", "alt"];
 function render$Q(_ctx, _cache) {
   var _directive_ripple = resolveDirective("ripple");
   return withDirectives((openBlock(), createElementBlock("div", {
@@ -2180,7 +2180,7 @@ function render$Q(_ctx, _cache) {
     }),
     src: _ctx.src,
     alt: _ctx.alt
-  }, null, 14, _hoisted_1$u)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", {
+  }, null, 14, _hoisted_1$r)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(_ctx.n("title"))
   }, toDisplayString(_ctx.title), 3)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "subtitle", {}, () => [_ctx.subtitle ? (openBlock(), createElementBlock("div", {
@@ -2205,8 +2205,8 @@ var Card = defineComponent({
   props: props$K,
   setup() {
     return {
-      n: n$m,
-      classes: classes$i,
+      n: n$r,
+      classes: classes$m,
       toSizeUnit
     };
   }
@@ -2242,8 +2242,8 @@ var props$J = {
   }
 };
 var {
-  n: n$l,
-  classes: classes$h
+  n: n$q,
+  classes: classes$l
 } = createNamespace("cell");
 function render$P(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
@@ -2276,8 +2276,8 @@ var Cell = defineComponent({
   props: props$J,
   setup() {
     return {
-      n: n$l,
-      classes: classes$h
+      n: n$q,
+      classes: classes$l
     };
   }
 });
@@ -2294,21 +2294,21 @@ var props$I = {
     default: ""
   }
 };
-var _hoisted_1$t = {
+var _hoisted_1$q = {
   key: 0,
   class: "var-form-details"
 };
-var _hoisted_2$i = {
+var _hoisted_2$f = {
   class: "var-form-details__message"
 };
-var _hoisted_3$8 = {
+var _hoisted_3$7 = {
   class: "var-form-details__length"
 };
 function render$O(_ctx, _cache) {
   return openBlock(), createBlock(Transition, {
     name: "var-form-details"
   }, {
-    default: withCtx(() => [_ctx.errorMessage || _ctx.maxlengthText ? (openBlock(), createElementBlock("div", _hoisted_1$t, [createElementVNode("div", _hoisted_2$i, toDisplayString(_ctx.errorMessage), 1), createElementVNode("div", _hoisted_3$8, toDisplayString(_ctx.maxlengthText), 1)])) : createCommentVNode("v-if", true)]),
+    default: withCtx(() => [_ctx.errorMessage || _ctx.maxlengthText ? (openBlock(), createElementBlock("div", _hoisted_1$q, [createElementVNode("div", _hoisted_2$f, toDisplayString(_ctx.errorMessage), 1), createElementVNode("div", _hoisted_3$7, toDisplayString(_ctx.maxlengthText), 1)])) : createCommentVNode("v-if", true)]),
     _: 1
   });
 }
@@ -2422,7 +2422,7 @@ function useFormItems() {
     bindFormItems: bindChildren
   };
 }
-var _hoisted_1$s = {
+var _hoisted_1$p = {
   class: "var-checkbox"
 };
 function render$N(_ctx, _cache) {
@@ -2434,7 +2434,7 @@ function render$N(_ctx, _cache) {
     onClick: _cache[0] || (_cache[0] = function() {
       return _ctx.handleClick && _ctx.handleClick(...arguments);
     })
-  }, [createElementVNode("div", _hoisted_1$s, [withDirectives((openBlock(), createElementBlock("div", {
+  }, [createElementVNode("div", _hoisted_1$p, [withDirectives((openBlock(), createElementBlock("div", {
     class: normalizeClass(["var-checkbox__action", [_ctx.checked ? "var-checkbox--checked" : "var-checkbox--unchecked", _ctx.errorMessage || _ctx.checkboxGroupErrorMessage ? "var-checkbox--error" : null, _ctx.formDisabled || _ctx.disabled ? "var-checkbox--disabled" : null]]),
     style: normalizeStyle({
       color: _ctx.checked ? _ctx.checkedColor : _ctx.uncheckedColor
@@ -2626,12 +2626,12 @@ var props$G = {
     type: Function
   }
 };
-var _hoisted_1$r = {
+var _hoisted_1$o = {
   class: "var-checkbox-group__wrap"
 };
 function render$M(_ctx, _cache) {
   var _component_var_form_details = resolveComponent("var-form-details");
-  return openBlock(), createElementBlock("div", _hoisted_1$r, [createElementVNode("div", {
+  return openBlock(), createElementBlock("div", _hoisted_1$o, [createElementVNode("div", {
     class: normalizeClass(["var-checkbox-group", ["var-checkbox-group--" + _ctx.direction]])
   }, [renderSlot(_ctx.$slots, "default")], 2), createVNode(_component_var_form_details, {
     "error-message": _ctx.errorMessage
@@ -2946,8 +2946,8 @@ function useRow() {
   };
 }
 var {
-  n: n$k,
-  classes: classes$g
+  n: n$p,
+  classes: classes$k
 } = createNamespace("col");
 function render$K(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -2991,10 +2991,10 @@ var Col = defineComponent({
           span: _span,
           offset: _offset
         } = size;
-        _span && classes2.push(n$k("--span-" + mode + "-" + _span));
-        _offset && classes2.push(n$k("--offset-" + mode + "-" + _offset));
+        _span && classes2.push(n$p("--span-" + mode + "-" + _span));
+        _offset && classes2.push(n$p("--offset-" + mode + "-" + _offset));
       } else {
-        classes2.push(n$k("--span-" + mode + "-" + size));
+        classes2.push(n$p("--span-" + mode + "-" + size));
       }
       return classes2;
     };
@@ -3003,8 +3003,8 @@ var Col = defineComponent({
     });
     call(bindRow, colProvider);
     return {
-      n: n$k,
-      classes: classes$g,
+      n: n$p,
+      classes: classes$k,
       padding,
       toNumber,
       toSizeUnit,
@@ -3053,7 +3053,7 @@ var props$D = {
   }
 };
 var {
-  n: n$j
+  n: n$o
 } = createNamespace("collapse");
 function render$J(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -3156,7 +3156,7 @@ var Collapse = defineComponent({
     watch(() => length.value, () => nextTick().then(resize));
     watch(() => props2.modelValue, () => nextTick().then(resize));
     return {
-      n: n$j
+      n: n$o
     };
   }
 });
@@ -3197,8 +3197,8 @@ var props$C = {
   }
 };
 var {
-  n: n$i,
-  classes: classes$f
+  n: n$n,
+  classes: classes$j
 } = createNamespace("collapse-item");
 function render$I(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
@@ -3299,8 +3299,8 @@ var CollapseItem = defineComponent({
         closePanel();
     });
     return {
-      n: n$i,
-      classes: classes$f,
+      n: n$n,
+      classes: classes$j,
       show,
       isShow,
       offset,
@@ -3337,11 +3337,11 @@ var SECOND = 1e3;
 var MINUTE = 60 * SECOND;
 var HOUR = 60 * MINUTE;
 var DAY = 24 * HOUR;
-var _hoisted_1$q = {
+var _hoisted_1$n = {
   class: "var-countdown"
 };
 function render$H(_ctx, _cache) {
-  return openBlock(), createElementBlock("div", _hoisted_1$q, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps(_ctx.timeData)), () => [createTextVNode(toDisplayString(_ctx.showTime), 1)])]);
+  return openBlock(), createElementBlock("div", _hoisted_1$n, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps(_ctx.timeData)), () => [createTextVNode(toDisplayString(_ctx.showTime), 1)])]);
 }
 var Countdown = defineComponent({
   render: render$H,
@@ -5789,15 +5789,15 @@ var props$A = {
 };
 var SPEED = 100;
 var DELAY = 600;
-var _hoisted_1$p = {
+var _hoisted_1$m = {
   class: "var-counter var--box"
 };
-var _hoisted_2$h = ["inputmode", "readonly", "disabled"];
+var _hoisted_2$e = ["inputmode", "readonly", "disabled"];
 function render$G(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_form_details = resolveComponent("var-form-details");
   var _directive_ripple = resolveDirective("ripple");
-  return openBlock(), createElementBlock("div", _hoisted_1$p, [createElementVNode("div", mergeProps({
+  return openBlock(), createElementBlock("div", _hoisted_1$m, [createElementVNode("div", mergeProps({
     class: ["var-counter__controller var-elevation--2", [_ctx.disabled || _ctx.formDisabled ? "var-counter--disabled" : null, _ctx.errorMessage ? "var-counter--error" : null]],
     style: {
       background: _ctx.color ? _ctx.color : void 0
@@ -5829,7 +5829,7 @@ function render$G(_ctx, _cache) {
     onChange: _cache[1] || (_cache[1] = function() {
       return _ctx.handleChange && _ctx.handleChange(...arguments);
     })
-  }, null, 44, _hoisted_2$h), [[vModelText, _ctx.inputValue]]), withDirectives(createVNode(_component_var_icon, {
+  }, null, 44, _hoisted_2$e), [[vModelText, _ctx.inputValue]]), withDirectives(createVNode(_component_var_icon, {
     class: normalizeClass(["var-counter__increment-button", [!_ctx.incrementButton ? "var-counter--hidden" : null]]),
     "var-counter-cover": "",
     name: "plus",
@@ -6606,13 +6606,15 @@ var props$z = {
     type: Function
   }
 };
-var _hoisted_1$o = {
-  class: "var-picker-header"
-};
+var {
+  n: n$m
+} = createNamespace("picker-header");
 function render$F(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_button = resolveComponent("var-button");
-  return openBlock(), createElementBlock("div", _hoisted_1$o, [createVNode(_component_var_button, {
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(_ctx.n())
+  }, [createVNode(_component_var_button, {
     round: "",
     text: "",
     style: {
@@ -6626,7 +6628,7 @@ function render$F(_ctx, _cache) {
     })]),
     _: 1
   }, 8, ["disabled"]), createElementVNode("div", {
-    class: "var-picker-header__value",
+    class: normalizeClass(_ctx.n("value")),
     onClick: _cache[1] || (_cache[1] = ($event) => _ctx.$emit("check-panel"))
   }, [createVNode(Transition, {
     name: "var-date-picker" + (_ctx.reverse ? "-reverse" : "") + "-translatex"
@@ -6635,7 +6637,7 @@ function render$F(_ctx, _cache) {
       key: _ctx.showDate
     }, toDisplayString(_ctx.showDate), 1))]),
     _: 1
-  }, 8, ["name"])]), createVNode(_component_var_button, {
+  }, 8, ["name"])], 2), createVNode(_component_var_button, {
     round: "",
     text: "",
     style: {
@@ -6648,7 +6650,7 @@ function render$F(_ctx, _cache) {
       name: "chevron-right"
     })]),
     _: 1
-  }, 8, ["disabled"])]);
+  }, 8, ["disabled"])], 2);
 }
 var PanelHeader = defineComponent({
   render: render$F,
@@ -6704,6 +6706,7 @@ var PanelHeader = defineComponent({
       forwardOrBackNum.value = 0;
     });
     return {
+      n: n$m,
       reverse,
       showDate,
       checkDate
@@ -6726,16 +6729,21 @@ function _extends$8() {
 }
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
-var _hoisted_1$n = {
-  class: "var-month-picker__panel"
-};
-var _hoisted_2$g = {
-  class: "var-month-picker__content"
-};
+var {
+  n: n$l,
+  classes: classes$i
+} = createNamespace("month-picker");
+var {
+  n: nDate$1
+} = createNamespace("date-picker");
 function render$E(_ctx, _cache) {
   var _component_panel_header = resolveComponent("panel-header");
   var _component_var_button = resolveComponent("var-button");
-  return openBlock(), createElementBlock("div", _hoisted_1$n, [createElementVNode("div", _hoisted_2$g, [createVNode(_component_panel_header, {
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(_ctx.n())
+  }, [createElementVNode("div", {
+    class: normalizeClass(_ctx.n("content"))
+  }, [createVNode(_component_panel_header, {
     ref: "headerEl",
     type: "month",
     date: _ctx.preview,
@@ -6743,7 +6751,7 @@ function render$E(_ctx, _cache) {
     onCheckPanel: _ctx.clickYear,
     onCheckDate: _ctx.checkDate
   }, null, 8, ["date", "disabled", "onCheckPanel", "onCheckDate"]), createVNode(Transition, {
-    name: "var-date-picker" + (_ctx.reverse ? "-reverse" : "") + "-translatex"
+    name: "" + _ctx.nDate() + (_ctx.reverse ? "-reverse" : "") + "-translatex"
   }, {
     default: withCtx(() => [(openBlock(), createElementBlock("ul", {
       key: _ctx.panelKey
@@ -6752,7 +6760,6 @@ function render$E(_ctx, _cache) {
         key: month.index
       }, [createVNode(_component_var_button, mergeProps({
         type: "primary",
-        class: "var-month-picker__button",
         "var-month-picker-cover": "",
         ripple: false
       }, _extends$8({}, _ctx.buttonProps(month.index)), {
@@ -6763,7 +6770,7 @@ function render$E(_ctx, _cache) {
       }, 1040, ["onClick"])]);
     }), 128))]))]),
     _: 1
-  }, 8, ["name"])])]);
+  }, 8, ["name"])], 2)], 2);
 }
 var MonthPickerPanel = defineComponent({
   render: render$E,
@@ -6909,23 +6916,21 @@ var MonthPickerPanel = defineComponent({
           return color != null ? color : "";
         if (monthExist())
           return "";
-        return "var-date-picker-color-cover";
+        return nDate$1() + "-color-cover";
       };
-      var isCover = textColorOrCover().startsWith("var-date-picker");
+      var isCover = textColorOrCover().startsWith(nDate$1());
       return {
         outline: computeOutline(),
         text: computeText(),
         color: !computeText() ? color : "",
         textColor: isCover ? "" : textColorOrCover(),
-        "var-date-picker-color-cover": isCover,
-        class: {
-          "var-month-picker__button-disabled": disabled
-        }
+        [nDate$1() + "-color-cover"]: isCover,
+        class: classes$i(n$l("button"), [disabled, n$l("button--disabled")])
       };
     };
     var chooseMonth = (month, event) => {
       var buttonEl = event.currentTarget;
-      if (buttonEl.classList.contains("var-month-picker__button-disabled"))
+      if (buttonEl.classList.contains(n$l("button--disabled")))
         return;
       emit("choose-month", month);
     };
@@ -6952,6 +6957,8 @@ var MonthPickerPanel = defineComponent({
       immediate: true
     });
     return {
+      n: n$l,
+      nDate: nDate$1,
       pack,
       MONTH_LIST,
       headerEl,
@@ -6966,21 +6973,24 @@ var MonthPickerPanel = defineComponent({
     };
   }
 });
-var _hoisted_1$m = {
-  class: "var-year-picker__panel"
-};
-var _hoisted_2$f = ["onClick"];
+var {
+  n: n$k,
+  classes: classes$h
+} = createNamespace("year-picker");
+var _hoisted_1$l = ["onClick"];
 function render$D(_ctx, _cache) {
-  return openBlock(), createElementBlock("ul", _hoisted_1$m, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.yearList, (year) => {
+  return openBlock(), createElementBlock("ul", {
+    class: normalizeClass(_ctx.n())
+  }, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.yearList, (year) => {
     return openBlock(), createElementBlock("li", {
       key: year,
-      class: normalizeClass([year === _ctx.toNumber(_ctx.preview) ? "var-year-picker__panel--active" : null]),
+      class: normalizeClass(_ctx.classes(_ctx.n("item"), [year === _ctx.toNumber(_ctx.preview), _ctx.n("item--active")])),
       style: normalizeStyle({
         color: year === _ctx.toNumber(_ctx.preview) ? _ctx.componentProps.color : ""
       }),
       onClick: ($event) => _ctx.chooseYear(year)
-    }, toDisplayString(year), 15, _hoisted_2$f);
-  }), 128))]);
+    }, toDisplayString(year), 15, _hoisted_1$l);
+  }), 128))], 2);
 }
 var YearPickerPanel = defineComponent({
   render: render$D,
@@ -7036,12 +7046,14 @@ var YearPickerPanel = defineComponent({
       emit("choose-year", year);
     };
     onMounted(() => {
-      var activeEl = document.querySelector(".var-year-picker__panel--active");
+      var activeEl = document.querySelector("." + n$k("item--active"));
       activeEl == null ? void 0 : activeEl.scrollIntoView({
         block: "center"
       });
     });
     return {
+      n: n$k,
+      classes: classes$h,
       yearList,
       chooseYear,
       toNumber
@@ -7064,22 +7076,21 @@ function _extends$7() {
 }
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
-var _hoisted_1$l = {
-  class: "var-day-picker__panel"
-};
-var _hoisted_2$e = {
-  class: "var-day-picker__content"
-};
-var _hoisted_3$7 = {
-  class: "var-day-picker__head"
-};
-var _hoisted_4$2 = {
-  class: "var-day-picker__body"
-};
+var {
+  n: n$j,
+  classes: classes$g
+} = createNamespace("day-picker");
+var {
+  n: nDate
+} = createNamespace("date-picker");
 function render$C(_ctx, _cache) {
   var _component_panel_header = resolveComponent("panel-header");
   var _component_var_button = resolveComponent("var-button");
-  return openBlock(), createElementBlock("div", _hoisted_1$l, [createElementVNode("div", _hoisted_2$e, [createVNode(_component_panel_header, {
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(_ctx.n())
+  }, [createElementVNode("div", {
+    class: normalizeClass(_ctx.n("content"))
+  }, [createVNode(_component_panel_header, {
     ref: "headerEl",
     type: "day",
     date: _ctx.preview,
@@ -7087,22 +7098,23 @@ function render$C(_ctx, _cache) {
     onCheckPanel: _ctx.clickMonth,
     onCheckDate: _ctx.checkDate
   }, null, 8, ["date", "disabled", "onCheckPanel", "onCheckDate"]), createVNode(Transition, {
-    name: "var-date-picker" + (_ctx.reverse ? "-reverse" : "") + "-translatex"
+    name: "" + _ctx.nDate() + (_ctx.reverse ? "-reverse" : "") + "-translatex"
   }, {
     default: withCtx(() => [(openBlock(), createElementBlock("div", {
       key: _ctx.panelKey
-    }, [createElementVNode("ul", _hoisted_3$7, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.sortWeekList, (week) => {
+    }, [createElementVNode("ul", {
+      class: normalizeClass(_ctx.n("head"))
+    }, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.sortWeekList, (week) => {
       return openBlock(), createElementBlock("li", {
         key: week.index
       }, toDisplayString(_ctx.getDayAbbr(week.index)), 1);
-    }), 128))]), createElementVNode("ul", _hoisted_4$2, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.days, (day, index) => {
+    }), 128))], 2), createElementVNode("ul", {
+      class: normalizeClass(_ctx.n("body"))
+    }, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.days, (day, index) => {
       return openBlock(), createElementBlock("li", {
         key: index
       }, [createVNode(_component_var_button, mergeProps({
         type: "primary",
-        class: ["var-day-picker__button", {
-          "var-day-picker__button--usable": day > 0
-        }],
         "var-day-picker-cover": "",
         round: "",
         ripple: false
@@ -7111,10 +7123,10 @@ function render$C(_ctx, _cache) {
       }), {
         default: withCtx(() => [createTextVNode(toDisplayString(_ctx.filterDay(day)), 1)]),
         _: 2
-      }, 1040, ["class", "onClick"])]);
-    }), 128))])]))]),
+      }, 1040, ["onClick"])]);
+    }), 128))], 2)]))]),
     _: 1
-  }, 8, ["name"])])]);
+  }, 8, ["name"])], 2)], 2);
 }
 var DayPickerPanel = defineComponent({
   render: render$C,
@@ -7251,7 +7263,8 @@ var DayPickerPanel = defineComponent({
         return {
           text: true,
           outline: false,
-          textColor: ""
+          textColor: "",
+          class: n$j("button")
         };
       }
       var {
@@ -7308,17 +7321,15 @@ var DayPickerPanel = defineComponent({
           return color != null ? color : "";
         if (dayExist())
           return "";
-        return "var-date-picker-color-cover";
+        return nDate() + "-color-cover";
       };
-      var isCover = textColorOrCover().startsWith("var-date-picker");
+      var isCover = textColorOrCover().startsWith(nDate());
       return {
         text: computeText(),
         outline: computeOutline(),
         textColor: isCover ? "" : textColorOrCover(),
-        "var-date-picker-color-cover": isCover,
-        class: {
-          "var-day-picker__button-disabled": disabled
-        }
+        [nDate() + "-color-cover"]: isCover,
+        class: classes$g(n$j("button"), n$j("button--usable"), [disabled, n$j("button--disabled")])
       };
     };
     var checkDate = (checkType) => {
@@ -7328,7 +7339,7 @@ var DayPickerPanel = defineComponent({
     };
     var chooseDay = (day, event) => {
       var buttonEl = event.currentTarget;
-      if (buttonEl.classList.contains("var-day-picker__button-disabled"))
+      if (buttonEl.classList.contains(n$j("button--disabled")))
         return;
       emit("choose-day", day);
     };
@@ -7344,6 +7355,8 @@ var DayPickerPanel = defineComponent({
       initHeader();
     });
     return {
+      n: n$j,
+      nDate,
       days,
       reverse,
       headerEl,
@@ -7359,27 +7372,31 @@ var DayPickerPanel = defineComponent({
     };
   }
 });
+var {
+  n: n$i,
+  classes: classes$f
+} = createNamespace("date-picker");
 function render$B(_ctx, _cache) {
   var _component_year_picker_panel = resolveComponent("year-picker-panel");
   var _component_month_picker_panel = resolveComponent("month-picker-panel");
   var _component_day_picker_panel = resolveComponent("day-picker-panel");
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(["var-date-picker", [_ctx.shadow ? "var-elevation--2" : null]])
+    class: normalizeClass(_ctx.classes(_ctx.n(), [_ctx.shadow, "var-elevation--2"]))
   }, [createElementVNode("div", {
-    class: "var-date-picker-title",
+    class: normalizeClass(_ctx.n("title")),
     style: normalizeStyle({
       background: _ctx.headerColor || _ctx.color
     })
   }, [createElementVNode("div", {
-    class: normalizeClass(["var-date-picker-title__year", [_ctx.isYearPanel ? "var-date-picker-title__year--active" : null]]),
+    class: normalizeClass(_ctx.classes(_ctx.n("title-year"), [_ctx.isYearPanel, _ctx.n("title-year--active")])),
     onClick: _cache[0] || (_cache[0] = ($event) => _ctx.clickEl("year"))
   }, [renderSlot(_ctx.$slots, "year", {
     year: _ctx.previewYear
   }, () => [createTextVNode(toDisplayString(_ctx.previewYear), 1)])], 2), createElementVNode("div", {
-    class: normalizeClass(["var-date-picker-title__date", [!_ctx.isYearPanel ? "var-date-picker-title__date--active" : null, _ctx.range ? "var-date-picker-title__date--range" : null]]),
+    class: normalizeClass(_ctx.classes(_ctx.n("title-date"), [!_ctx.isYearPanel, _ctx.n("title-date--active")], [_ctx.range, _ctx.n("title-date--range")])),
     onClick: _cache[1] || (_cache[1] = ($event) => _ctx.clickEl("date"))
   }, [createVNode(Transition, {
-    name: _ctx.multiple ? "" : "var-date-picker" + (_ctx.reverse ? "-reverse" : "") + "-translatey"
+    name: _ctx.multiple ? "" : "" + _ctx.n() + (_ctx.reverse ? "-reverse" : "") + "-translatey"
   }, {
     default: withCtx(() => {
       var _ctx$chooseMonth, _ctx$chooseMonth2, _ctx$chooseMonth3;
@@ -7408,8 +7425,8 @@ function render$B(_ctx, _cache) {
       }, _ctx.slotProps)), () => [createTextVNode(toDisplayString(_ctx.getDateTitle), 1)])]))];
     }),
     _: 3
-  }, 8, ["name"])], 2)], 4), createElementVNode("div", {
-    class: "var-date-picker-body",
+  }, 8, ["name"])], 2)], 6), createElementVNode("div", {
+    class: normalizeClass(_ctx.n("body")),
     onTouchstart: _cache[2] || (_cache[2] = function() {
       return _ctx.handleTouchstart && _ctx.handleTouchstart(...arguments);
     }),
@@ -7420,7 +7437,7 @@ function render$B(_ctx, _cache) {
       return _ctx.handleTouchend && _ctx.handleTouchend(...arguments);
     })
   }, [createVNode(Transition, {
-    name: "var-date-picker-panel-fade"
+    name: _ctx.n() + "-panel-fade"
   }, {
     default: withCtx(() => [_ctx.getPanelType === "year" ? (openBlock(), createBlock(_component_year_picker_panel, {
       key: 0,
@@ -7449,7 +7466,7 @@ function render$B(_ctx, _cache) {
       onCheckPreview: _ctx.checkPreview
     }, null, 8, ["current", "choose", "preview", "component-props", "click-month", "onChooseDay", "onCheckPreview"])) : createCommentVNode("v-if", true)]),
     _: 1
-  })], 32)], 2);
+  }, 8, ["name"])], 34)], 2);
 }
 var DatePicker = defineComponent({
   render: render$B,
@@ -7623,15 +7640,13 @@ var DatePicker = defineComponent({
       rangeDate.value = rangeDone.value ? [date, date] : [rangeDate.value[0], date];
       rangeDone.value = !rangeDone.value;
       if (rangeDone.value) {
-        var _props$onUpdateModel;
         var isChangeOrder = dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1]);
         var _date = isChangeOrder ? [rangeDate.value[1], rangeDate.value[0]] : [...rangeDate.value];
-        (_props$onUpdateModel = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel.call(props2, _date);
-        props2.onChange == null ? void 0 : props2.onChange(_date);
+        call(props2["onUpdate:modelValue"], _date);
+        call(props2.onChange, _date);
       }
     };
     var updateMultiple = (date, type) => {
-      var _props$onUpdateModel2;
       var multipleDates = type === "month" ? chooseMonths : chooseDays;
       var formatType = type === "month" ? "YYYY-MM" : "YYYY-MM-DD";
       var formatDates = multipleDates.value.map((date2) => dayjs(date2).format(formatType));
@@ -7640,8 +7655,8 @@ var DatePicker = defineComponent({
         formatDates.push(date);
       else
         formatDates.splice(index, 1);
-      (_props$onUpdateModel2 = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel2.call(props2, formatDates);
-      props2.onChange == null ? void 0 : props2.onChange(formatDates);
+      call(props2["onUpdate:modelValue"], formatDates);
+      call(props2.onChange, formatDates);
     };
     var getReverse = (dateType, date) => {
       if (!chooseYear.value || !chooseMonth.value)
@@ -7670,8 +7685,8 @@ var DatePicker = defineComponent({
       else if (multiple)
         updateMultiple(formatDate, "day");
       else {
-        updateModelValue == null ? void 0 : updateModelValue(formatDate);
-        onChange == null ? void 0 : onChange(formatDate);
+        call(updateModelValue, formatDate);
+        call(onChange, formatDate);
       }
     };
     var getChooseMonth = (month) => {
@@ -7691,8 +7706,8 @@ var DatePicker = defineComponent({
         else if (multiple)
           updateMultiple(date, "month");
         else {
-          updateModelValue == null ? void 0 : updateModelValue(date);
-          onChange == null ? void 0 : onChange(date);
+          call(updateModelValue, date);
+          call(onChange, date);
         }
       } else {
         previewMonth.value = month;
@@ -7798,6 +7813,8 @@ var DatePicker = defineComponent({
     });
     watch(getPanelType, resetState);
     return {
+      n: n$i,
+      classes: classes$f,
       monthPanelEl,
       dayPanelEl,
       reverse,
