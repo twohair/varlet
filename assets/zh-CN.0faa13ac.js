@@ -152,7 +152,7 @@ createApp().use(Uploader)
   `),s("span",{class:"hljs-attr"},":rules"),t("="),s("span",{class:"hljs-string"},`"[(v, u) => u.getError(v).length === 0 || '\u5B58\u5728\u4E0A\u4F20\u5931\u8D25\u7684\u6587\u4EF6']"`),t(`
   `),s("span",{class:"hljs-attr"},"v-model"),t("="),s("span",{class:"hljs-string"},'"files"'),t(`
 />`)]),t(`
-`)])],-1),ns={class:"card"},rs=s("h3",null,"\u81EA\u5B9A\u4E49\u6E32\u67D3",-1),hs=s("p",null,[t("\u901A\u8FC7"),s("code",null,"hide-list"),t("\u9690\u85CF\u7EC4\u4EF6\u7684\u6587\u4EF6\u5217\u8868\uFF0C\u81EA\u5B9A\u4E49\u6587\u4EF6\u5217\u8868\u7684\u6E32\u67D3\u903B\u8F91")],-1),ps=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-tag"},[t("<"),s("span",{class:"hljs-name"},"var-space"),t(">")]),t(`
+`)])],-1),ns={class:"card"},rs=s("h3",null,"\u81EA\u5B9A\u4E49\u6E32\u67D3",-1),hs=s("p",null,[t("\u901A\u8FC7 "),s("code",null,"hide-list"),t(" \u9690\u85CF\u7EC4\u4EF6\u7684\u6587\u4EF6\u5217\u8868\uFF0C\u81EA\u5B9A\u4E49\u6587\u4EF6\u5217\u8868\u7684\u6E32\u67D3\u903B\u8F91")],-1),ps=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-tag"},[t("<"),s("span",{class:"hljs-name"},"var-space"),t(">")]),t(`
   `),s("span",{class:"hljs-tag"},[t("<"),s("span",{class:"hljs-name"},"img"),t(`
     `),s("span",{class:"hljs-attr"},"class"),t("="),s("span",{class:"hljs-string"},'"custom-uploader-file"'),t(`
     `),s("span",{class:"hljs-attr"},"v-for"),t("="),s("span",{class:"hljs-string"},'"f in files"'),t(`
