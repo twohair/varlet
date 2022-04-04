@@ -1113,8 +1113,8 @@ function _asyncToGenerator$9(fn) {
   };
 }
 var {
-  n: n$g,
-  classes: classes$d
+  n: n$h,
+  classes: classes$e
 } = createNamespace("icon");
 function render$X(_ctx, _cache) {
   return openBlock(), createBlock(resolveDynamicComponent(_ctx.isURL(_ctx.name) ? "img" : "i"), {
@@ -1161,8 +1161,8 @@ var Icon = defineComponent({
       immediate: true
     });
     return {
-      n: n$g,
-      classes: classes$d,
+      n: n$h,
+      classes: classes$e,
       nextName,
       shrinking,
       isURL,
@@ -1382,8 +1382,8 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$f,
-  classes: classes$c
+  n: n$g,
+  classes: classes$d
 } = createNamespace("action-sheet");
 var _hoisted_1$C = ["onClick"];
 function render$W(_ctx, _cache) {
@@ -1467,8 +1467,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$f,
-      classes: classes$c,
+      n: n$g,
+      classes: classes$d,
       call,
       popupShow,
       pack,
@@ -1805,8 +1805,8 @@ var props$N = {
   }
 };
 var {
-  n: n$e,
-  classes: classes$b
+  n: n$f,
+  classes: classes$c
 } = createNamespace("button");
 var _hoisted_1$z = ["disabled"];
 function render$T(_ctx, _cache) {
@@ -1881,8 +1881,8 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n: n$e,
-      classes: classes$b,
+      n: n$f,
+      classes: classes$c,
       pending,
       handleClick,
       handleTouchstart
@@ -2160,8 +2160,8 @@ var props$K = {
   }
 };
 var {
-  n: n$d,
-  classes: classes$a
+  n: n$e,
+  classes: classes$b
 } = createNamespace("card");
 var _hoisted_1$x = ["src", "alt"];
 function render$Q(_ctx, _cache) {
@@ -2205,8 +2205,8 @@ var Card = defineComponent({
   props: props$K,
   setup() {
     return {
-      n: n$d,
-      classes: classes$a,
+      n: n$e,
+      classes: classes$b,
       toSizeUnit
     };
   }
@@ -2242,8 +2242,8 @@ var props$J = {
   }
 };
 var {
-  n: n$c,
-  classes: classes$9
+  n: n$d,
+  classes: classes$a
 } = createNamespace("cell");
 function render$P(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
@@ -2276,8 +2276,8 @@ var Cell = defineComponent({
   props: props$J,
   setup() {
     return {
-      n: n$c,
-      classes: classes$9
+      n: n$d,
+      classes: classes$a
     };
   }
 });
@@ -2945,9 +2945,13 @@ function useRow() {
     bindRow: bindParent
   };
 }
+var {
+  n: n$c,
+  classes: classes$9
+} = createNamespace("col");
 function render$K(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(["var-col var--box", [_ctx.span ? "var-col--span-" + _ctx.span : null, _ctx.offset ? "var-col--offset-" + _ctx.offset : null, ..._ctx.getSize("xs", _ctx.xs), ..._ctx.getSize("sm", _ctx.sm), ..._ctx.getSize("md", _ctx.md), ..._ctx.getSize("lg", _ctx.lg), ..._ctx.getSize("xl", _ctx.xl)]]),
+    class: normalizeClass(_ctx.classes(_ctx.n(), "var--box", [_ctx.span, _ctx.n("--span-" + _ctx.span)], [_ctx.offset, _ctx.n("--offset-" + _ctx.offset)], ..._ctx.getSize("xs", _ctx.xs), ..._ctx.getSize("sm", _ctx.sm), ..._ctx.getSize("md", _ctx.md), ..._ctx.getSize("lg", _ctx.lg), ..._ctx.getSize("xl", _ctx.xl))),
     style: normalizeStyle({
       paddingLeft: _ctx.toSizeUnit(_ctx.padding.left),
       paddingRight: _ctx.toSizeUnit(_ctx.padding.right)
@@ -2987,18 +2991,20 @@ var Col = defineComponent({
           span: _span,
           offset: _offset
         } = size;
-        _span && classes2.push("var-col--span-" + mode + "-" + _span);
-        _offset && classes2.push("var-col--offset-" + mode + "-" + _offset);
+        _span && classes2.push(n$c("--span-" + mode + "-" + _span));
+        _offset && classes2.push(n$c("--offset-" + mode + "-" + _offset));
       } else {
-        classes2.push("var-col--span-" + mode + "-" + size);
+        classes2.push(n$c("--span-" + mode + "-" + size));
       }
       return classes2;
     };
     watch([() => props2.span, () => props2.offset], () => {
       row2 == null ? void 0 : row2.computePadding();
     });
-    bindRow == null ? void 0 : bindRow(colProvider);
+    call(bindRow, colProvider);
     return {
+      n: n$c,
+      classes: classes$9,
       padding,
       toNumber,
       toSizeUnit,
