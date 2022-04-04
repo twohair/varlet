@@ -1113,8 +1113,8 @@ function _asyncToGenerator$9(fn) {
   };
 }
 var {
-  n: n$i,
-  classes: classes$f
+  n: n$j,
+  classes: classes$g
 } = createNamespace("icon");
 function render$X(_ctx, _cache) {
   return openBlock(), createBlock(resolveDynamicComponent(_ctx.isURL(_ctx.name) ? "img" : "i"), {
@@ -1161,8 +1161,8 @@ var Icon = defineComponent({
       immediate: true
     });
     return {
-      n: n$i,
-      classes: classes$f,
+      n: n$j,
+      classes: classes$g,
       nextName,
       shrinking,
       isURL,
@@ -1382,8 +1382,8 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$h,
-  classes: classes$e
+  n: n$i,
+  classes: classes$f
 } = createNamespace("action-sheet");
 var _hoisted_1$C = ["onClick"];
 function render$W(_ctx, _cache) {
@@ -1467,8 +1467,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$h,
-      classes: classes$e,
+      n: n$i,
+      classes: classes$f,
       call,
       popupShow,
       pack,
@@ -1805,8 +1805,8 @@ var props$N = {
   }
 };
 var {
-  n: n$g,
-  classes: classes$d
+  n: n$h,
+  classes: classes$e
 } = createNamespace("button");
 var _hoisted_1$z = ["disabled"];
 function render$T(_ctx, _cache) {
@@ -1881,8 +1881,8 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n: n$g,
-      classes: classes$d,
+      n: n$h,
+      classes: classes$e,
       pending,
       handleClick,
       handleTouchstart
@@ -2160,8 +2160,8 @@ var props$K = {
   }
 };
 var {
-  n: n$f,
-  classes: classes$c
+  n: n$g,
+  classes: classes$d
 } = createNamespace("card");
 var _hoisted_1$x = ["src", "alt"];
 function render$Q(_ctx, _cache) {
@@ -2205,8 +2205,8 @@ var Card = defineComponent({
   props: props$K,
   setup() {
     return {
-      n: n$f,
-      classes: classes$c,
+      n: n$g,
+      classes: classes$d,
       toSizeUnit
     };
   }
@@ -2242,8 +2242,8 @@ var props$J = {
   }
 };
 var {
-  n: n$e,
-  classes: classes$b
+  n: n$f,
+  classes: classes$c
 } = createNamespace("cell");
 function render$P(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
@@ -2276,8 +2276,8 @@ var Cell = defineComponent({
   props: props$J,
   setup() {
     return {
-      n: n$e,
-      classes: classes$b
+      n: n$f,
+      classes: classes$c
     };
   }
 });
@@ -2946,8 +2946,8 @@ function useRow() {
   };
 }
 var {
-  n: n$d,
-  classes: classes$a
+  n: n$e,
+  classes: classes$b
 } = createNamespace("col");
 function render$K(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -2991,10 +2991,10 @@ var Col = defineComponent({
           span: _span,
           offset: _offset
         } = size;
-        _span && classes2.push(n$d("--span-" + mode + "-" + _span));
-        _offset && classes2.push(n$d("--offset-" + mode + "-" + _offset));
+        _span && classes2.push(n$e("--span-" + mode + "-" + _span));
+        _offset && classes2.push(n$e("--offset-" + mode + "-" + _offset));
       } else {
-        classes2.push(n$d("--span-" + mode + "-" + size));
+        classes2.push(n$e("--span-" + mode + "-" + size));
       }
       return classes2;
     };
@@ -3003,8 +3003,8 @@ var Col = defineComponent({
     });
     call(bindRow, colProvider);
     return {
-      n: n$d,
-      classes: classes$a,
+      n: n$e,
+      classes: classes$b,
       padding,
       toNumber,
       toSizeUnit,
@@ -8259,7 +8259,7 @@ function _asyncToGenerator$8(fn) {
   };
 }
 var {
-  n: n$c
+  n: n$d
 } = createNamespace("form");
 function render$y(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -8309,7 +8309,7 @@ var Form = defineComponent({
     };
     bindFormItems(formProvider);
     return {
-      n: n$c,
+      n: n$d,
       validate,
       reset,
       resetValidation
@@ -8611,8 +8611,8 @@ var props$v = {
   }
 };
 var {
-  n: n$b,
-  classes: classes$9
+  n: n$c,
+  classes: classes$a
 } = createNamespace("image");
 var _hoisted_1$j = ["alt", "lazy-error", "lazy-loading"];
 var _hoisted_2$e = ["alt", "src"];
@@ -8696,8 +8696,8 @@ var Image$1 = defineComponent({
       !lazy && call(onError, e);
     };
     return {
-      n: n$b,
-      classes: classes$9,
+      n: n$c,
+      classes: classes$a,
       toSizeUnit,
       handleLoad,
       handleError
@@ -9624,9 +9624,13 @@ function _asyncToGenerator$5(fn) {
     });
   };
 }
+var {
+  n: n$b,
+  classes: classes$9
+} = createNamespace("sticky");
 function render$t(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(["var-sticky", [_ctx.enableCSSMode ? "var-sticky--css-mode" : null]]),
+    class: normalizeClass(_ctx.classes(_ctx.n(), [_ctx.enableCSSMode, _ctx.n("--css-mode")])),
     ref: "stickyEl",
     style: normalizeStyle({
       zIndex: _ctx.toNumber(_ctx.zIndex),
@@ -9635,7 +9639,7 @@ function render$t(_ctx, _cache) {
       height: _ctx.enableFixedMode ? _ctx.fixedHeight : void 0
     })
   }, [createElementVNode("div", {
-    class: "var-sticky__wrapper",
+    class: normalizeClass(_ctx.n("wrapper")),
     ref: "wrapperEl",
     style: normalizeStyle({
       zIndex: _ctx.toNumber(_ctx.zIndex),
@@ -9645,7 +9649,7 @@ function render$t(_ctx, _cache) {
       left: _ctx.enableFixedMode ? _ctx.fixedLeft : void 0,
       top: _ctx.enableFixedMode ? _ctx.fixedTop : void 0
     })
-  }, [renderSlot(_ctx.$slots, "default")], 4)], 6);
+  }, [renderSlot(_ctx.$slots, "default")], 6)], 6);
 }
 var Sticky = defineComponent({
   render: render$t,
@@ -9698,10 +9702,10 @@ var Sticky = defineComponent({
           fixedWrapperHeight.value = wrapper3.offsetHeight + "px";
           isFixed.value = true;
         }
-        onScroll == null ? void 0 : onScroll(offsetTop.value, true);
+        call(onScroll, offsetTop.value, true);
       } else {
         isFixed.value = false;
-        onScroll == null ? void 0 : onScroll(currentOffsetTop, false);
+        call(onScroll, currentOffsetTop, false);
       }
     };
     var addScrollListener = /* @__PURE__ */ function() {
@@ -9726,6 +9730,8 @@ var Sticky = defineComponent({
     onMounted(addScrollListener);
     onUnmounted(removeScrollListener);
     return {
+      n: n$b,
+      classes: classes$9,
       stickyEl,
       wrapperEl,
       isFixed,
