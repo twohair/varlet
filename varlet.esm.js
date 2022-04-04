@@ -1,4 +1,4 @@
-import { reactive, getCurrentInstance, watch, onBeforeMount, onUnmounted, onActivated, onDeactivated, ref, onMounted, provide, computed, inject, nextTick, createApp, onBeforeUnmount, h, isVNode, defineComponent, createVNode, Teleport, Transition, withDirectives, mergeProps, vShow, openBlock, createBlock, resolveDynamicComponent, normalizeClass, normalizeStyle, resolveComponent, resolveDirective, withCtx, createElementVNode, renderSlot, toDisplayString, createElementBlock, Fragment, renderList, createCommentVNode, onUpdated, createTextVNode, pushScopeId, popScopeId, withModifiers, normalizeProps, guardReactiveProps, vModelText, toRefs, withKeys, toRaw, TransitionGroup, Comment } from "vue";
+import { reactive, ref, onMounted, onUnmounted, onActivated, onDeactivated, getCurrentInstance, provide, computed, inject, nextTick, createApp, onBeforeUnmount, h, isVNode, watch, onBeforeMount, defineComponent, createVNode, Teleport, Transition, withDirectives, mergeProps, vShow, openBlock, createBlock, resolveDynamicComponent, normalizeClass, normalizeStyle, resolveComponent, resolveDirective, withCtx, createElementVNode, renderSlot, toDisplayString, createElementBlock, Fragment, renderList, createCommentVNode, onUpdated, createTextVNode, pushScopeId, popScopeId, withModifiers, normalizeProps, guardReactiveProps, vModelText, toRefs, withKeys, toRaw, TransitionGroup, Comment } from "vue";
 var context = {
   locks: {},
   zIndex: 2e3,
@@ -334,6 +334,50 @@ function supportTouch() {
   var inBrowser2 = typeof window !== "undefined";
   return inBrowser2 && "ontouchstart" in window;
 }
+var _excluded = ["collect", "clear"];
+function asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+function _asyncToGenerator$a(fn) {
+  return function() {
+    var self = this, args = arguments;
+    return new Promise(function(resolve, reject) {
+      var gen = fn.apply(self, args);
+      function _next(value) {
+        asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, "next", value);
+      }
+      function _throw(err) {
+        asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+      _next(void 0);
+    });
+  };
+}
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null)
+    return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0)
+      continue;
+    target[key] = source[key];
+  }
+  return target;
+}
 function _extends$d() {
   _extends$d = Object.assign || function(target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -348,6 +392,272 @@ function _extends$d() {
   };
   return _extends$d.apply(this, arguments);
 }
+function pickProps(props2, propsKey) {
+  return Array.isArray(propsKey) ? propsKey.reduce((pickedProps, key) => {
+    pickedProps[key] = props2[key];
+    return pickedProps;
+  }, {}) : props2[propsKey];
+}
+function mount(component) {
+  var app = createApp(component);
+  var host = document.createElement("div");
+  document.body.appendChild(host);
+  return {
+    instance: app.mount(host),
+    unmount() {
+      app.unmount();
+      document.body.removeChild(host);
+    }
+  };
+}
+function mountInstance(component, props2, eventListener) {
+  if (props2 === void 0) {
+    props2 = {};
+  }
+  if (eventListener === void 0) {
+    eventListener = {};
+  }
+  var Host = {
+    setup() {
+      return () => h(component, _extends$d({}, props2, eventListener));
+    }
+  };
+  var {
+    unmount: unmount2
+  } = mount(Host);
+  return {
+    unmountInstance: unmount2
+  };
+}
+function flatVNodes(subTree) {
+  var vNodes = [];
+  var flat = (subTree2) => {
+    if (subTree2 != null && subTree2.component) {
+      flat(subTree2 == null ? void 0 : subTree2.component.subTree);
+      return;
+    }
+    if (Array.isArray(subTree2 == null ? void 0 : subTree2.children)) {
+      subTree2.children.forEach((child) => {
+        if (isVNode(child)) {
+          vNodes.push(child);
+          flat(child);
+        }
+      });
+    }
+  };
+  flat(subTree);
+  return vNodes;
+}
+function useAtChildrenCounter(key) {
+  var instances = reactive([]);
+  var parentInstance = getCurrentInstance();
+  var sortInstances = () => {
+    var vNodes = flatVNodes(parentInstance.subTree);
+    instances.sort((a, b) => {
+      return vNodes.indexOf(a.vnode) - vNodes.indexOf(b.vnode);
+    });
+  };
+  var collect = (instance) => {
+    instances.push(instance);
+    sortInstances();
+  };
+  var clear2 = (instance) => {
+    removeItem(instances, instance);
+  };
+  provide(key, {
+    collect,
+    clear: clear2,
+    instances
+  });
+  var length = computed(() => instances.length);
+  return {
+    length
+  };
+}
+function useAtParentIndex(key) {
+  if (!keyInProvides(key)) {
+    return {
+      index: null
+    };
+  }
+  var childrenCounter = inject(key);
+  var {
+    collect,
+    clear: clear2,
+    instances
+  } = childrenCounter;
+  var instance = getCurrentInstance();
+  onMounted(() => {
+    nextTick().then(() => collect(instance));
+  });
+  onUnmounted(() => {
+    nextTick().then(() => clear2(instance));
+  });
+  var index = computed(() => instances.indexOf(instance));
+  return {
+    index
+  };
+}
+function useChildren(key) {
+  var childProviders = [];
+  var collect = (childProvider) => {
+    childProviders.push(childProvider);
+  };
+  var clear2 = (childProvider) => {
+    removeItem(childProviders, childProvider);
+  };
+  var bindChildren = (parentProvider) => {
+    provide(key, _extends$d({
+      collect,
+      clear: clear2
+    }, parentProvider));
+  };
+  return {
+    childProviders,
+    bindChildren
+  };
+}
+function useParent(key) {
+  if (!keyInProvides(key)) {
+    return {
+      parentProvider: null,
+      bindParent: null
+    };
+  }
+  var rawParentProvider = inject(key);
+  var {
+    collect,
+    clear: clear2
+  } = rawParentProvider, parentProvider = _objectWithoutPropertiesLoose(rawParentProvider, _excluded);
+  var bindParent = (childProvider) => {
+    onMounted(() => collect(childProvider));
+    onBeforeUnmount(() => clear2(childProvider));
+  };
+  return {
+    parentProvider,
+    bindParent
+  };
+}
+function keyInProvides(key) {
+  var instance = getCurrentInstance();
+  return key in instance.provides;
+}
+function useValidation() {
+  var errorMessage = ref("");
+  var validate = /* @__PURE__ */ function() {
+    var _ref = _asyncToGenerator$a(function* (rules, value, apis) {
+      if (!isArray(rules) || !rules.length) {
+        return true;
+      }
+      var resArr = yield Promise.all(rules.map((rule) => rule(value, apis)));
+      return !resArr.some((res) => {
+        if (res !== true) {
+          errorMessage.value = String(res);
+          return true;
+        }
+        return false;
+      });
+    });
+    return function validate2(_x, _x2, _x3) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var resetValidation = () => {
+    errorMessage.value = "";
+  };
+  var validateWithTrigger = /* @__PURE__ */ function() {
+    var _ref2 = _asyncToGenerator$a(function* (validateTrigger, trigger, rules, value, apis) {
+      if (validateTrigger.includes(trigger)) {
+        (yield validate(rules, value, apis)) && (errorMessage.value = "");
+      }
+    });
+    return function validateWithTrigger2(_x4, _x5, _x6, _x7, _x8) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  return {
+    errorMessage,
+    validate,
+    resetValidation,
+    validateWithTrigger
+  };
+}
+function addRouteListener(cb) {
+  onMounted(() => {
+    window.addEventListener("hashchange", cb);
+    window.addEventListener("popstate", cb);
+  });
+  onUnmounted(() => {
+    window.removeEventListener("hashchange", cb);
+    window.removeEventListener("popstate", cb);
+  });
+}
+function useTeleport() {
+  var disabled = ref(false);
+  onActivated(() => {
+    disabled.value = false;
+  });
+  onDeactivated(() => {
+    disabled.value = true;
+  });
+  return {
+    disabled
+  };
+}
+function exposeApis(apis) {
+  var instance = getCurrentInstance();
+  if (instance) {
+    Object.assign(instance.proxy, apis);
+  }
+}
+function createNamespace(name) {
+  var namespace = "var-" + name;
+  var createBEM = (suffix) => {
+    if (!suffix)
+      return namespace;
+    return suffix.startsWith("--") ? "" + namespace + suffix : namespace + "__" + suffix;
+  };
+  var classes2 = function() {
+    for (var _len = arguments.length, classes3 = new Array(_len), _key = 0; _key < _len; _key++) {
+      classes3[_key] = arguments[_key];
+    }
+    return classes3.map((className) => {
+      if (isArray(className)) {
+        var [condition, truthy, falsy = null] = className;
+        return condition ? truthy : falsy;
+      }
+      return className;
+    });
+  };
+  return {
+    n: createBEM,
+    classes: classes2
+  };
+}
+function call(fn) {
+  for (var _len2 = arguments.length, arg = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+    arg[_key2 - 1] = arguments[_key2];
+  }
+  if (fn)
+    return fn(...arg);
+}
+function _extends$c() {
+  _extends$c = Object.assign || function(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$c.apply(this, arguments);
+}
+var {
+  n: n$B
+} = createNamespace("ripple");
 var ANIMATION_DURATION$1 = 250;
 function setStyles(element) {
   var {
@@ -401,7 +711,7 @@ function createRipple(event) {
       size
     } = computeRippleStyles(this, event);
     var ripple2 = document.createElement("div");
-    ripple2.classList.add("var-ripple");
+    ripple2.classList.add(n$B());
     ripple2.style.opacity = "0";
     ripple2.style.transform = "translate(" + x + "px, " + y + "px) scale3d(.3, .3, .3)";
     ripple2.style.width = size + "px";
@@ -449,7 +759,7 @@ function forbidRippleTask() {
 }
 function mounted$1(el, binding) {
   var _binding$value, _binding$value$touchm, _binding$value2;
-  el._ripple = _extends$d({
+  el._ripple = _extends$c({
     tasker: null
   }, (_binding$value = binding.value) != null ? _binding$value : {}, {
     touchmoveForbid: (_binding$value$touchm = (_binding$value2 = binding.value) == null ? void 0 : _binding$value2.touchmoveForbid) != null ? _binding$value$touchm : Context.touchmoveForbid,
@@ -480,7 +790,7 @@ function unmounted(el) {
 }
 function updated$1(el, binding) {
   var _binding$value3, _binding$value$touchm2, _binding$value4;
-  el._ripple = _extends$d({}, el._ripple, (_binding$value3 = binding.value) != null ? _binding$value3 : {}, {
+  el._ripple = _extends$c({}, el._ripple, (_binding$value3 = binding.value) != null ? _binding$value3 : {}, {
     touchmoveForbid: (_binding$value$touchm2 = (_binding$value4 = binding.value) == null ? void 0 : _binding$value4.touchmoveForbid) != null ? _binding$value$touchm2 : Context.touchmoveForbid,
     tasker: null
   });
@@ -633,313 +943,6 @@ function useZIndex(source, count) {
   return {
     zIndex
   };
-}
-var _excluded = ["collect", "clear"];
-function asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-function _asyncToGenerator$a(fn) {
-  return function() {
-    var self = this, args = arguments;
-    return new Promise(function(resolve, reject) {
-      var gen = fn.apply(self, args);
-      function _next(value) {
-        asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, "next", value);
-      }
-      function _throw(err) {
-        asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-      _next(void 0);
-    });
-  };
-}
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null)
-    return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0)
-      continue;
-    target[key] = source[key];
-  }
-  return target;
-}
-function _extends$c() {
-  _extends$c = Object.assign || function(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$c.apply(this, arguments);
-}
-function pickProps(props2, propsKey) {
-  return Array.isArray(propsKey) ? propsKey.reduce((pickedProps, key) => {
-    pickedProps[key] = props2[key];
-    return pickedProps;
-  }, {}) : props2[propsKey];
-}
-function mount(component) {
-  var app = createApp(component);
-  var host = document.createElement("div");
-  document.body.appendChild(host);
-  return {
-    instance: app.mount(host),
-    unmount() {
-      app.unmount();
-      document.body.removeChild(host);
-    }
-  };
-}
-function mountInstance(component, props2, eventListener) {
-  if (props2 === void 0) {
-    props2 = {};
-  }
-  if (eventListener === void 0) {
-    eventListener = {};
-  }
-  var Host = {
-    setup() {
-      return () => h(component, _extends$c({}, props2, eventListener));
-    }
-  };
-  var {
-    unmount: unmount2
-  } = mount(Host);
-  return {
-    unmountInstance: unmount2
-  };
-}
-function flatVNodes(subTree) {
-  var vNodes = [];
-  var flat = (subTree2) => {
-    if (subTree2 != null && subTree2.component) {
-      flat(subTree2 == null ? void 0 : subTree2.component.subTree);
-      return;
-    }
-    if (Array.isArray(subTree2 == null ? void 0 : subTree2.children)) {
-      subTree2.children.forEach((child) => {
-        if (isVNode(child)) {
-          vNodes.push(child);
-          flat(child);
-        }
-      });
-    }
-  };
-  flat(subTree);
-  return vNodes;
-}
-function useAtChildrenCounter(key) {
-  var instances = reactive([]);
-  var parentInstance = getCurrentInstance();
-  var sortInstances = () => {
-    var vNodes = flatVNodes(parentInstance.subTree);
-    instances.sort((a, b) => {
-      return vNodes.indexOf(a.vnode) - vNodes.indexOf(b.vnode);
-    });
-  };
-  var collect = (instance) => {
-    instances.push(instance);
-    sortInstances();
-  };
-  var clear2 = (instance) => {
-    removeItem(instances, instance);
-  };
-  provide(key, {
-    collect,
-    clear: clear2,
-    instances
-  });
-  var length = computed(() => instances.length);
-  return {
-    length
-  };
-}
-function useAtParentIndex(key) {
-  if (!keyInProvides(key)) {
-    return {
-      index: null
-    };
-  }
-  var childrenCounter = inject(key);
-  var {
-    collect,
-    clear: clear2,
-    instances
-  } = childrenCounter;
-  var instance = getCurrentInstance();
-  onMounted(() => {
-    nextTick().then(() => collect(instance));
-  });
-  onUnmounted(() => {
-    nextTick().then(() => clear2(instance));
-  });
-  var index = computed(() => instances.indexOf(instance));
-  return {
-    index
-  };
-}
-function useChildren(key) {
-  var childProviders = [];
-  var collect = (childProvider) => {
-    childProviders.push(childProvider);
-  };
-  var clear2 = (childProvider) => {
-    removeItem(childProviders, childProvider);
-  };
-  var bindChildren = (parentProvider) => {
-    provide(key, _extends$c({
-      collect,
-      clear: clear2
-    }, parentProvider));
-  };
-  return {
-    childProviders,
-    bindChildren
-  };
-}
-function useParent(key) {
-  if (!keyInProvides(key)) {
-    return {
-      parentProvider: null,
-      bindParent: null
-    };
-  }
-  var rawParentProvider = inject(key);
-  var {
-    collect,
-    clear: clear2
-  } = rawParentProvider, parentProvider = _objectWithoutPropertiesLoose(rawParentProvider, _excluded);
-  var bindParent = (childProvider) => {
-    onMounted(() => collect(childProvider));
-    onBeforeUnmount(() => clear2(childProvider));
-  };
-  return {
-    parentProvider,
-    bindParent
-  };
-}
-function keyInProvides(key) {
-  var instance = getCurrentInstance();
-  return key in instance.provides;
-}
-function useValidation() {
-  var errorMessage = ref("");
-  var validate = /* @__PURE__ */ function() {
-    var _ref = _asyncToGenerator$a(function* (rules, value, apis) {
-      if (!isArray(rules) || !rules.length) {
-        return true;
-      }
-      var resArr = yield Promise.all(rules.map((rule) => rule(value, apis)));
-      return !resArr.some((res) => {
-        if (res !== true) {
-          errorMessage.value = String(res);
-          return true;
-        }
-        return false;
-      });
-    });
-    return function validate2(_x, _x2, _x3) {
-      return _ref.apply(this, arguments);
-    };
-  }();
-  var resetValidation = () => {
-    errorMessage.value = "";
-  };
-  var validateWithTrigger = /* @__PURE__ */ function() {
-    var _ref2 = _asyncToGenerator$a(function* (validateTrigger, trigger, rules, value, apis) {
-      if (validateTrigger.includes(trigger)) {
-        (yield validate(rules, value, apis)) && (errorMessage.value = "");
-      }
-    });
-    return function validateWithTrigger2(_x4, _x5, _x6, _x7, _x8) {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-  return {
-    errorMessage,
-    validate,
-    resetValidation,
-    validateWithTrigger
-  };
-}
-function addRouteListener(cb) {
-  onMounted(() => {
-    window.addEventListener("hashchange", cb);
-    window.addEventListener("popstate", cb);
-  });
-  onUnmounted(() => {
-    window.removeEventListener("hashchange", cb);
-    window.removeEventListener("popstate", cb);
-  });
-}
-function useTeleport() {
-  var disabled = ref(false);
-  onActivated(() => {
-    disabled.value = false;
-  });
-  onDeactivated(() => {
-    disabled.value = true;
-  });
-  return {
-    disabled
-  };
-}
-function exposeApis(apis) {
-  var instance = getCurrentInstance();
-  if (instance) {
-    Object.assign(instance.proxy, apis);
-  }
-}
-function createNamespace(name) {
-  var namespace = "var-" + name;
-  var createBEM = (suffix) => {
-    if (!suffix)
-      return namespace;
-    return suffix.startsWith("--") ? "" + namespace + suffix : namespace + "__" + suffix;
-  };
-  var classes2 = function() {
-    for (var _len = arguments.length, classes3 = new Array(_len), _key = 0; _key < _len; _key++) {
-      classes3[_key] = arguments[_key];
-    }
-    return classes3.map((className) => {
-      if (isArray(className)) {
-        var [condition, truthy, falsy = null] = className;
-        return condition ? truthy : falsy;
-      }
-      return className;
-    });
-  };
-  return {
-    n: createBEM,
-    classes: classes2
-  };
-}
-function call(fn) {
-  for (var _len2 = arguments.length, arg = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-    arg[_key2 - 1] = arguments[_key2];
-  }
-  if (fn)
-    return fn(...arg);
 }
 function _extends$b() {
   _extends$b = Object.assign || function(target) {
@@ -1113,8 +1116,8 @@ function _asyncToGenerator$9(fn) {
   };
 }
 var {
-  n: n$x,
-  classes: classes$r
+  n: n$A,
+  classes: classes$t
 } = createNamespace("icon");
 function render$X(_ctx, _cache) {
   return openBlock(), createBlock(resolveDynamicComponent(_ctx.isURL(_ctx.name) ? "img" : "i"), {
@@ -1161,8 +1164,8 @@ var Icon = defineComponent({
       immediate: true
     });
     return {
-      n: n$x,
-      classes: classes$r,
+      n: n$A,
+      classes: classes$t,
       nextName,
       shrinking,
       isURL,
@@ -1382,10 +1385,10 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$w,
-  classes: classes$q
+  n: n$z,
+  classes: classes$s
 } = createNamespace("action-sheet");
-var _hoisted_1$v = ["onClick"];
+var _hoisted_1$u = ["onClick"];
 function render$W(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_popup = resolveComponent("var-popup");
@@ -1429,7 +1432,7 @@ function render$W(_ctx, _cache) {
         size: action.iconSize
       }, null, 8, ["class", "name", "size"])) : createCommentVNode("v-if", true), createElementVNode("div", {
         class: normalizeClass(_ctx.n("action-name"))
-      }, toDisplayString(action.name), 3)], 14, _hoisted_1$v)), [[_directive_ripple, {
+      }, toDisplayString(action.name), 3)], 14, _hoisted_1$u)), [[_directive_ripple, {
         disabled: action.disabled
       }]]);
     }), 128))])], 16)]),
@@ -1467,8 +1470,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$w,
-      classes: classes$q,
+      n: n$z,
+      classes: classes$s,
       call,
       popupShow,
       pack,
@@ -1554,14 +1557,14 @@ var props$P = {
     default: true
   }
 };
-var _hoisted_1$u = {
+var _hoisted_1$t = {
   class: "var-app-bar__left"
 };
-var _hoisted_2$h = {
+var _hoisted_2$g = {
   key: 0,
   class: "var-app-bar__title"
 };
-var _hoisted_3$8 = {
+var _hoisted_3$7 = {
   class: "var-app-bar__right"
 };
 function render$V(_ctx, _cache) {
@@ -1573,13 +1576,13 @@ function render$V(_ctx, _cache) {
       background: _ctx.color,
       color: _ctx.textColor
     })
-  }, [createElementVNode("div", _hoisted_1$u, [renderSlot(_ctx.$slots, "left"), _ctx.titlePosition === "left" ? (openBlock(), createElementBlock("div", {
+  }, [createElementVNode("div", _hoisted_1$t, [renderSlot(_ctx.$slots, "left"), _ctx.titlePosition === "left" ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: "var-app-bar__title",
     style: normalizeStyle({
       paddingLeft: _ctx.paddingLeft
     })
-  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 4)) : createCommentVNode("v-if", true)]), _ctx.titlePosition === "center" ? (openBlock(), createElementBlock("div", _hoisted_2$h, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])])) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_3$8, [_ctx.titlePosition === "right" ? (openBlock(), createElementBlock("div", {
+  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 4)) : createCommentVNode("v-if", true)]), _ctx.titlePosition === "center" ? (openBlock(), createElementBlock("div", _hoisted_2$g, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])])) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_3$7, [_ctx.titlePosition === "right" ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: "var-app-bar__title",
     style: normalizeStyle({
@@ -1645,14 +1648,14 @@ var props$O = {
   }
 };
 var _withScopeId$1 = (n2) => (pushScopeId(""), n2 = n2(), popScopeId(), n2);
-var _hoisted_1$t = {
+var _hoisted_1$s = {
   class: "var-loading"
 };
-var _hoisted_2$g = {
+var _hoisted_2$f = {
   key: 0,
   class: "var-loading__circle"
 };
-var _hoisted_3$7 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createElementVNode("svg", {
+var _hoisted_3$6 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createElementVNode("svg", {
   viewBox: "25 25 50 50"
 }, [/* @__PURE__ */ createElementVNode("circle", {
   cx: "50",
@@ -1660,15 +1663,15 @@ var _hoisted_3$7 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createEl
   r: "20",
   fill: "none"
 })], -1));
-var _hoisted_4$1 = [_hoisted_3$7];
+var _hoisted_4$1 = [_hoisted_3$6];
 function render$U(_ctx, _cache) {
-  return openBlock(), createElementBlock("div", _hoisted_1$t, [_ctx.$slots.default ? (openBlock(), createElementBlock("div", {
+  return openBlock(), createElementBlock("div", _hoisted_1$s, [_ctx.$slots.default ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(["var-loading__content", [_ctx.loading ? "var-loading__content--active" : null]])
   }, [renderSlot(_ctx.$slots, "default")], 2)) : createCommentVNode("v-if", true), _ctx.isShow ? (openBlock(), createElementBlock("div", {
     key: 1,
     class: normalizeClass(["var--box var-loading__body", [_ctx.$slots.default ? "var-loading__inside" : null]])
-  }, [_ctx.type === "circle" ? (openBlock(), createElementBlock("div", _hoisted_2$g, [createElementVNode("span", {
+  }, [_ctx.type === "circle" ? (openBlock(), createElementBlock("div", _hoisted_2$f, [createElementVNode("span", {
     class: "var-loading__circle-block",
     style: normalizeStyle({
       width: _ctx.getRadius * 2 + "px",
@@ -1805,10 +1808,10 @@ var props$N = {
   }
 };
 var {
-  n: n$v,
-  classes: classes$p
+  n: n$y,
+  classes: classes$r
 } = createNamespace("button");
-var _hoisted_1$s = ["disabled"];
+var _hoisted_1$r = ["disabled"];
 function render$T(_ctx, _cache) {
   var _component_var_loading = resolveComponent("var-loading");
   var _directive_ripple = resolveDirective("ripple");
@@ -1834,7 +1837,7 @@ function render$T(_ctx, _cache) {
     radius: _ctx.loadingRadius
   }, null, 8, ["class", "type", "size", "radius"])) : createCommentVNode("v-if", true), createElementVNode("div", {
     class: normalizeClass(_ctx.classes(_ctx.n("content"), [_ctx.loading || _ctx.pending, _ctx.n("--hidden")]))
-  }, [renderSlot(_ctx.$slots, "default")], 2)], 46, _hoisted_1$s)), [[_directive_ripple, {
+  }, [renderSlot(_ctx.$slots, "default")], 2)], 46, _hoisted_1$r)), [[_directive_ripple, {
     disabled: _ctx.disabled || !_ctx.ripple
   }]]);
 }
@@ -1881,8 +1884,8 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n: n$v,
-      classes: classes$p,
+      n: n$y,
+      classes: classes$r,
       pending,
       handleClick,
       handleTouchstart
@@ -2041,15 +2044,15 @@ var props$L = {
     type: String
   }
 };
-var _hoisted_1$r = {
+var _hoisted_1$q = {
   class: "var-badge var--box"
 };
-var _hoisted_2$f = {
+var _hoisted_2$e = {
   key: 1
 };
 function render$R(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
-  return openBlock(), createElementBlock("div", _hoisted_1$r, [createVNode(Transition, {
+  return openBlock(), createElementBlock("div", _hoisted_1$q, [createVNode(Transition, {
     name: "var-badge-fade"
   }, {
     default: withCtx(() => [withDirectives(createElementVNode("span", mergeProps(_ctx.$attrs, {
@@ -2061,7 +2064,7 @@ function render$R(_ctx, _cache) {
       key: 0,
       name: _ctx.icon,
       size: "10px"
-    }, null, 8, ["name"])) : (openBlock(), createElementBlock("span", _hoisted_2$f, toDisplayString(_ctx.values), 1))], 16), [[vShow, !_ctx.hidden]])]),
+    }, null, 8, ["name"])) : (openBlock(), createElementBlock("span", _hoisted_2$e, toDisplayString(_ctx.values), 1))], 16), [[vShow, !_ctx.hidden]])]),
     _: 1
   }), renderSlot(_ctx.$slots, "default")]);
 }
@@ -2160,10 +2163,10 @@ var props$K = {
   }
 };
 var {
-  n: n$u,
-  classes: classes$o
+  n: n$x,
+  classes: classes$q
 } = createNamespace("card");
-var _hoisted_1$q = ["src", "alt"];
+var _hoisted_1$p = ["src", "alt"];
 function render$Q(_ctx, _cache) {
   var _directive_ripple = resolveDirective("ripple");
   return withDirectives((openBlock(), createElementBlock("div", {
@@ -2180,7 +2183,7 @@ function render$Q(_ctx, _cache) {
     }),
     src: _ctx.src,
     alt: _ctx.alt
-  }, null, 14, _hoisted_1$q)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", {
+  }, null, 14, _hoisted_1$p)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(_ctx.n("title"))
   }, toDisplayString(_ctx.title), 3)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "subtitle", {}, () => [_ctx.subtitle ? (openBlock(), createElementBlock("div", {
@@ -2205,8 +2208,8 @@ var Card = defineComponent({
   props: props$K,
   setup() {
     return {
-      n: n$u,
-      classes: classes$o,
+      n: n$x,
+      classes: classes$q,
       toSizeUnit
     };
   }
@@ -2242,8 +2245,8 @@ var props$J = {
   }
 };
 var {
-  n: n$t,
-  classes: classes$n
+  n: n$w,
+  classes: classes$p
 } = createNamespace("cell");
 function render$P(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
@@ -2276,8 +2279,8 @@ var Cell = defineComponent({
   props: props$J,
   setup() {
     return {
-      n: n$t,
-      classes: classes$n
+      n: n$w,
+      classes: classes$p
     };
   }
 });
@@ -2294,21 +2297,21 @@ var props$I = {
     default: ""
   }
 };
-var _hoisted_1$p = {
+var _hoisted_1$o = {
   key: 0,
   class: "var-form-details"
 };
-var _hoisted_2$e = {
+var _hoisted_2$d = {
   class: "var-form-details__message"
 };
-var _hoisted_3$6 = {
+var _hoisted_3$5 = {
   class: "var-form-details__length"
 };
 function render$O(_ctx, _cache) {
   return openBlock(), createBlock(Transition, {
     name: "var-form-details"
   }, {
-    default: withCtx(() => [_ctx.errorMessage || _ctx.maxlengthText ? (openBlock(), createElementBlock("div", _hoisted_1$p, [createElementVNode("div", _hoisted_2$e, toDisplayString(_ctx.errorMessage), 1), createElementVNode("div", _hoisted_3$6, toDisplayString(_ctx.maxlengthText), 1)])) : createCommentVNode("v-if", true)]),
+    default: withCtx(() => [_ctx.errorMessage || _ctx.maxlengthText ? (openBlock(), createElementBlock("div", _hoisted_1$o, [createElementVNode("div", _hoisted_2$d, toDisplayString(_ctx.errorMessage), 1), createElementVNode("div", _hoisted_3$5, toDisplayString(_ctx.maxlengthText), 1)])) : createCommentVNode("v-if", true)]),
     _: 1
   });
 }
@@ -2422,7 +2425,7 @@ function useFormItems() {
     bindFormItems: bindChildren
   };
 }
-var _hoisted_1$o = {
+var _hoisted_1$n = {
   class: "var-checkbox"
 };
 function render$N(_ctx, _cache) {
@@ -2434,7 +2437,7 @@ function render$N(_ctx, _cache) {
     onClick: _cache[0] || (_cache[0] = function() {
       return _ctx.handleClick && _ctx.handleClick(...arguments);
     })
-  }, [createElementVNode("div", _hoisted_1$o, [withDirectives((openBlock(), createElementBlock("div", {
+  }, [createElementVNode("div", _hoisted_1$n, [withDirectives((openBlock(), createElementBlock("div", {
     class: normalizeClass(["var-checkbox__action", [_ctx.checked ? "var-checkbox--checked" : "var-checkbox--unchecked", _ctx.errorMessage || _ctx.checkboxGroupErrorMessage ? "var-checkbox--error" : null, _ctx.formDisabled || _ctx.disabled ? "var-checkbox--disabled" : null]]),
     style: normalizeStyle({
       color: _ctx.checked ? _ctx.checkedColor : _ctx.uncheckedColor
@@ -2626,12 +2629,12 @@ var props$G = {
     type: Function
   }
 };
-var _hoisted_1$n = {
+var _hoisted_1$m = {
   class: "var-checkbox-group__wrap"
 };
 function render$M(_ctx, _cache) {
   var _component_var_form_details = resolveComponent("var-form-details");
-  return openBlock(), createElementBlock("div", _hoisted_1$n, [createElementVNode("div", {
+  return openBlock(), createElementBlock("div", _hoisted_1$m, [createElementVNode("div", {
     class: normalizeClass(["var-checkbox-group", ["var-checkbox-group--" + _ctx.direction]])
   }, [renderSlot(_ctx.$slots, "default")], 2), createVNode(_component_var_form_details, {
     "error-message": _ctx.errorMessage
@@ -2946,8 +2949,8 @@ function useRow() {
   };
 }
 var {
-  n: n$s,
-  classes: classes$m
+  n: n$v,
+  classes: classes$o
 } = createNamespace("col");
 function render$K(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -2991,10 +2994,10 @@ var Col = defineComponent({
           span: _span,
           offset: _offset
         } = size;
-        _span && classes2.push(n$s("--span-" + mode + "-" + _span));
-        _offset && classes2.push(n$s("--offset-" + mode + "-" + _offset));
+        _span && classes2.push(n$v("--span-" + mode + "-" + _span));
+        _offset && classes2.push(n$v("--offset-" + mode + "-" + _offset));
       } else {
-        classes2.push(n$s("--span-" + mode + "-" + size));
+        classes2.push(n$v("--span-" + mode + "-" + size));
       }
       return classes2;
     };
@@ -3003,8 +3006,8 @@ var Col = defineComponent({
     });
     call(bindRow, colProvider);
     return {
-      n: n$s,
-      classes: classes$m,
+      n: n$v,
+      classes: classes$o,
       padding,
       toNumber,
       toSizeUnit,
@@ -3053,7 +3056,7 @@ var props$D = {
   }
 };
 var {
-  n: n$r
+  n: n$u
 } = createNamespace("collapse");
 function render$J(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -3156,7 +3159,7 @@ var Collapse = defineComponent({
     watch(() => length.value, () => nextTick().then(resize));
     watch(() => props2.modelValue, () => nextTick().then(resize));
     return {
-      n: n$r
+      n: n$u
     };
   }
 });
@@ -3197,8 +3200,8 @@ var props$C = {
   }
 };
 var {
-  n: n$q,
-  classes: classes$l
+  n: n$t,
+  classes: classes$n
 } = createNamespace("collapse-item");
 function render$I(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
@@ -3299,8 +3302,8 @@ var CollapseItem = defineComponent({
         closePanel();
     });
     return {
-      n: n$q,
-      classes: classes$l,
+      n: n$t,
+      classes: classes$n,
       show,
       isShow,
       offset,
@@ -3337,11 +3340,11 @@ var SECOND = 1e3;
 var MINUTE = 60 * SECOND;
 var HOUR = 60 * MINUTE;
 var DAY = 24 * HOUR;
-var _hoisted_1$m = {
+var _hoisted_1$l = {
   class: "var-countdown"
 };
 function render$H(_ctx, _cache) {
-  return openBlock(), createElementBlock("div", _hoisted_1$m, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps(_ctx.timeData)), () => [createTextVNode(toDisplayString(_ctx.showTime), 1)])]);
+  return openBlock(), createElementBlock("div", _hoisted_1$l, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps(_ctx.timeData)), () => [createTextVNode(toDisplayString(_ctx.showTime), 1)])]);
 }
 var Countdown = defineComponent({
   render: render$H,
@@ -5789,15 +5792,15 @@ var props$A = {
 };
 var SPEED = 100;
 var DELAY = 600;
-var _hoisted_1$l = {
+var _hoisted_1$k = {
   class: "var-counter var--box"
 };
-var _hoisted_2$d = ["inputmode", "readonly", "disabled"];
+var _hoisted_2$c = ["inputmode", "readonly", "disabled"];
 function render$G(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_form_details = resolveComponent("var-form-details");
   var _directive_ripple = resolveDirective("ripple");
-  return openBlock(), createElementBlock("div", _hoisted_1$l, [createElementVNode("div", mergeProps({
+  return openBlock(), createElementBlock("div", _hoisted_1$k, [createElementVNode("div", mergeProps({
     class: ["var-counter__controller var-elevation--2", [_ctx.disabled || _ctx.formDisabled ? "var-counter--disabled" : null, _ctx.errorMessage ? "var-counter--error" : null]],
     style: {
       background: _ctx.color ? _ctx.color : void 0
@@ -5829,7 +5832,7 @@ function render$G(_ctx, _cache) {
     onChange: _cache[1] || (_cache[1] = function() {
       return _ctx.handleChange && _ctx.handleChange(...arguments);
     })
-  }, null, 44, _hoisted_2$d), [[vModelText, _ctx.inputValue]]), withDirectives(createVNode(_component_var_icon, {
+  }, null, 44, _hoisted_2$c), [[vModelText, _ctx.inputValue]]), withDirectives(createVNode(_component_var_icon, {
     class: normalizeClass(["var-counter__increment-button", [!_ctx.incrementButton ? "var-counter--hidden" : null]]),
     "var-counter-cover": "",
     name: "plus",
@@ -6607,7 +6610,7 @@ var props$z = {
   }
 };
 var {
-  n: n$p
+  n: n$s
 } = createNamespace("picker-header");
 function render$F(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
@@ -6706,7 +6709,7 @@ var PanelHeader = defineComponent({
       forwardOrBackNum.value = 0;
     });
     return {
-      n: n$p,
+      n: n$s,
       reverse,
       showDate,
       checkDate
@@ -6730,8 +6733,8 @@ function _extends$8() {
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
 var {
-  n: n$o,
-  classes: classes$k
+  n: n$r,
+  classes: classes$m
 } = createNamespace("month-picker");
 var {
   n: nDate$1
@@ -6925,12 +6928,12 @@ var MonthPickerPanel = defineComponent({
         color: !computeText() ? color : "",
         textColor: isCover ? "" : textColorOrCover(),
         [nDate$1() + "-color-cover"]: isCover,
-        class: classes$k(n$o("button"), [disabled, n$o("button--disabled")])
+        class: classes$m(n$r("button"), [disabled, n$r("button--disabled")])
       };
     };
     var chooseMonth = (month, event) => {
       var buttonEl = event.currentTarget;
-      if (buttonEl.classList.contains(n$o("button--disabled")))
+      if (buttonEl.classList.contains(n$r("button--disabled")))
         return;
       emit("choose-month", month);
     };
@@ -6957,7 +6960,7 @@ var MonthPickerPanel = defineComponent({
       immediate: true
     });
     return {
-      n: n$o,
+      n: n$r,
       nDate: nDate$1,
       pack,
       MONTH_LIST,
@@ -6974,10 +6977,10 @@ var MonthPickerPanel = defineComponent({
   }
 });
 var {
-  n: n$n,
-  classes: classes$j
+  n: n$q,
+  classes: classes$l
 } = createNamespace("year-picker");
-var _hoisted_1$k = ["onClick"];
+var _hoisted_1$j = ["onClick"];
 function render$D(_ctx, _cache) {
   return openBlock(), createElementBlock("ul", {
     class: normalizeClass(_ctx.n())
@@ -6989,7 +6992,7 @@ function render$D(_ctx, _cache) {
         color: year === _ctx.toNumber(_ctx.preview) ? _ctx.componentProps.color : ""
       }),
       onClick: ($event) => _ctx.chooseYear(year)
-    }, toDisplayString(year), 15, _hoisted_1$k);
+    }, toDisplayString(year), 15, _hoisted_1$j);
   }), 128))], 2);
 }
 var YearPickerPanel = defineComponent({
@@ -7046,14 +7049,14 @@ var YearPickerPanel = defineComponent({
       emit("choose-year", year);
     };
     onMounted(() => {
-      var activeEl = document.querySelector("." + n$n("item--active"));
+      var activeEl = document.querySelector("." + n$q("item--active"));
       activeEl == null ? void 0 : activeEl.scrollIntoView({
         block: "center"
       });
     });
     return {
-      n: n$n,
-      classes: classes$j,
+      n: n$q,
+      classes: classes$l,
       yearList,
       chooseYear,
       toNumber
@@ -7077,8 +7080,8 @@ function _extends$7() {
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
 var {
-  n: n$m,
-  classes: classes$i
+  n: n$p,
+  classes: classes$k
 } = createNamespace("day-picker");
 var {
   n: nDate
@@ -7264,7 +7267,7 @@ var DayPickerPanel = defineComponent({
           text: true,
           outline: false,
           textColor: "",
-          class: n$m("button")
+          class: n$p("button")
         };
       }
       var {
@@ -7329,7 +7332,7 @@ var DayPickerPanel = defineComponent({
         outline: computeOutline(),
         textColor: isCover ? "" : textColorOrCover(),
         [nDate() + "-color-cover"]: isCover,
-        class: classes$i(n$m("button"), n$m("button--usable"), [disabled, n$m("button--disabled")])
+        class: classes$k(n$p("button"), n$p("button--usable"), [disabled, n$p("button--disabled")])
       };
     };
     var checkDate = (checkType) => {
@@ -7339,7 +7342,7 @@ var DayPickerPanel = defineComponent({
     };
     var chooseDay = (day, event) => {
       var buttonEl = event.currentTarget;
-      if (buttonEl.classList.contains(n$m("button--disabled")))
+      if (buttonEl.classList.contains(n$p("button--disabled")))
         return;
       emit("choose-day", day);
     };
@@ -7355,7 +7358,7 @@ var DayPickerPanel = defineComponent({
       initHeader();
     });
     return {
-      n: n$m,
+      n: n$p,
       nDate,
       days,
       reverse,
@@ -7373,8 +7376,8 @@ var DayPickerPanel = defineComponent({
   }
 });
 var {
-  n: n$l,
-  classes: classes$h
+  n: n$o,
+  classes: classes$j
 } = createNamespace("date-picker");
 function render$B(_ctx, _cache) {
   var _component_year_picker_panel = resolveComponent("year-picker-panel");
@@ -7813,8 +7816,8 @@ var DatePicker = defineComponent({
     });
     watch(getPanelType, resetState);
     return {
-      n: n$l,
-      classes: classes$h,
+      n: n$o,
+      classes: classes$j,
       monthPanelEl,
       dayPanelEl,
       reverse,
@@ -7938,10 +7941,10 @@ var props$y = _extends$6({
   "onClickOverlay",
   "onRouteChange"
 ]));
-var _hoisted_1$j = {
+var _hoisted_1$i = {
   class: "var-dialog__title"
 };
-var _hoisted_2$c = {
+var _hoisted_2$b = {
   class: "var-dialog__actions"
 };
 function render$A(_ctx, _cache) {
@@ -7967,12 +7970,12 @@ function render$A(_ctx, _cache) {
     default: withCtx(() => [createElementVNode("div", mergeProps({
       class: ["var--box var-dialog", _ctx.dialogClass],
       style: _ctx.dialogStyle
-    }, _ctx.$attrs), [createElementVNode("div", _hoisted_1$j, [renderSlot(_ctx.$slots, "title", {}, () => [createTextVNode(toDisplayString(_ctx.dt(_ctx.title, _ctx.pack.dialogTitle)), 1)])]), createElementVNode("div", {
+    }, _ctx.$attrs), [createElementVNode("div", _hoisted_1$i, [renderSlot(_ctx.$slots, "title", {}, () => [createTextVNode(toDisplayString(_ctx.dt(_ctx.title, _ctx.pack.dialogTitle)), 1)])]), createElementVNode("div", {
       class: "var-dialog__message",
       style: normalizeStyle({
         textAlign: _ctx.messageAlign
       })
-    }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.message), 1)])], 4), createElementVNode("div", _hoisted_2$c, [_ctx.cancelButton ? (openBlock(), createBlock(_component_var_button, {
+    }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.message), 1)])], 4), createElementVNode("div", _hoisted_2$b, [_ctx.cancelButton ? (openBlock(), createBlock(_component_var_button, {
       key: 0,
       class: "var-dialog__button var-dialog__cancel-button",
       "var-dialog-cover": "",
@@ -8176,7 +8179,7 @@ function _extends$5() {
   };
   return _extends$5.apply(this, arguments);
 }
-var _hoisted_1$i = {
+var _hoisted_1$h = {
   key: 0,
   class: "var-divider__text"
 };
@@ -8184,7 +8187,7 @@ function render$z(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["var-divider var--box", [_ctx.vertical ? "var-divider--vertical" : null, _ctx.withText ? "var-divider--with-text" : null, _ctx.isInset ? "var-divider--inset" : null, _ctx.dashed ? "var-divider--dashed" : null]]),
     style: normalizeStyle(_ctx.style)
-  }, [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.description ? (openBlock(), createElementBlock("span", _hoisted_1$i, toDisplayString(_ctx.description), 1)) : createCommentVNode("v-if", true)])], 6);
+  }, [renderSlot(_ctx.$slots, "default", {}, () => [_ctx.description ? (openBlock(), createElementBlock("span", _hoisted_1$h, toDisplayString(_ctx.description), 1)) : createCommentVNode("v-if", true)])], 6);
 }
 var Divider = defineComponent({
   render: render$z,
@@ -8276,7 +8279,7 @@ function _asyncToGenerator$8(fn) {
   };
 }
 var {
-  n: n$k
+  n: n$n
 } = createNamespace("form");
 function render$y(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -8326,7 +8329,7 @@ var Form = defineComponent({
     };
     bindFormItems(formProvider);
     return {
-      n: n$k,
+      n: n$n,
       validate,
       reset,
       resetValidation
@@ -8455,7 +8458,7 @@ function createLazy(el, binding) {
     attemptLock: false
   }, lazyOptions);
   setSRC(el, PIXEL);
-  defaultLazyOptions.filter == null ? void 0 : defaultLazyOptions.filter(el._lazy);
+  call(defaultLazyOptions.filter, el._lazy);
 }
 function createImage(el, attemptSRC) {
   var image2 = new Image();
@@ -8628,11 +8631,11 @@ var props$v = {
   }
 };
 var {
-  n: n$j,
-  classes: classes$g
+  n: n$m,
+  classes: classes$i
 } = createNamespace("image");
-var _hoisted_1$h = ["alt", "lazy-error", "lazy-loading"];
-var _hoisted_2$b = ["alt", "src"];
+var _hoisted_1$g = ["alt", "lazy-error", "lazy-loading"];
+var _hoisted_2$a = ["alt", "src"];
 function render$x(_ctx, _cache) {
   var _directive_lazy = resolveDirective("lazy");
   var _directive_ripple = resolveDirective("ripple");
@@ -8661,7 +8664,7 @@ function render$x(_ctx, _cache) {
     onClick: _cache[2] || (_cache[2] = function() {
       return _ctx.onClick && _ctx.onClick(...arguments);
     })
-  }, null, 46, _hoisted_1$h)), [[_directive_lazy, _ctx.src]]) : (openBlock(), createElementBlock("img", {
+  }, null, 46, _hoisted_1$g)), [[_directive_lazy, _ctx.src]]) : (openBlock(), createElementBlock("img", {
     key: 1,
     class: normalizeClass(_ctx.n("image")),
     alt: _ctx.alt,
@@ -8678,7 +8681,7 @@ function render$x(_ctx, _cache) {
     onClick: _cache[5] || (_cache[5] = function() {
       return _ctx.onClick && _ctx.onClick(...arguments);
     })
-  }, null, 46, _hoisted_2$b))], 6)), [[_directive_ripple, {
+  }, null, 46, _hoisted_2$a))], 6)), [[_directive_ripple, {
     disabled: !_ctx.ripple
   }]]);
 }
@@ -8713,8 +8716,8 @@ var Image$1 = defineComponent({
       !lazy && call(onError, e);
     };
     return {
-      n: n$j,
-      classes: classes$g,
+      n: n$m,
+      classes: classes$i,
       toSizeUnit,
       handleLoad,
       handleError
@@ -8807,10 +8810,10 @@ function _asyncToGenerator$6(fn) {
 var SWIPE_DELAY = 250;
 var SWIPE_DISTANCE = 20;
 var {
-  n: n$i,
-  classes: classes$f
+  n: n$l,
+  classes: classes$h
 } = createNamespace("swipe");
-var _hoisted_1$g = ["onClick"];
+var _hoisted_1$f = ["onClick"];
 function render$w(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.n()),
@@ -8846,7 +8849,7 @@ function render$w(_ctx, _cache) {
       }),
       key: l,
       onClick: ($event) => _ctx.to(idx)
-    }, null, 14, _hoisted_1$g);
+    }, null, 14, _hoisted_1$f);
   }), 128))], 2)) : createCommentVNode("v-if", true)])], 2);
 }
 var Swipe = defineComponent({
@@ -9126,8 +9129,8 @@ var Swipe = defineComponent({
       stopAutoplay();
     });
     return {
-      n: n$i,
-      classes: classes$f,
+      n: n$l,
+      classes: classes$h,
       length,
       index,
       swipeEl,
@@ -9254,14 +9257,14 @@ var props$t = _extends$3({
   "onRouteChange"
 ]));
 var {
-  n: n$h,
-  classes: classes$e
+  n: n$k,
+  classes: classes$g
 } = createNamespace("image-preview");
 var DISTANCE_OFFSET = 12;
 var EVENT_DELAY = 200;
 var TAP_DELAY = 350;
 var ANIMATION_DURATION = 200;
-var _hoisted_1$f = ["src", "alt"];
+var _hoisted_1$e = ["src", "alt"];
 function render$u(_ctx, _cache) {
   var _component_var_swipe_item = resolveComponent("var-swipe-item");
   var _component_var_swipe = resolveComponent("var-swipe");
@@ -9317,7 +9320,7 @@ function render$u(_ctx, _cache) {
             class: normalizeClass(_ctx.n("image")),
             src: image2,
             alt: image2
-          }, null, 10, _hoisted_1$f)], 38)]),
+          }, null, 10, _hoisted_1$e)], 38)]),
           _: 2
         }, 1032, ["class"]);
       }), 128))]),
@@ -9530,8 +9533,8 @@ var VarImagePreview = defineComponent({
       immediate: true
     });
     return {
-      n: n$h,
-      classes: classes$e,
+      n: n$k,
+      classes: classes$g,
       initialIndex,
       popupShow,
       scale,
@@ -9647,8 +9650,8 @@ function _asyncToGenerator$5(fn) {
   };
 }
 var {
-  n: n$g,
-  classes: classes$d
+  n: n$j,
+  classes: classes$f
 } = createNamespace("sticky");
 function render$t(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -9752,8 +9755,8 @@ var Sticky = defineComponent({
     onMounted(addScrollListener);
     onUnmounted(removeScrollListener);
     return {
-      n: n$g,
-      classes: classes$d,
+      n: n$j,
+      classes: classes$f,
       stickyEl,
       wrapperEl,
       isFixed,
@@ -9946,13 +9949,13 @@ function _asyncToGenerator$4(fn) {
     });
   };
 }
-var _hoisted_1$e = {
+var _hoisted_1$d = {
   class: "var-index-bar",
   ref: "barEl"
 };
-var _hoisted_2$a = ["onClick"];
+var _hoisted_2$9 = ["onClick"];
 function render$r(_ctx, _cache) {
-  return openBlock(), createElementBlock("div", _hoisted_1$e, [renderSlot(_ctx.$slots, "default"), createElementVNode("ul", {
+  return openBlock(), createElementBlock("div", _hoisted_1$d, [renderSlot(_ctx.$slots, "default"), createElementVNode("ul", {
     class: "var-index-bar__anchor-list",
     style: normalizeStyle({
       zIndex: _ctx.toNumber(_ctx.zIndex) + 2,
@@ -9968,7 +9971,7 @@ function render$r(_ctx, _cache) {
         color: _ctx.active === anchorName && _ctx.highlightColor ? _ctx.highlightColor : ""
       }),
       onClick: ($event) => _ctx.anchorClick(anchorName)
-    }, toDisplayString(anchorName), 15, _hoisted_2$a);
+    }, toDisplayString(anchorName), 15, _hoisted_2$9);
   }), 128))], 4)], 512);
 }
 var IndexBar = defineComponent({
@@ -10186,12 +10189,12 @@ var props$p = {
   }
 };
 var {
-  n: n$f,
-  classes: classes$c
+  n: n$i,
+  classes: classes$e
 } = createNamespace("input");
-var _hoisted_1$d = ["id", "disabled", "type", "value", "maxlength", "rows"];
-var _hoisted_2$9 = ["id", "disabled", "type", "value", "maxlength"];
-var _hoisted_3$5 = ["for"];
+var _hoisted_1$c = ["id", "disabled", "type", "value", "maxlength", "rows"];
+var _hoisted_2$8 = ["id", "disabled", "type", "value", "maxlength"];
+var _hoisted_3$4 = ["for"];
 function render$q(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_form_details = resolveComponent("var-form-details");
@@ -10240,7 +10243,7 @@ function render$q(_ctx, _cache) {
     onChange: _cache[3] || (_cache[3] = function() {
       return _ctx.handleChange && _ctx.handleChange(...arguments);
     })
-  }, "\n        ", 46, _hoisted_1$d)) : (openBlock(), createElementBlock("input", {
+  }, "\n        ", 46, _hoisted_1$c)) : (openBlock(), createElementBlock("input", {
     key: 2,
     class: normalizeClass(_ctx.classes(_ctx.n("input"), [_ctx.formDisabled || _ctx.disabled, _ctx.n("--disabled")], [_ctx.errorMessage, _ctx.n("--caret-error")])),
     ref: "el",
@@ -10266,13 +10269,13 @@ function render$q(_ctx, _cache) {
     onChange: _cache[7] || (_cache[7] = function() {
       return _ctx.handleChange && _ctx.handleChange(...arguments);
     })
-  }, null, 46, _hoisted_2$9)), createElementVNode("label", {
+  }, null, 46, _hoisted_2$8)), createElementVNode("label", {
     class: normalizeClass(_ctx.classes("var--ellipsis", [_ctx.isFocus, _ctx.n("--focus")], [_ctx.errorMessage, _ctx.n("--error")], [_ctx.textarea, _ctx.n("textarea-placeholder"), _ctx.n("placeholder")], _ctx.computePlaceholderState(), [!_ctx.hint, _ctx.n("--placeholder-non-hint")])),
     style: normalizeStyle({
       color: !_ctx.errorMessage ? _ctx.isFocus ? _ctx.focusColor : _ctx.blurColor : void 0
     }),
     for: _ctx.id
-  }, toDisplayString(_ctx.placeholder), 15, _hoisted_3$5)], 2), createElementVNode("div", {
+  }, toDisplayString(_ctx.placeholder), 15, _hoisted_3$4)], 2), createElementVNode("div", {
     class: normalizeClass(_ctx.classes(_ctx.n("icon"), [!_ctx.hint, _ctx.n("--non-hint")]))
   }, [renderSlot(_ctx.$slots, "append-icon", {}, () => [_ctx.clearable && !_ctx.isEmpty(_ctx.modelValue) ? (openBlock(), createBlock(_component_var_icon, {
     key: 0,
@@ -10348,10 +10351,10 @@ var Input = defineComponent({
         modelValue
       } = props2;
       if (!hint && !isEmpty(modelValue)) {
-        return n$f("--placeholder-hidden");
+        return n$i("--placeholder-hidden");
       }
       if (hint && (!isEmpty(modelValue) || isFocus.value)) {
-        return n$f("--placeholder-hint");
+        return n$i("--placeholder-hint");
       }
     };
     var handleFocus = (e) => {
@@ -10429,8 +10432,8 @@ var Input = defineComponent({
       maxlengthText,
       formDisabled: form == null ? void 0 : form.disabled,
       formReadonly: form == null ? void 0 : form.readonly,
-      n: n$f,
-      classes: classes$c,
+      n: n$i,
+      classes: classes$e,
       call,
       isEmpty,
       computePlaceholderState,
@@ -10521,8 +10524,8 @@ function _asyncToGenerator$3(fn) {
   };
 }
 var {
-  n: n$e,
-  classes: classes$b
+  n: n$h,
+  classes: classes$d
 } = createNamespace("list");
 function render$p(_ctx, _cache) {
   var _component_var_loading = resolveComponent("var-loading");
@@ -10613,8 +10616,8 @@ var List = defineComponent({
       isNumber,
       load,
       check: check2,
-      n: n$e,
-      classes: classes$b
+      n: n$h,
+      classes: classes$d
     };
   }
 });
@@ -10843,7 +10846,7 @@ var props$m = {
   label: {},
   value: {}
 };
-var _hoisted_1$c = {
+var _hoisted_1$b = {
   class: "var-option__text var--ellipsis"
 };
 function render$o(_ctx, _cache) {
@@ -10872,7 +10875,7 @@ function render$o(_ctx, _cache) {
     onClick: _cache[1] || (_cache[1] = withModifiers(() => {
     }, ["stop"])),
     onChange: _ctx.handleSelect
-  }, null, 8, ["checked-color", "modelValue", "onChange"])) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_1$c, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.label), 1)])])], 6)), [[_directive_ripple]]);
+  }, null, 8, ["checked-color", "modelValue", "onChange"])) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_1$b, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.label), 1)])])], 6)), [[_directive_ripple]]);
 }
 var Option = defineComponent({
   render: render$o,
@@ -10983,11 +10986,11 @@ var props$l = {
     type: Function
   }
 };
-var _hoisted_1$b = {
+var _hoisted_1$a = {
   class: "var-pagination"
 };
-var _hoisted_2$8 = ["item-mode", "onClick"];
-var _hoisted_3$4 = {
+var _hoisted_2$7 = ["item-mode", "onClick"];
+var _hoisted_3$3 = {
   key: 4,
   class: "var-pagination__total"
 };
@@ -10997,7 +11000,7 @@ function render$n(_ctx, _cache) {
   var _component_var_cell = resolveComponent("var-cell");
   var _component_var_menu = resolveComponent("var-menu");
   var _directive_ripple = resolveDirective("ripple");
-  return openBlock(), createElementBlock("ul", _hoisted_1$b, [withDirectives((openBlock(), createElementBlock("li", {
+  return openBlock(), createElementBlock("ul", _hoisted_1$a, [withDirectives((openBlock(), createElementBlock("li", {
     class: normalizeClass(["var-pagination__item var-pagination__prev", {
       "var-pagination__item--disabled": _ctx.current <= 1 || _ctx.disabled,
       "var-pagination__item--hover": _ctx.simple,
@@ -11033,7 +11036,7 @@ function render$n(_ctx, _cache) {
         "var-pagination__item--disabled--active": item === _ctx.current && _ctx.disabled
       }]),
       onClick: ($event) => _ctx.clickItem(item, index)
-    }, [createTextVNode(toDisplayString(item), 1)], 10, _hoisted_2$8)), [[_directive_ripple, {
+    }, [createTextVNode(toDisplayString(item), 1)], 10, _hoisted_2$7)), [[_directive_ripple, {
       disabled: _ctx.disabled
     }]]);
   }), 128)), withDirectives((openBlock(), createElementBlock("li", {
@@ -11095,7 +11098,7 @@ function render$n(_ctx, _cache) {
     "var-pagination-cover": "",
     onBlur: _cache[8] || (_cache[8] = ($event) => _ctx.setPage("quick", _ctx.inputValue, $event)),
     onKeydown: _cache[9] || (_cache[9] = withKeys(($event) => _ctx.setPage("quick", _ctx.inputValue, $event), ["enter"]))
-  }, null, 8, ["modelValue", "disabled"])], 2)) : createCommentVNode("v-if", true), _ctx.totalText ? (openBlock(), createElementBlock("li", _hoisted_3$4, toDisplayString(_ctx.totalText), 1)) : createCommentVNode("v-if", true)]);
+  }, null, 8, ["modelValue", "disabled"])], 2)) : createCommentVNode("v-if", true), _ctx.totalText ? (openBlock(), createElementBlock("li", _hoisted_3$3, toDisplayString(_ctx.totalText), 1)) : createCommentVNode("v-if", true)]);
 }
 var Pagination = defineComponent({
   render: render$n,
@@ -11345,14 +11348,14 @@ var props$k = _extends$2({
   }
 }, pickProps(props$S, ["show", "onUpdate:show", "closeOnClickOverlay", "teleport", "onOpen", "onClose", "onOpened", "onClosed", "onClickOverlay", "onRouteChange"]));
 var {
-  n: n$d,
-  classes: classes$a
+  n: n$g,
+  classes: classes$c
 } = createNamespace("picker");
 var MOMENTUM_RECORD_TIME = 300;
 var MOMENTUM_ALLOW_DISTANCE = 15;
 var sid$1 = 0;
-var _hoisted_1$a = ["onTouchstart", "onTouchmove", "onTouchend"];
-var _hoisted_2$7 = ["onTransitionend"];
+var _hoisted_1$9 = ["onTouchstart", "onTouchmove", "onTouchend"];
+var _hoisted_2$6 = ["onTransitionend"];
 function render$m(_ctx, _cache) {
   var _component_var_button = resolveComponent("var-button");
   return openBlock(), createBlock(resolveDynamicComponent(_ctx.dynamic ? "var-popup" : _ctx.Transition), mergeProps(_ctx.dynamic ? {
@@ -11427,7 +11430,7 @@ function render$m(_ctx, _cache) {
         }, [createElementVNode("div", {
           class: normalizeClass(_ctx.n("text"))
         }, toDisplayString(t), 3)], 6);
-      }), 128))], 46, _hoisted_2$7)], 42, _hoisted_1$a);
+      }), 128))], 46, _hoisted_2$6)], 42, _hoisted_1$9);
     }), 128)), createElementVNode("div", {
       class: normalizeClass(_ctx.n("picked")),
       style: normalizeStyle({
@@ -11669,8 +11672,8 @@ var VarPicker = defineComponent({
       immediate: true
     });
     return {
-      n: n$d,
-      classes: classes$a,
+      n: n$g,
+      classes: classes$c,
       pack,
       optionHeight,
       optionCount,
@@ -11808,12 +11811,12 @@ var props$j = {
   }
 };
 var {
-  n: n$c,
-  classes: classes$9
+  n: n$f,
+  classes: classes$b
 } = createNamespace("progress");
-var _hoisted_1$9 = ["viewBox"];
-var _hoisted_2$6 = ["cx", "cy", "r", "stroke-width"];
-var _hoisted_3$3 = ["cx", "cy", "r", "stroke-width"];
+var _hoisted_1$8 = ["viewBox"];
+var _hoisted_2$5 = ["cx", "cy", "r", "stroke-width"];
+var _hoisted_3$2 = ["cx", "cy", "r", "stroke-width"];
 function render$l(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.n())
@@ -11865,7 +11868,7 @@ function render$l(_ctx, _cache) {
       strokeDasharray: _ctx.circleProps.perimeter,
       stroke: _ctx.trackColor
     })
-  }, null, 14, _hoisted_2$6)) : createCommentVNode("v-if", true), createElementVNode("circle", {
+  }, null, 14, _hoisted_2$5)) : createCommentVNode("v-if", true), createElementVNode("circle", {
     class: normalizeClass(_ctx.n("circle-certain")),
     cx: _ctx.size / 2,
     cy: _ctx.size / 2,
@@ -11876,7 +11879,7 @@ function render$l(_ctx, _cache) {
       strokeDasharray: _ctx.circleProps.strokeDasharray,
       stroke: _ctx.color
     })
-  }, null, 14, _hoisted_3$3)], 14, _hoisted_1$9)), _ctx.label ? (openBlock(), createElementBlock("div", mergeProps({
+  }, null, 14, _hoisted_3$2)], 14, _hoisted_1$8)), _ctx.label ? (openBlock(), createElementBlock("div", mergeProps({
     key: 0,
     class: _ctx.n("circle-label")
   }, _ctx.$attrs), [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.circleProps.roundValue), 1)])], 16)) : createCommentVNode("v-if", true)], 6)) : createCommentVNode("v-if", true)], 2);
@@ -11916,8 +11919,8 @@ var Progress = defineComponent({
       };
     });
     return {
-      n: n$c,
-      classes: classes$9,
+      n: n$f,
+      classes: classes$b,
       linearProps,
       circleProps
     };
@@ -12169,14 +12172,14 @@ function useRadioGroup() {
     bindRadioGroup: bindParent
   };
 }
-var _hoisted_1$8 = {
+var _hoisted_1$7 = {
   class: "var-radio__wrap"
 };
 function render$j(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_form_details = resolveComponent("var-form-details");
   var _directive_ripple = resolveDirective("ripple");
-  return openBlock(), createElementBlock("div", _hoisted_1$8, [createElementVNode("div", mergeProps({
+  return openBlock(), createElementBlock("div", _hoisted_1$7, [createElementVNode("div", mergeProps({
     class: "var-radio",
     onClick: _cache[0] || (_cache[0] = function() {
       return _ctx.handleClick && _ctx.handleClick(...arguments);
@@ -12363,12 +12366,12 @@ var props$g = {
     type: Function
   }
 };
-var _hoisted_1$7 = {
+var _hoisted_1$6 = {
   class: "var-radio-group__wrap"
 };
 function render$i(_ctx, _cache) {
   var _component_var_form_details = resolveComponent("var-form-details");
-  return openBlock(), createElementBlock("div", _hoisted_1$7, [createElementVNode("div", {
+  return openBlock(), createElementBlock("div", _hoisted_1$6, [createElementVNode("div", {
     class: normalizeClass(["var-radio-group", ["var-radio-group--" + _ctx.direction]])
   }, [renderSlot(_ctx.$slots, "default")], 2), createVNode(_component_var_form_details, {
     "error-message": _ctx.errorMessage
@@ -12515,9 +12518,9 @@ var props$f = {
   }
 };
 var {
-  n: n$b
+  n: n$e
 } = createNamespace("rate");
-var _hoisted_1$6 = ["onClick"];
+var _hoisted_1$5 = ["onClick"];
 function render$h(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_form_details = resolveComponent("var-form-details");
@@ -12539,7 +12542,7 @@ function render$h(_ctx, _cache) {
       style: normalizeStyle({
         fontSize: _ctx.toSizeUnit(_ctx.size)
       })
-    }, null, 8, ["namespace", "name", "style"])], 14, _hoisted_1$6)), [[_directive_ripple, {
+    }, null, 8, ["namespace", "name", "style"])], 14, _hoisted_1$5)), [[_directive_ripple, {
       disabled: _ctx.formReadonly || _ctx.readonly || _ctx.formDisabled || _ctx.disabled || !_ctx.ripple
     }]]);
   }), 128))], 2), createVNode(_component_var_form_details, {
@@ -12588,10 +12591,10 @@ var Rate = defineComponent({
         color
       } = transformValue(val);
       return {
-        [n$b("content")]: true,
-        [n$b("--disabled")]: form == null ? void 0 : form.disabled.value,
-        [n$b("--error")]: errorMessage.value,
-        [n$b("--primary")]: type !== "empty" && !color
+        [n$e("content")]: true,
+        [n$e("--disabled")]: form == null ? void 0 : form.disabled.value,
+        [n$e("--error")]: errorMessage.value,
+        [n$e("--primary")]: type !== "empty" && !color
       };
     };
     var getIconName = (val) => {
@@ -12687,7 +12690,7 @@ var Rate = defineComponent({
       resetValidation,
       toSizeUnit,
       toNumber,
-      n: n$b
+      n: n$e
     };
   }
 });
@@ -12720,8 +12723,8 @@ var props$e = {
   }
 };
 var {
-  n: n$a,
-  classes: classes$8
+  n: n$d,
+  classes: classes$a
 } = createNamespace("row");
 function render$g(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -12765,8 +12768,8 @@ var Row = defineComponent({
     watch(() => props2.gutter, computePadding);
     bindCols(rowProvider);
     return {
-      n: n$a,
-      classes: classes$8,
+      n: n$d,
+      classes: classes$a,
       average
     };
   }
@@ -12864,13 +12867,13 @@ var props$d = {
   }
 };
 var {
-  n: n$9,
-  classes: classes$7
+  n: n$c,
+  classes: classes$9
 } = createNamespace("select");
-var _hoisted_1$5 = {
+var _hoisted_1$4 = {
   key: 0
 };
-var _hoisted_2$5 = {
+var _hoisted_2$4 = {
   key: 1
 };
 function render$f(_ctx, _cache) {
@@ -12913,7 +12916,7 @@ function render$f(_ctx, _cache) {
         textAlign: _ctx.textAlign,
         color: _ctx.textColor
       })
-    }, [_ctx.multiple ? (openBlock(), createElementBlock("div", _hoisted_1$5, [_ctx.chip ? (openBlock(), createElementBlock("div", {
+    }, [_ctx.multiple ? (openBlock(), createElementBlock("div", _hoisted_1$4, [_ctx.chip ? (openBlock(), createElementBlock("div", {
       key: 0,
       class: normalizeClass(_ctx.n("chips"))
     }, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.labels, (l) => {
@@ -12934,7 +12937,7 @@ function render$f(_ctx, _cache) {
     }), 128))], 2)) : (openBlock(), createElementBlock("div", {
       key: 1,
       class: normalizeClass(_ctx.n("values"))
-    }, toDisplayString(_ctx.labels.join(_ctx.separator)), 3))])) : (openBlock(), createElementBlock("span", _hoisted_2$5, toDisplayString(_ctx.label), 1)), createVNode(_component_var_icon, {
+    }, toDisplayString(_ctx.labels.join(_ctx.separator)), 3))])) : (openBlock(), createElementBlock("span", _hoisted_2$4, toDisplayString(_ctx.label), 1)), createVNode(_component_var_icon, {
       class: normalizeClass(_ctx.classes(_ctx.n("arrow"), [_ctx.isFocus, _ctx.n("--arrow-rotate")])),
       "var-select-cover": "",
       name: "menu-down",
@@ -13062,10 +13065,10 @@ var Select = defineComponent({
         modelValue
       } = props2;
       if (!hint && !isEmpty(modelValue)) {
-        return n$9("--placeholder-hidden");
+        return n$c("--placeholder-hidden");
       }
       if (hint && (!isEmpty(modelValue) || isFocus.value)) {
-        return n$9("--placeholder-hint");
+        return n$c("--placeholder-hint");
       }
     };
     var getWrapWidth = () => {
@@ -13233,8 +13236,8 @@ var Select = defineComponent({
       formDisabled: form == null ? void 0 : form.disabled,
       label,
       labels,
-      n: n$9,
-      classes: classes$7,
+      n: n$c,
+      classes: classes$9,
       call,
       computePlaceholderState,
       handleFocus,
@@ -13297,8 +13300,8 @@ var props$c = {
   }
 };
 var {
-  n: n$8,
-  classes: classes$6
+  n: n$b,
+  classes: classes$8
 } = createNamespace("skeleton");
 function render$e(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -13364,8 +13367,8 @@ var Skeleton = defineComponent({
   props: props$c,
   setup() {
     return {
-      n: n$8,
-      classes: classes$6,
+      n: n$b,
+      classes: classes$8,
       toSizeUnit,
       toNumber
     };
@@ -13459,16 +13462,16 @@ var Thumbs;
   Thumbs2["First"] = "1";
   Thumbs2["Second"] = "2";
 })(Thumbs || (Thumbs = {}));
-var _hoisted_1$4 = {
+var _hoisted_1$3 = {
   class: "var-slider"
 };
-var _hoisted_2$4 = {
+var _hoisted_2$3 = {
   class: "var-slider__track"
 };
-var _hoisted_3$2 = ["onTouchstart", "onTouchmove", "onTouchend", "onTouchcancel"];
+var _hoisted_3$1 = ["onTouchstart", "onTouchmove", "onTouchend", "onTouchcancel"];
 function render$d(_ctx, _cache) {
   var _component_var_form_details = resolveComponent("var-form-details");
-  return openBlock(), createElementBlock("div", _hoisted_1$4, [createElementVNode("div", {
+  return openBlock(), createElementBlock("div", _hoisted_1$3, [createElementVNode("div", {
     class: normalizeClass(["var-slider-block", [_ctx.isDisabled ? "var-slider__disable" : null, _ctx.errorMessage ? "var-slider__error" : null]]),
     style: normalizeStyle({
       height: _ctx.thumbSize === void 0 ? _ctx.thumbSize : 3 * _ctx.toNumber(_ctx.thumbSize) + "px",
@@ -13478,7 +13481,7 @@ function render$d(_ctx, _cache) {
     onClick: _cache[0] || (_cache[0] = function() {
       return _ctx.click && _ctx.click(...arguments);
     })
-  }, [createElementVNode("div", _hoisted_2$4, [createElementVNode("div", {
+  }, [createElementVNode("div", _hoisted_2$3, [createElementVNode("div", {
     class: "var-slider__track-background",
     style: normalizeStyle({
       background: _ctx.trackColor,
@@ -13521,7 +13524,7 @@ function render$d(_ctx, _cache) {
         height: _ctx.thumbSize === void 0 ? _ctx.thumbSize : 2 * _ctx.toNumber(_ctx.thumbSize) + "px",
         width: _ctx.thumbSize === void 0 ? _ctx.thumbSize : 2 * _ctx.toNumber(_ctx.thumbSize) + "px"
       })
-    }, [createElementVNode("span", null, toDisplayString(item.value), 1)], 6)])], 44, _hoisted_3$2);
+    }, [createElementVNode("span", null, toDisplayString(item.value), 1)], 6)])], 44, _hoisted_3$1);
   }), 128))], 6), createVNode(_component_var_form_details, {
     "error-message": _ctx.errorMessage,
     class: "var-slider__form",
@@ -13865,8 +13868,8 @@ var props$a = {
   }
 };
 var {
-  n: n$7,
-  classes: classes$5
+  n: n$a,
+  classes: classes$7
 } = createNamespace("snackbar");
 var ICON_TYPE_DICT = {
   success: "checkbox-marked-circle",
@@ -13949,8 +13952,8 @@ var VarSnackbarCore = defineComponent({
     });
     return {
       SNACKBAR_TYPE,
-      n: n$7,
-      classes: classes$5,
+      n: n$a,
+      classes: classes$7,
       zIndex,
       iconName,
       isForbidClick
@@ -13958,7 +13961,7 @@ var VarSnackbarCore = defineComponent({
   }
 });
 var {
-  n: n$6
+  n: n$9
 } = createNamespace("snackbar");
 function render$b(_ctx, _cache) {
   var _component_var_snackbar_core = resolveComponent("var-snackbar-core");
@@ -13992,7 +13995,7 @@ var VarSnackbar = defineComponent({
       disabled
     } = useTeleport();
     return {
-      n: n$6,
+      n: n$9,
       disabled
     };
   }
@@ -14234,8 +14237,8 @@ var props$9 = {
   }
 };
 var {
-  n: n$5,
-  classes: classes$4
+  n: n$8,
+  classes: classes$6
 } = createNamespace("space");
 var internalSizes = {
   mini: [4, 4],
@@ -14314,7 +14317,7 @@ var Space = defineComponent({
         }, [child]);
       });
       return createVNode("div", {
-        "class": classes$4(n$5(), "var--box", [inline, n$5("--inline")]),
+        "class": classes$6(n$8(), "var--box", [inline, n$8("--inline")]),
         "style": {
           flexDirection: direction,
           justifyContent: justify,
@@ -14374,15 +14377,15 @@ function useSteps() {
     bindSteps: bindParent
   };
 }
-var _hoisted_1$3 = {
+var _hoisted_1$2 = {
   class: "var-step"
 };
-var _hoisted_2$3 = {
+var _hoisted_2$2 = {
   key: 3
 };
 function render$a(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
-  return openBlock(), createElementBlock("div", _hoisted_1$3, [createElementVNode("div", {
+  return openBlock(), createElementBlock("div", _hoisted_1$2, [createElementVNode("div", {
     class: normalizeClass("var-step-" + _ctx.direction)
   }, [createElementVNode("div", {
     class: normalizeClass("var-step-" + _ctx.direction + "__main"),
@@ -14413,7 +14416,7 @@ function render$a(_ctx, _cache) {
     class: "var-step__icon",
     "var-step-cover": "",
     name: _ctx.inactiveIcon
-  }, null, 8, ["name"])) : (openBlock(), createElementBlock("span", _hoisted_2$3, toDisplayString(_ctx.index + 1), 1))], 6), createElementVNode("div", {
+  }, null, 8, ["name"])) : (openBlock(), createElementBlock("span", _hoisted_2$2, toDisplayString(_ctx.index + 1), 1))], 6), createElementVNode("div", {
     class: normalizeClass({
       ["var-step-" + _ctx.direction + "__content"]: true,
       ["var-step-" + _ctx.direction + "__content--active"]: _ctx.isActive || _ctx.isCurrent
@@ -14514,7 +14517,7 @@ var props$7 = {
   }
 };
 var {
-  n: n$4
+  n: n$7
 } = createNamespace("steps");
 function render$9(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -14550,7 +14553,7 @@ var Steps = defineComponent({
     };
     bindStep(stepsProvider);
     return {
-      n: n$4
+      n: n$7
     };
   }
 });
@@ -14649,8 +14652,8 @@ var props$6 = {
   }
 };
 var {
-  n: n$3,
-  classes: classes$3
+  n: n$6,
+  classes: classes$5
 } = createNamespace("switch");
 function render$8(_ctx, _cache) {
   var _component_var_loading = resolveComponent("var-loading");
@@ -14775,8 +14778,8 @@ var Switch = defineComponent({
     };
     call(bindForm, switchProvider);
     return {
-      n: n$3,
-      classes: classes$3,
+      n: n$6,
+      classes: classes$5,
       switchActive,
       toNumber,
       styleComputed,
@@ -15011,23 +15014,24 @@ var TabItem = defineComponent({
 TabItem.install = function(app) {
   app.component(TabItem.name, TabItem);
 };
-var _hoisted_1$2 = {
-  class: "var-table var-elevation--1 var--box"
-};
-var _hoisted_2$2 = {
-  class: "var-table__main"
-};
-var _hoisted_3$1 = {
-  key: 0,
-  class: "var-table__footer"
-};
+var {
+  n: n$5,
+  classes: classes$4
+} = createNamespace("table");
 function render$5(_ctx, _cache) {
-  return openBlock(), createElementBlock("div", _hoisted_1$2, [createElementVNode("div", _hoisted_2$2, [createElementVNode("table", {
-    class: "var-table__table",
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(_ctx.classes(_ctx.n(), "var-elevation--1 var--box"))
+  }, [createElementVNode("div", {
+    class: normalizeClass(_ctx.n("main"))
+  }, [createElementVNode("table", {
+    class: normalizeClass(_ctx.n("table")),
     style: normalizeStyle({
       width: _ctx.toSizeUnit(_ctx.fullWidth)
     })
-  }, [renderSlot(_ctx.$slots, "default")], 4)]), _ctx.$slots.footer ? (openBlock(), createElementBlock("div", _hoisted_3$1, [renderSlot(_ctx.$slots, "footer")])) : createCommentVNode("v-if", true)]);
+  }, [renderSlot(_ctx.$slots, "default")], 6)], 2), _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
+    key: 0,
+    class: normalizeClass(_ctx.n("footer"))
+  }, [renderSlot(_ctx.$slots, "footer")], 2)) : createCommentVNode("v-if", true)], 2);
 }
 var Table = defineComponent({
   render: render$5,
@@ -15040,7 +15044,9 @@ var Table = defineComponent({
   },
   setup() {
     return {
-      toSizeUnit
+      toSizeUnit,
+      n: n$5,
+      classes: classes$4
     };
   }
 });
@@ -15135,20 +15141,24 @@ function _asyncToGenerator$1(fn) {
     });
   };
 }
+var {
+  n: n$4,
+  classes: classes$3
+} = createNamespace("tabs");
 function render$4(_ctx, _cache) {
   return openBlock(), createBlock(resolveDynamicComponent(_ctx.sticky ? "var-sticky" : _ctx.Transition), {
     "offset-top": _ctx.sticky ? _ctx.offsetTop : null
   }, {
     default: withCtx(() => [createElementVNode("div", mergeProps({
-      class: ["var-tabs var--box", ["var-tabs--item-" + _ctx.itemDirection, "var-tabs--layout-" + _ctx.layoutDirection + "-padding", _ctx.elevation ? "var-elevation--4" : null, _ctx.fixedBottom ? "var-tabs--fixed-bottom" : null]],
+      class: _ctx.classes(_ctx.n(), "var--box", _ctx.n("--item-" + _ctx.itemDirection), _ctx.n("--layout-" + _ctx.layoutDirection + "-padding"), [_ctx.elevation, "var-elevation--4"], [_ctx.fixedBottom, _ctx.n("--fixed-bottom")]),
       style: {
         background: _ctx.color
       }
     }, _ctx.$attrs), [createElementVNode("div", {
-      class: normalizeClass(["var-tabs__tab-wrap", [_ctx.scrollable ? "var-tabs--layout-" + _ctx.layoutDirection + "-scrollable" : null, "var-tabs--layout-" + _ctx.layoutDirection]]),
-      ref: "scrollerEl"
+      ref: "scrollerEl",
+      class: normalizeClass(_ctx.classes(_ctx.n("tab-wrap"), [_ctx.scrollable, _ctx.n("--layout-" + _ctx.layoutDirection + "-scrollable")], _ctx.n("--layout-" + _ctx.layoutDirection)))
     }, [renderSlot(_ctx.$slots, "default"), createElementVNode("div", {
-      class: normalizeClass(["var-tabs__indicator", ["var-tabs--layout-" + _ctx.layoutDirection + "-indicator"]]),
+      class: normalizeClass(_ctx.classes(_ctx.n("indicator"), _ctx.n("--layout-" + _ctx.layoutDirection + "-indicator"))),
       style: normalizeStyle({
         width: _ctx.layoutDirection === "horizontal" ? _ctx.indicatorWidth : _ctx.toSizeUnit(_ctx.indicatorSize),
         height: _ctx.layoutDirection === "horizontal" ? _ctx.toSizeUnit(_ctx.indicatorSize) : _ctx.indicatorHeight,
@@ -15185,16 +15195,16 @@ var Tabs = defineComponent({
       length
     } = useTabList();
     var onTabClick = (tab2) => {
-      var _tab$name$value, _props$onUpdateActiv;
+      var _tab$name$value;
       var currentActive = (_tab$name$value = tab2.name.value) != null ? _tab$name$value : tab2.index.value;
       var {
         active: active2,
         onChange,
         onClick
       } = props2;
-      (_props$onUpdateActiv = props2["onUpdate:active"]) == null ? void 0 : _props$onUpdateActiv.call(props2, currentActive);
-      onClick == null ? void 0 : onClick(currentActive);
-      currentActive !== active2 && (onChange == null ? void 0 : onChange(currentActive));
+      call(props2["onUpdate:active"], currentActive);
+      call(onClick, currentActive);
+      currentActive !== active2 && call(onChange, currentActive);
     };
     var matchName = () => {
       return tabList.find((_ref) => {
@@ -15213,14 +15223,13 @@ var Tabs = defineComponent({
       });
     };
     var matchBoundary = () => {
-      var _props$onUpdateActiv2, _props$onUpdateActiv3;
       if (length.value === 0) {
         return;
       }
       var {
         active: active2
       } = props2;
-      isNumber(active2) ? active2 > length.value - 1 ? (_props$onUpdateActiv2 = props2["onUpdate:active"]) == null ? void 0 : _props$onUpdateActiv2.call(props2, length.value - 1) : (_props$onUpdateActiv3 = props2["onUpdate:active"]) == null ? void 0 : _props$onUpdateActiv3.call(props2, 0) : null;
+      isNumber(active2) ? active2 > length.value - 1 ? call(props2["onUpdate:active"], length.value - 1) : call(props2["onUpdate:active"], 0) : null;
       return matchIndex();
     };
     var watchScrollable = () => {
@@ -15297,6 +15306,8 @@ var Tabs = defineComponent({
       scrollerEl,
       Transition,
       toSizeUnit,
+      n: n$4,
+      classes: classes$3,
       resize
     };
   }
@@ -15321,10 +15332,13 @@ var props$2 = {
     type: Function
   }
 };
+var {
+  n: n$3
+} = createNamespace("tabs-items");
 function render$3(_ctx, _cache) {
   var _component_var_swipe = resolveComponent("var-swipe");
   return openBlock(), createBlock(_component_var_swipe, {
-    class: "var-tabs-items",
+    class: normalizeClass(_ctx.n()),
     ref: "swipe",
     loop: _ctx.loop,
     touchable: _ctx.canSwipe,
@@ -15333,7 +15347,7 @@ function render$3(_ctx, _cache) {
   }, {
     default: withCtx(() => [renderSlot(_ctx.$slots, "default")]),
     _: 3
-  }, 8, ["loop", "touchable", "onChange"]);
+  }, 8, ["class", "loop", "touchable", "onChange"]);
 }
 var TabsItems = defineComponent({
   render: render$3,
@@ -15384,7 +15398,7 @@ var TabsItems = defineComponent({
       (_swipe$value = swipe2.value) == null ? void 0 : _swipe$value.to(newActiveTabItemProvider.index.value);
     };
     var handleSwipeChange = (currentIndex) => {
-      var _tabItem$name$value, _props$onUpdateActiv;
+      var _tabItem$name$value;
       var tabItem2 = tabItemList.find((_ref4) => {
         var {
           index
@@ -15392,7 +15406,7 @@ var TabsItems = defineComponent({
         return index.value === currentIndex;
       });
       var active = (_tabItem$name$value = tabItem2.name.value) != null ? _tabItem$name$value : tabItem2.index.value;
-      (_props$onUpdateActiv = props2["onUpdate:active"]) == null ? void 0 : _props$onUpdateActiv.call(props2, active);
+      call(props2["onUpdate:active"], active);
     };
     var tabsItemsProvider = {};
     bindTabItem(tabsItemsProvider);
@@ -15400,6 +15414,7 @@ var TabsItems = defineComponent({
     watch(() => length.value, () => handleActiveChange(props2.active));
     return {
       swipe: swipe2,
+      n: n$3,
       handleSwipeChange
     };
   }
