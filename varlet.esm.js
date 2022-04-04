@@ -1113,7 +1113,7 @@ function _asyncToGenerator$9(fn) {
   };
 }
 var {
-  n: n$c,
+  n: n$d,
   classes: classes$b
 } = createNamespace("icon");
 function render$X(_ctx, _cache) {
@@ -1161,7 +1161,7 @@ var Icon = defineComponent({
       immediate: true
     });
     return {
-      n: n$c,
+      n: n$d,
       classes: classes$b,
       nextName,
       shrinking,
@@ -1382,7 +1382,7 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$b,
+  n: n$c,
   classes: classes$a
 } = createNamespace("action-sheet");
 var _hoisted_1$D = ["onClick"];
@@ -1467,7 +1467,7 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$b,
+      n: n$c,
       classes: classes$a,
       call,
       popupShow,
@@ -1805,7 +1805,7 @@ var props$N = {
   }
 };
 var {
-  n: n$a,
+  n: n$b,
   classes: classes$9
 } = createNamespace("button");
 var _hoisted_1$A = ["disabled"];
@@ -1881,7 +1881,7 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n: n$a,
+      n: n$b,
       classes: classes$9,
       pending,
       handleClick,
@@ -2160,7 +2160,7 @@ var props$K = {
   }
 };
 var {
-  n: n$9,
+  n: n$a,
   classes: classes$8
 } = createNamespace("card");
 var _hoisted_1$y = ["src", "alt"];
@@ -2205,7 +2205,7 @@ var Card = defineComponent({
   props: props$K,
   setup() {
     return {
-      n: n$9,
+      n: n$a,
       classes: classes$8,
       toSizeUnit
     };
@@ -2242,7 +2242,7 @@ var props$J = {
   }
 };
 var {
-  n: n$8,
+  n: n$9,
   classes: classes$7
 } = createNamespace("cell");
 function render$P(_ctx, _cache) {
@@ -2276,7 +2276,7 @@ var Cell = defineComponent({
   props: props$J,
   setup() {
     return {
-      n: n$8,
+      n: n$9,
       classes: classes$7
     };
   }
@@ -8253,7 +8253,7 @@ function _asyncToGenerator$8(fn) {
   };
 }
 var {
-  n: n$7
+  n: n$8
 } = createNamespace("form");
 function render$y(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -8303,7 +8303,7 @@ var Form = defineComponent({
     };
     bindFormItems(formProvider);
     return {
-      n: n$7,
+      n: n$8,
       validate,
       reset,
       resetValidation
@@ -8605,7 +8605,7 @@ var props$v = {
   }
 };
 var {
-  n: n$6,
+  n: n$7,
   classes: classes$6
 } = createNamespace("image");
 var _hoisted_1$k = ["alt", "lazy-error", "lazy-loading"];
@@ -8690,7 +8690,7 @@ var Image$1 = defineComponent({
       !lazy && call(onError, e);
     };
     return {
-      n: n$6,
+      n: n$7,
       classes: classes$6,
       toSizeUnit,
       handleLoad,
@@ -10152,7 +10152,7 @@ var props$p = {
   }
 };
 var {
-  n: n$5,
+  n: n$6,
   classes: classes$5
 } = createNamespace("input");
 var _hoisted_1$g = ["id", "disabled", "type", "value", "maxlength", "rows"];
@@ -10314,10 +10314,10 @@ var Input = defineComponent({
         modelValue
       } = props2;
       if (!hint && !isEmpty(modelValue)) {
-        return n$5("--placeholder-hidden");
+        return n$6("--placeholder-hidden");
       }
       if (hint && (!isEmpty(modelValue) || isFocus.value)) {
-        return n$5("--placeholder-hint");
+        return n$6("--placeholder-hint");
       }
     };
     var handleFocus = (e) => {
@@ -10395,7 +10395,7 @@ var Input = defineComponent({
       maxlengthText,
       formDisabled: form == null ? void 0 : form.disabled,
       formReadonly: form == null ? void 0 : form.readonly,
-      n: n$5,
+      n: n$6,
       classes: classes$5,
       call,
       isEmpty,
@@ -10487,7 +10487,7 @@ function _asyncToGenerator$3(fn) {
   };
 }
 var {
-  n: n$4,
+  n: n$5,
   classes: classes$4
 } = createNamespace("list");
 function render$p(_ctx, _cache) {
@@ -10579,7 +10579,7 @@ var List = defineComponent({
       isNumber,
       load,
       check: check2,
-      n: n$4,
+      n: n$5,
       classes: classes$4
     };
   }
@@ -11311,7 +11311,7 @@ var props$k = _extends$2({
   }
 }, pickProps(props$S, ["show", "onUpdate:show", "closeOnClickOverlay", "teleport", "onOpen", "onClose", "onOpened", "onClosed", "onClickOverlay", "onRouteChange"]));
 var {
-  n: n$3,
+  n: n$4,
   classes: classes$3
 } = createNamespace("picker");
 var MOMENTUM_RECORD_TIME = 300;
@@ -11635,7 +11635,7 @@ var VarPicker = defineComponent({
       immediate: true
     });
     return {
-      n: n$3,
+      n: n$4,
       classes: classes$3,
       pack,
       optionHeight,
@@ -13253,7 +13253,7 @@ var props$c = {
   }
 };
 var {
-  n: n$2,
+  n: n$3,
   classes: classes$2
 } = createNamespace("skeleton");
 function render$e(_ctx, _cache) {
@@ -13320,7 +13320,7 @@ var Skeleton = defineComponent({
   props: props$c,
   setup() {
     return {
-      n: n$2,
+      n: n$3,
       classes: classes$2,
       toSizeUnit,
       toNumber
@@ -14192,7 +14192,7 @@ var props$9 = {
   }
 };
 var {
-  n: n$1,
+  n: n$2,
   classes: classes$1
 } = createNamespace("space");
 var internalSizes = {
@@ -14272,7 +14272,7 @@ var Space = defineComponent({
         }, [child]);
       });
       return createVNode("div", {
-        "class": classes$1(n$1(), "var--box", [inline, n$1("--inline")]),
+        "class": classes$1(n$2(), "var--box", [inline, n$2("--inline")]),
         "style": {
           flexDirection: direction,
           justifyContent: justify,
@@ -14471,13 +14471,16 @@ var props$7 = {
     type: Function
   }
 };
+var {
+  n: n$1
+} = createNamespace("steps");
 function render$9(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
-    class: "var-steps",
+    class: normalizeClass(_ctx.n()),
     style: normalizeStyle({
       flexDirection: _ctx.direction === "horizontal" ? "row" : "column"
     })
-  }, [renderSlot(_ctx.$slots, "default")], 4);
+  }, [renderSlot(_ctx.$slots, "default")], 6);
 }
 var Steps = defineComponent({
   render: render$9,
@@ -14493,7 +14496,7 @@ var Steps = defineComponent({
       bindStep
     } = useStep();
     var clickStep = (index) => {
-      props2.onClickStep == null ? void 0 : props2.onClickStep(index);
+      call(props2.onClickStep, index);
     };
     var stepsProvider = {
       active,
@@ -14504,6 +14507,9 @@ var Steps = defineComponent({
       clickStep
     };
     bindStep(stepsProvider);
+    return {
+      n: n$1
+    };
   }
 });
 Steps.install = function(app) {
