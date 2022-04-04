@@ -10999,8 +10999,8 @@ function render$n(_ctx, _cache) {
   var _directive_ripple = resolveDirective("ripple");
   return openBlock(), createElementBlock("ul", _hoisted_1$b, [withDirectives((openBlock(), createElementBlock("li", {
     class: normalizeClass(["var-pagination__item var-pagination__prev", {
-      "var-pagination__item-disabled": _ctx.current <= 1 || _ctx.disabled,
-      "var-pagination__item-hover": _ctx.simple,
+      "var-pagination__item--disabled": _ctx.current <= 1 || _ctx.disabled,
+      "var-pagination__item--hover": _ctx.simple,
       "var-elevation--2": !_ctx.simple
     }]),
     onClick: _cache[0] || (_cache[0] = ($event) => _ctx.clickItem("prev"))
@@ -11011,7 +11011,7 @@ function render$n(_ctx, _cache) {
   }]]), _ctx.simple ? (openBlock(), createElementBlock("li", {
     key: 0,
     class: normalizeClass(["var-pagination__simple", {
-      "var-pagination__item-disabled": _ctx.disabled
+      "var-pagination__item--disabled": _ctx.disabled
     }])
   }, [createVNode(_component_var_input, {
     modelValue: _ctx.simpleValue,
@@ -11027,10 +11027,10 @@ function render$n(_ctx, _cache) {
       key: _ctx.toNumber(item) + index,
       "item-mode": _ctx.getMode(item, index),
       class: normalizeClass(["var-pagination__item var-elevation--2", {
-        "var-pagination__item-active": item === _ctx.current && !_ctx.disabled,
-        "var-pagination__item-hide": _ctx.isHideEllipsis(item, index),
-        "var-pagination__item-disabled": _ctx.disabled,
-        "var-pagination__item-disabled-active": item === _ctx.current && _ctx.disabled
+        "var-pagination__item--active": item === _ctx.current && !_ctx.disabled,
+        "var-pagination__item--hide": _ctx.isHideEllipsis(item, index),
+        "var-pagination__item--disabled": _ctx.disabled,
+        "var-pagination__item--disabled--active": item === _ctx.current && _ctx.disabled
       }]),
       onClick: ($event) => _ctx.clickItem(item, index)
     }, [createTextVNode(toDisplayString(item), 1)], 10, _hoisted_2$8)), [[_directive_ripple, {
@@ -11038,8 +11038,8 @@ function render$n(_ctx, _cache) {
     }]]);
   }), 128)), withDirectives((openBlock(), createElementBlock("li", {
     class: normalizeClass(["var-pagination__item var-pagination__next", {
-      "var-pagination__item-disabled": _ctx.current >= _ctx.pageCount || _ctx.disabled,
-      "var-pagination__item-hover": _ctx.simple,
+      "var-pagination__item--disabled": _ctx.current >= _ctx.pageCount || _ctx.disabled,
+      "var-pagination__item--hover": _ctx.simple,
       "var-elevation--2": !_ctx.simple
     }]),
     onClick: _cache[4] || (_cache[4] = ($event) => _ctx.clickItem("next"))
@@ -11050,7 +11050,7 @@ function render$n(_ctx, _cache) {
   }]]), _ctx.showSizeChanger ? (openBlock(), createElementBlock("li", {
     key: 2,
     class: normalizeClass(["var-pagination__size", {
-      "var-pagination__item-disabled": _ctx.disabled
+      "var-pagination__item--disabled": _ctx.disabled
     }])
   }, [createVNode(_component_var_menu, {
     show: _ctx.menuVisible,
@@ -11060,7 +11060,7 @@ function render$n(_ctx, _cache) {
     menu: withCtx(() => [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.sizeOption, (option2, index) => {
       return withDirectives((openBlock(), createBlock(_component_var_cell, {
         class: normalizeClass(["var-pagination__list", {
-          "var-pagination__list-active": _ctx.size === option2
+          "var-pagination__list--active": _ctx.size === option2
         }]),
         key: index,
         onClick: ($event) => _ctx.clickSize(option2)
@@ -11070,7 +11070,7 @@ function render$n(_ctx, _cache) {
       }, 1032, ["class", "onClick"])), [[_directive_ripple]]);
     }), 128))]),
     default: withCtx(() => [createElementVNode("div", {
-      class: "var-pagination__size-open",
+      class: "var-pagination__size--open",
       style: {
         "display": "flex"
       },
@@ -11078,7 +11078,7 @@ function render$n(_ctx, _cache) {
         return _ctx.showMenu && _ctx.showMenu(...arguments);
       })
     }, [createElementVNode("span", null, toDisplayString(_ctx.size) + toDisplayString(_ctx.pack.paginationItem) + " / " + toDisplayString(_ctx.pack.paginationPage), 1), createVNode(_component_var_icon, {
-      class: "var-pagination__size-open-icon",
+      class: "var-pagination__size--open-icon",
       "var-pagination-cover": "",
       name: "menu-down"
     })])]),
@@ -11086,7 +11086,7 @@ function render$n(_ctx, _cache) {
   }, 8, ["show"])], 2)) : createCommentVNode("v-if", true), _ctx.showQuickJumper && !_ctx.simple ? (openBlock(), createElementBlock("li", {
     key: 3,
     class: normalizeClass(["var-pagination__quickly", {
-      "var-pagination__item-disabled": _ctx.disabled
+      "var-pagination__item--disabled": _ctx.disabled
     }])
   }, [createTextVNode(toDisplayString(_ctx.pack.paginationJump) + " ", 1), createVNode(_component_var_input, {
     modelValue: _ctx.inputValue,
