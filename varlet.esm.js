@@ -656,7 +656,7 @@ function _extends$c() {
   return _extends$c.apply(this, arguments);
 }
 var {
-  n: n$H
+  n: n$I
 } = createNamespace("ripple");
 var ANIMATION_DURATION$1 = 250;
 function setStyles(element) {
@@ -711,7 +711,7 @@ function createRipple(event) {
       size
     } = computeRippleStyles(this, event);
     var ripple2 = document.createElement("div");
-    ripple2.classList.add(n$H());
+    ripple2.classList.add(n$I());
     ripple2.style.opacity = "0";
     ripple2.style.transform = "translate(" + x + "px, " + y + "px) scale3d(.3, .3, .3)";
     ripple2.style.width = size + "px";
@@ -1116,8 +1116,8 @@ function _asyncToGenerator$9(fn) {
   };
 }
 var {
-  n: n$G,
-  classes: classes$y
+  n: n$H,
+  classes: classes$z
 } = createNamespace("icon");
 function render$X(_ctx, _cache) {
   return openBlock(), createBlock(resolveDynamicComponent(_ctx.isURL(_ctx.name) ? "img" : "i"), {
@@ -1164,8 +1164,8 @@ var Icon = defineComponent({
       immediate: true
     });
     return {
-      n: n$G,
-      classes: classes$y,
+      n: n$H,
+      classes: classes$z,
       nextName,
       shrinking,
       isURL,
@@ -1385,8 +1385,8 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$F,
-  classes: classes$x
+  n: n$G,
+  classes: classes$y
 } = createNamespace("action-sheet");
 var _hoisted_1$q = ["onClick"];
 function render$W(_ctx, _cache) {
@@ -1470,8 +1470,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$F,
-      classes: classes$x,
+      n: n$G,
+      classes: classes$y,
       call,
       popupShow,
       pack,
@@ -1648,8 +1648,8 @@ var props$O = {
   }
 };
 var {
-  n: n$E,
-  classes: classes$w
+  n: n$F,
+  classes: classes$x
 } = createNamespace("loading");
 var _withScopeId$1 = (n2) => (pushScopeId(""), n2 = n2(), popScopeId(), n2);
 var _hoisted_1$o = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createElementVNode("svg", {
@@ -1732,8 +1732,8 @@ var Loading = defineComponent({
       return props2.loading;
     });
     return {
-      n: n$E,
-      classes: classes$w,
+      n: n$F,
+      classes: classes$x,
       loadingTypeDict,
       getRadius,
       isShow
@@ -1812,8 +1812,8 @@ var props$N = {
   }
 };
 var {
-  n: n$D,
-  classes: classes$v
+  n: n$E,
+  classes: classes$w
 } = createNamespace("button");
 var _hoisted_1$n = ["disabled"];
 function render$T(_ctx, _cache) {
@@ -1888,8 +1888,8 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n: n$D,
-      classes: classes$v,
+      n: n$E,
+      classes: classes$w,
       pending,
       handleClick,
       handleTouchstart
@@ -2167,8 +2167,8 @@ var props$K = {
   }
 };
 var {
-  n: n$C,
-  classes: classes$u
+  n: n$D,
+  classes: classes$v
 } = createNamespace("card");
 var _hoisted_1$l = ["src", "alt"];
 function render$Q(_ctx, _cache) {
@@ -2212,8 +2212,8 @@ var Card = defineComponent({
   props: props$K,
   setup() {
     return {
-      n: n$C,
-      classes: classes$u,
+      n: n$D,
+      classes: classes$v,
       toSizeUnit
     };
   }
@@ -2249,8 +2249,8 @@ var props$J = {
   }
 };
 var {
-  n: n$B,
-  classes: classes$t
+  n: n$C,
+  classes: classes$u
 } = createNamespace("cell");
 function render$P(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
@@ -2283,8 +2283,8 @@ var Cell = defineComponent({
   props: props$J,
   setup() {
     return {
-      n: n$B,
-      classes: classes$t
+      n: n$C,
+      classes: classes$u
     };
   }
 });
@@ -2430,8 +2430,8 @@ function useFormItems() {
   };
 }
 var {
-  n: n$A,
-  classes: classes$s
+  n: n$B,
+  classes: classes$t
 } = createNamespace("checkbox");
 function render$N(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
@@ -2593,8 +2593,8 @@ var Checkbox = defineComponent({
       checkboxGroupErrorMessage: checkboxGroup2 == null ? void 0 : checkboxGroup2.errorMessage,
       formDisabled: form == null ? void 0 : form.disabled,
       formReadonly: form == null ? void 0 : form.readonly,
-      n: n$A,
-      classes: classes$s,
+      n: n$B,
+      classes: classes$t,
       call,
       handleClick,
       toggle,
@@ -2638,8 +2638,8 @@ var props$G = {
   }
 };
 var {
-  n: n$z,
-  classes: classes$r
+  n: n$A,
+  classes: classes$s
 } = createNamespace("checkbox-group");
 function render$M(_ctx, _cache) {
   var _component_var_form_details = resolveComponent("var-form-details");
@@ -2769,8 +2769,8 @@ var CheckboxGroup = defineComponent({
     call(bindForm, checkboxGroupProvider);
     return {
       errorMessage,
-      n: n$z,
-      classes: classes$r,
+      n: n$A,
+      classes: classes$s,
       call,
       checkAll: checkAll2,
       inverseAll,
@@ -2827,25 +2827,29 @@ var props$F = {
     type: Function
   }
 };
+var {
+  n: n$z,
+  classes: classes$r
+} = createNamespace("chip");
 function render$L(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   return openBlock(), createBlock(Transition, {
     name: "var-fade"
   }, {
     default: withCtx(() => [createElementVNode("span", mergeProps({
-      class: ["var-chip var--box", _ctx.contentClass],
+      class: _ctx.classes(_ctx.n(), "var--box", ..._ctx.contentClass),
       style: _ctx.chipStyles
     }, _ctx.$attrs), [renderSlot(_ctx.$slots, "left"), createElementVNode("span", {
-      class: normalizeClass(["var-chip--text-" + _ctx.size])
+      class: normalizeClass(_ctx.n("text-" + _ctx.size))
     }, [renderSlot(_ctx.$slots, "default")], 2), renderSlot(_ctx.$slots, "right"), _ctx.closable ? (openBlock(), createElementBlock("span", {
       key: 0,
-      class: "var-chip--close",
+      class: normalizeClass(_ctx.n("--close")),
       onClick: _cache[0] || (_cache[0] = function() {
         return _ctx.onClose && _ctx.onClose(...arguments);
       })
     }, [createVNode(_component_var_icon, {
       name: "" + (_ctx.iconName ? _ctx.iconName : "close-circle")
-    }, null, 8, ["name"])])) : createCommentVNode("v-if", true)], 16)]),
+    }, null, 8, ["name"])], 2)) : createCommentVNode("v-if", true)], 16)]),
     _: 3
   });
 }
@@ -2884,11 +2888,13 @@ var Chip = defineComponent({
         round: round2
       } = props2;
       var blockClass = block ? "var--flex" : "var--inline-flex";
-      var plainTypeClass = plain ? "var-chip--plain var-chip--plain-" + type : "var-chip--" + type;
-      var roundClass = round2 && "var-chip--round";
-      return ["var-chip--" + size, blockClass, plainTypeClass, roundClass];
+      var plainTypeClass = plain ? n$z("plain") + " " + n$z("plain-" + type) : n$z("--" + type);
+      var roundClass = round2 && n$z("--round");
+      return [n$z("--" + size), blockClass, plainTypeClass, roundClass];
     });
     return {
+      n: n$z,
+      classes: classes$r,
       chipStyles,
       contentClass
     };
