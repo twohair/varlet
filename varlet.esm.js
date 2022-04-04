@@ -1113,8 +1113,8 @@ function _asyncToGenerator$9(fn) {
   };
 }
 var {
-  n: n$l,
-  classes: classes$i
+  n: n$m,
+  classes: classes$j
 } = createNamespace("icon");
 function render$X(_ctx, _cache) {
   return openBlock(), createBlock(resolveDynamicComponent(_ctx.isURL(_ctx.name) ? "img" : "i"), {
@@ -1161,8 +1161,8 @@ var Icon = defineComponent({
       immediate: true
     });
     return {
-      n: n$l,
-      classes: classes$i,
+      n: n$m,
+      classes: classes$j,
       nextName,
       shrinking,
       isURL,
@@ -1382,8 +1382,8 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$k,
-  classes: classes$h
+  n: n$l,
+  classes: classes$i
 } = createNamespace("action-sheet");
 var _hoisted_1$C = ["onClick"];
 function render$W(_ctx, _cache) {
@@ -1467,8 +1467,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$k,
-      classes: classes$h,
+      n: n$l,
+      classes: classes$i,
       call,
       popupShow,
       pack,
@@ -1660,7 +1660,7 @@ var _hoisted_3$a = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createEl
   r: "20",
   fill: "none"
 })], -1));
-var _hoisted_4$4 = [_hoisted_3$a];
+var _hoisted_4$3 = [_hoisted_3$a];
 function render$U(_ctx, _cache) {
   return openBlock(), createElementBlock("div", _hoisted_1$A, [_ctx.$slots.default ? (openBlock(), createElementBlock("div", {
     key: 0,
@@ -1675,7 +1675,7 @@ function render$U(_ctx, _cache) {
       height: _ctx.getRadius * 2 + "px",
       color: _ctx.color
     })
-  }, _hoisted_4$4, 4)])) : createCommentVNode("v-if", true), (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.loadingTypeDict, (nums, key) => {
+  }, _hoisted_4$3, 4)])) : createCommentVNode("v-if", true), (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.loadingTypeDict, (nums, key) => {
     return openBlock(), createElementBlock(Fragment, {
       key
     }, [_ctx.type === key ? (openBlock(), createElementBlock("div", {
@@ -1805,8 +1805,8 @@ var props$N = {
   }
 };
 var {
-  n: n$j,
-  classes: classes$g
+  n: n$k,
+  classes: classes$h
 } = createNamespace("button");
 var _hoisted_1$z = ["disabled"];
 function render$T(_ctx, _cache) {
@@ -1881,8 +1881,8 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n: n$j,
-      classes: classes$g,
+      n: n$k,
+      classes: classes$h,
       pending,
       handleClick,
       handleTouchstart
@@ -2160,8 +2160,8 @@ var props$K = {
   }
 };
 var {
-  n: n$i,
-  classes: classes$f
+  n: n$j,
+  classes: classes$g
 } = createNamespace("card");
 var _hoisted_1$x = ["src", "alt"];
 function render$Q(_ctx, _cache) {
@@ -2205,8 +2205,8 @@ var Card = defineComponent({
   props: props$K,
   setup() {
     return {
-      n: n$i,
-      classes: classes$f,
+      n: n$j,
+      classes: classes$g,
       toSizeUnit
     };
   }
@@ -2242,8 +2242,8 @@ var props$J = {
   }
 };
 var {
-  n: n$h,
-  classes: classes$e
+  n: n$i,
+  classes: classes$f
 } = createNamespace("cell");
 function render$P(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
@@ -2276,8 +2276,8 @@ var Cell = defineComponent({
   props: props$J,
   setup() {
     return {
-      n: n$h,
-      classes: classes$e
+      n: n$i,
+      classes: classes$f
     };
   }
 });
@@ -2946,8 +2946,8 @@ function useRow() {
   };
 }
 var {
-  n: n$g,
-  classes: classes$d
+  n: n$h,
+  classes: classes$e
 } = createNamespace("col");
 function render$K(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -2991,10 +2991,10 @@ var Col = defineComponent({
           span: _span,
           offset: _offset
         } = size;
-        _span && classes2.push(n$g("--span-" + mode + "-" + _span));
-        _offset && classes2.push(n$g("--offset-" + mode + "-" + _offset));
+        _span && classes2.push(n$h("--span-" + mode + "-" + _span));
+        _offset && classes2.push(n$h("--offset-" + mode + "-" + _offset));
       } else {
-        classes2.push(n$g("--span-" + mode + "-" + size));
+        classes2.push(n$h("--span-" + mode + "-" + size));
       }
       return classes2;
     };
@@ -3003,8 +3003,8 @@ var Col = defineComponent({
     });
     call(bindRow, colProvider);
     return {
-      n: n$g,
-      classes: classes$d,
+      n: n$h,
+      classes: classes$e,
       padding,
       toNumber,
       toSizeUnit,
@@ -7073,7 +7073,7 @@ var _hoisted_2$e = {
 var _hoisted_3$7 = {
   class: "var-day-picker__head"
 };
-var _hoisted_4$3 = {
+var _hoisted_4$2 = {
   class: "var-day-picker__body"
 };
 function render$C(_ctx, _cache) {
@@ -7095,7 +7095,7 @@ function render$C(_ctx, _cache) {
       return openBlock(), createElementBlock("li", {
         key: week.index
       }, toDisplayString(_ctx.getDayAbbr(week.index)), 1);
-    }), 128))]), createElementVNode("ul", _hoisted_4$3, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.days, (day, index) => {
+    }), 128))]), createElementVNode("ul", _hoisted_4$2, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.days, (day, index) => {
       return openBlock(), createElementBlock("li", {
         key: index
       }, [createVNode(_component_var_button, mergeProps({
@@ -8259,7 +8259,7 @@ function _asyncToGenerator$8(fn) {
   };
 }
 var {
-  n: n$f
+  n: n$g
 } = createNamespace("form");
 function render$y(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -8309,7 +8309,7 @@ var Form = defineComponent({
     };
     bindFormItems(formProvider);
     return {
-      n: n$f,
+      n: n$g,
       validate,
       reset,
       resetValidation
@@ -8611,8 +8611,8 @@ var props$v = {
   }
 };
 var {
-  n: n$e,
-  classes: classes$c
+  n: n$f,
+  classes: classes$d
 } = createNamespace("image");
 var _hoisted_1$j = ["alt", "lazy-error", "lazy-loading"];
 var _hoisted_2$c = ["alt", "src"];
@@ -8696,8 +8696,8 @@ var Image$1 = defineComponent({
       !lazy && call(onError, e);
     };
     return {
-      n: n$e,
-      classes: classes$c,
+      n: n$f,
+      classes: classes$d,
       toSizeUnit,
       handleLoad,
       handleError
@@ -8790,8 +8790,8 @@ function _asyncToGenerator$6(fn) {
 var SWIPE_DELAY = 250;
 var SWIPE_DISTANCE = 20;
 var {
-  n: n$d,
-  classes: classes$b
+  n: n$e,
+  classes: classes$c
 } = createNamespace("swipe");
 var _hoisted_1$i = ["onClick"];
 function render$w(_ctx, _cache) {
@@ -9109,8 +9109,8 @@ var Swipe = defineComponent({
       stopAutoplay();
     });
     return {
-      n: n$d,
-      classes: classes$b,
+      n: n$e,
+      classes: classes$c,
       length,
       index,
       swipeEl,
@@ -9237,8 +9237,8 @@ var props$t = _extends$3({
   "onRouteChange"
 ]));
 var {
-  n: n$c,
-  classes: classes$a
+  n: n$d,
+  classes: classes$b
 } = createNamespace("image-preview");
 var DISTANCE_OFFSET = 12;
 var EVENT_DELAY = 200;
@@ -9513,8 +9513,8 @@ var VarImagePreview = defineComponent({
       immediate: true
     });
     return {
-      n: n$c,
-      classes: classes$a,
+      n: n$d,
+      classes: classes$b,
       initialIndex,
       popupShow,
       scale,
@@ -9630,8 +9630,8 @@ function _asyncToGenerator$5(fn) {
   };
 }
 var {
-  n: n$b,
-  classes: classes$9
+  n: n$c,
+  classes: classes$a
 } = createNamespace("sticky");
 function render$t(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -9735,8 +9735,8 @@ var Sticky = defineComponent({
     onMounted(addScrollListener);
     onUnmounted(removeScrollListener);
     return {
-      n: n$b,
-      classes: classes$9,
+      n: n$c,
+      classes: classes$a,
       stickyEl,
       wrapperEl,
       isFixed,
@@ -10169,8 +10169,8 @@ var props$p = {
   }
 };
 var {
-  n: n$a,
-  classes: classes$8
+  n: n$b,
+  classes: classes$9
 } = createNamespace("input");
 var _hoisted_1$f = ["id", "disabled", "type", "value", "maxlength", "rows"];
 var _hoisted_2$a = ["id", "disabled", "type", "value", "maxlength"];
@@ -10331,10 +10331,10 @@ var Input = defineComponent({
         modelValue
       } = props2;
       if (!hint && !isEmpty(modelValue)) {
-        return n$a("--placeholder-hidden");
+        return n$b("--placeholder-hidden");
       }
       if (hint && (!isEmpty(modelValue) || isFocus.value)) {
-        return n$a("--placeholder-hint");
+        return n$b("--placeholder-hint");
       }
     };
     var handleFocus = (e) => {
@@ -10412,8 +10412,8 @@ var Input = defineComponent({
       maxlengthText,
       formDisabled: form == null ? void 0 : form.disabled,
       formReadonly: form == null ? void 0 : form.readonly,
-      n: n$a,
-      classes: classes$8,
+      n: n$b,
+      classes: classes$9,
       call,
       isEmpty,
       computePlaceholderState,
@@ -10504,8 +10504,8 @@ function _asyncToGenerator$3(fn) {
   };
 }
 var {
-  n: n$9,
-  classes: classes$7
+  n: n$a,
+  classes: classes$8
 } = createNamespace("list");
 function render$p(_ctx, _cache) {
   var _component_var_loading = resolveComponent("var-loading");
@@ -10596,8 +10596,8 @@ var List = defineComponent({
       isNumber,
       load,
       check: check2,
-      n: n$9,
-      classes: classes$7
+      n: n$a,
+      classes: classes$8
     };
   }
 });
@@ -11328,8 +11328,8 @@ var props$k = _extends$2({
   }
 }, pickProps(props$S, ["show", "onUpdate:show", "closeOnClickOverlay", "teleport", "onOpen", "onClose", "onOpened", "onClosed", "onClickOverlay", "onRouteChange"]));
 var {
-  n: n$8,
-  classes: classes$6
+  n: n$9,
+  classes: classes$7
 } = createNamespace("picker");
 var MOMENTUM_RECORD_TIME = 300;
 var MOMENTUM_ALLOW_DISTANCE = 15;
@@ -11652,8 +11652,8 @@ var VarPicker = defineComponent({
       immediate: true
     });
     return {
-      n: n$8,
-      classes: classes$6,
+      n: n$9,
+      classes: classes$7,
       pack,
       optionHeight,
       optionCount,
@@ -11790,53 +11790,55 @@ var props$j = {
     default: true
   }
 };
-var _hoisted_1$b = {
-  class: "var-progress"
-};
-var _hoisted_2$7 = {
-  key: 0,
-  class: "var-progress-linear"
-};
-var _hoisted_3$4 = ["viewBox"];
-var _hoisted_4$2 = ["cx", "cy", "r", "stroke-width"];
-var _hoisted_5$2 = ["cx", "cy", "r", "stroke-width"];
+var {
+  n: n$8,
+  classes: classes$6
+} = createNamespace("progress");
+var _hoisted_1$b = ["viewBox"];
+var _hoisted_2$7 = ["cx", "cy", "r", "stroke-width"];
+var _hoisted_3$4 = ["cx", "cy", "r", "stroke-width"];
 function render$l(_ctx, _cache) {
-  return openBlock(), createElementBlock("div", _hoisted_1$b, [_ctx.mode === "linear" ? (openBlock(), createElementBlock("div", _hoisted_2$7, [createElementVNode("div", mergeProps({
-    class: "var-progress-linear__block",
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(_ctx.n())
+  }, [_ctx.mode === "linear" ? (openBlock(), createElementBlock("div", {
+    key: 0,
+    class: normalizeClass(_ctx.n("linear"))
+  }, [createElementVNode("div", mergeProps({
+    class: _ctx.n("linear-block"),
     style: {
       height: _ctx.lineWidth + "px"
     }
   }, _ctx.$attrs), [_ctx.track ? (openBlock(), createElementBlock("div", {
     key: 0,
-    class: "var-progress-linear__background",
+    class: normalizeClass(_ctx.n("linear-background")),
     style: normalizeStyle({
       background: _ctx.trackColor
     })
-  }, null, 4)) : createCommentVNode("v-if", true), createElementVNode("div", {
-    class: normalizeClass("var-progress-linear__certain" + (_ctx.ripple ? " var-progress-linear__ripple" : "")),
+  }, null, 6)) : createCommentVNode("v-if", true), createElementVNode("div", {
+    class: normalizeClass(_ctx.classes(_ctx.n("linear-certain"), [_ctx.ripple, _ctx.n("linear-ripple")])),
     style: normalizeStyle({
       background: _ctx.color,
       width: _ctx.linearProps.width
     })
   }, null, 6)], 16), _ctx.label ? (openBlock(), createElementBlock("div", mergeProps({
     key: 0,
-    class: "var-progress-linear__label"
-  }, _ctx.$attrs), [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.linearProps.roundValue), 1)])], 16)) : createCommentVNode("v-if", true)])) : createCommentVNode("v-if", true), _ctx.mode === "circle" ? (openBlock(), createElementBlock("div", {
+    class: _ctx.n("linear-label")
+  }, _ctx.$attrs), [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.linearProps.roundValue), 1)])], 16)) : createCommentVNode("v-if", true)], 2)) : createCommentVNode("v-if", true), _ctx.mode === "circle" ? (openBlock(), createElementBlock("div", {
     key: 1,
-    class: "var-progress-circle",
+    class: normalizeClass(_ctx.n("circle")),
     style: normalizeStyle({
       width: _ctx.size + "px",
       height: _ctx.size + "px"
     })
   }, [(openBlock(), createElementBlock("svg", {
-    class: "var-progress-circle__svg",
+    class: normalizeClass(_ctx.n("circle-svg")),
     style: normalizeStyle({
       transform: "rotate(" + (_ctx.rotate - 90) + "deg)"
     }),
     viewBox: _ctx.circleProps.viewBox
   }, [_ctx.track ? (openBlock(), createElementBlock("circle", {
     key: 0,
-    class: "var-progress-circle__background",
+    class: normalizeClass(_ctx.n("circle-background")),
     cx: _ctx.size / 2,
     cy: _ctx.size / 2,
     r: _ctx.circleProps.radius,
@@ -11846,8 +11848,8 @@ function render$l(_ctx, _cache) {
       strokeDasharray: _ctx.circleProps.perimeter,
       stroke: _ctx.trackColor
     })
-  }, null, 12, _hoisted_4$2)) : createCommentVNode("v-if", true), createElementVNode("circle", {
-    class: "var-progress-circle__certain",
+  }, null, 14, _hoisted_2$7)) : createCommentVNode("v-if", true), createElementVNode("circle", {
+    class: normalizeClass(_ctx.n("circle-certain")),
     cx: _ctx.size / 2,
     cy: _ctx.size / 2,
     r: _ctx.circleProps.radius,
@@ -11857,10 +11859,10 @@ function render$l(_ctx, _cache) {
       strokeDasharray: _ctx.circleProps.strokeDasharray,
       stroke: _ctx.color
     })
-  }, null, 12, _hoisted_5$2)], 12, _hoisted_3$4)), _ctx.label ? (openBlock(), createElementBlock("div", mergeProps({
+  }, null, 14, _hoisted_3$4)], 14, _hoisted_1$b)), _ctx.label ? (openBlock(), createElementBlock("div", mergeProps({
     key: 0,
-    class: "var-progress-circle__label"
-  }, _ctx.$attrs), [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.circleProps.roundValue), 1)])], 16)) : createCommentVNode("v-if", true)], 4)) : createCommentVNode("v-if", true)]);
+    class: _ctx.n("circle-label")
+  }, _ctx.$attrs), [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.circleProps.roundValue), 1)])], 16)) : createCommentVNode("v-if", true)], 6)) : createCommentVNode("v-if", true)], 2);
 }
 var Progress = defineComponent({
   render: render$l,
@@ -11897,6 +11899,8 @@ var Progress = defineComponent({
       };
     });
     return {
+      n: n$8,
+      classes: classes$6,
       linearProps,
       circleProps
     };
