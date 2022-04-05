@@ -656,7 +656,7 @@ function _extends$c() {
   return _extends$c.apply(this, arguments);
 }
 var {
-  n: n$V
+  n: n$W
 } = createNamespace("ripple");
 var ANIMATION_DURATION$1 = 250;
 function setStyles(element) {
@@ -711,7 +711,7 @@ function createRipple(event) {
       size
     } = computeRippleStyles(this, event);
     var ripple2 = document.createElement("div");
-    ripple2.classList.add(n$V());
+    ripple2.classList.add(n$W());
     ripple2.style.opacity = "0";
     ripple2.style.transform = "translate(" + x + "px, " + y + "px) scale3d(.3, .3, .3)";
     ripple2.style.width = size + "px";
@@ -962,8 +962,8 @@ function _isSlot$2(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
 var {
-  n: n$U,
-  classes: classes$M
+  n: n$V,
+  classes: classes$N
 } = createNamespace("popup");
 var Popup = defineComponent({
   name: "VarPopup",
@@ -1007,7 +1007,7 @@ var Popup = defineComponent({
         overlayStyle
       } = props2;
       return createVNode("div", {
-        "class": classes$M(n$U("overlay"), overlayClass),
+        "class": classes$N(n$V("overlay"), overlayClass),
         "style": _extends$b({
           zIndex: zIndex.value - 1
         }, overlayStyle),
@@ -1016,7 +1016,7 @@ var Popup = defineComponent({
     };
     var renderContent = () => {
       return createVNode("div", mergeProps({
-        "class": classes$M(n$U("content"), "var-elevation--3", n$U("--" + props2.position)),
+        "class": classes$N(n$V("content"), "var-elevation--3", n$V("--" + props2.position)),
         "style": {
           zIndex: zIndex.value
         }
@@ -1037,7 +1037,7 @@ var Popup = defineComponent({
         "onAfterLeave": onClosed
       }, {
         default: () => [withDirectives(createVNode("div", {
-          "class": classes$M("var--box", n$U()),
+          "class": classes$N("var--box", n$V()),
           "style": {
             zIndex: zIndex.value - 2
           }
@@ -1120,8 +1120,8 @@ function _asyncToGenerator$9(fn) {
   };
 }
 var {
-  n: n$T,
-  classes: classes$L
+  n: n$U,
+  classes: classes$M
 } = createNamespace("icon");
 function render$Z(_ctx, _cache) {
   return openBlock(), createBlock(resolveDynamicComponent(_ctx.isURL(_ctx.name) ? "img" : "i"), {
@@ -1168,8 +1168,8 @@ var Icon = defineComponent({
       immediate: true
     });
     return {
-      n: n$T,
-      classes: classes$L,
+      n: n$U,
+      classes: classes$M,
       nextName,
       shrinking,
       isURL,
@@ -1389,8 +1389,8 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$S,
-  classes: classes$K
+  n: n$T,
+  classes: classes$L
 } = createNamespace("action-sheet");
 var _hoisted_1$n = ["onClick"];
 function render$Y(_ctx, _cache) {
@@ -1475,8 +1475,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$S,
-      classes: classes$K,
+      n: n$T,
+      classes: classes$L,
       handlePopupUpdateShow,
       popupShow,
       pack,
@@ -1563,8 +1563,8 @@ var props$R = {
   }
 };
 var {
-  n: n$R,
-  classes: classes$J
+  n: n$S,
+  classes: classes$K
 } = createNamespace("app-bar");
 function render$X(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
@@ -1611,8 +1611,8 @@ var AppBar = defineComponent({
     onMounted(computePadding);
     onUpdated(computePadding);
     return {
-      n: n$R,
-      classes: classes$J,
+      n: n$S,
+      classes: classes$K,
       paddingLeft,
       paddingRight
     };
@@ -1654,8 +1654,8 @@ var props$Q = {
   }
 };
 var {
-  n: n$Q,
-  classes: classes$I
+  n: n$R,
+  classes: classes$J
 } = createNamespace("loading");
 var _withScopeId$1 = (n2) => (pushScopeId(""), n2 = n2(), popScopeId(), n2);
 var _hoisted_1$m = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createElementVNode("svg", {
@@ -1666,7 +1666,7 @@ var _hoisted_1$m = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createEl
   r: "20",
   fill: "none"
 })], -1));
-var _hoisted_2$a = [_hoisted_1$m];
+var _hoisted_2$9 = [_hoisted_1$m];
 function render$W(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.n())
@@ -1686,7 +1686,7 @@ function render$W(_ctx, _cache) {
       height: _ctx.getRadius * 2 + "px",
       color: _ctx.color
     })
-  }, _hoisted_2$a, 6)], 2)) : createCommentVNode("v-if", true), (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.loadingTypeDict, (nums, key) => {
+  }, _hoisted_2$9, 6)], 2)) : createCommentVNode("v-if", true), (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.loadingTypeDict, (nums, key) => {
     return openBlock(), createElementBlock(Fragment, {
       key
     }, [_ctx.type === key ? (openBlock(), createElementBlock("div", {
@@ -1738,8 +1738,8 @@ var Loading = defineComponent({
       return props2.loading;
     });
     return {
-      n: n$Q,
-      classes: classes$I,
+      n: n$R,
+      classes: classes$J,
       loadingTypeDict,
       getRadius,
       isShow
@@ -1818,8 +1818,8 @@ var props$P = {
   }
 };
 var {
-  n: n$P,
-  classes: classes$H
+  n: n$Q,
+  classes: classes$I
 } = createNamespace("button");
 var _hoisted_1$l = ["disabled"];
 function render$V(_ctx, _cache) {
@@ -1894,8 +1894,8 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n: n$P,
-      classes: classes$H,
+      n: n$Q,
+      classes: classes$I,
       pending,
       handleClick,
       handleTouchstart
@@ -2054,19 +2054,22 @@ var props$N = {
     type: String
   }
 };
+var {
+  n: n$P,
+  classes: classes$H
+} = createNamespace("badge");
 var _hoisted_1$k = {
-  class: "var-badge var--box"
-};
-var _hoisted_2$9 = {
   key: 1
 };
 function render$T(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
-  return openBlock(), createElementBlock("div", _hoisted_1$k, [createVNode(Transition, {
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(_ctx.classes(_ctx.n(), "var--box"))
+  }, [createVNode(Transition, {
     name: "var-badge-fade"
   }, {
     default: withCtx(() => [withDirectives(createElementVNode("span", mergeProps(_ctx.$attrs, {
-      class: ["var-badge__content", _ctx.contentClass],
+      class: _ctx.classes(_ctx.n("content"), ..._ctx.contentClass),
       style: {
         background: _ctx.color
       }
@@ -2074,9 +2077,9 @@ function render$T(_ctx, _cache) {
       key: 0,
       name: _ctx.icon,
       size: "10px"
-    }, null, 8, ["name"])) : (openBlock(), createElementBlock("span", _hoisted_2$9, toDisplayString(_ctx.values), 1))], 16), [[vShow, !_ctx.hidden]])]),
+    }, null, 8, ["name"])) : (openBlock(), createElementBlock("span", _hoisted_1$k, toDisplayString(_ctx.values), 1))], 16), [[vShow, !_ctx.hidden]])]),
     _: 1
-  }), renderSlot(_ctx.$slots, "default")]);
+  }), renderSlot(_ctx.$slots, "default")], 2);
 }
 var Badge = defineComponent({
   render: render$T,
@@ -2097,11 +2100,11 @@ var Badge = defineComponent({
         dot,
         icon: icon2
       } = props2;
-      var positionBasic = slots.default && "var-badge__position var-badge--" + position;
-      var dotClass = dot && "var-badge__dot";
+      var positionBasic = slots.default && n$P("position") + " " + n$P("--" + position);
+      var dotClass = dot && n$P("dot");
       var positionClass = getPositionClass();
-      var iconClass = icon2 && "var-badge__icon";
-      return ["var-badge--" + type, positionBasic, dotClass, positionClass, iconClass];
+      var iconClass = icon2 && n$P("icon");
+      return [n$P("--" + type), positionBasic, dotClass, positionClass, iconClass];
     });
     var values = computed(() => {
       var {
@@ -2121,11 +2124,13 @@ var Badge = defineComponent({
         dot
       } = props2;
       if (dot && position.includes("right"))
-        return "var-badge__dot--right";
+        return n$P("dot--right");
       if (dot && position.includes("left"))
-        return "var-badge__dot--left";
+        return n$P("dot--left");
     };
     return {
+      n: n$P,
+      classes: classes$H,
       values,
       contentClass
     };
