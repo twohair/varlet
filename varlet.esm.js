@@ -12314,7 +12314,7 @@ function render$k(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   return openBlock(), createElementBlock("div", {
     ref: "freshNode",
-    class: normalizeClass(_ctx.classes(_ctx.n())),
+    class: normalizeClass(_ctx.n()),
     onTouchstart: _cache[0] || (_cache[0] = function() {
       return _ctx.touchStart && _ctx.touchStart(...arguments);
     }),
