@@ -2190,18 +2190,22 @@ var RIGHT_HALF_SPACE_CLASS = nItem("--right-half-space");
 var LEFT_HALF_SPACE_CLASS = nItem("--left-half-space");
 var RIGHT_SPACE_CLASS = nItem("--right-space");
 function render$S(_ctx, _cache) {
+  var _directive_ripple = resolveDirective("ripple");
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.classes(_ctx.n(), [_ctx.fixed, _ctx.n("--fixed")], [_ctx.border, _ctx.n("--border")])),
     ref: "bottomNavigationDom",
     style: normalizeStyle("z-index:" + _ctx.zIndex)
-  }, [renderSlot(_ctx.$slots, "default"), _ctx.$slots.fab ? (openBlock(), createElementBlock("div", {
+  }, [renderSlot(_ctx.$slots, "default"), _ctx.$slots.fab ? withDirectives((openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(_ctx.classes(_ctx.n("fab"), "var-elevation--6", [_ctx.length % 2, _ctx.n("--fab-right"), _ctx.n("--fab-center")]))
-  }, [renderSlot(_ctx.$slots, "fab")], 2)) : createCommentVNode("v-if", true)], 6);
+  }, [renderSlot(_ctx.$slots, "fab")], 2)), [[_directive_ripple]]) : createCommentVNode("v-if", true)], 6);
 }
 var BottomNavigation = defineComponent({
   render: render$S,
   name: "VarBottomNavigation",
+  directives: {
+    Ripple
+  },
   props: props$M,
   setup(props2, _ref) {
     var {
