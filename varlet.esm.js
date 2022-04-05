@@ -11339,7 +11339,7 @@ function render$n(_ctx, _cache) {
   return openBlock(), createElementBlock("ul", {
     class: normalizeClass(_ctx.classes(_ctx.n()))
   }, [withDirectives((openBlock(), createElementBlock("li", {
-    class: normalizeClass(_ctx.classes(_ctx.n("item"), _ctx.n("prev"), [_ctx.current <= 1 || _ctx.disabled, _ctx.n("item--disabled")], [_ctx.simple, _ctx.n("item--hover")], [!_ctx.simple, "var-elevation--2"])),
+    class: normalizeClass(_ctx.classes(_ctx.n("item"), _ctx.n("prev"), [_ctx.current <= 1 || _ctx.disabled, _ctx.n("item--disabled")], [_ctx.simple, _ctx.n("item--hover"), "var-elevation--2"])),
     onClick: _cache[0] || (_cache[0] = ($event) => _ctx.clickItem("prev"))
   }, [renderSlot(_ctx.$slots, "prev", {}, () => [createVNode(_component_var_icon, {
     name: "chevron-left"
@@ -11367,7 +11367,7 @@ function render$n(_ctx, _cache) {
       disabled: _ctx.disabled
     }]]);
   }), 128)), withDirectives((openBlock(), createElementBlock("li", {
-    class: normalizeClass(_ctx.classes(_ctx.n("item"), _ctx.n("next"), [_ctx.current >= _ctx.pageCount || _ctx.disabled, _ctx.n("item--disabled")], [_ctx.simple, _ctx.n("item--hover")], [!_ctx.simple, "var-elevation--2"])),
+    class: normalizeClass(_ctx.classes(_ctx.n("item"), _ctx.n("next"), [_ctx.current >= _ctx.pageCount || _ctx.disabled, _ctx.n("item--disabled")], [_ctx.simple, _ctx.n("item--hover"), "var-elevation--2"])),
     onClick: _cache[4] || (_cache[4] = ($event) => _ctx.clickItem("next"))
   }, [renderSlot(_ctx.$slots, "next", {}, () => [createVNode(_component_var_icon, {
     name: "chevron-right"
