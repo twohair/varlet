@@ -656,7 +656,7 @@ function _extends$c() {
   return _extends$c.apply(this, arguments);
 }
 var {
-  n: n$P
+  n: n$Q
 } = createNamespace("ripple");
 var ANIMATION_DURATION$1 = 250;
 function setStyles(element) {
@@ -711,7 +711,7 @@ function createRipple(event) {
       size
     } = computeRippleStyles(this, event);
     var ripple2 = document.createElement("div");
-    ripple2.classList.add(n$P());
+    ripple2.classList.add(n$Q());
     ripple2.style.opacity = "0";
     ripple2.style.transform = "translate(" + x + "px, " + y + "px) scale3d(.3, .3, .3)";
     ripple2.style.width = size + "px";
@@ -1116,8 +1116,8 @@ function _asyncToGenerator$9(fn) {
   };
 }
 var {
-  n: n$O,
-  classes: classes$G
+  n: n$P,
+  classes: classes$H
 } = createNamespace("icon");
 function render$Z(_ctx, _cache) {
   return openBlock(), createBlock(resolveDynamicComponent(_ctx.isURL(_ctx.name) ? "img" : "i"), {
@@ -1164,8 +1164,8 @@ var Icon = defineComponent({
       immediate: true
     });
     return {
-      n: n$O,
-      classes: classes$G,
+      n: n$P,
+      classes: classes$H,
       nextName,
       shrinking,
       isURL,
@@ -1385,10 +1385,10 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$N,
-  classes: classes$F
+  n: n$O,
+  classes: classes$G
 } = createNamespace("action-sheet");
-var _hoisted_1$p = ["onClick"];
+var _hoisted_1$o = ["onClick"];
 function render$Y(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_popup = resolveComponent("var-popup");
@@ -1432,7 +1432,7 @@ function render$Y(_ctx, _cache) {
         size: action.iconSize
       }, null, 8, ["class", "name", "size"])) : createCommentVNode("v-if", true), createElementVNode("div", {
         class: normalizeClass(_ctx.n("action-name"))
-      }, toDisplayString(action.name), 3)], 14, _hoisted_1$p)), [[_directive_ripple, {
+      }, toDisplayString(action.name), 3)], 14, _hoisted_1$o)), [[_directive_ripple, {
         disabled: action.disabled
       }]]);
     }), 128))])], 16)]),
@@ -1471,8 +1471,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$N,
-      classes: classes$F,
+      n: n$O,
+      classes: classes$G,
       handlePopupUpdateShow,
       popupShow,
       pack,
@@ -1558,38 +1558,37 @@ var props$R = {
     default: true
   }
 };
-var _hoisted_1$o = {
-  class: "var-app-bar__left"
-};
-var _hoisted_2$d = {
-  key: 0,
-  class: "var-app-bar__title"
-};
-var _hoisted_3$5 = {
-  class: "var-app-bar__right"
-};
+var {
+  n: n$N,
+  classes: classes$F
+} = createNamespace("app-bar");
 function render$X(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(["var-app-bar", {
-      "var-elevation--3": _ctx.elevation
-    }]),
+    class: normalizeClass(_ctx.classes(_ctx.n(), [_ctx.elevation, "var-elevation--3"])),
     style: normalizeStyle({
       background: _ctx.color,
       color: _ctx.textColor
     })
-  }, [createElementVNode("div", _hoisted_1$o, [renderSlot(_ctx.$slots, "left"), _ctx.titlePosition === "left" ? (openBlock(), createElementBlock("div", {
+  }, [createElementVNode("div", {
+    class: normalizeClass(_ctx.n("left"))
+  }, [renderSlot(_ctx.$slots, "left"), _ctx.titlePosition === "left" ? (openBlock(), createElementBlock("div", {
     key: 0,
-    class: "var-app-bar__title",
+    class: normalizeClass(_ctx.n("title")),
     style: normalizeStyle({
       paddingLeft: _ctx.paddingLeft
     })
-  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 4)) : createCommentVNode("v-if", true)]), _ctx.titlePosition === "center" ? (openBlock(), createElementBlock("div", _hoisted_2$d, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])])) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_3$5, [_ctx.titlePosition === "right" ? (openBlock(), createElementBlock("div", {
+  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 6)) : createCommentVNode("v-if", true)], 2), _ctx.titlePosition === "center" ? (openBlock(), createElementBlock("div", {
     key: 0,
-    class: "var-app-bar__title",
+    class: normalizeClass(_ctx.n("title"))
+  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 2)) : createCommentVNode("v-if", true), createElementVNode("div", {
+    class: normalizeClass(_ctx.n("right"))
+  }, [_ctx.titlePosition === "right" ? (openBlock(), createElementBlock("div", {
+    key: 0,
+    class: normalizeClass(_ctx.n("title")),
     style: normalizeStyle({
       paddingRight: _ctx.paddingRight
     })
-  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 4)) : createCommentVNode("v-if", true), renderSlot(_ctx.$slots, "right")])], 6);
+  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.title), 1)])], 6)) : createCommentVNode("v-if", true), renderSlot(_ctx.$slots, "right")], 2)], 6);
 }
 var AppBar = defineComponent({
   render: render$X,
@@ -1608,6 +1607,8 @@ var AppBar = defineComponent({
     onMounted(computePadding);
     onUpdated(computePadding);
     return {
+      n: n$N,
+      classes: classes$F,
       paddingLeft,
       paddingRight
     };
