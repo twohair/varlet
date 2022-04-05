@@ -656,7 +656,7 @@ function _extends$c() {
   return _extends$c.apply(this, arguments);
 }
 var {
-  n: n$L
+  n: n$N
 } = createNamespace("ripple");
 var ANIMATION_DURATION$1 = 250;
 function setStyles(element) {
@@ -711,7 +711,7 @@ function createRipple(event) {
       size
     } = computeRippleStyles(this, event);
     var ripple2 = document.createElement("div");
-    ripple2.classList.add(n$L());
+    ripple2.classList.add(n$N());
     ripple2.style.opacity = "0";
     ripple2.style.transform = "translate(" + x + "px, " + y + "px) scale3d(.3, .3, .3)";
     ripple2.style.width = size + "px";
@@ -1116,8 +1116,8 @@ function _asyncToGenerator$9(fn) {
   };
 }
 var {
-  n: n$K,
-  classes: classes$C
+  n: n$M,
+  classes: classes$E
 } = createNamespace("icon");
 function render$Z(_ctx, _cache) {
   return openBlock(), createBlock(resolveDynamicComponent(_ctx.isURL(_ctx.name) ? "img" : "i"), {
@@ -1164,8 +1164,8 @@ var Icon = defineComponent({
       immediate: true
     });
     return {
-      n: n$K,
-      classes: classes$C,
+      n: n$M,
+      classes: classes$E,
       nextName,
       shrinking,
       isURL,
@@ -1385,10 +1385,10 @@ var Locale = {
   useLocale
 };
 var {
-  n: n$J,
-  classes: classes$B
+  n: n$L,
+  classes: classes$D
 } = createNamespace("action-sheet");
-var _hoisted_1$q = ["onClick"];
+var _hoisted_1$p = ["onClick"];
 function render$Y(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_popup = resolveComponent("var-popup");
@@ -1432,7 +1432,7 @@ function render$Y(_ctx, _cache) {
         size: action.iconSize
       }, null, 8, ["class", "name", "size"])) : createCommentVNode("v-if", true), createElementVNode("div", {
         class: normalizeClass(_ctx.n("action-name"))
-      }, toDisplayString(action.name), 3)], 14, _hoisted_1$q)), [[_directive_ripple, {
+      }, toDisplayString(action.name), 3)], 14, _hoisted_1$p)), [[_directive_ripple, {
         disabled: action.disabled
       }]]);
     }), 128))])], 16)]),
@@ -1471,8 +1471,8 @@ var VarActionSheet = defineComponent({
       immediate: true
     });
     return {
-      n: n$J,
-      classes: classes$B,
+      n: n$L,
+      classes: classes$D,
       handlePopupUpdateShow,
       popupShow,
       pack,
@@ -1558,7 +1558,7 @@ var props$R = {
     default: true
   }
 };
-var _hoisted_1$p = {
+var _hoisted_1$o = {
   class: "var-app-bar__left"
 };
 var _hoisted_2$e = {
@@ -1577,7 +1577,7 @@ function render$X(_ctx, _cache) {
       background: _ctx.color,
       color: _ctx.textColor
     })
-  }, [createElementVNode("div", _hoisted_1$p, [renderSlot(_ctx.$slots, "left"), _ctx.titlePosition === "left" ? (openBlock(), createElementBlock("div", {
+  }, [createElementVNode("div", _hoisted_1$o, [renderSlot(_ctx.$slots, "left"), _ctx.titlePosition === "left" ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: "var-app-bar__title",
     style: normalizeStyle({
@@ -1649,11 +1649,11 @@ var props$Q = {
   }
 };
 var {
-  n: n$I,
-  classes: classes$A
+  n: n$K,
+  classes: classes$C
 } = createNamespace("loading");
 var _withScopeId$1 = (n2) => (pushScopeId(""), n2 = n2(), popScopeId(), n2);
-var _hoisted_1$o = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createElementVNode("svg", {
+var _hoisted_1$n = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createElementVNode("svg", {
   viewBox: "25 25 50 50"
 }, [/* @__PURE__ */ createElementVNode("circle", {
   cx: "50",
@@ -1661,7 +1661,7 @@ var _hoisted_1$o = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createEl
   r: "20",
   fill: "none"
 })], -1));
-var _hoisted_2$d = [_hoisted_1$o];
+var _hoisted_2$d = [_hoisted_1$n];
 function render$W(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.n())
@@ -1733,8 +1733,8 @@ var Loading = defineComponent({
       return props2.loading;
     });
     return {
-      n: n$I,
-      classes: classes$A,
+      n: n$K,
+      classes: classes$C,
       loadingTypeDict,
       getRadius,
       isShow
@@ -1813,10 +1813,10 @@ var props$P = {
   }
 };
 var {
-  n: n$H,
-  classes: classes$z
+  n: n$J,
+  classes: classes$B
 } = createNamespace("button");
-var _hoisted_1$n = ["disabled"];
+var _hoisted_1$m = ["disabled"];
 function render$V(_ctx, _cache) {
   var _component_var_loading = resolveComponent("var-loading");
   var _directive_ripple = resolveDirective("ripple");
@@ -1842,7 +1842,7 @@ function render$V(_ctx, _cache) {
     radius: _ctx.loadingRadius
   }, null, 8, ["class", "type", "size", "radius"])) : createCommentVNode("v-if", true), createElementVNode("div", {
     class: normalizeClass(_ctx.classes(_ctx.n("content"), [_ctx.loading || _ctx.pending, _ctx.n("--hidden")]))
-  }, [renderSlot(_ctx.$slots, "default")], 2)], 46, _hoisted_1$n)), [[_directive_ripple, {
+  }, [renderSlot(_ctx.$slots, "default")], 2)], 46, _hoisted_1$m)), [[_directive_ripple, {
     disabled: _ctx.disabled || !_ctx.ripple
   }]]);
 }
@@ -1889,8 +1889,8 @@ var Button = defineComponent({
       attemptAutoLoading(onTouchstart(e));
     };
     return {
-      n: n$H,
-      classes: classes$z,
+      n: n$J,
+      classes: classes$B,
       pending,
       handleClick,
       handleTouchstart
@@ -2049,7 +2049,7 @@ var props$N = {
     type: String
   }
 };
-var _hoisted_1$m = {
+var _hoisted_1$l = {
   class: "var-badge var--box"
 };
 var _hoisted_2$c = {
@@ -2057,7 +2057,7 @@ var _hoisted_2$c = {
 };
 function render$T(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
-  return openBlock(), createElementBlock("div", _hoisted_1$m, [createVNode(Transition, {
+  return openBlock(), createElementBlock("div", _hoisted_1$l, [createVNode(Transition, {
     name: "var-badge-fade"
   }, {
     default: withCtx(() => [withDirectives(createElementVNode("span", mergeProps(_ctx.$attrs, {
@@ -2162,36 +2162,43 @@ var props$M = {
     type: Function
   }
 };
-var BOTTOMNAVIGATION_BIND_BOTTOMNAVIGATIONITEM_KEY = Symbol("BOTTOMNAVIGATION_BIND_BOTTOMNAVIGATIONITEM_KEY");
-var BOTTOMNAVIGATION_COUNT_BOTTOMNAVIGATIONITEM_KEY = Symbol("BOTTOMNAVIGATION_COUNT_BOTTOMNAVIGATIONITEM_KEY");
+var BOTTOM_NAVIGATION_BIND_BOTTOM_NAVIGATION_ITEM_KEY = Symbol("BOTTOM_NAVIGATION_BIND_BOTTOM_NAVIGATION_ITEM_KEY");
+var BOTTOM_NAVIGATION_COUNT_BOTTOM_NAVIGATION_ITEM_KEY = Symbol("BOTTOM_NAVIGATION_COUNT_BOTTOM_NAVIGATION_ITEM_KEY");
 function useBottomNavigationItems() {
   var {
     childProviders,
     bindChildren
-  } = useChildren(BOTTOMNAVIGATION_BIND_BOTTOMNAVIGATIONITEM_KEY);
+  } = useChildren(BOTTOM_NAVIGATION_BIND_BOTTOM_NAVIGATION_ITEM_KEY);
   var {
     length
-  } = useAtChildrenCounter(BOTTOMNAVIGATION_COUNT_BOTTOMNAVIGATIONITEM_KEY);
+  } = useAtChildrenCounter(BOTTOM_NAVIGATION_COUNT_BOTTOM_NAVIGATION_ITEM_KEY);
   return {
     length,
     bottomNavigationItems: childProviders,
     bindBottomNavigationItem: bindChildren
   };
 }
-var RIGHT_HALF_SPACE_CLASS = "var-bottom-navigation-item--right-half-space";
-var LEFT_HALF_SPACE_CLASS = "var-bottom-navigation-item--left-half-space";
-var RIGHT_SPACE_CLASS = "var-bottom-navigation-item--right-space";
+var {
+  n: n$I,
+  classes: classes$A
+} = createNamespace("bottom-navigation");
+var {
+  n: nItem
+} = createNamespace("bottom-navigation-item");
+var RIGHT_HALF_SPACE_CLASS = nItem("--right-half-space");
+var LEFT_HALF_SPACE_CLASS = nItem("--left-half-space");
+var RIGHT_SPACE_CLASS = nItem("--right-space");
 function render$S(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(["var-bottom-navigation", (_ctx.fixed ? "var-bottom-navigation--fixed" : "") + " " + (_ctx.border ? "var-bottom-navigation--border" : "")]),
+    class: normalizeClass(_ctx.classes(_ctx.n(), [_ctx.fixed, _ctx.n("--fixed")], [_ctx.border, _ctx.n("--border")])),
     ref: "bottomNavigationDom",
     style: normalizeStyle("z-index:" + _ctx.zIndex)
   }, [renderSlot(_ctx.$slots, "default"), _ctx.$slots.fab ? (openBlock(), createElementBlock("div", {
     key: 0,
-    class: normalizeClass(["var-bottom-navigation__fab var-elevation--8", _ctx.length % 2 ? "var-bottom-navigation--fab-right" : "var-bottom-navigation--fab-center"])
+    class: normalizeClass(_ctx.classes(_ctx.n("fab"), "var-elevation--6", [_ctx.length % 2, _ctx.n("--fab-right"), _ctx.n("--fab-center")]))
   }, [renderSlot(_ctx.$slots, "fab")], 2)) : createCommentVNode("v-if", true)], 6);
 }
-var BottomNavigation$1 = defineComponent({
+var BottomNavigation = defineComponent({
   render: render$S,
   name: "VarBottomNavigation",
   props: props$M,
@@ -2211,16 +2218,15 @@ var BottomNavigation$1 = defineComponent({
       }
     };
     var handleBeforeChange = (changedValue) => {
-      Promise.resolve(props2.onBeforeChange == null ? void 0 : props2.onBeforeChange(changedValue)).then((res) => {
+      Promise.resolve(call(props2.onBeforeChange, changedValue)).then((res) => {
         if (res) {
           handleChange(changedValue);
         }
       });
     };
     var handleChange = (changedValue) => {
-      var _props$onUpdateModel;
-      (_props$onUpdateModel = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel.call(props2, changedValue);
-      props2.onChange == null ? void 0 : props2.onChange(changedValue);
+      call(props2["onUpdate:modelValue"], changedValue);
+      call(props2.onChange, changedValue);
     };
     var {
       length,
@@ -2236,8 +2242,8 @@ var BottomNavigation$1 = defineComponent({
       var bottomNavigationItems = getBottomNavigationItems();
       var itemsNum = bottomNavigationItems.length;
       var isEven = length2 % 2 === 0;
-      bottomNavigationItems.forEach((bottomNavigationItem, i) => {
-        handleMarginClass(isEven, bottomNavigationItem, i, itemsNum);
+      bottomNavigationItems.forEach((bottomNavigationItem2, i) => {
+        handleMarginClass(isEven, bottomNavigationItem2, i, itemsNum);
       });
     };
     var handleMarginClass = (isEven, dom, i, length2) => {
@@ -2255,7 +2261,7 @@ var BottomNavigation$1 = defineComponent({
       }
     };
     var getBottomNavigationItems = () => {
-      return Array.from(bottomNavigationDom.value.querySelectorAll(".var-bottom-navigation-item"));
+      return Array.from(bottomNavigationDom.value.querySelectorAll("." + nItem()));
     };
     var bottomNavigationProvider = {
       active,
@@ -2278,13 +2284,15 @@ var BottomNavigation$1 = defineComponent({
       addMarginClass(length.value);
     });
     return {
+      n: n$I,
+      classes: classes$A,
       length,
       bottomNavigationDom
     };
   }
 });
-BottomNavigation$1.install = function(app) {
-  app.component(BottomNavigation$1.name, BottomNavigation$1);
+BottomNavigation.install = function(app) {
+  app.component(BottomNavigation.name, BottomNavigation);
 };
 var props$L = {
   name: {
@@ -2312,10 +2320,10 @@ function useBottomNavigation() {
   var {
     parentProvider,
     bindParent
-  } = useParent(BOTTOMNAVIGATION_BIND_BOTTOMNAVIGATIONITEM_KEY);
+  } = useParent(BOTTOM_NAVIGATION_BIND_BOTTOM_NAVIGATION_ITEM_KEY);
   var {
     index
-  } = useAtParentIndex(BOTTOMNAVIGATION_COUNT_BOTTOMNAVIGATIONITEM_KEY);
+  } = useAtParentIndex(BOTTOM_NAVIGATION_COUNT_BOTTOM_NAVIGATION_ITEM_KEY);
   if (!parentProvider || !bindParent || !index) {
     throw Error("<var-bottom-navigation-item/> must in <var-bottom-navigation/>");
   }
@@ -2325,19 +2333,20 @@ function useBottomNavigation() {
     bindBottomNavigation: bindParent
   };
 }
+var {
+  n: n$H,
+  classes: classes$z
+} = createNamespace("bottom-navigation-item");
 var defaultBadgeProps = {
   type: "danger",
   dot: true
-};
-var _hoisted_1$l = {
-  class: "var-bottom-navigation-item__label"
 };
 function render$R(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_badge = resolveComponent("var-badge");
   var _directive_ripple = resolveDirective("ripple");
-  return withDirectives((openBlock(), createElementBlock("div", {
-    class: normalizeClass(["var-bottom-navigation-item", _ctx.active === _ctx.index || _ctx.active === _ctx.name ? "var-bottom-navigation-item--active" : ""]),
+  return withDirectives((openBlock(), createElementBlock("button", {
+    class: normalizeClass(_ctx.classes(_ctx.n(), [_ctx.active === _ctx.index || _ctx.active === _ctx.name, _ctx.n("--active")])),
     style: normalizeStyle({
       color: _ctx.computeColorStyle()
     }),
@@ -2348,20 +2357,22 @@ function render$R(_ctx, _cache) {
     key: 0,
     name: _ctx.icon,
     namespace: _ctx.namespace,
-    class: "var-bottom-navigation-item__icon",
+    class: normalizeClass(_ctx.classes(_ctx.n("icon"))),
     "var-bottom-navigation-item-cover": ""
-  }, null, 8, ["name", "namespace"])) : createCommentVNode("v-if", true), renderSlot(_ctx.$slots, "icon", {
+  }, null, 8, ["name", "namespace", "class"])) : createCommentVNode("v-if", true), renderSlot(_ctx.$slots, "icon", {
     active: _ctx.active === _ctx.index || _ctx.active === _ctx.name
   }), _ctx.badge ? (openBlock(), createBlock(_component_var_badge, mergeProps({
     key: 1
   }, _ctx.badgeProps, {
-    class: "var-bottom-navigation-item__badge",
+    class: _ctx.classes(_ctx.n("badge")),
     "var-bottom-navigation-item-cover": ""
-  }), null, 16)) : createCommentVNode("v-if", true), createElementVNode("div", _hoisted_1$l, [!_ctx.$slots.default ? (openBlock(), createElementBlock(Fragment, {
+  }), null, 16, ["class"])) : createCommentVNode("v-if", true), createElementVNode("span", {
+    class: normalizeClass(_ctx.classes(_ctx.n("label")))
+  }, [!_ctx.$slots.default ? (openBlock(), createElementBlock(Fragment, {
     key: 0
-  }, [createTextVNode(toDisplayString(_ctx.label), 1)], 2112)) : createCommentVNode("v-if", true), renderSlot(_ctx.$slots, "default")])], 6)), [[_directive_ripple]]);
+  }, [createTextVNode(toDisplayString(_ctx.label), 1)], 2112)) : createCommentVNode("v-if", true), renderSlot(_ctx.$slots, "default")], 2)], 6)), [[_directive_ripple]]);
 }
-var BottomNavigationItem$1 = defineComponent({
+var BottomNavigationItem = defineComponent({
   render: render$R,
   name: "VarBottomNavigationItem",
   components: {
@@ -2378,14 +2389,14 @@ var BottomNavigationItem$1 = defineComponent({
     var badgeProps = ref({});
     var {
       index,
-      bottomNavigation,
+      bottomNavigation: bottomNavigation2,
       bindBottomNavigation
     } = useBottomNavigation();
     var {
       active,
       activeColor,
       inactiveColor
-    } = bottomNavigation;
+    } = bottomNavigation2;
     var bottomNavigationItemProvider = {
       name,
       index
@@ -2396,8 +2407,8 @@ var BottomNavigationItem$1 = defineComponent({
     };
     var handleClick = () => {
       var active2 = name.value || index.value;
-      props2.onClick == null ? void 0 : props2.onClick(active2);
-      bottomNavigation == null ? void 0 : bottomNavigation.onToggle(active2);
+      call(props2.onClick, active2);
+      call(bottomNavigation2.onToggle, active2);
     };
     watch(() => badge2.value, (newValue) => {
       badgeProps.value = newValue === true ? defaultBadgeProps : badge2.value;
@@ -2405,6 +2416,8 @@ var BottomNavigationItem$1 = defineComponent({
       immediate: true
     });
     return {
+      n: n$H,
+      classes: classes$z,
       index,
       active,
       badge: badge2,
@@ -2414,8 +2427,8 @@ var BottomNavigationItem$1 = defineComponent({
     };
   }
 });
-BottomNavigationItem$1.install = function(app) {
-  app.component(BottomNavigationItem$1.name, BottomNavigationItem$1);
+BottomNavigationItem.install = function(app) {
+  app.component(BottomNavigationItem.name, BottomNavigationItem);
 };
 function fitValidator$1(fit) {
   return ["fill", "contain", "cover", "none", "scale-down"].includes(fit);
@@ -17010,9 +17023,9 @@ var backTop = "";
 var BackTopSfc = "";
 var badge = "";
 var BadgeSfc = "";
-var BottomNavigation = "";
+var bottomNavigation = "";
 var BottomNavigationSfc = "";
-var BottomNavigationItem = "";
+var bottomNavigationItem = "";
 var BottomNavigationItemSfc = "";
 var loading = "";
 var ButtonSfc = "";
@@ -17115,8 +17128,8 @@ function install(app) {
   AppBar.install && app.use(AppBar);
   BackTop.install && app.use(BackTop);
   Badge.install && app.use(Badge);
-  BottomNavigation$1.install && app.use(BottomNavigation$1);
-  BottomNavigationItem$1.install && app.use(BottomNavigationItem$1);
+  BottomNavigation.install && app.use(BottomNavigation);
+  BottomNavigationItem.install && app.use(BottomNavigationItem);
   Button.install && app.use(Button);
   Card.install && app.use(Card);
   Cell.install && app.use(Cell);
@@ -17182,8 +17195,8 @@ var umdIndex = {
   AppBar,
   BackTop,
   Badge,
-  BottomNavigation: BottomNavigation$1,
-  BottomNavigationItem: BottomNavigationItem$1,
+  BottomNavigation,
+  BottomNavigationItem,
   Button,
   Card,
   Cell,
@@ -17243,4 +17256,4 @@ var umdIndex = {
   TimePicker,
   Uploader
 };
-export { ActionSheet, AppBar, BackTop, Badge, BottomNavigation$1 as BottomNavigation, BottomNavigationItem$1 as BottomNavigationItem, Button, Card, Cell, Checkbox, CheckboxGroup, Chip, Col, Collapse, CollapseItem, Context, Countdown, Counter, DatePicker, Dialog, Divider, Form, FormDetails, Icon, Image$1 as Image, ImagePreview, IndexAnchor, IndexBar, Input, Lazy, List, Loading, Locale, Menu, Option, Pagination, Picker, Popup, Progress, PullRefresh, Radio, RadioGroup, Rate, Ripple, Row, Select, Skeleton, Slider, Snackbar, Space, Step, Steps, Sticky, StyleProvider, Swipe, SwipeItem, Switch, Tab, TabItem, Table, Tabs, TabsItems, TimePicker, Uploader, umdIndex as default, install };
+export { ActionSheet, AppBar, BackTop, Badge, BottomNavigation, BottomNavigationItem, Button, Card, Cell, Checkbox, CheckboxGroup, Chip, Col, Collapse, CollapseItem, Context, Countdown, Counter, DatePicker, Dialog, Divider, Form, FormDetails, Icon, Image$1 as Image, ImagePreview, IndexAnchor, IndexBar, Input, Lazy, List, Loading, Locale, Menu, Option, Pagination, Picker, Popup, Progress, PullRefresh, Radio, RadioGroup, Rate, Ripple, Row, Select, Skeleton, Slider, Snackbar, Space, Step, Steps, Sticky, StyleProvider, Swipe, SwipeItem, Switch, Tab, TabItem, Table, Tabs, TabsItems, TimePicker, Uploader, umdIndex as default, install };
