@@ -9186,7 +9186,7 @@ function render$w(_ctx, _cache) {
     length: _ctx.length
   }, () => [_ctx.indicator && _ctx.length ? (openBlock(), createElementBlock("div", {
     key: 0,
-    class: normalizeClass(_ctx.classes(_ctx.n("indicators"), [_ctx.vertical, _ctx.n("--indicators--vertical")]))
+    class: normalizeClass(_ctx.classes(_ctx.n("indicators"), [_ctx.vertical, _ctx.n("--indicators-vertical")]))
   }, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.length, (l, idx) => {
     return openBlock(), createElementBlock("div", {
       class: normalizeClass(_ctx.classes(_ctx.n("indicator"), [_ctx.index === idx, _ctx.n("--indicator-active")], [_ctx.vertical, _ctx.n("--indicator-vertical")])),
