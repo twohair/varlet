@@ -15626,12 +15626,12 @@ var Tabs = defineComponent({
         return props2.active === name.value;
       });
     };
-    var matchIndex = () => {
+    var matchIndex = (activeIndex) => {
       return tabList.find((_ref2) => {
         var {
           index
         } = _ref2;
-        return props2.active === index.value;
+        return (activeIndex != null ? activeIndex : props2.active) === index.value;
       });
     };
     var matchBoundary = () => {
@@ -15641,8 +15641,11 @@ var Tabs = defineComponent({
       var {
         active: active2
       } = props2;
-      isNumber(active2) ? active2 > length.value - 1 ? call(props2["onUpdate:active"], length.value - 1) : call(props2["onUpdate:active"], 0) : null;
-      return matchIndex();
+      if (isNumber(active2)) {
+        var activeIndex = active2 > length.value - 1 ? length.value - 1 : 0;
+        call(props2["onUpdate:active"], activeIndex);
+        return matchIndex(activeIndex);
+      }
     };
     var watchScrollable = () => {
       scrollable.value = tabList.length >= 5;
