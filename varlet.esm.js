@@ -2300,18 +2300,10 @@ var BottomNavigation = defineComponent({
       }
     };
     var onToggle = (changedValue) => {
-      if (props2.onBeforeChange) {
-        handleBeforeChange(changedValue);
-      } else {
-        handleChange(changedValue);
-      }
+      props2.onBeforeChange ? handleBeforeChange(changedValue) : handleChange(changedValue);
     };
     var handleBeforeChange = (changedValue) => {
-      Promise.resolve(call(props2.onBeforeChange, changedValue)).then((res) => {
-        if (res) {
-          handleChange(changedValue);
-        }
-      });
+      Promise.resolve(call(props2.onBeforeChange, changedValue)).then((res) => res && handleChange(changedValue));
     };
     var handleChange = (changedValue) => {
       call(props2["onUpdate:modelValue"], changedValue);
@@ -2498,7 +2490,6 @@ var BottomNavigationItem = defineComponent({
       name,
       index
     };
-    bindBottomNavigation(bottomNavigationItemProvider);
     var computeColorStyle = () => {
       return active.value === name.value || active.value === index.value ? activeColor.value : inactiveColor.value;
     };
@@ -2507,6 +2498,7 @@ var BottomNavigationItem = defineComponent({
       call(props2.onClick, active2);
       call(bottomNavigation2.onToggle, active2);
     };
+    bindBottomNavigation(bottomNavigationItemProvider);
     watch(() => badge2.value, (newValue) => {
       badgeProps.value = newValue === true ? defaultBadgeProps : badge2.value;
     }, {
