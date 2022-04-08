@@ -2181,8 +2181,7 @@ var props$M = {
     type: Function
   },
   fabProps: {
-    type: [Object],
-    default: {}
+    type: Object
   }
 };
 var BOTTOM_NAVIGATION_BIND_BOTTOM_NAVIGATION_ITEM_KEY = Symbol("BOTTOM_NAVIGATION_BIND_BOTTOM_NAVIGATION_ITEM_KEY");
