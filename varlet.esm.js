@@ -16827,9 +16827,13 @@ function render(_ctx, _cache) {
     }]]);
   }), 128)), !_ctx.maxlength || _ctx.modelValue.length < _ctx.maxlength ? withDirectives((openBlock(), createElementBlock("div", {
     key: 0,
-    class: normalizeClass(_ctx.classes("var--relative", [!_ctx.$slots.default, _ctx.n("action") + " var-elevation--2"], [_ctx.disabled || _ctx.formDisabled, _ctx.n("--disabled")]))
+    class: normalizeClass(_ctx.classes([!_ctx.$slots.default, _ctx.n("action") + " var-elevation--2"], [_ctx.disabled || _ctx.formDisabled, _ctx.n("--disabled")])),
+    onClick: _cache[1] || (_cache[1] = function() {
+      return _ctx.triggerAction && _ctx.triggerAction(...arguments);
+    })
   }, [createElementVNode("input", {
     class: normalizeClass(_ctx.n("action-input")),
+    ref: "input",
     type: "file",
     multiple: _ctx.multiple,
     accept: _ctx.accept,
@@ -16852,8 +16856,8 @@ function render(_ctx, _cache) {
     "var-uploader-cover": "",
     position: "center",
     show: _ctx.showPreview,
-    "onUpdate:show": _cache[1] || (_cache[1] = ($event) => _ctx.showPreview = $event),
-    onClosed: _cache[2] || (_cache[2] = ($event) => _ctx.currentPreview = null)
+    "onUpdate:show": _cache[2] || (_cache[2] = ($event) => _ctx.showPreview = $event),
+    onClosed: _cache[3] || (_cache[3] = ($event) => _ctx.currentPreview = null)
   }, {
     default: withCtx(() => {
       var _ctx$currentPreview, _ctx$currentPreview2;
@@ -16885,6 +16889,7 @@ var Uploader = defineComponent({
   },
   props,
   setup(props2) {
+    var input2 = ref();
     var showPreview = ref(false);
     var currentPreview = ref(null);
     var maxlengthText = computed(() => {
@@ -16916,6 +16921,9 @@ var Uploader = defineComponent({
       }
       return modelValue;
     });
+    var triggerAction = () => {
+      input2.value.click();
+    };
     var preview = (varFile) => {
       var {
         disabled,
@@ -17096,6 +17104,7 @@ var Uploader = defineComponent({
     return {
       n,
       classes,
+      input: input2,
       files,
       showPreview,
       currentPreview,
@@ -17105,6 +17114,7 @@ var Uploader = defineComponent({
       isHTMLSupportImage,
       formDisabled: form == null ? void 0 : form.disabled,
       formReadonly: form == null ? void 0 : form.readonly,
+      triggerAction,
       preview,
       handleChange,
       handleRemove,
