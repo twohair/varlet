@@ -150,7 +150,7 @@ createApp().use(Uploader)
 `),s("span",{class:"hljs-tag"},[e("</"),s("span",{class:"hljs-name"},"var-uploader"),e(">")]),e(`
 `)])],-1),ls={class:"card"},ds=s("h3",null,"Validate",-1),os=s("p",null,[e("The values are validated by passing in an array of validator, If the validator returns "),s("code",null,"true"),e(", the validation passes. Other values are converted to text as a user prompt. The second argument is a collection of utility functions that can quickly get a collection of files that match the state.")],-1),ns=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-tag"},[e("<"),s("span",{class:"hljs-name"},"var-uploader"),e(`
   `),s("span",{class:"hljs-attr"},":rules"),e("="),s("span",{class:"hljs-string"},`"[
-    (v, u) => u.getError(v).length === 0 || 'There is a file that failed to upload'
+    (v, u) => u.getError().length === 0 || 'There is a file that failed to upload'
   ]"`),e(`
   `),s("span",{class:"hljs-attr"},"v-model"),e("="),s("span",{class:"hljs-string"},'"files"'),e(`
 />`)]),e(`
