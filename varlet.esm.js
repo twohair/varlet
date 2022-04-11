@@ -2158,6 +2158,10 @@ var props$M = {
     type: Boolean,
     default: false
   },
+  safeArea: {
+    type: Boolean,
+    default: false
+  },
   zIndex: {
     type: [Number, String],
     default: 1
@@ -2230,7 +2234,7 @@ var defaultFabProps = {
 function render$S(_ctx, _cache) {
   var _component_var_button = resolveComponent("var-button");
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(_ctx.classes(_ctx.n(), [_ctx.fixed, _ctx.n("--fixed")], [_ctx.border, _ctx.n("--border")])),
+    class: normalizeClass(_ctx.classes(_ctx.n(), [_ctx.fixed, _ctx.n("--fixed")], [_ctx.border, _ctx.n("--border")], [_ctx.safeArea, _ctx.n("--safe-area")])),
     ref: "bottomNavigationDom",
     style: normalizeStyle("z-index:" + _ctx.zIndex)
   }, [renderSlot(_ctx.$slots, "default"), _ctx.$slots.fab ? (openBlock(), createBlock(_component_var_button, mergeProps({
@@ -15543,6 +15547,10 @@ var props$3 = {
     type: Boolean,
     default: false
   },
+  safeArea: {
+    type: Boolean,
+    default: false
+  },
   offsetTop: pickProps(props$s, "offsetTop"),
   onClick: {
     type: Function
@@ -15592,7 +15600,7 @@ function render$4(_ctx, _cache) {
     "offset-top": _ctx.sticky ? _ctx.offsetTop : null
   }, {
     default: withCtx(() => [createElementVNode("div", mergeProps({
-      class: _ctx.classes(_ctx.n(), "var--box", _ctx.n("--item-" + _ctx.itemDirection), _ctx.n("--layout-" + _ctx.layoutDirection + "-padding"), [_ctx.elevation, "var-elevation--4"], [_ctx.fixedBottom, _ctx.n("--fixed-bottom")]),
+      class: _ctx.classes(_ctx.n(), "var--box", _ctx.n("--item-" + _ctx.itemDirection), _ctx.n("--layout-" + _ctx.layoutDirection + "-padding"), [_ctx.elevation, "var-elevation--4"], [_ctx.fixedBottom, _ctx.n("--fixed-bottom")], [_ctx.safeArea, _ctx.n("--safe-area")]),
       style: {
         background: _ctx.color
       }
