@@ -16794,9 +16794,8 @@ var fid = 0;
 var _hoisted_1 = ["onClick"];
 var _hoisted_2 = ["onClick"];
 var _hoisted_3 = ["src", "alt"];
-var _hoisted_4 = ["for"];
-var _hoisted_5 = ["id", "multiple", "accept", "capture", "disabled"];
-var _hoisted_6 = ["src"];
+var _hoisted_4 = ["multiple", "accept", "capture", "disabled"];
+var _hoisted_5 = ["src"];
 function render(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_form_details = resolveComponent("var-form-details");
@@ -16834,12 +16833,14 @@ function render(_ctx, _cache) {
     }, null, 2)], 10, _hoisted_1)), [[_directive_ripple, {
       disabled: _ctx.disabled || _ctx.formDisabled || _ctx.readonly || _ctx.formReadonly || !_ctx.ripple
     }]]);
-  }), 128)), !_ctx.maxlength || _ctx.modelValue.length < _ctx.maxlength ? withDirectives((openBlock(), createElementBlock("label", {
+  }), 128)), !_ctx.maxlength || _ctx.modelValue.length < _ctx.maxlength ? withDirectives((openBlock(), createElementBlock("div", {
     key: 0,
-    for: _ctx.id,
-    class: normalizeClass(_ctx.classes([!_ctx.$slots.default, _ctx.n("action") + " var-elevation--2"], [_ctx.disabled || _ctx.formDisabled, _ctx.n("--disabled")]))
+    class: normalizeClass(_ctx.classes([!_ctx.$slots.default, _ctx.n("action") + " var-elevation--2"], [_ctx.disabled || _ctx.formDisabled, _ctx.n("--disabled")])),
+    onClick: _cache[1] || (_cache[1] = function() {
+      return _ctx.triggerAction && _ctx.triggerAction(...arguments);
+    })
   }, [createElementVNode("input", {
-    id: _ctx.id,
+    ref: "input",
     class: normalizeClass(_ctx.n("action-input")),
     type: "file",
     multiple: _ctx.multiple,
@@ -16849,11 +16850,11 @@ function render(_ctx, _cache) {
     onChange: _cache[0] || (_cache[0] = function() {
       return _ctx.handleChange && _ctx.handleChange(...arguments);
     })
-  }, null, 42, _hoisted_5), renderSlot(_ctx.$slots, "default", {}, () => [createVNode(_component_var_icon, {
+  }, null, 42, _hoisted_4), renderSlot(_ctx.$slots, "default", {}, () => [createVNode(_component_var_icon, {
     class: normalizeClass(_ctx.n("action-icon")),
     "var-uploader-cover": "",
     name: "plus"
-  }, null, 8, ["class"])])], 10, _hoisted_4)), [[_directive_ripple, {
+  }, null, 8, ["class"])])], 2)), [[_directive_ripple, {
     disabled: _ctx.disabled || _ctx.formDisabled || _ctx.readonly || _ctx.formReadonly || !_ctx.ripple || _ctx.$slots.default
   }]]) : createCommentVNode("v-if", true)], 2), createVNode(_component_var_form_details, {
     "error-message": _ctx.errorMessage,
@@ -16863,8 +16864,8 @@ function render(_ctx, _cache) {
     "var-uploader-cover": "",
     position: "center",
     show: _ctx.showPreview,
-    "onUpdate:show": _cache[1] || (_cache[1] = ($event) => _ctx.showPreview = $event),
-    onClosed: _cache[2] || (_cache[2] = ($event) => _ctx.currentPreview = null)
+    "onUpdate:show": _cache[2] || (_cache[2] = ($event) => _ctx.showPreview = $event),
+    onClosed: _cache[3] || (_cache[3] = ($event) => _ctx.currentPreview = null)
   }, {
     default: withCtx(() => {
       var _ctx$currentPreview, _ctx$currentPreview2;
@@ -16878,7 +16879,7 @@ function render(_ctx, _cache) {
         "x5-video-player-fullscreen": "false",
         controls: "",
         src: (_ctx$currentPreview2 = _ctx.currentPreview) == null ? void 0 : _ctx$currentPreview2.url
-      }, null, 10, _hoisted_6)) : createCommentVNode("v-if", true)];
+      }, null, 10, _hoisted_5)) : createCommentVNode("v-if", true)];
     }),
     _: 1
   }, 8, ["class", "show"])], 2);
@@ -16896,7 +16897,7 @@ var Uploader = defineComponent({
   },
   props,
   setup(props2) {
-    var id = ref("var-uploader-" + getCurrentInstance().uid);
+    var input2 = ref(null);
     var showPreview = ref(false);
     var currentPreview = ref(null);
     var maxlengthText = computed(() => {
@@ -16928,6 +16929,9 @@ var Uploader = defineComponent({
       }
       return modelValue;
     });
+    var triggerAction = () => {
+      input2.value.click();
+    };
     var preview = (varFile) => {
       var {
         disabled,
@@ -17108,7 +17112,7 @@ var Uploader = defineComponent({
     return {
       n,
       classes,
-      id,
+      input: input2,
       files,
       showPreview,
       currentPreview,
@@ -17119,6 +17123,7 @@ var Uploader = defineComponent({
       formDisabled: form == null ? void 0 : form.disabled,
       formReadonly: form == null ? void 0 : form.readonly,
       preview,
+      triggerAction,
       handleChange,
       handleRemove,
       getSuccess,
