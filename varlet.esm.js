@@ -13023,7 +13023,7 @@ var Rate = defineComponent({
       } = transformValue(val);
       return {
         [n$j("content")]: true,
-        [n$j("--disabled")]: form == null ? void 0 : form.disabled.value,
+        [n$j("--disabled")]: (form == null ? void 0 : form.disabled.value) || props2.disabled,
         [n$j("--error")]: errorMessage.value,
         [n$j("--primary")]: type !== "empty" && !color
       };
