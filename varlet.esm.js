@@ -11493,10 +11493,7 @@ function render$n(_ctx, _cache) {
       }, 1032, ["class", "onClick"])), [[_directive_ripple]]);
     }), 128))]),
     default: withCtx(() => [createElementVNode("div", {
-      class: normalizeClass(_ctx.n("size--open")),
-      style: {
-        "display": "flex"
-      },
+      class: normalizeClass(_ctx.classes(_ctx.n("size--open"), [_ctx.current <= 1 || _ctx.disabled, _ctx.n("size--open--disabled")])),
       onClick: _cache[5] || (_cache[5] = function() {
         return _ctx.showMenu && _ctx.showMenu(...arguments);
       })
