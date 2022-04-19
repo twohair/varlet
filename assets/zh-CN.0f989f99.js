@@ -106,7 +106,7 @@ app.use(BottomNavigationItem)
     `),a("span",{class:"hljs-keyword"},"return"),s(` { active, handleClick }
   }
 }
-`)])],-1),F={class:"card"},G=a("h3",null,"\u60AC\u6D6E\u6309\u94AE",-1),H=a("p",null,"Item \u6570\u91CF\u4E3A\u5076\u6570\u65F6\uFF0C\u60AC\u6D6E\u6309\u94AE\u5728\u4E2D\u95F4\u4F4D\u7F6E\uFF0C\u4E3A\u5947\u6570\u65F6\u5728\u6700\u53F3\u4FA7\u3002",-1),J=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-bottom-navigation"),s(),a("span",{class:"hljs-attr"},"v-model:active"),s("="),a("span",{class:"hljs-string"},'"fab"'),s(" @"),a("span",{class:"hljs-attr"},"fabClick"),s("="),a("span",{class:"hljs-string"},'"isEven = !isEven"'),s(">")]),s(`
+`)])],-1),F={class:"card"},G=a("h3",null,"\u60AC\u6D6E\u6309\u94AE",-1),H=a("p",null,"Item \u6570\u91CF\u4E3A\u5076\u6570\u65F6\uFF0C\u60AC\u6D6E\u6309\u94AE\u5728\u4E2D\u95F4\u4F4D\u7F6E\uFF0C\u4E3A\u5947\u6570\u65F6\u5728\u6700\u53F3\u4FA7\u3002",-1),J=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-bottom-navigation"),s(),a("span",{class:"hljs-attr"},"v-model:active"),s("="),a("span",{class:"hljs-string"},'"fab"'),s(" @"),a("span",{class:"hljs-attr"},"fab-click"),s("="),a("span",{class:"hljs-string"},'"isEven = !isEven"'),s(">")]),s(`
   `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(" #"),a("span",{class:"hljs-attr"},"fab"),s(">")]),s(`
     `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-icon"),s(),a("span",{class:"hljs-attr"},"name"),s("="),a("span",{class:"hljs-string"},'"heart"'),s(" />")]),s(`
   `),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
