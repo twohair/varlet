@@ -8,7 +8,6 @@ import{_ as c}from"./elevation.46d11dfe.js";import{e,o as p,c as d,a,i as n,j as
     `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-badge"),s(),a("span",{class:"hljs-attr"},"type"),s("="),a("span",{class:"hljs-string"},'"danger"'),s(" />")]),s(`
   `),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"var-space"),s(">")]),s(`
 `),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
-
 `)])],-1),v={class:"card"},_=a("h3",null,"\u5706\u70B9\u5FBD\u6807",-1),b=a("p",null,[s("\u901A\u8FC7 "),a("code",null,"dot"),s(" \u5C5E\u6027\u5C06\u5FBD\u6807\u8BBE\u7F6E\u4E3A\u5706\u70B9\u3002")],-1),f=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
   `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-badge"),s(),a("span",{class:"hljs-attr"},"type"),s("="),a("span",{class:"hljs-string"},'"danger"'),s(),a("span",{class:"hljs-attr"},"dot"),s(" />")]),s(`
 `),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
