@@ -22,7 +22,9 @@ import{_ as e}from"./elevation.46d11dfe.js";import{e as c,o,c as r,a as s,i as t
 `),s("span",{class:"hljs-tag"},[a("</"),s("span",{class:"hljs-name"},"template"),a(">")]),a(`
 `)])],-1),I={class:"card"},C=s("h3",null,"Icon Animation",-1),F=s("p",null,[a("When "),s("code",null,"transition (ms)"),a(" is set, and the icon is toggled by its "),s("code",null,"name"),a(", trigger a toggle animation.")],-1),V=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"script"),a(),s("span",{class:"hljs-attr"},"setup"),a(">")]),s("span",{class:"javascript"},[a(`
 `),s("span",{class:"hljs-keyword"},"import"),a(" { ref } "),s("span",{class:"hljs-keyword"},"from"),a(),s("span",{class:"hljs-string"},"'vue'"),a(`
+
 `),s("span",{class:"hljs-keyword"},"const"),a(" name = ref("),s("span",{class:"hljs-string"},"'information'"),a(`)
+
 `),s("span",{class:"hljs-keyword"},"const"),a(" toggle = "),s("span",{class:"hljs-function"},"() =>"),a(` {
   name.value = name.value === `),s("span",{class:"hljs-string"},"'information'"),a(` 
     ? `),s("span",{class:"hljs-string"},"'checkbox-marked-circle'"),a(` 

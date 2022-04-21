@@ -22,7 +22,9 @@ import{_ as c}from"./elevation.46d11dfe.js";import{e,o,c as h,a as s,i as n,j as
 `),s("span",{class:"hljs-tag"},[a("</"),s("span",{class:"hljs-name"},"template"),a(">")]),a(`
 `)])],-1),C={class:"card"},S=s("h3",null,"\u56FE\u6807\u5207\u6362\u52A8\u753B",-1),V=s("p",null,[a("\u5F53\u8BBE\u7F6E\u4E86 "),s("code",null,"transition(ms)"),a(" \u5E76\u901A\u8FC7\u56FE\u6807\u7684 "),s("code",null,"name"),a(" \u5207\u6362\u56FE\u6807\u65F6\uFF0C\u53EF\u4EE5\u89E6\u53D1\u5207\u6362\u52A8\u753B\u3002")],-1),$=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"script"),a(),s("span",{class:"hljs-attr"},"setup"),a(">")]),s("span",{class:"javascript"},[a(`
 `),s("span",{class:"hljs-keyword"},"import"),a(" { ref } "),s("span",{class:"hljs-keyword"},"from"),a(),s("span",{class:"hljs-string"},"'vue'"),a(`
+
 `),s("span",{class:"hljs-keyword"},"const"),a(" name = ref("),s("span",{class:"hljs-string"},"'information'"),a(`)
+
 `),s("span",{class:"hljs-keyword"},"const"),a(" toggle = "),s("span",{class:"hljs-function"},"() =>"),a(` {
   name.value = name.value === `),s("span",{class:"hljs-string"},"'information'"),a(` 
     ? `),s("span",{class:"hljs-string"},"'checkbox-marked-circle'"),a(` 
