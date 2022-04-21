@@ -21,9 +21,9 @@ import{_ as c}from"./elevation.46d11dfe.js";import{e,o as p,c as d,a,i as n,j as
 `)])],-1),V={class:"card"},C=a("h3",null,"\u6700\u5927\u503C",-1),N=a("p",null,[s("\u901A\u8FC7 "),a("code",null,"value"),s(" \u548C "),a("code",null,"max-value"),s(" \u63A7\u5236\u5FBD\u6807\u663E\u793A\u503C\u7684\u8303\u56F4\uFF08\u5F53 "),a("code",null,"value"),s(" \u4E0E "),a("code",null,"max-value"),s(" \u90FD\u5B58\u5728\u65F6\u751F\u6548\uFF09\u3002")],-1),$=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"script"),s(),a("span",{class:"hljs-attr"},"setup"),s(">")]),a("span",{class:"javascript"},[s(`
 `),a("span",{class:"hljs-keyword"},"import"),s(" { ref } "),a("span",{class:"hljs-keyword"},"from"),s(),a("span",{class:"hljs-string"},"'vue'"),s(`
 
-`),a("span",{class:"hljs-keyword"},"const"),s(" value = ref("),a("span",{class:"hljs-number"},"88"),s(`);
-`),a("span",{class:"hljs-keyword"},"const"),s(" value1 = ref("),a("span",{class:"hljs-number"},"188"),s(`);
-`),a("span",{class:"hljs-keyword"},"const"),s(" maxValue = ref("),a("span",{class:"hljs-number"},"99"),s(`);
+`),a("span",{class:"hljs-keyword"},"const"),s(" value = ref("),a("span",{class:"hljs-number"},"88"),s(`)
+`),a("span",{class:"hljs-keyword"},"const"),s(" value1 = ref("),a("span",{class:"hljs-number"},"188"),s(`)
+`),a("span",{class:"hljs-keyword"},"const"),s(" maxValue = ref("),a("span",{class:"hljs-number"},"99"),s(`)
 `)]),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"script"),s(">")]),s(`
 
 `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
@@ -51,7 +51,8 @@ import{_ as c}from"./elevation.46d11dfe.js";import{e,o as p,c as d,a,i as n,j as
 `)])],-1),A={class:"card"},E=a("h3",null,"\u662F\u5426\u663E\u793A\u5FBD\u6807",-1),I=a("p",null,[s("\u901A\u8FC7 "),a("code",null,"hidden"),s(" \u5C5E\u6027\u8BBE\u7F6E\u662F\u5426\u663E\u793A\u5FBD\u6807\u3002")],-1),T=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"script"),s(),a("span",{class:"hljs-attr"},"setup"),s(">")]),a("span",{class:"javascript"},[s(`
 `),a("span",{class:"hljs-keyword"},"import"),s(" { ref } "),a("span",{class:"hljs-keyword"},"from"),s(),a("span",{class:"hljs-string"},"'vue'"),s(`
 
-`),a("span",{class:"hljs-keyword"},"const"),s(" hidden = ref("),a("span",{class:"hljs-literal"},"false"),s(`);
+`),a("span",{class:"hljs-keyword"},"const"),s(" hidden = ref("),a("span",{class:"hljs-literal"},"false"),s(`)
+
 `),a("span",{class:"hljs-keyword"},"const"),s(" handleChange = "),a("span",{class:"hljs-function"},"() =>"),s(` {
   hidden.value = !hidden.value
 }

@@ -38,7 +38,8 @@ import{_ as n}from"./elevation.46d11dfe.js";import{e,o as d,c as h,a,i as t,j as
     `),a("span",{class:"hljs-attr"},"closable"),s(`
     `),a("span",{class:"hljs-attr"},"icon-name"),s("="),a("span",{class:"hljs-string"},'"delete"'),s(`
     `),a("span",{class:"hljs-attr"},"v-if"),s("="),a("span",{class:"hljs-string"},'"show1"'),s(`
-    @`),a("span",{class:"hljs-attr"},"close"),s("="),a("span",{class:"hljs-string"},'"show1 = false"'),s(">")]),s(`
+    @`),a("span",{class:"hljs-attr"},"close"),s("="),a("span",{class:"hljs-string"},'"show1 = false"'),s(`
+  >`)]),s(`
     \u81EA\u5B9A\u4E49\u5173\u95ED\u56FE\u6807
   `),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"var-chip"),s(">")]),s(`
 `),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`

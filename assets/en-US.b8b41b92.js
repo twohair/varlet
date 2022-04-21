@@ -3,8 +3,11 @@ import{_ as n}from"./elevation.46d11dfe.js";import{e as c,o as d,c as r,a as s,i
 `),s("span",{class:"hljs-tag"},[a("</"),s("span",{class:"hljs-name"},"template"),a(">")]),a(`
 `)])],-1),u={class:"card"},_=s("h3",null,"Fit Mode",-1),f=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"template"),a(">")]),a(`
   `),s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"var-space"),a(),s("span",{class:"hljs-attr"},":size"),a("="),s("span",{class:"hljs-string"},'"[20, 20]"'),a(">")]),a(`
-    `),s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"var-image"),a(),s("span",{class:"hljs-attr"},"width"),a("="),s("span",{class:"hljs-string"},'"85px"'),a(),s("span",{class:"hljs-attr"},"height"),a("="),s("span",{class:"hljs-string"},'"85px"'),a(),s("span",{class:"hljs-attr"},"src"),a("="),s("span",{class:"hljs-string"},'"https://varlet-varletjs.vercel.app/cat.jpg"'),a(" />")]),a(`
-
+    `),s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"var-image"),a(`
+      `),s("span",{class:"hljs-attr"},"width"),a("="),s("span",{class:"hljs-string"},'"85px"'),a(`
+      `),s("span",{class:"hljs-attr"},"height"),a("="),s("span",{class:"hljs-string"},'"85px"'),a(`
+      `),s("span",{class:"hljs-attr"},"src"),a("="),s("span",{class:"hljs-string"},'"https://varlet-varletjs.vercel.app/cat.jpg"'),a(`
+    />`)]),a(`
     `),s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"var-image"),a(` 
       `),s("span",{class:"hljs-attr"},"width"),a("="),s("span",{class:"hljs-string"},'"85px"'),a(` 
       `),s("span",{class:"hljs-attr"},"height"),a("="),s("span",{class:"hljs-string"},'"85px"'),a(`
@@ -54,10 +57,20 @@ import{_ as n}from"./elevation.46d11dfe.js";import{e as c,o as d,c as r,a as s,i
   `),s("span",{class:"hljs-tag"},[a("</"),s("span",{class:"hljs-name"},"var-space"),a(">")]),a(`
 `),s("span",{class:"hljs-tag"},[a("</"),s("span",{class:"hljs-name"},"template"),a(">")]),a(`
 `)])],-1),w={class:"card"},z=s("h3",null,"Use Ripple",-1),k=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"template"),a(">")]),a(`
-  `),s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"var-image"),a(),s("span",{class:"hljs-attr"},"width"),a("="),s("span",{class:"hljs-string"},'"85px"'),a(),s("span",{class:"hljs-attr"},"height"),a("="),s("span",{class:"hljs-string"},'"85px"'),a(),s("span",{class:"hljs-attr"},"ripple"),a(),s("span",{class:"hljs-attr"},"src"),a("="),s("span",{class:"hljs-string"},'"https://varlet-varletjs.vercel.app/cat.jpg"'),a("/>")]),a(`
+  `),s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"var-image"),a(`
+    `),s("span",{class:"hljs-attr"},"width"),a("="),s("span",{class:"hljs-string"},'"85px"'),a(`
+    `),s("span",{class:"hljs-attr"},"height"),a("="),s("span",{class:"hljs-string"},'"85px"'),a(`
+    `),s("span",{class:"hljs-attr"},"ripple"),a(`
+    `),s("span",{class:"hljs-attr"},"src"),a("="),s("span",{class:"hljs-string"},'"https://varlet-varletjs.vercel.app/cat.jpg"'),a(`
+  />`)]),a(`
 `),s("span",{class:"hljs-tag"},[a("</"),s("span",{class:"hljs-name"},"template"),a(">")]),a(`
 `)])],-1),I={class:"card"},S=s("h3",null,"Use LazyLoad",-1),E=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"template"),a(">")]),a(`
-  `),s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"var-image"),a(),s("span",{class:"hljs-attr"},"width"),a("="),s("span",{class:"hljs-string"},'"85px"'),a(),s("span",{class:"hljs-attr"},"height"),a("="),s("span",{class:"hljs-string"},'"85px"'),a("  "),s("span",{class:"hljs-attr"},"lazy"),a(),s("span",{class:"hljs-attr"},"src"),a("="),s("span",{class:"hljs-string"},'"https://varlet-varletjs.vercel.app/cat.jpg"'),a(" />")]),a(`
+  `),s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"var-image"),a(`
+    `),s("span",{class:"hljs-attr"},"width"),a("="),s("span",{class:"hljs-string"},'"85px"'),a(`
+    `),s("span",{class:"hljs-attr"},"height"),a("="),s("span",{class:"hljs-string"},'"85px"'),a(`
+    `),s("span",{class:"hljs-attr"},"lazy"),a(`
+    `),s("span",{class:"hljs-attr"},"src"),a("="),s("span",{class:"hljs-string"},'"https://varlet-varletjs.vercel.app/cat.jpg"'),a(`
+  />`)]),a(`
 `),s("span",{class:"hljs-tag"},[a("</"),s("span",{class:"hljs-name"},"template"),a(">")]),a(`
 `)])],-1),U={class:"card"},V=s("h3",null,"Set the lazy loading state",-1),W=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"template"),a(">")]),a(`
   `),s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"var-image"),a(` 

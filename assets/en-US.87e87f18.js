@@ -38,7 +38,8 @@ import{_ as c}from"./elevation.46d11dfe.js";import{e as n,o as h,c as d,a,i as l
     `),a("span",{class:"hljs-attr"},"closable"),s(` 
     `),a("span",{class:"hljs-attr"},"icon-name"),s("="),a("span",{class:"hljs-string"},'"delete"'),s(` 
     `),a("span",{class:"hljs-attr"},"v-if"),s("="),a("span",{class:"hljs-string"},'"show1"'),s(` 
-    @`),a("span",{class:"hljs-attr"},"close"),s("="),a("span",{class:"hljs-string"},'"show1 = false"'),s(">")]),s(`
+    @`),a("span",{class:"hljs-attr"},"close"),s("="),a("span",{class:"hljs-string"},'"show1 = false"'),s(`
+  >`)]),s(`
     Custom Close Icon
   `),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"var-chip"),s(">")]),s(`
 `),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`

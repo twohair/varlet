@@ -21,9 +21,9 @@ import{_ as e}from"./elevation.46d11dfe.js";import{e as c,o as h,c as p,a,i as t
 `)])],-1),B={class:"card"},C=a("h3",null,"Maximum",-1),k=a("p",null,[s("Control the range of badge display values through "),a("code",null,"value"),s(" and "),a("code",null,"max-value"),s(" (effective when both "),a("code",null,"value"),s(" and "),a("code",null,"max-value"),s(" exist).")],-1),T=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"script"),s(),a("span",{class:"hljs-attr"},"setup"),s(">")]),a("span",{class:"javascript"},[s(`
 `),a("span",{class:"hljs-keyword"},"import"),s(" { ref } "),a("span",{class:"hljs-keyword"},"from"),s(),a("span",{class:"hljs-string"},"'vue'"),s(`
 
-`),a("span",{class:"hljs-keyword"},"const"),s(" value = ref("),a("span",{class:"hljs-number"},"88"),s(`);
-`),a("span",{class:"hljs-keyword"},"const"),s(" value1 = ref("),a("span",{class:"hljs-number"},"188"),s(`);
-`),a("span",{class:"hljs-keyword"},"const"),s(" maxValue = ref("),a("span",{class:"hljs-number"},"99"),s(`);
+`),a("span",{class:"hljs-keyword"},"const"),s(" value = ref("),a("span",{class:"hljs-number"},"88"),s(`)
+`),a("span",{class:"hljs-keyword"},"const"),s(" value1 = ref("),a("span",{class:"hljs-number"},"188"),s(`)
+`),a("span",{class:"hljs-keyword"},"const"),s(" maxValue = ref("),a("span",{class:"hljs-number"},"99"),s(`)
 `)]),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"script"),s(">")]),s(`
 
 `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
@@ -49,12 +49,13 @@ import{_ as e}from"./elevation.46d11dfe.js";import{e as c,o as h,c as p,a,i as t
   `),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"var-space"),s(">")]),s(`
 `),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
 `)])],-1),z={class:"card"},L=a("h3",null,"Whether To Display The Badge",-1),N=a("p",null,[s("Set whether the badge is displayed through the "),a("code",null,"hidden"),s(" attribute.")],-1),$=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"script"),s(),a("span",{class:"hljs-attr"},"setup"),s(">")]),a("span",{class:"javascript"},[s(`
-  `),a("span",{class:"hljs-keyword"},"import"),s(" { ref } "),a("span",{class:"hljs-keyword"},"from"),s(),a("span",{class:"hljs-string"},"'vue'"),s(`
+`),a("span",{class:"hljs-keyword"},"import"),s(" { ref } "),a("span",{class:"hljs-keyword"},"from"),s(),a("span",{class:"hljs-string"},"'vue'"),s(`
 
-  `),a("span",{class:"hljs-keyword"},"const"),s(" hidden = ref("),a("span",{class:"hljs-literal"},"false"),s(`);
-  `),a("span",{class:"hljs-keyword"},"const"),s(" handleChange = "),a("span",{class:"hljs-function"},"() =>"),s(` {
-    hidden.value = !hidden.value
-  }
+`),a("span",{class:"hljs-keyword"},"const"),s(" hidden = ref("),a("span",{class:"hljs-literal"},"false"),s(`)
+
+`),a("span",{class:"hljs-keyword"},"const"),s(" handleChange = "),a("span",{class:"hljs-function"},"() =>"),s(` {
+  hidden.value = !hidden.value
+}
 `)]),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"script"),s(">")]),s(`
 
 `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
