@@ -11733,6 +11733,10 @@ var props$k = _extends$2({
     type: Boolean,
     default: false
   },
+  cascadeInitialIndexes: {
+    type: Array,
+    default: () => []
+  },
   optionHeight: {
     type: [Number, String],
     default: 44
@@ -11990,24 +11994,29 @@ var VarPicker = defineComponent({
           scrollEl: null,
           scrolling: false
         };
-        scrollTo2(scrollColumn, scrollColumn.index, 200);
+        scrollTo2(scrollColumn, scrollColumn.index, 0, true);
         return scrollColumn;
       });
     };
     var normalizeCascadeColumns = (cascadeColumns) => {
       var scrollColumns2 = [];
-      createChildren(scrollColumns2, cascadeColumns);
+      createChildren(scrollColumns2, cascadeColumns, true);
       return scrollColumns2;
     };
-    var createChildren = (scrollColumns2, children) => {
+    var createChildren = function(scrollColumns2, children, initial) {
+      if (initial === void 0) {
+        initial = false;
+      }
       if (isArray(children) && children.length) {
+        var _props$cascadeInitial;
+        var index = initial ? (_props$cascadeInitial = props2.cascadeInitialIndexes[scrollColumns2.length]) != null ? _props$cascadeInitial : 0 : 0;
         var scrollColumn = {
           id: sid$1++,
           prevY: void 0,
           momentumPrevY: void 0,
           touching: false,
           translate: center.value,
-          index: 0,
+          index,
           duration: 0,
           momentumTime: 0,
           column: {
@@ -12018,7 +12027,8 @@ var VarPicker = defineComponent({
           scrolling: false
         };
         scrollColumns2.push(scrollColumn);
-        createChildren(scrollColumns2, scrollColumn.columns[scrollColumn.index].children);
+        scrollTo2(scrollColumn, scrollColumn.index, 0, true);
+        createChildren(scrollColumns2, scrollColumn.columns[scrollColumn.index].children, initial);
       }
     };
     var rebuildChildren = (scrollColumn) => {
