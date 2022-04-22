@@ -874,21 +874,21 @@ function releaseLock(uid) {
   delete Context.locks[uid];
   resolveLock();
 }
-function useLock(props2, state, use2) {
+function useLock(source, useSource) {
   var {
     uid
   } = getCurrentInstance();
-  if (use2) {
-    watch(() => props2[use2], (newValue) => {
+  if (useSource) {
+    watch(useSource, (newValue) => {
       if (newValue === false) {
         releaseLock(uid);
-      } else if (newValue === true && props2[state] === true) {
+      } else if (newValue === true && source() === true) {
         addLock(uid);
       }
     });
   }
-  watch(() => props2[state], (newValue) => {
-    if (use2 && props2[use2] === false) {
+  watch(source, (newValue) => {
+    if (useSource && useSource() === false) {
       return;
     }
     if (newValue === true) {
@@ -898,34 +898,34 @@ function useLock(props2, state, use2) {
     }
   });
   onBeforeMount(() => {
-    if (use2 && props2[use2] === false) {
+    if (useSource && useSource() === false) {
       return;
     }
-    if (props2[state] === true) {
+    if (source() === true) {
       addLock(uid);
     }
   });
   onUnmounted(() => {
-    if (use2 && props2[use2] === false) {
+    if (useSource && useSource() === false) {
       return;
     }
-    if (props2[state] === true) {
+    if (source() === true) {
       releaseLock(uid);
     }
   });
   onActivated(() => {
-    if (use2 && props2[use2] === false) {
+    if (useSource && useSource() === false) {
       return;
     }
-    if (props2[state] === true) {
+    if (source() === true) {
       addLock(uid);
     }
   });
   onDeactivated(() => {
-    if (use2 && props2[use2] === false) {
+    if (useSource && useSource() === false) {
       return;
     }
-    if (props2[state] === true) {
+    if (source() === true) {
       releaseLock(uid);
     }
   });
@@ -992,7 +992,7 @@ var Popup = defineComponent({
       }
       (_props$onUpdateShow = props2["onUpdate:show"]) == null ? void 0 : _props$onUpdateShow.call(props2, false);
     };
-    useLock(props2, "show", "lockScroll");
+    useLock(() => props2.show, () => props2.lockScroll);
     watch(() => props2.show, (newValue) => {
       var {
         onOpen,
@@ -14357,7 +14357,7 @@ var VarSnackbarCore = defineComponent({
     var {
       zIndex
     } = useZIndex(() => props2.show, 1);
-    useLock(props2, "show", "lockScroll");
+    useLock(() => props2.show, () => props2.lockScroll);
     var isForbidClick = computed(() => props2.type === "loading" || props2.forbidClick);
     var iconName = computed(() => {
       if (!props2.type)
