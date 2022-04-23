@@ -21,6 +21,7 @@ import{_ as e}from"./elevation.46d11dfe.js";import{e as c,o as p,c as h,a,i as t
   `),a("span",{class:"hljs-attribute"},"width"),s(": "),a("span",{class:"hljs-number"},"100%"),s(`;
   `),a("span",{class:"hljs-attribute"},"height"),s(": "),a("span",{class:"hljs-number"},"100%"),s(`;
   `),a("span",{class:"hljs-attribute"},"object-fit"),s(`: cover;
+  `),a("span",{class:"hljs-attribute"},"pointer-events"),s(`: none;
 }
 `)]),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"style"),s(">")]),s(`
 `)])],-1),v={class:"card"},u=a("h3",null,"\u7981\u6B62\u5FAA\u73AF\u8F6E\u64AD",-1),b=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
