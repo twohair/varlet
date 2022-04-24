@@ -134,7 +134,7 @@ function kebabCase(str) {
   var ret = str.replace(/([A-Z])/g, " $1").trim();
   return ret.split(" ").join("-").toLowerCase();
 }
-function asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, key, arg) {
+function asyncGeneratorStep$c(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
     var value = info.value;
@@ -148,16 +148,16 @@ function asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, key, arg) {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-function _asyncToGenerator$b(fn) {
+function _asyncToGenerator$c(fn) {
   return function() {
     var self = this, args = arguments;
     return new Promise(function(resolve, reject) {
       var gen = fn.apply(self, args);
       function _next(value) {
-        asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, "next", value);
+        asyncGeneratorStep$c(gen, resolve, reject, _next, _throw, "next", value);
       }
       function _throw(err) {
-        asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, "throw", err);
+        asyncGeneratorStep$c(gen, resolve, reject, _next, _throw, "throw", err);
       }
       _next(void 0);
     });
@@ -187,7 +187,7 @@ function inViewport(_x) {
   return _inViewport.apply(this, arguments);
 }
 function _inViewport() {
-  _inViewport = _asyncToGenerator$b(function* (element) {
+  _inViewport = _asyncToGenerator$c(function* (element) {
     yield doubleRaf();
     var {
       top,
@@ -335,7 +335,7 @@ function supportTouch() {
   return inBrowser2 && "ontouchstart" in window;
 }
 var _excluded = ["collect", "clear"];
-function asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, key, arg) {
+function asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
     var value = info.value;
@@ -349,16 +349,16 @@ function asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, key, arg) {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-function _asyncToGenerator$a(fn) {
+function _asyncToGenerator$b(fn) {
   return function() {
     var self = this, args = arguments;
     return new Promise(function(resolve, reject) {
       var gen = fn.apply(self, args);
       function _next(value) {
-        asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, "next", value);
+        asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, "next", value);
       }
       function _throw(err) {
-        asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, "throw", err);
+        asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, "throw", err);
       }
       _next(void 0);
     });
@@ -545,7 +545,7 @@ function keyInProvides(key) {
 function useValidation() {
   var errorMessage = ref("");
   var validate = /* @__PURE__ */ function() {
-    var _ref = _asyncToGenerator$a(function* (rules, value, apis) {
+    var _ref = _asyncToGenerator$b(function* (rules, value, apis) {
       if (!isArray(rules) || !rules.length) {
         return true;
       }
@@ -566,7 +566,7 @@ function useValidation() {
     errorMessage.value = "";
   };
   var validateWithTrigger = /* @__PURE__ */ function() {
-    var _ref2 = _asyncToGenerator$a(function* (validateTrigger, trigger, rules, value, apis) {
+    var _ref2 = _asyncToGenerator$b(function* (validateTrigger, trigger, rules, value, apis) {
       if (validateTrigger.includes(trigger)) {
         (yield validate(rules, value, apis)) && (errorMessage.value = "");
       }
@@ -1090,7 +1090,7 @@ var props$T = {
     type: Function
   }
 };
-function asyncGeneratorStep$9(gen, resolve, reject, _next, _throw, key, arg) {
+function asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
     var value = info.value;
@@ -1104,16 +1104,16 @@ function asyncGeneratorStep$9(gen, resolve, reject, _next, _throw, key, arg) {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-function _asyncToGenerator$9(fn) {
+function _asyncToGenerator$a(fn) {
   return function() {
     var self = this, args = arguments;
     return new Promise(function(resolve, reject) {
       var gen = fn.apply(self, args);
       function _next(value) {
-        asyncGeneratorStep$9(gen, resolve, reject, _next, _throw, "next", value);
+        asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, "next", value);
       }
       function _throw(err) {
-        asyncGeneratorStep$9(gen, resolve, reject, _next, _throw, "throw", err);
+        asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, "throw", err);
       }
       _next(void 0);
     });
@@ -1145,7 +1145,7 @@ var Icon = defineComponent({
     var nextName = ref("");
     var shrinking = ref(false);
     var handleNameChange = /* @__PURE__ */ function() {
-      var _ref = _asyncToGenerator$9(function* (newName, oldName) {
+      var _ref = _asyncToGenerator$a(function* (newName, oldName) {
         var {
           transition
         } = props2;
@@ -8670,7 +8670,7 @@ var props$w = {
     default: false
   }
 };
-function asyncGeneratorStep$8(gen, resolve, reject, _next, _throw, key, arg) {
+function asyncGeneratorStep$9(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
     var value = info.value;
@@ -8684,16 +8684,16 @@ function asyncGeneratorStep$8(gen, resolve, reject, _next, _throw, key, arg) {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-function _asyncToGenerator$8(fn) {
+function _asyncToGenerator$9(fn) {
   return function() {
     var self = this, args = arguments;
     return new Promise(function(resolve, reject) {
       var gen = fn.apply(self, args);
       function _next(value) {
-        asyncGeneratorStep$8(gen, resolve, reject, _next, _throw, "next", value);
+        asyncGeneratorStep$9(gen, resolve, reject, _next, _throw, "next", value);
       }
       function _throw(err) {
-        asyncGeneratorStep$8(gen, resolve, reject, _next, _throw, "throw", err);
+        asyncGeneratorStep$9(gen, resolve, reject, _next, _throw, "throw", err);
       }
       _next(void 0);
     });
@@ -8719,7 +8719,7 @@ var Form = defineComponent({
       bindFormItems
     } = useFormItems();
     var validate = /* @__PURE__ */ function() {
-      var _ref = _asyncToGenerator$8(function* () {
+      var _ref = _asyncToGenerator$9(function* () {
         var res = yield Promise.all(formItems.map((_ref2) => {
           var {
             validate: validate2
@@ -8760,7 +8760,7 @@ var Form = defineComponent({
 Form.install = function(app) {
   app.component(Form.name, Form);
 };
-function asyncGeneratorStep$7(gen, resolve, reject, _next, _throw, key, arg) {
+function asyncGeneratorStep$8(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
     var value = info.value;
@@ -8774,16 +8774,16 @@ function asyncGeneratorStep$7(gen, resolve, reject, _next, _throw, key, arg) {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-function _asyncToGenerator$7(fn) {
+function _asyncToGenerator$8(fn) {
   return function() {
     var self = this, args = arguments;
     return new Promise(function(resolve, reject) {
       var gen = fn.apply(self, args);
       function _next(value) {
-        asyncGeneratorStep$7(gen, resolve, reject, _next, _throw, "next", value);
+        asyncGeneratorStep$8(gen, resolve, reject, _next, _throw, "next", value);
       }
       function _throw(err) {
-        asyncGeneratorStep$7(gen, resolve, reject, _next, _throw, "throw", err);
+        asyncGeneratorStep$8(gen, resolve, reject, _next, _throw, "throw", err);
       }
       _next(void 0);
     });
@@ -8916,7 +8916,7 @@ function check(_x) {
   return _check.apply(this, arguments);
 }
 function _check() {
-  _check = _asyncToGenerator$7(function* (el) {
+  _check = _asyncToGenerator$8(function* (el) {
     (yield inViewport(el)) && attemptLoad(el);
   });
   return _check.apply(this, arguments);
@@ -8928,7 +8928,7 @@ function add(_x2) {
   return _add.apply(this, arguments);
 }
 function _add() {
-  _add = _asyncToGenerator$7(function* (el) {
+  _add = _asyncToGenerator$8(function* (el) {
     !lazyElements.includes(el) && lazyElements.push(el);
     getAllParentScroller(el).forEach(bindEvents);
     yield check(el);
@@ -8950,7 +8950,7 @@ function mounted(_x3, _x4) {
   return _mounted.apply(this, arguments);
 }
 function _mounted() {
-  _mounted = _asyncToGenerator$7(function* (el, binding) {
+  _mounted = _asyncToGenerator$8(function* (el, binding) {
     createLazy(el, binding);
     yield add(el);
   });
@@ -8960,7 +8960,7 @@ function updated(_x5, _x6) {
   return _updated.apply(this, arguments);
 }
 function _updated() {
-  _updated = _asyncToGenerator$7(function* (el, binding) {
+  _updated = _asyncToGenerator$8(function* (el, binding) {
     if (!diff(el, binding)) {
       lazyElements.includes(el) && (yield check(el));
       return;
@@ -9199,7 +9199,7 @@ var props$u = {
     type: Function
   }
 };
-function asyncGeneratorStep$6(gen, resolve, reject, _next, _throw, key, arg) {
+function asyncGeneratorStep$7(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
     var value = info.value;
@@ -9213,16 +9213,16 @@ function asyncGeneratorStep$6(gen, resolve, reject, _next, _throw, key, arg) {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-function _asyncToGenerator$6(fn) {
+function _asyncToGenerator$7(fn) {
   return function() {
     var self = this, args = arguments;
     return new Promise(function(resolve, reject) {
       var gen = fn.apply(self, args);
       function _next(value) {
-        asyncGeneratorStep$6(gen, resolve, reject, _next, _throw, "next", value);
+        asyncGeneratorStep$7(gen, resolve, reject, _next, _throw, "next", value);
       }
       function _throw(err) {
-        asyncGeneratorStep$6(gen, resolve, reject, _next, _throw, "throw", err);
+        asyncGeneratorStep$7(gen, resolve, reject, _next, _throw, "throw", err);
       }
       _next(void 0);
     });
@@ -9537,7 +9537,7 @@ var Swipe = defineComponent({
       vertical
     };
     bindSwipeItems(swipeProvider);
-    watch(() => length.value, /* @__PURE__ */ _asyncToGenerator$6(function* () {
+    watch(() => length.value, /* @__PURE__ */ _asyncToGenerator$7(function* () {
       yield doubleRaf();
       initialIndex();
       resize();
@@ -10045,7 +10045,7 @@ var props$s = {
     type: Function
   }
 };
-function asyncGeneratorStep$5(gen, resolve, reject, _next, _throw, key, arg) {
+function asyncGeneratorStep$6(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
     var value = info.value;
@@ -10059,16 +10059,16 @@ function asyncGeneratorStep$5(gen, resolve, reject, _next, _throw, key, arg) {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-function _asyncToGenerator$5(fn) {
+function _asyncToGenerator$6(fn) {
   return function() {
     var self = this, args = arguments;
     return new Promise(function(resolve, reject) {
       var gen = fn.apply(self, args);
       function _next(value) {
-        asyncGeneratorStep$5(gen, resolve, reject, _next, _throw, "next", value);
+        asyncGeneratorStep$6(gen, resolve, reject, _next, _throw, "next", value);
       }
       function _throw(err) {
-        asyncGeneratorStep$5(gen, resolve, reject, _next, _throw, "throw", err);
+        asyncGeneratorStep$6(gen, resolve, reject, _next, _throw, "throw", err);
       }
       _next(void 0);
     });
@@ -10118,7 +10118,7 @@ var Sticky = defineComponent({
     var enableCSSMode = computed(() => !props2.disabled && props2.cssMode);
     var enableFixedMode = computed(() => !props2.disabled && isFixed.value);
     var offsetTop = computed(() => toPxNum(props2.offsetTop));
-    var scroller2;
+    var scroller;
     var handleScroll = () => {
       var {
         onScroll,
@@ -10129,10 +10129,10 @@ var Sticky = defineComponent({
         return;
       }
       var scrollerTop = 0;
-      if (scroller2 !== window) {
+      if (scroller !== window) {
         var {
           top
-        } = scroller2.getBoundingClientRect();
+        } = scroller.getBoundingClientRect();
         scrollerTop = top;
       }
       var wrapper3 = wrapperEl.value;
@@ -10159,10 +10159,10 @@ var Sticky = defineComponent({
       }
     };
     var addScrollListener = /* @__PURE__ */ function() {
-      var _ref = _asyncToGenerator$5(function* () {
+      var _ref = _asyncToGenerator$6(function* () {
         yield doubleRaf();
-        scroller2 = getParentScroller(stickyEl.value);
-        scroller2 !== window && scroller2.addEventListener("scroll", handleScroll);
+        scroller = getParentScroller(stickyEl.value);
+        scroller !== window && scroller.addEventListener("scroll", handleScroll);
         window.addEventListener("scroll", handleScroll);
         handleScroll();
       });
@@ -10171,7 +10171,7 @@ var Sticky = defineComponent({
       };
     }();
     var removeScrollListener = () => {
-      scroller2 !== window && scroller2.removeEventListener("scroll", handleScroll);
+      scroller !== window && scroller.removeEventListener("scroll", handleScroll);
       window.removeEventListener("scroll", handleScroll);
     };
     watch(() => props2.disabled, handleScroll);
@@ -10351,7 +10351,7 @@ var props$q = {
     type: Function
   }
 };
-function asyncGeneratorStep$4(gen, resolve, reject, _next, _throw, key, arg) {
+function asyncGeneratorStep$5(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
     var value = info.value;
@@ -10365,16 +10365,16 @@ function asyncGeneratorStep$4(gen, resolve, reject, _next, _throw, key, arg) {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-function _asyncToGenerator$4(fn) {
+function _asyncToGenerator$5(fn) {
   return function() {
     var self = this, args = arguments;
     return new Promise(function(resolve, reject) {
       var gen = fn.apply(self, args);
       function _next(value) {
-        asyncGeneratorStep$4(gen, resolve, reject, _next, _throw, "next", value);
+        asyncGeneratorStep$5(gen, resolve, reject, _next, _throw, "next", value);
       }
       function _throw(err) {
-        asyncGeneratorStep$4(gen, resolve, reject, _next, _throw, "throw", err);
+        asyncGeneratorStep$5(gen, resolve, reject, _next, _throw, "throw", err);
       }
       _next(void 0);
     });
@@ -10417,7 +10417,7 @@ var IndexBar = defineComponent({
       bindIndexAnchors
     } = useIndexAnchors();
     var clickedName = ref("");
-    var scroller2 = ref(null);
+    var scroller = ref(null);
     var barEl = ref(null);
     var anchorNameList = ref([]);
     var active = ref();
@@ -10441,8 +10441,8 @@ var IndexBar = defineComponent({
       call(props2.onChange, anchorName);
     };
     var handleScroll = () => {
-      var scrollTop = getScrollTop(scroller2.value);
-      var scrollHeight = scroller2.value === window ? document.body.scrollHeight : scroller2.value.scrollHeight;
+      var scrollTop = getScrollTop(scroller.value);
+      var scrollHeight = scroller.value === window ? document.body.scrollHeight : scroller.value.scrollHeight;
       var {
         offsetTop
       } = barEl.value;
@@ -10460,7 +10460,7 @@ var IndexBar = defineComponent({
       });
     };
     var anchorClick = /* @__PURE__ */ function() {
-      var _ref = _asyncToGenerator$4(function* (anchorName, manualCall) {
+      var _ref = _asyncToGenerator$5(function* (anchorName, manualCall) {
         var {
           offsetTop
         } = barEl.value;
@@ -10477,10 +10477,10 @@ var IndexBar = defineComponent({
         if (!indexAnchor)
           return;
         var top = indexAnchor.ownTop.value - stickyOffsetTop.value + offsetTop;
-        var left = getScrollLeft(scroller2.value);
+        var left = getScrollLeft(scroller.value);
         clickedName.value = anchorName;
         emitEvent(anchorName);
-        yield scrollTo(scroller2.value, {
+        yield scrollTo(scroller.value, {
           left,
           top,
           animation: easeInOutCubic,
@@ -10497,7 +10497,7 @@ var IndexBar = defineComponent({
     var scrollTo$1 = (index) => {
       requestAnimationFrame(() => anchorClick(index, true));
     };
-    watch(() => length.value, /* @__PURE__ */ _asyncToGenerator$4(function* () {
+    watch(() => length.value, /* @__PURE__ */ _asyncToGenerator$5(function* () {
       yield doubleRaf();
       indexAnchors.forEach((_ref4) => {
         var {
@@ -10509,13 +10509,13 @@ var IndexBar = defineComponent({
         setOwnTop();
       });
     }));
-    onMounted(/* @__PURE__ */ _asyncToGenerator$4(function* () {
+    onMounted(/* @__PURE__ */ _asyncToGenerator$5(function* () {
       yield doubleRaf();
-      scroller2.value = getParentScroller(barEl.value);
-      scroller2.value.addEventListener("scroll", handleScroll);
+      scroller.value = getParentScroller(barEl.value);
+      scroller.value.addEventListener("scroll", handleScroll);
     }));
     onBeforeUnmount(() => {
-      call(scroller2.value.removeEventListener, "scroll", handleScroll);
+      call(scroller.value.removeEventListener, "scroll", handleScroll);
     });
     return {
       n: n$u,
@@ -10926,7 +10926,7 @@ var props$o = {
     type: Function
   }
 };
-function asyncGeneratorStep$3(gen, resolve, reject, _next, _throw, key, arg) {
+function asyncGeneratorStep$4(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
     var value = info.value;
@@ -10940,16 +10940,16 @@ function asyncGeneratorStep$3(gen, resolve, reject, _next, _throw, key, arg) {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-function _asyncToGenerator$3(fn) {
+function _asyncToGenerator$4(fn) {
   return function() {
     var self = this, args = arguments;
     return new Promise(function(resolve, reject) {
       var gen = fn.apply(self, args);
       function _next(value) {
-        asyncGeneratorStep$3(gen, resolve, reject, _next, _throw, "next", value);
+        asyncGeneratorStep$4(gen, resolve, reject, _next, _throw, "next", value);
       }
       function _throw(err) {
-        asyncGeneratorStep$3(gen, resolve, reject, _next, _throw, "throw", err);
+        asyncGeneratorStep$4(gen, resolve, reject, _next, _throw, "throw", err);
       }
       _next(void 0);
     });
@@ -11003,21 +11003,21 @@ var List = defineComponent({
   setup(props2) {
     var listEl = ref(null);
     var detectorEl = ref(null);
-    var scroller2;
+    var scroller;
     var load = () => {
       call(props2["onUpdate:error"], false);
       call(props2["onUpdate:loading"], true);
       call(props2.onLoad);
     };
     var isReachBottom = () => {
-      var containerBottom = scroller2 === window ? window.innerHeight : scroller2.getBoundingClientRect().bottom;
+      var containerBottom = scroller === window ? window.innerHeight : scroller.getBoundingClientRect().bottom;
       var {
         bottom: detectorBottom
       } = detectorEl.value.getBoundingClientRect();
       return Math.floor(detectorBottom) - toPxNum(props2.offset) <= containerBottom;
     };
     var check2 = /* @__PURE__ */ function() {
-      var _ref = _asyncToGenerator$3(function* () {
+      var _ref = _asyncToGenerator$4(function* () {
         yield nextTick();
         var {
           loading: loading2,
@@ -11033,12 +11033,12 @@ var List = defineComponent({
       };
     }();
     onMounted(() => {
-      scroller2 = getParentScroller(listEl.value);
+      scroller = getParentScroller(listEl.value);
       props2.immediateCheck && check2();
-      scroller2.addEventListener("scroll", check2);
+      scroller.addEventListener("scroll", check2);
     });
     onUnmounted(() => {
-      scroller2.removeEventListener("scroll", check2);
+      scroller.removeEventListener("scroll", check2);
     });
     return {
       pack,
@@ -11097,7 +11097,7 @@ var props$n = {
     type: Function
   }
 };
-function asyncGeneratorStep$2(gen, resolve, reject, _next, _throw, key, arg) {
+function asyncGeneratorStep$3(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
     var value = info.value;
@@ -11111,16 +11111,16 @@ function asyncGeneratorStep$2(gen, resolve, reject, _next, _throw, key, arg) {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-function _asyncToGenerator$2(fn) {
+function _asyncToGenerator$3(fn) {
   return function() {
     var self = this, args = arguments;
     return new Promise(function(resolve, reject) {
       var gen = fn.apply(self, args);
       function _next(value) {
-        asyncGeneratorStep$2(gen, resolve, reject, _next, _throw, "next", value);
+        asyncGeneratorStep$3(gen, resolve, reject, _next, _throw, "next", value);
       }
       function _throw(err) {
-        asyncGeneratorStep$2(gen, resolve, reject, _next, _throw, "throw", err);
+        asyncGeneratorStep$3(gen, resolve, reject, _next, _throw, "throw", err);
       }
       _next(void 0);
     });
@@ -11195,7 +11195,7 @@ var Menu = defineComponent({
     });
     watch(() => props2.alignment, resize);
     watch(() => props2.show, /* @__PURE__ */ function() {
-      var _ref2 = _asyncToGenerator$2(function* (newValue) {
+      var _ref2 = _asyncToGenerator$3(function* (newValue) {
         var {
           onOpen,
           onClose
@@ -12394,13 +12394,42 @@ var props$i = {
     type: Function
   }
 };
+function asyncGeneratorStep$2(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+function _asyncToGenerator$2(fn) {
+  return function() {
+    var self = this, args = arguments;
+    return new Promise(function(resolve, reject) {
+      var gen = fn.apply(self, args);
+      function _next(value) {
+        asyncGeneratorStep$2(gen, resolve, reject, _next, _throw, "next", value);
+      }
+      function _throw(err) {
+        asyncGeneratorStep$2(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+      _next(void 0);
+    });
+  };
+}
 var {
   n: n$m,
   classes: classes$h
 } = createNamespace("pull-refresh");
 var MAX_DISTANCE = 100;
 var CONTROL_POSITION = -50;
-var scroller;
+var ICON_TRANSITION = 150;
 function render$k(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   return openBlock(), createElementBlock("div", {
@@ -12423,10 +12452,10 @@ function render$k(_ctx, _cache) {
     style: normalizeStyle(_ctx.controlStyle)
   }, [createVNode(_component_var_icon, {
     name: _ctx.iconName,
-    transition: 200,
-    class: normalizeClass(_ctx.classes(_ctx.n("icon"), [_ctx.refreshStatus === "loading", _ctx.n("animation")])),
+    transition: _ctx.ICON_TRANSITION,
+    class: normalizeClass(_ctx.classes(_ctx.n("icon"), [_ctx.refreshStatus === "loading" && _ctx.iconHasChanged, _ctx.n("animation")])),
     "var-pull-refresh-cover": ""
-  }, null, 8, ["name", "class"])], 6), renderSlot(_ctx.$slots, "default")], 34);
+  }, null, 8, ["name", "transition", "class"])], 6), renderSlot(_ctx.$slots, "default")], 34);
 }
 var PullRefresh = defineComponent({
   render: render$k,
@@ -12436,12 +12465,15 @@ var PullRefresh = defineComponent({
   },
   props: props$i,
   setup(props2) {
+    var scroller;
+    var changeResult;
     var freshNode = ref(null);
     var startPosition = ref(0);
     var distance = ref(CONTROL_POSITION);
     var iconName = ref("arrow-down");
     var refreshStatus = ref("default");
     var isEnd = ref(false);
+    var iconHasChanged = ref(true);
     var isTouchable = computed(() => refreshStatus.value !== "loading" && refreshStatus.value !== "success" && !props2.disabled);
     var controlStyle = computed(() => ({
       transform: "translate3d(0px, " + distance.value + "px, 0px) translate(-50%, 0)",
@@ -12450,6 +12482,14 @@ var PullRefresh = defineComponent({
       color: props2.successColor || props2.color
     }));
     var isSuccess = computed(() => refreshStatus.value === "success");
+    var changeIcon = () => {
+      return new Promise((resolve) => {
+        window.setTimeout(() => {
+          iconHasChanged.value = true;
+          resolve();
+        }, ICON_TRANSITION);
+      });
+    };
     var touchStart = (event) => {
       if (!isTouchable.value)
         return;
@@ -12464,27 +12504,39 @@ var PullRefresh = defineComponent({
         event.cancelable && event.preventDefault();
       var moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + CONTROL_POSITION;
       distance.value = moveDistance >= MAX_DISTANCE ? MAX_DISTANCE : moveDistance;
-      iconName.value = distance.value >= MAX_DISTANCE * 0.2 ? "refresh" : "arrow-down";
-    };
-    var touchEnd = () => {
-      if (!isTouchable.value)
-        return;
-      isEnd.value = true;
       if (distance.value >= MAX_DISTANCE * 0.2) {
-        var _props$onUpdateModel;
-        refreshStatus.value = "loading";
-        distance.value = MAX_DISTANCE * 0.3;
-        (_props$onUpdateModel = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel.call(props2, true);
-        props2.onRefresh == null ? void 0 : props2.onRefresh();
+        iconHasChanged.value = false;
+        iconName.value = "refresh";
+        changeResult = changeIcon();
       } else {
-        refreshStatus.value = "loosing";
         iconName.value = "arrow-down";
-        distance.value = CONTROL_POSITION;
-        setTimeout(() => {
-          isEnd.value = false;
-        }, toNumber(props2.animationDuration));
       }
     };
+    var touchEnd = /* @__PURE__ */ function() {
+      var _ref = _asyncToGenerator$2(function* () {
+        if (!isTouchable.value)
+          return;
+        isEnd.value = true;
+        if (distance.value >= MAX_DISTANCE * 0.2) {
+          var _props$onUpdateModel;
+          yield changeResult;
+          refreshStatus.value = "loading";
+          distance.value = MAX_DISTANCE * 0.3;
+          (_props$onUpdateModel = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel.call(props2, true);
+          props2.onRefresh == null ? void 0 : props2.onRefresh();
+        } else {
+          refreshStatus.value = "loosing";
+          iconName.value = "arrow-down";
+          distance.value = CONTROL_POSITION;
+          setTimeout(() => {
+            isEnd.value = false;
+          }, toNumber(props2.animationDuration));
+        }
+      });
+      return function touchEnd2() {
+        return _ref.apply(this, arguments);
+      };
+    }();
     var reset = () => {
       setTimeout(() => {
         refreshStatus.value = "default";
@@ -12509,6 +12561,8 @@ var PullRefresh = defineComponent({
     return {
       n: n$m,
       classes: classes$h,
+      iconHasChanged,
+      ICON_TRANSITION,
       refreshStatus,
       freshNode,
       touchStart,
@@ -15715,17 +15769,17 @@ var Tabs = defineComponent({
       if (!scrollable.value) {
         return;
       }
-      var scroller2 = scrollerEl.value;
+      var scroller = scrollerEl.value;
       var el = element.value;
       if (props2.layoutDirection === "horizontal") {
-        var left = el.offsetLeft + el.offsetWidth / 2 - scroller2.offsetWidth / 2;
-        scrollTo(scroller2, {
+        var left = el.offsetLeft + el.offsetWidth / 2 - scroller.offsetWidth / 2;
+        scrollTo(scroller, {
           left,
           animation: linear
         });
       } else {
-        var top = el.offsetTop + el.offsetHeight / 2 - scroller2.offsetHeight / 2;
-        scrollTo(scroller2, {
+        var top = el.offsetTop + el.offsetHeight / 2 - scroller.offsetHeight / 2;
+        scrollTo(scroller, {
           top,
           animation: linear
         });
