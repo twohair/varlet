@@ -3,7 +3,7 @@ import{_ as o}from"./elevation.46d11dfe.js";import{e as t,o as c,c as p,a as s,i
 `),s("span",{class:"hljs-keyword"},"import"),n(),s("span",{class:"hljs-string"},"'@varlet/ui/es/button/style/index.js'"),n(`
 
 createApp().use(Button)
-`)])],-1),g={class:"card"},v=s("h3",null,"\u81EA\u52A8\u5F15\u5165",-1),f=s("p",null,[n("\u6240\u6709\u58F0\u660E\u5728\u6A21\u677F\u4E2D\u7684\u7EC4\u4EF6\uFF0C\u90FD\u4F1A\u88AB "),s("a",{href:"https://github.com/antfu/unplugin-vue-components"},"unplugin-vue-components"),n(" \u63D2\u4EF6\u81EA\u52A8\u626B\u63CF\uFF0C\u63D2\u4EF6\u4F1A\u81EA\u52A8\u5F15\u5165"),s("code",null,"\u7EC4\u4EF6\u903B\u8F91"),n("\u548C"),s("code",null,"\u6837\u5F0F\u6587\u4EF6"),n("\u5E76"),s("code",null,"\u6CE8\u518C\u7EC4\u4EF6"),n("\u3002")],-1),y=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-meta"},"#"),s("span",{class:"bash"}," \u5B89\u88C5\u63D2\u4EF6"),n(`
+`)])],-1),g={class:"card"},v=s("h3",null,"\u81EA\u52A8\u5F15\u5165",-1),f=s("p",null,[n("\u6240\u6709\u58F0\u660E\u5728\u6A21\u677F\u4E2D\u7684\u7EC4\u4EF6\uFF0C\u90FD\u4F1A\u88AB "),s("a",{href:"https://github.com/antfu/unplugin-vue-components"},"unplugin-vue-components"),n(" \u63D2\u4EF6\u81EA\u52A8\u626B\u63CF\uFF0C\u63D2\u4EF6\u4F1A\u81EA\u52A8\u5F15\u5165 "),s("code",null,"\u7EC4\u4EF6\u903B\u8F91"),n(" \u548C "),s("code",null,"\u6837\u5F0F\u6587\u4EF6"),n(" \u5E76 "),s("code",null,"\u6CE8\u518C\u7EC4\u4EF6"),n("\u3002")],-1),y=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-meta"},"#"),s("span",{class:"bash"}," \u5B89\u88C5\u63D2\u4EF6"),n(`
 `),s("span",{class:"hljs-meta"},`
 #`),s("span",{class:"bash"}," npm"),n(`
 npm i unplugin-vue-components -D

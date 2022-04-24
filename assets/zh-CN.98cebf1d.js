@@ -13,7 +13,7 @@ import{_ as t}from"./elevation.46d11dfe.js";import{e as c,o,c as r,a as s,i as n
 `),s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"template"),a(">")]),a(`
   `),s("span",{class:"hljs-tag"},[a("<"),s("span",{class:"hljs-name"},"var-button"),a(),s("span",{class:"hljs-attr"},"block"),a(" @"),s("span",{class:"hljs-attr"},"click"),a("="),s("span",{class:"hljs-string"},'"toggleTheme"'),a(">")]),a("\u5207\u6362\u4E3B\u9898"),s("span",{class:"hljs-tag"},[a("</"),s("span",{class:"hljs-name"},"var-button"),a(">")]),a(`
 `),s("span",{class:"hljs-tag"},[a("</"),s("span",{class:"hljs-name"},"template"),a(">")]),a(`
-`)])],-1),m=s("p",null,[a("\u6CE8\u5165\u7EC4\u4EF6\u5E93\u63A8\u8350\u7684"),s("code",null,"\u6587\u5B57\u989C\u8272"),a("\u548C"),s("code",null,"\u80CC\u666F\u989C\u8272"),a("\u53D8\u91CF\u6765\u63A7\u5236\u6574\u4F53\u989C\u8272")],-1),g=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-selector-tag"},"body"),a(` {
+`)])],-1),m=s("p",null,[a("\u6CE8\u5165\u7EC4\u4EF6\u5E93\u63A8\u8350\u7684 "),s("code",null,"\u6587\u5B57\u989C\u8272"),a(" \u548C "),s("code",null,"\u80CC\u666F\u989C\u8272"),a(" \u53D8\u91CF\u6765\u63A7\u5236\u6574\u4F53\u989C\u8272")],-1),g=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-selector-tag"},"body"),a(` {
   `),s("span",{class:"hljs-attribute"},"transition"),a(": background-color ."),s("span",{class:"hljs-number"},"25s"),a(`;
   `),s("span",{class:"hljs-attribute"},"color"),a(": "),s("span",{class:"hljs-built_in"},"var"),a(`(--color-text);
   `),s("span",{class:"hljs-attribute"},"background-color"),a(": "),s("span",{class:"hljs-built_in"},"var"),a(`(--color-body);
