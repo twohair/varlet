@@ -12466,7 +12466,7 @@ var PullRefresh = defineComponent({
   props: props$i,
   setup(props2) {
     var scroller;
-    var changeResult;
+    var changing;
     var freshNode = ref(null);
     var startPosition = ref(0);
     var distance = ref(CONTROL_POSITION);
@@ -12507,7 +12507,7 @@ var PullRefresh = defineComponent({
       if (distance.value >= MAX_DISTANCE * 0.2) {
         iconHasChanged.value = false;
         iconName.value = "refresh";
-        changeResult = changeIcon();
+        changing = changeIcon();
       } else {
         iconName.value = "arrow-down";
       }
@@ -12519,7 +12519,7 @@ var PullRefresh = defineComponent({
         isEnd.value = true;
         if (distance.value >= MAX_DISTANCE * 0.2) {
           var _props$onUpdateModel;
-          yield changeResult;
+          yield changing;
           refreshStatus.value = "loading";
           distance.value = MAX_DISTANCE * 0.3;
           (_props$onUpdateModel = props2["onUpdate:modelValue"]) == null ? void 0 : _props$onUpdateModel.call(props2, true);
