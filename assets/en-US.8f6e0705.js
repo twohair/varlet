@@ -8,7 +8,7 @@ import{_ as p,a as h,b as m,c as j,d as g}from"./Disabled.2ce4882a.js";import{_ 
   `),s("span",{class:"hljs-tag"},[t("<"),s("span",{class:"hljs-name"},"var-pagination"),t(`
     `),s("span",{class:"hljs-attr"},":current"),t("="),s("span",{class:"hljs-string"},'"3"'),t(`
     `),s("span",{class:"hljs-attr"},":total"),t("="),s("span",{class:"hljs-string"},'"66"'),t(`
-    `),s("span",{class:"hljs-attr"},":show-total"),t("="),s("span",{class:"hljs-string"},'"total => `\u5171 ${total} \u6761`"'),t(`
+    `),s("span",{class:"hljs-attr"},":show-total"),t("="),s("span",{class:"hljs-string"},'"total => `Total ${total} items`"'),t(`
   />`)]),t(`
 `),s("span",{class:"hljs-tag"},[t("</"),s("span",{class:"hljs-name"},"template"),t(">")]),t(`
 `)])],-1),E={class:"card"},I=s("h3",null,"Disabled",-1),W=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-tag"},[t("<"),s("span",{class:"hljs-name"},"template"),t(">")]),t(`
