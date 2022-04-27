@@ -10543,6 +10543,10 @@ var props$p = {
   modelValue: {
     type: String
   },
+  modelModifiers: {
+    type: Object,
+    default: () => ({})
+  },
   type: {
     type: String,
     default: "text",
@@ -10807,6 +10811,7 @@ var Input = defineComponent({
       var {
         value
       } = e.target;
+      value = withTrim(value);
       call(props2["onUpdate:modelValue"], value);
       call(props2.onInput, value, e);
       validateWithTrigger("onInput");
@@ -10815,7 +10820,7 @@ var Input = defineComponent({
       var {
         value
       } = e.target;
-      call(props2.onChange, value, e);
+      call(props2.onChange, withTrim(value), e);
       validateWithTrigger("onChange");
     };
     var handleClear = () => {
@@ -10843,6 +10848,7 @@ var Input = defineComponent({
       call(onClick, e);
       validateWithTrigger("onClick");
     };
+    var withTrim = (value) => props2.modelModifiers.trim ? value.trim() : value;
     var reset = () => {
       call(props2["onUpdate:modelValue"], "");
       resetValidation();
