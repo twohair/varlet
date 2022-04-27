@@ -1673,7 +1673,10 @@ function render$W(_ctx, _cache) {
   }, [_ctx.$slots.default ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(_ctx.classes(_ctx.n("content"), [_ctx.loading, _ctx.n("content--active")]))
-  }, [renderSlot(_ctx.$slots, "default")], 2)) : createCommentVNode("v-if", true), _ctx.isShow ? (openBlock(), createElementBlock("div", {
+  }, [renderSlot(_ctx.$slots, "default"), _ctx.loading ? (openBlock(), createElementBlock("div", {
+    key: 0,
+    class: normalizeClass(_ctx.n("content-mask"))
+  }, null, 2)) : createCommentVNode("v-if", true)], 2)) : createCommentVNode("v-if", true), _ctx.isShow ? (openBlock(), createElementBlock("div", {
     key: 1,
     class: normalizeClass(_ctx.classes("var--box", _ctx.n("body"), [_ctx.$slots.default, _ctx.n("inside")]))
   }, [_ctx.type === "circle" ? (openBlock(), createElementBlock("div", {
