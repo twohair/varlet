@@ -1,4 +1,4 @@
-import{B as h,O as r}from"./ResponsiveObject.5d082892.js";import{_ as o,i as c,o as j,c as d,a,m as l,p as t,y as s,ag as i}from"./elevation.4b2b848a.js";import"./index.a71cd7c1.js";import"./components.21c4ed88.js";import"./elements.eca917ca.js";import"./index.c00ca165.js";const m={components:{BasicExample:h,ObjectExample:r}},g={class:"varlet-site-doc"},u=a("h1",null,"Layout",-1),b=a("div",{class:"card"},[a("h3",null,"Intro"),a("p",null,[s("The component library provides two auxiliary layout components, "),a("code",null,"<var-row/>"),s(" and "),a("code",null,"<var-col/>"),s(", so that you can layout more efficiently.")])],-1),v={class:"card"},f=a("h3",null,"Gird System",-1),_=a("pre",{class:"hljs"},[a("code",null,[s("The `"),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-row"),s(" />")]),s("` component divides a row into an average grid of 24 columns (24 pieces). The `"),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-col"),s(" />")]),s("` provides the\nspan property to set the number of pieces in the column and the `offset` property to set the number of pieces `offset`\nin the column.\n")])],-1),x=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+import{B as h,O as r}from"./ResponsiveObject.136bff8c.js";import{_ as o,i as c,o as j,c as d,a,m as l,p as t,y as s,ag as i}from"./elevation.4b2b848a.js";import"./index.a71cd7c1.js";import"./components.21c4ed88.js";import"./elements.eca917ca.js";import"./index.f1e5251f.js";const m={components:{BasicExample:h,ObjectExample:r}},g={class:"varlet-site-doc"},u=a("h1",null,"Layout",-1),b=a("div",{class:"card"},[a("h3",null,"Intro"),a("p",null,[s("The component library provides two auxiliary layout components, "),a("code",null,"<var-row/>"),s(" and "),a("code",null,"<var-col/>"),s(", so that you can layout more efficiently.")])],-1),v={class:"card"},f=a("h3",null,"Gird System",-1),_=a("pre",{class:"hljs"},[a("code",null,[s("The `"),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-row"),s(" />")]),s("` component divides a row into an average grid of 24 columns (24 pieces). The `"),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-col"),s(" />")]),s("` provides the\nspan property to set the number of pieces in the column and the `offset` property to set the number of pieces `offset`\nin the column.\n")])],-1),x=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
   `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-row"),s(">")]),s(`
     `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-col"),s(),a("span",{class:"hljs-attr"},":span"),s("="),a("span",{class:"hljs-string"},'"8"'),s(">")]),s("span: 8"),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"var-col"),s(">")]),s(`
     `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-col"),s(),a("span",{class:"hljs-attr"},":span"),s("="),a("span",{class:"hljs-string"},'"8"'),s(">")]),s("span: 8"),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"var-col"),s(">")]),s(`
@@ -11,7 +11,6 @@ import{B as h,O as r}from"./ResponsiveObject.5d082892.js";import{_ as o,i as c,o
 
 `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"style"),s(">")]),a("span",{class:"css"},[s(`
 `),a("span",{class:"hljs-selector-class"},".var-col"),s(` {
-  `),a("span",{class:"hljs-attribute"},"display"),s(`: flex;
   `),a("span",{class:"hljs-attribute"},"justify-content"),s(`: center;
   `),a("span",{class:"hljs-attribute"},"align-items"),s(`: center;
   `),a("span",{class:"hljs-attribute"},"height"),s(": "),a("span",{class:"hljs-number"},"36px"),s(`;
@@ -33,7 +32,6 @@ import{B as h,O as r}from"./ResponsiveObject.5d082892.js";import{_ as o,i as c,o
 
 `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"style"),s(">")]),a("span",{class:"css"},[s(`
 `),a("span",{class:"hljs-selector-class"},".var-col"),s(` {
-  `),a("span",{class:"hljs-attribute"},"display"),s(`: flex;
   `),a("span",{class:"hljs-attribute"},"justify-content"),s(`: center;
   `),a("span",{class:"hljs-attribute"},"align-items"),s(`: center;
   `),a("span",{class:"hljs-attribute"},"height"),s(": "),a("span",{class:"hljs-number"},"36px"),s(`;
@@ -69,7 +67,6 @@ import{B as h,O as r}from"./ResponsiveObject.5d082892.js";import{_ as o,i as c,o
 
 `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"style"),s(">")]),a("span",{class:"css"},[s(`
 `),a("span",{class:"hljs-selector-class"},".var-col"),s(` {
-  `),a("span",{class:"hljs-attribute"},"display"),s(`: flex;
   `),a("span",{class:"hljs-attribute"},"justify-content"),s(`: center;
   `),a("span",{class:"hljs-attribute"},"align-items"),s(`: center;
   `),a("span",{class:"hljs-attribute"},"height"),s(": "),a("span",{class:"hljs-number"},"36px"),s(`;
@@ -93,7 +90,6 @@ import{B as h,O as r}from"./ResponsiveObject.5d082892.js";import{_ as o,i as c,o
 
 `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"style"),s(">")]),a("span",{class:"css"},[s(`
 `),a("span",{class:"hljs-selector-class"},".var-col"),s(` {
-  `),a("span",{class:"hljs-attribute"},"display"),s(`: flex;
   `),a("span",{class:"hljs-attribute"},"justify-content"),s(`: center;
   `),a("span",{class:"hljs-attribute"},"align-items"),s(`: center;
   `),a("span",{class:"hljs-attribute"},"height"),s(": "),a("span",{class:"hljs-number"},"36px"),s(`;
@@ -115,7 +111,6 @@ import{B as h,O as r}from"./ResponsiveObject.5d082892.js";import{_ as o,i as c,o
 
 `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"style"),s(">")]),a("span",{class:"css"},[s(`
 `),a("span",{class:"hljs-selector-class"},".var-col"),s(` {
-  `),a("span",{class:"hljs-attribute"},"display"),s(`: flex;
   `),a("span",{class:"hljs-attribute"},"justify-content"),s(`: center;
   `),a("span",{class:"hljs-attribute"},"align-items"),s(`: center;
   `),a("span",{class:"hljs-attribute"},"height"),s(": "),a("span",{class:"hljs-number"},"36px"),s(`;
@@ -173,7 +168,6 @@ import{B as h,O as r}from"./ResponsiveObject.5d082892.js";import{_ as o,i as c,o
 
 `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"style"),s(">")]),a("span",{class:"css"},[s(`
 `),a("span",{class:"hljs-selector-class"},".var-col"),s(` {
-  `),a("span",{class:"hljs-attribute"},"display"),s(`: flex;
   `),a("span",{class:"hljs-attribute"},"justify-content"),s(`: center;
   `),a("span",{class:"hljs-attribute"},"align-items"),s(`: center;
   `),a("span",{class:"hljs-attribute"},"height"),s(": "),a("span",{class:"hljs-number"},"36px"),s(`;
