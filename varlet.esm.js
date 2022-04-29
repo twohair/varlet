@@ -3368,7 +3368,7 @@ var {
 } = createNamespace("col");
 function render$K(_ctx, _cache) {
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(_ctx.classes(_ctx.n(), "var--box", [_ctx.span, _ctx.n("--span-" + _ctx.span)], [_ctx.offset, _ctx.n("--offset-" + _ctx.offset)], ..._ctx.getSize("xs", _ctx.xs), ..._ctx.getSize("sm", _ctx.sm), ..._ctx.getSize("md", _ctx.md), ..._ctx.getSize("lg", _ctx.lg), ..._ctx.getSize("xl", _ctx.xl))),
+    class: normalizeClass(_ctx.classes(_ctx.n(), "var--box", [_ctx.span, _ctx.n("--span-" + _ctx.span), _ctx.n("--none")], [_ctx.offset, _ctx.n("--offset-" + _ctx.offset)], ..._ctx.getSize("xs", _ctx.xs), ..._ctx.getSize("sm", _ctx.sm), ..._ctx.getSize("md", _ctx.md), ..._ctx.getSize("lg", _ctx.lg), ..._ctx.getSize("xl", _ctx.xl))),
     style: normalizeStyle({
       paddingLeft: _ctx.toSizeUnit(_ctx.padding.left),
       paddingRight: _ctx.toSizeUnit(_ctx.padding.right)
@@ -3400,18 +3400,24 @@ var Col = defineComponent({
     };
     var getSize = (mode, size) => {
       var classes2 = [];
-      if (!size) {
+      if (size == null) {
         return classes2;
       }
       if (isPlainObject(size)) {
         var {
-          span: _span,
           offset: _offset
         } = size;
-        _span && classes2.push(n$N("--span-" + mode + "-" + _span));
+        var {
+          span: _span
+        } = size;
+        _span = Number(_span);
+        _span === 0 && classes2.push(n$N("--none"));
+        _span > 0 && classes2.push(n$N("--span-" + mode + "-" + _span));
         _offset && classes2.push(n$N("--offset-" + mode + "-" + _offset));
       } else {
-        classes2.push(n$N("--span-" + mode + "-" + size));
+        size = Number(size);
+        size === 0 && classes2.push(n$N("--none"));
+        size > 0 && classes2.push(n$N("--span-" + mode + "-" + size));
       }
       return classes2;
     };
