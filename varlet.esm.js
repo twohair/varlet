@@ -11778,6 +11778,10 @@ var props$k = _extends$2({
   },
   onCancel: {
     type: Function
+  },
+  textFormatter: {
+    type: Function,
+    default: (text) => text
   }
 }, pickProps(props$U, ["show", "onUpdate:show", "closeOnClickOverlay", "teleport", "onOpen", "onClose", "onOpened", "onClosed", "onClickOverlay", "onRouteChange"]));
 var {
@@ -11862,7 +11866,7 @@ function render$m(_ctx, _cache) {
           key: t
         }, [createElementVNode("div", {
           class: normalizeClass(_ctx.n("text"))
-        }, toDisplayString(t), 3)], 6);
+        }, toDisplayString(_ctx.textFormatter(t, c.columnIndex)), 3)], 6);
       }), 128))], 46, _hoisted_2$4)], 42, _hoisted_1$7);
     }), 128)), createElementVNode("div", {
       class: normalizeClass(_ctx.n("picked")),
@@ -11985,7 +11989,7 @@ var VarPicker = defineComponent({
       change(scrollColumn);
     };
     var normalizeNormalColumns = (normalColumns) => {
-      return normalColumns.map((column) => {
+      return normalColumns.map((column, columnIndex) => {
         var _normalColumn$initial;
         var normalColumn = isArray(column) ? {
           texts: column
@@ -11997,6 +12001,7 @@ var VarPicker = defineComponent({
           touching: false,
           translate: center.value,
           index: (_normalColumn$initial = normalColumn.initialIndex) != null ? _normalColumn$initial : 0,
+          columnIndex,
           duration: 0,
           momentumTime: 0,
           column: normalColumn,
@@ -12009,10 +12014,10 @@ var VarPicker = defineComponent({
     };
     var normalizeCascadeColumns = (cascadeColumns) => {
       var scrollColumns2 = [];
-      createChildren(scrollColumns2, cascadeColumns, true);
+      createChildren(scrollColumns2, cascadeColumns, 0, true);
       return scrollColumns2;
     };
-    var createChildren = function(scrollColumns2, children, initial) {
+    var createChildren = function(scrollColumns2, children, columnIndex, initial) {
       if (initial === void 0) {
         initial = false;
       }
@@ -12026,6 +12031,7 @@ var VarPicker = defineComponent({
           touching: false,
           translate: center.value,
           index,
+          columnIndex,
           duration: 0,
           momentumTime: 0,
           column: {
@@ -12037,12 +12043,12 @@ var VarPicker = defineComponent({
         };
         scrollColumns2.push(scrollColumn);
         scrollTo2(scrollColumn, scrollColumn.index, 0, true);
-        createChildren(scrollColumns2, scrollColumn.columns[scrollColumn.index].children, initial);
+        createChildren(scrollColumns2, scrollColumn.columns[scrollColumn.index].children, columnIndex + 1, initial);
       }
     };
     var rebuildChildren = (scrollColumn) => {
       scrollColumns.value.splice(scrollColumns.value.indexOf(scrollColumn) + 1);
-      createChildren(scrollColumns.value, scrollColumn.columns[scrollColumn.index].children);
+      createChildren(scrollColumns.value, scrollColumn.columns[scrollColumn.index].children, scrollColumn.columnIndex + 1);
     };
     var change = (scrollColumn) => {
       var {
