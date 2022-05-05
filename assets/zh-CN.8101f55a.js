@@ -1,0 +1,1 @@
+import{_ as e,f as s,h as t,D as o}from"./vue-router.esm-bundler.c9213159.js";const c={components:{}},a={class:"varlet-site-doc"},n=o("h1",null,"\u8F6E\u64AD\u9879",-1),r=[n];function _(d,i,p,l,f,h){return s(),t("div",a,r)}var u=e(c,[["render",_]]);export{u as default};
