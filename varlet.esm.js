@@ -10325,7 +10325,7 @@ var props$q = {
     default: true
   },
   stickyOffsetTop: {
-    type: Number,
+    type: [String, Number],
     default: 0
   },
   cssMode: {
@@ -10426,7 +10426,7 @@ var IndexBar = defineComponent({
     var active = ref();
     var sticky2 = computed(() => props2.sticky);
     var cssMode = computed(() => props2.cssMode);
-    var stickyOffsetTop = computed(() => props2.stickyOffsetTop);
+    var stickyOffsetTop = computed(() => toPxNum(props2.stickyOffsetTop));
     var zIndex = computed(() => props2.zIndex);
     var indexBarProvider = {
       active,
