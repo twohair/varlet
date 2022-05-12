@@ -134,7 +134,7 @@ function kebabCase(str) {
   var ret = str.replace(/([A-Z])/g, " $1").trim();
   return ret.split(" ").join("-").toLowerCase();
 }
-function asyncGeneratorStep$c(gen, resolve, reject, _next, _throw, key, arg) {
+function asyncGeneratorStep$d(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
     var value = info.value;
@@ -148,16 +148,16 @@ function asyncGeneratorStep$c(gen, resolve, reject, _next, _throw, key, arg) {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-function _asyncToGenerator$c(fn) {
+function _asyncToGenerator$d(fn) {
   return function() {
     var self = this, args = arguments;
     return new Promise(function(resolve, reject) {
       var gen = fn.apply(self, args);
       function _next(value) {
-        asyncGeneratorStep$c(gen, resolve, reject, _next, _throw, "next", value);
+        asyncGeneratorStep$d(gen, resolve, reject, _next, _throw, "next", value);
       }
       function _throw(err) {
-        asyncGeneratorStep$c(gen, resolve, reject, _next, _throw, "throw", err);
+        asyncGeneratorStep$d(gen, resolve, reject, _next, _throw, "throw", err);
       }
       _next(void 0);
     });
@@ -187,7 +187,7 @@ function inViewport(_x) {
   return _inViewport.apply(this, arguments);
 }
 function _inViewport() {
-  _inViewport = _asyncToGenerator$c(function* (element) {
+  _inViewport = _asyncToGenerator$d(function* (element) {
     yield doubleRaf();
     var {
       top,
@@ -335,7 +335,7 @@ function supportTouch() {
   return inBrowser2 && "ontouchstart" in window;
 }
 var _excluded = ["collect", "clear"];
-function asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, key, arg) {
+function asyncGeneratorStep$c(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
     var value = info.value;
@@ -349,16 +349,16 @@ function asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, key, arg) {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-function _asyncToGenerator$b(fn) {
+function _asyncToGenerator$c(fn) {
   return function() {
     var self = this, args = arguments;
     return new Promise(function(resolve, reject) {
       var gen = fn.apply(self, args);
       function _next(value) {
-        asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, "next", value);
+        asyncGeneratorStep$c(gen, resolve, reject, _next, _throw, "next", value);
       }
       function _throw(err) {
-        asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, "throw", err);
+        asyncGeneratorStep$c(gen, resolve, reject, _next, _throw, "throw", err);
       }
       _next(void 0);
     });
@@ -545,7 +545,7 @@ function keyInProvides(key) {
 function useValidation() {
   var errorMessage = ref("");
   var validate = /* @__PURE__ */ function() {
-    var _ref = _asyncToGenerator$b(function* (rules, value, apis) {
+    var _ref = _asyncToGenerator$c(function* (rules, value, apis) {
       if (!isArray(rules) || !rules.length) {
         return true;
       }
@@ -566,7 +566,7 @@ function useValidation() {
     errorMessage.value = "";
   };
   var validateWithTrigger = /* @__PURE__ */ function() {
-    var _ref2 = _asyncToGenerator$b(function* (validateTrigger, trigger, rules, value, apis) {
+    var _ref2 = _asyncToGenerator$c(function* (validateTrigger, trigger, rules, value, apis) {
       if (validateTrigger.includes(trigger)) {
         (yield validate(rules, value, apis)) && (errorMessage.value = "");
       }
@@ -1090,7 +1090,7 @@ var props$T = {
     type: Function
   }
 };
-function asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, key, arg) {
+function asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
     var value = info.value;
@@ -1104,16 +1104,16 @@ function asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, key, arg) {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-function _asyncToGenerator$a(fn) {
+function _asyncToGenerator$b(fn) {
   return function() {
     var self = this, args = arguments;
     return new Promise(function(resolve, reject) {
       var gen = fn.apply(self, args);
       function _next(value) {
-        asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, "next", value);
+        asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, "next", value);
       }
       function _throw(err) {
-        asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, "throw", err);
+        asyncGeneratorStep$b(gen, resolve, reject, _next, _throw, "throw", err);
       }
       _next(void 0);
     });
@@ -1145,7 +1145,7 @@ var Icon = defineComponent({
     var nextName = ref("");
     var shrinking = ref(false);
     var handleNameChange = /* @__PURE__ */ function() {
-      var _ref = _asyncToGenerator$a(function* (newName, oldName) {
+      var _ref = _asyncToGenerator$b(function* (newName, oldName) {
         var {
           transition
         } = props2;
@@ -2540,6 +2540,24 @@ var props$K = {
   height: {
     type: [String, Number]
   },
+  width: {
+    type: [String, Number]
+  },
+  layout: {
+    type: String,
+    default: "column"
+  },
+  floating: {
+    type: Boolean,
+    default: false
+  },
+  "onUpdate:floating": {
+    type: Function
+  },
+  floatingDuration: {
+    type: Number,
+    default: 250
+  },
   alt: {
     type: String
   },
@@ -2563,28 +2581,78 @@ var props$K = {
     type: Function
   }
 };
+function asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+function _asyncToGenerator$a(fn) {
+  return function() {
+    var self = this, args = arguments;
+    return new Promise(function(resolve, reject) {
+      var gen = fn.apply(self, args);
+      function _next(value) {
+        asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, "next", value);
+      }
+      function _throw(err) {
+        asyncGeneratorStep$a(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+      _next(void 0);
+    });
+  };
+}
 var {
   n: n$T,
   classes: classes$I
 } = createNamespace("card");
+var RIPPLE_DELAY = 500;
 var _hoisted_1$g = ["src", "alt"];
 function render$Q(_ctx, _cache) {
+  var _component_var_icon = resolveComponent("var-icon");
+  var _component_var_button = resolveComponent("var-button");
   var _directive_ripple = resolveDirective("ripple");
-  return withDirectives((openBlock(), createElementBlock("div", {
-    class: normalizeClass(_ctx.classes(_ctx.n(), [_ctx.elevation, "var-elevation--" + _ctx.elevation, "var-elevation--2"])),
+  return openBlock(), createElementBlock("div", {
+    ref: "card",
+    class: normalizeClass(_ctx.classes(_ctx.n(), [_ctx.isRow, _ctx.n("--layout-row")])),
     onClick: _cache[0] || (_cache[0] = function() {
       return _ctx.onClick && _ctx.onClick(...arguments);
+    })
+  }, [withDirectives((openBlock(), createElementBlock("div", {
+    ref: "cardFloater",
+    class: normalizeClass(_ctx.classes(_ctx.n("floater"), [_ctx.elevation, "var-elevation--" + _ctx.elevation, "var-elevation--1"])),
+    style: normalizeStyle({
+      width: _ctx.floaterWidth,
+      height: _ctx.floaterHeight,
+      top: _ctx.floaterTop,
+      left: _ctx.floaterLeft,
+      overflow: _ctx.floaterOverflow,
+      position: _ctx.floaterPosition,
+      borderRadius: _ctx.floating ? "0px" : void 0,
+      zIndex: _ctx.floated ? _ctx.zIndex : void 0,
+      transition: _ctx.floated ? "background-color " + _ctx.floatingDuration + "ms, border-radius " + _ctx.floatingDuration + "ms, width " + _ctx.floatingDuration + "ms, height " + _ctx.floatingDuration + "ms, top " + _ctx.floatingDuration + "ms, left " + _ctx.floatingDuration + "ms" : void 0
     })
   }, [renderSlot(_ctx.$slots, "image", {}, () => [_ctx.src ? (openBlock(), createElementBlock("img", {
     key: 0,
     class: normalizeClass(_ctx.n("image")),
     style: normalizeStyle({
       objectFit: _ctx.fit,
-      height: _ctx.toSizeUnit(_ctx.height)
+      height: _ctx.toSizeUnit(_ctx.height),
+      width: _ctx.toSizeUnit(_ctx.width)
     }),
     src: _ctx.src,
     alt: _ctx.alt
-  }, null, 14, _hoisted_1$g)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", {
+  }, null, 14, _hoisted_1$g)) : createCommentVNode("v-if", true)]), createElementVNode("div", {
+    class: normalizeClass(_ctx.n("container"))
+  }, [renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(_ctx.n("title"))
   }, toDisplayString(_ctx.title), 3)) : createCommentVNode("v-if", true)]), renderSlot(_ctx.$slots, "subtitle", {}, () => [_ctx.subtitle ? (openBlock(), createElementBlock("div", {
@@ -2596,9 +2664,42 @@ function render$Q(_ctx, _cache) {
   }, toDisplayString(_ctx.description), 3)) : createCommentVNode("v-if", true)]), _ctx.$slots.extra ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(_ctx.n("footer"))
-  }, [renderSlot(_ctx.$slots, "extra")], 2)) : createCommentVNode("v-if", true)], 2)), [[_directive_ripple, {
-    disabled: !_ctx.ripple
-  }]]);
+  }, [renderSlot(_ctx.$slots, "extra")], 2)) : createCommentVNode("v-if", true), _ctx.$slots.content && !_ctx.isRow ? (openBlock(), createElementBlock("div", {
+    key: 1,
+    class: normalizeClass(_ctx.n("content")),
+    style: normalizeStyle({
+      height: _ctx.contentHeight,
+      opacity: _ctx.opacity,
+      transition: "opacity " + _ctx.floatingDuration * 2 + "ms"
+    })
+  }, [renderSlot(_ctx.$slots, "content")], 6)) : createCommentVNode("v-if", true)], 2), _ctx.showToolBar ? (openBlock(), createElementBlock("div", {
+    key: 0,
+    class: normalizeClass(_ctx.classes(_ctx.n("toolbar"), "var--box")),
+    style: normalizeStyle({
+      zIndex: _ctx.zIndex,
+      opacity: _ctx.opacity,
+      transition: "opacity " + _ctx.floatingDuration * 2 + "ms"
+    })
+  }, [renderSlot(_ctx.$slots, "toolbar-close", {}, () => [createVNode(_component_var_button, {
+    size: "large",
+    round: "",
+    class: normalizeClass(_ctx.classes(_ctx.n("toolbar-close"), "var-elevation--6")),
+    onClick: withModifiers(_ctx.close, ["stop"])
+  }, {
+    default: withCtx(() => [createVNode(_component_var_icon, {
+      name: "window-close",
+      size: "24px"
+    })]),
+    _: 1
+  }, 8, ["class", "onClick"])]), renderSlot(_ctx.$slots, "toolbar-extra")], 6)) : createCommentVNode("v-if", true)], 6)), [[_directive_ripple, {
+    disabled: !_ctx.ripple || _ctx.floater
+  }]]), createElementVNode("div", {
+    class: normalizeClass(_ctx.n("holder")),
+    style: normalizeStyle({
+      width: _ctx.holderWidth,
+      height: _ctx.holderHeight
+    })
+  }, null, 6)], 2);
 }
 var Card = defineComponent({
   render: render$Q,
@@ -2606,12 +2707,131 @@ var Card = defineComponent({
   directives: {
     Ripple
   },
+  components: {
+    VarIcon: Icon,
+    VarButton: Button
+  },
   props: props$K,
-  setup() {
+  setup(props2) {
+    var card2 = ref(null);
+    var cardFloater = ref(null);
+    var holderWidth = ref("auto");
+    var holderHeight = ref("auto");
+    var floaterWidth = ref("100%");
+    var floaterHeight = ref("100%");
+    var floaterTop = ref("auto");
+    var floaterLeft = ref("auto");
+    var floaterPosition = ref("static");
+    var floaterOverflow = ref("hidden");
+    var contentHeight = ref("0px");
+    var opacity = ref("0");
+    var {
+      zIndex
+    } = useZIndex(() => props2.floating, 1);
+    var isRow = computed(() => props2.layout === "row");
+    var showToolBar = ref(false);
+    var floated = ref(false);
+    useLock(() => props2.floating, () => isRow);
+    var dropdownFloaterTop = "auto";
+    var dropdownFloaterLeft = "auto";
+    var dropper = null;
+    var floater = ref(null);
+    var floating = /* @__PURE__ */ function() {
+      var _ref = _asyncToGenerator$a(function* () {
+        clearTimeout(floater.value);
+        clearTimeout(dropper);
+        floater.value = null;
+        floater.value = setTimeout(/* @__PURE__ */ _asyncToGenerator$a(function* () {
+          var {
+            width,
+            height,
+            left,
+            top
+          } = card2.value.getBoundingClientRect();
+          holderWidth.value = toSizeUnit(width);
+          holderHeight.value = toSizeUnit(height);
+          floaterWidth.value = holderWidth.value;
+          floaterHeight.value = holderHeight.value;
+          floaterTop.value = toSizeUnit(top);
+          floaterLeft.value = toSizeUnit(left);
+          floaterPosition.value = "fixed";
+          dropdownFloaterTop = floaterTop.value;
+          dropdownFloaterLeft = floaterLeft.value;
+          showToolBar.value = true;
+          yield doubleRaf();
+          floaterTop.value = "0";
+          floaterLeft.value = "0";
+          floaterWidth.value = "100vw";
+          floaterHeight.value = "100vh";
+          contentHeight.value = "auto";
+          opacity.value = "1";
+          floaterOverflow.value = "auto";
+          floated.value = true;
+        }), props2.ripple ? RIPPLE_DELAY : 0);
+      });
+      return function floating2() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+    var dropdown = () => {
+      clearTimeout(dropper);
+      clearTimeout(floater.value);
+      floater.value = null;
+      floaterWidth.value = holderWidth.value;
+      floaterHeight.value = holderHeight.value;
+      floaterTop.value = dropdownFloaterTop;
+      floaterLeft.value = dropdownFloaterLeft;
+      contentHeight.value = "0px";
+      opacity.value = "0";
+      showToolBar.value = false;
+      dropper = setTimeout(() => {
+        holderWidth.value = "auto";
+        holderHeight.value = "auto";
+        floaterWidth.value = "100%";
+        floaterHeight.value = "100%";
+        floaterTop.value = "auto";
+        floaterLeft.value = "auto";
+        dropdownFloaterTop = "auto";
+        dropdownFloaterLeft = "auto";
+        floaterOverflow.value = "hidden";
+        floaterPosition.value = "static";
+        floated.value = false;
+      }, props2.floatingDuration);
+    };
+    var close = () => {
+      call(props2["onUpdate:floating"], false);
+    };
+    watch(() => props2.floating, (value) => {
+      if (isRow.value)
+        return;
+      nextTick(() => {
+        value ? floating() : dropdown();
+      });
+    }, {
+      immediate: true
+    });
     return {
       n: n$T,
       classes: classes$I,
-      toSizeUnit
+      toSizeUnit,
+      card: card2,
+      cardFloater,
+      holderWidth,
+      holderHeight,
+      floater,
+      floaterWidth,
+      floaterHeight,
+      floaterTop,
+      floaterLeft,
+      floaterPosition,
+      floaterOverflow,
+      contentHeight,
+      opacity,
+      zIndex,
+      isRow,
+      close,
+      showToolBar,
+      floated
     };
   }
 });
