@@ -278,6 +278,17 @@ var toSizeUnit = (value) => {
   }
   return toPxNum(value) + "px";
 };
+var multiplySizeUnit = function(value, quantity) {
+  if (quantity === void 0) {
+    quantity = 1;
+  }
+  if (value == null) {
+    return void 0;
+  }
+  var legalSize = toSizeUnit(value);
+  var unit = legalSize.match(/(vh|%|rem|px|vw)$/)[0];
+  return "" + parseFloat(legalSize) * quantity + unit;
+};
 function requestAnimationFrame(fn) {
   return globalThis.requestAnimationFrame ? globalThis.requestAnimationFrame(fn) : globalThis.setTimeout(fn, 16);
 }
@@ -15361,8 +15372,7 @@ var props$6 = {
     type: String
   },
   size: {
-    type: [String, Number],
-    default: 20
+    type: [String, Number]
   },
   rules: {
     type: Array
@@ -15399,16 +15409,16 @@ function render$8(_ctx, _cache) {
     style: normalizeStyle(_ctx.styleComputed.switch)
   }, [createElementVNode("div", {
     style: normalizeStyle(_ctx.styleComputed.track),
-    class: normalizeClass(_ctx.classes(_ctx.n("track"), [_ctx.modelValue === _ctx.activeValue, _ctx.n("track-active")], [_ctx.errorMessage, _ctx.n("track-error")]))
+    class: normalizeClass(_ctx.classes(_ctx.n("track"), [_ctx.modelValue === _ctx.activeValue, _ctx.n("track--active")], [_ctx.errorMessage, _ctx.n("track--error")]))
   }, null, 6), withDirectives((openBlock(), createElementBlock("div", {
-    class: normalizeClass(_ctx.n("ripple")),
+    class: normalizeClass(_ctx.classes(_ctx.n("ripple"), [_ctx.modelValue === _ctx.activeValue, _ctx.n("ripple--active")])),
     style: normalizeStyle(_ctx.styleComputed.ripple)
   }, [createElementVNode("div", {
     style: normalizeStyle(_ctx.styleComputed.handle),
-    class: normalizeClass(_ctx.classes(_ctx.n("handle"), "var-elevation--2", [_ctx.modelValue === _ctx.activeValue, _ctx.n("handle-active")], [_ctx.errorMessage, _ctx.n("handle-error")]))
+    class: normalizeClass(_ctx.classes(_ctx.n("handle"), "var-elevation--2", [_ctx.modelValue === _ctx.activeValue, _ctx.n("handle--active")], [_ctx.errorMessage, _ctx.n("handle--error")]))
   }, [_ctx.loading ? (openBlock(), createBlock(_component_var_loading, {
     key: 0,
-    radius: _ctx.toNumber(_ctx.size) / 2 - 2
+    radius: _ctx.radius
   }, null, 8, ["radius"])) : createCommentVNode("v-if", true)], 6)], 6)), [[_directive_ripple, {
     disabled: !_ctx.ripple || _ctx.disabled || _ctx.loading || _ctx.formDisabled
   }]])], 6), createVNode(_component_var_form_details, {
@@ -15448,34 +15458,37 @@ var Switch = defineComponent({
         loadingColor,
         activeValue
       } = props2;
-      var sizeNum = toNumber(size);
-      var switchWidth = sizeNum * 2;
-      var switchHeight = sizeNum * 1.2;
       return {
         handle: {
-          width: size + "px",
-          height: size + "px",
+          width: multiplySizeUnit(size),
+          height: multiplySizeUnit(size),
           backgroundColor: modelValue === activeValue ? color || "" : closeColor || "",
           color: loadingColor && loadingColor
         },
         ripple: {
-          left: modelValue === activeValue ? sizeNum / 2 + "px" : "-" + sizeNum / 2 + "px",
+          left: modelValue === activeValue ? multiplySizeUnit(size, 0.5) : "-" + multiplySizeUnit(size, 0.5),
           color: modelValue === activeValue ? color || "" : closeColor || "#999",
-          width: sizeNum * 2 + "px",
-          height: sizeNum * 2 + "px"
+          width: multiplySizeUnit(size, 2),
+          height: multiplySizeUnit(size, 2)
         },
         track: {
-          height: switchHeight * 0.6 + "px",
-          width: switchWidth - 2 + "px",
-          borderRadius: switchWidth / 3 + "px",
+          height: multiplySizeUnit(size, 0.72),
+          width: multiplySizeUnit(size, 1.9),
+          borderRadius: multiplySizeUnit(size, 2 / 3),
           filter: modelValue === activeValue || errorMessage != null && errorMessage.value ? "opacity(.6)" : "brightness(.6)",
           backgroundColor: modelValue === activeValue ? color || "" : closeColor || ""
         },
         switch: {
-          height: switchHeight + "px",
-          width: switchWidth + "px"
+          height: multiplySizeUnit(size, 1.2),
+          width: multiplySizeUnit(size, 2)
         }
       };
+    });
+    var radius = computed(() => {
+      var {
+        size = "20px"
+      } = props2;
+      return multiplySizeUnit(size, 0.4);
     });
     var switchActive = (event) => {
       var {
@@ -15511,7 +15524,7 @@ var Switch = defineComponent({
       n: n$8,
       classes: classes$7,
       switchActive,
-      toNumber,
+      radius,
       styleComputed,
       errorMessage,
       formDisabled: form == null ? void 0 : form.disabled,
