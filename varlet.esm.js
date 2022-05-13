@@ -1694,10 +1694,10 @@ function render$W(_ctx, _cache) {
     key: 0,
     class: normalizeClass(_ctx.n("circle"))
   }, [createElementVNode("span", {
-    class: normalizeClass(_ctx.n("circle-block")),
+    class: normalizeClass(_ctx.classes(_ctx.n("circle-block"), _ctx.n("circle-block--" + _ctx.size))),
     style: normalizeStyle({
-      width: _ctx.getRadius * 2 + "px",
-      height: _ctx.getRadius * 2 + "px",
+      width: _ctx.multiplySizeUnit(_ctx.radius, 2),
+      height: _ctx.multiplySizeUnit(_ctx.radius, 2),
       color: _ctx.color
     })
   }, _hoisted_2$7, 6)], 2)) : createCommentVNode("v-if", true), (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.loadingTypeDict, (nums, key) => {
@@ -1737,15 +1737,6 @@ var Loading = defineComponent({
       rect: 8,
       disappear: 3
     };
-    var sizeDict = {
-      mini: 9,
-      small: 12,
-      normal: 15,
-      large: 18
-    };
-    var getRadius = computed(() => {
-      return props2.radius ? toNumber(props2.radius) : sizeDict[props2.size];
-    });
     var isShow = computed(() => {
       if (!call(slots.default))
         return true;
@@ -1754,8 +1745,8 @@ var Loading = defineComponent({
     return {
       n: n$Z,
       classes: classes$O,
+      multiplySizeUnit,
       loadingTypeDict,
-      getRadius,
       isShow
     };
   }
@@ -15486,7 +15477,7 @@ var Switch = defineComponent({
     });
     var radius = computed(() => {
       var {
-        size = "20px"
+        size = "5.333vw"
       } = props2;
       return multiplySizeUnit(size, 0.4);
     });
