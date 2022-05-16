@@ -14202,8 +14202,8 @@ function render$d(_ctx, _cache) {
   }, [createElementVNode("div", {
     class: normalizeClass(_ctx.classes(_ctx.n("block"), [_ctx.isDisabled, _ctx.n("--disabled")], [_ctx.errorMessage, _ctx.n("--error")])),
     style: normalizeStyle({
-      height: _ctx.thumbSize === void 0 ? _ctx.thumbSize : 3 * _ctx.toNumber(_ctx.thumbSize) + "px",
-      margin: _ctx.thumbSize === void 0 ? _ctx.thumbSize : "0 " + _ctx.toNumber(_ctx.thumbSize) / 2 + "px"
+      height: _ctx.thumbSize === void 0 ? _ctx.thumbSize : _ctx.multiplySizeUnit(_ctx.thumbSize, 3),
+      margin: _ctx.thumbSize === void 0 ? _ctx.thumbSize : "0 " + _ctx.multiplySizeUnit(_ctx.thumbSize, 0.5)
     }),
     ref: "sliderEl",
     onClick: _cache[0] || (_cache[0] = function() {
@@ -14215,7 +14215,7 @@ function render$d(_ctx, _cache) {
     class: normalizeClass(_ctx.n("track-background")),
     style: normalizeStyle({
       background: _ctx.trackColor,
-      height: _ctx.trackHeight + "px"
+      height: _ctx.multiplySizeUnit(_ctx.trackHeight)
     })
   }, null, 6), createElementVNode("div", {
     class: normalizeClass(_ctx.n("track-fill")),
@@ -14238,8 +14238,8 @@ function render$d(_ctx, _cache) {
       class: normalizeClass(_ctx.n("thumb-block")),
       style: normalizeStyle({
         background: _ctx.thumbColor,
-        height: _ctx.thumbSize + "px",
-        width: _ctx.thumbSize + "px"
+        height: _ctx.multiplySizeUnit(_ctx.thumbSize),
+        width: _ctx.multiplySizeUnit(_ctx.thumbSize)
       })
     }, null, 6), createElementVNode("div", {
       class: normalizeClass(_ctx.classes(_ctx.n("thumb-ripple"), [_ctx.thumbsProps[item.enumValue].active, _ctx.n("thumb-ripple--active")])),
@@ -14251,8 +14251,8 @@ function render$d(_ctx, _cache) {
       style: normalizeStyle({
         background: _ctx.labelColor,
         color: _ctx.labelTextColor,
-        height: _ctx.thumbSize === void 0 ? _ctx.thumbSize : 2 * _ctx.toNumber(_ctx.thumbSize) + "px",
-        width: _ctx.thumbSize === void 0 ? _ctx.thumbSize : 2 * _ctx.toNumber(_ctx.thumbSize) + "px"
+        height: _ctx.thumbSize === void 0 ? _ctx.thumbSize : _ctx.multiplySizeUnit(_ctx.thumbSize, 2),
+        width: _ctx.thumbSize === void 0 ? _ctx.thumbSize : _ctx.multiplySizeUnit(_ctx.thumbSize, 2)
       })
     }, [createElementVNode("span", null, toDisplayString(item.value), 1)], 6)])], 46, _hoisted_1$3);
   }), 128))], 6), createVNode(_component_var_form_details, {
@@ -14314,7 +14314,7 @@ var Slider = defineComponent({
     var getRippleSize = (item) => {
       var size;
       if (props2.thumbSize !== void 0) {
-        size = thumbsProps[item.enumValue].active ? 3 * toNumber(props2.thumbSize) + "px" : "0px";
+        size = thumbsProps[item.enumValue].active ? multiplySizeUnit(props2.thumbSize, 3) : "0px";
       }
       return {
         height: size,
@@ -14508,6 +14508,7 @@ var Slider = defineComponent({
       errorMessage,
       thumbsProps,
       thumbList,
+      multiplySizeUnit,
       toNumber,
       getRippleSize,
       showLabel,
