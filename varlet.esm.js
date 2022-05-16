@@ -13203,12 +13203,10 @@ var props$f = {
     default: "star-outline"
   },
   size: {
-    type: [String, Number],
-    default: "24"
+    type: [String, Number]
   },
   gap: {
-    type: [String, Number],
-    default: "2"
+    type: [String, Number]
   },
   namespace: {
     type: String
@@ -13265,13 +13263,15 @@ function render$h(_ctx, _cache) {
       class: normalizeClass(_ctx.getClass(val)),
       onClick: ($event) => _ctx.handleClick(val, $event)
     }, [createVNode(_component_var_icon, {
+      class: normalizeClass(_ctx.n("content-icon")),
+      "var-rate-cover": "",
       transition: 0,
       namespace: _ctx.namespace,
       name: _ctx.getIconName(val),
       style: normalizeStyle({
         fontSize: _ctx.toSizeUnit(_ctx.size)
       })
-    }, null, 8, ["namespace", "name", "style"])], 14, _hoisted_1$5)), [[_directive_ripple, {
+    }, null, 8, ["class", "namespace", "name", "style"])], 14, _hoisted_1$5)), [[_directive_ripple, {
       disabled: _ctx.formReadonly || _ctx.readonly || _ctx.formDisabled || _ctx.disabled || !_ctx.ripple
     }]]);
   }), 128))], 2), createVNode(_component_var_form_details, {
