@@ -2112,7 +2112,7 @@ var Badge = defineComponent({
         icon: icon2
       } = props2;
       var positionBasic = slots.default && n$W("position") + " " + n$W("--" + position);
-      var dotClass = dot && n$W("dot");
+      var dotClass = dot ? n$W("dot") : null;
       var positionClass = getPositionClass();
       var iconClass = icon2 ? n$W("icon") : null;
       return [n$W("--" + type), positionBasic, dotClass, positionClass, iconClass];
@@ -12465,7 +12465,7 @@ var props$j = {
     default: false
   },
   size: {
-    type: Number,
+    type: [Number, String],
     default: 40
   },
   rotate: {
@@ -12493,7 +12493,7 @@ function render$l(_ctx, _cache) {
   }, [createElementVNode("div", mergeProps({
     class: _ctx.n("linear-block"),
     style: {
-      height: _ctx.lineWidth + "px"
+      height: _ctx.toSizeUnit(_ctx.lineWidth)
     }
   }, _ctx.$attrs), [_ctx.track ? (openBlock(), createElementBlock("div", {
     key: 0,
@@ -12514,8 +12514,8 @@ function render$l(_ctx, _cache) {
     key: 1,
     class: normalizeClass(_ctx.n("circle")),
     style: normalizeStyle({
-      width: _ctx.size + "px",
-      height: _ctx.size + "px"
+      width: _ctx.toSizeUnit(_ctx.size),
+      height: _ctx.toSizeUnit(_ctx.size)
     })
   }, [(openBlock(), createElementBlock("svg", {
     class: normalizeClass(_ctx.n("circle-svg")),
@@ -12526,22 +12526,22 @@ function render$l(_ctx, _cache) {
   }, [_ctx.track ? (openBlock(), createElementBlock("circle", {
     key: 0,
     class: normalizeClass(_ctx.n("circle-background")),
-    cx: _ctx.size / 2,
-    cy: _ctx.size / 2,
+    cx: _ctx.multiplySizeUnit(_ctx.size, 0.5),
+    cy: _ctx.multiplySizeUnit(_ctx.size, 0.5),
     r: _ctx.circleProps.radius,
     fill: "transparent",
-    "stroke-width": _ctx.lineWidth,
+    "stroke-width": _ctx.toSizeUnit(_ctx.lineWidth),
     style: normalizeStyle({
       strokeDasharray: _ctx.circleProps.perimeter,
       stroke: _ctx.trackColor
     })
   }, null, 14, _hoisted_2$3)) : createCommentVNode("v-if", true), createElementVNode("circle", {
     class: normalizeClass(_ctx.n("circle-certain")),
-    cx: _ctx.size / 2,
-    cy: _ctx.size / 2,
+    cx: _ctx.multiplySizeUnit(_ctx.size, 0.5),
+    cy: _ctx.multiplySizeUnit(_ctx.size, 0.5),
     r: _ctx.circleProps.radius,
     fill: "transparent",
-    "stroke-width": _ctx.lineWidth,
+    "stroke-width": _ctx.toSizeUnit(_ctx.lineWidth),
     style: normalizeStyle({
       strokeDasharray: _ctx.circleProps.strokeDasharray,
       stroke: _ctx.color
@@ -12572,9 +12572,9 @@ var Progress = defineComponent({
         lineWidth,
         value
       } = props2;
-      var viewBox = "0 0 " + size + " " + size;
+      var viewBox = "0 0 " + toPxNum(size) + " " + toPxNum(size);
       var roundValue = toNumber(value) > 100 ? 100 : Math.round(toNumber(value));
-      var radius = (size - toNumber(lineWidth)) / 2;
+      var radius = (toPxNum(size) - toPxNum(lineWidth)) / 2;
       var perimeter = 2 * Math.PI * radius;
       var strokeDasharray = roundValue / 100 * perimeter + ", " + perimeter;
       return {
@@ -12588,6 +12588,8 @@ var Progress = defineComponent({
     return {
       n: n$n,
       classes: classes$i,
+      toSizeUnit,
+      multiplySizeUnit,
       linearProps,
       circleProps
     };
