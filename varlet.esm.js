@@ -10627,7 +10627,7 @@ function render$r(_ctx, _cache) {
       style: normalizeStyle({
         color: _ctx.active === anchorName && _ctx.highlightColor ? _ctx.highlightColor : ""
       }),
-      onClick: ($event) => _ctx.anchorClick(anchorName)
+      onClick: ($event) => _ctx.anchorClick(anchorName, true)
     }, toDisplayString(anchorName), 15, _hoisted_1$a);
   }), 128))], 6)], 2);
 }
@@ -10720,7 +10720,7 @@ var IndexBar = defineComponent({
       };
     }();
     var scrollTo$1 = (index) => {
-      requestAnimationFrame(() => anchorClick(index, true));
+      requestAnimationFrame(() => anchorClick(index));
     };
     watch(() => length.value, /* @__PURE__ */ _asyncToGenerator$5(function* () {
       yield doubleRaf();
