@@ -2502,7 +2502,8 @@ var BottomNavigationItem = defineComponent({
       return active.value === name.value || active.value === index.value ? activeColor.value : inactiveColor.value;
     };
     var handleClick = () => {
-      var active2 = name.value || index.value;
+      var _name$value;
+      var active2 = (_name$value = name.value) != null ? _name$value : index.value;
       call(props2.onClick, active2);
       call(bottomNavigation2.onToggle, active2);
     };
