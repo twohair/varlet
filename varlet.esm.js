@@ -13774,6 +13774,7 @@ var Select = defineComponent({
       return label2.value;
     };
     var findLabel = (modelValue) => {
+      var _option$label$value, _option;
       var option2 = options.find((_ref2) => {
         var {
           value
@@ -13788,7 +13789,7 @@ var Select = defineComponent({
           return label2.value === modelValue;
         });
       }
-      return option2.label.value;
+      return (_option$label$value = (_option = option2) == null ? void 0 : _option.label.value) != null ? _option$label$value : "";
     };
     var computePlaceholderState = () => {
       var {
