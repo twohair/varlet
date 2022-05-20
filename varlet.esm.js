@@ -12336,7 +12336,8 @@ var VarPicker = defineComponent({
       } = getPicked();
       prevIndexes = [...indexes];
     }, {
-      immediate: true
+      immediate: true,
+      deep: true
     });
     return {
       n: n$o,
