@@ -2543,7 +2543,10 @@ var props$K = {
   height: {
     type: [String, Number]
   },
-  width: {
+  imageHeight: {
+    type: [String, Number]
+  },
+  imageWidth: {
     type: [String, Number]
   },
   layout: {
@@ -2643,17 +2646,20 @@ function render$Q(_ctx, _cache) {
       zIndex: _ctx.floated ? _ctx.zIndex : void 0,
       transition: _ctx.floated ? "background-color " + _ctx.floatingDuration + "ms, border-radius " + _ctx.floatingDuration + "ms, width " + _ctx.floatingDuration + "ms, height " + _ctx.floatingDuration + "ms, top " + _ctx.floatingDuration + "ms, left " + _ctx.floatingDuration + "ms" : void 0
     })
-  }, [renderSlot(_ctx.$slots, "image", {}, () => [_ctx.src ? (openBlock(), createElementBlock("img", {
-    key: 0,
-    class: normalizeClass(_ctx.n("image")),
-    style: normalizeStyle({
-      objectFit: _ctx.fit,
-      height: _ctx.toSizeUnit(_ctx.height),
-      width: _ctx.toSizeUnit(_ctx.width)
-    }),
-    src: _ctx.src,
-    alt: _ctx.alt
-  }, null, 14, _hoisted_1$g)) : createCommentVNode("v-if", true)]), createElementVNode("div", {
+  }, [renderSlot(_ctx.$slots, "image", {}, () => {
+    var _ctx$imageHeight;
+    return [_ctx.src ? (openBlock(), createElementBlock("img", {
+      key: 0,
+      class: normalizeClass(_ctx.n("image")),
+      style: normalizeStyle({
+        objectFit: _ctx.fit,
+        height: _ctx.toSizeUnit((_ctx$imageHeight = _ctx.imageHeight) != null ? _ctx$imageHeight : _ctx.height),
+        width: _ctx.toSizeUnit(_ctx.imageWidth)
+      }),
+      src: _ctx.src,
+      alt: _ctx.alt
+    }, null, 14, _hoisted_1$g)) : createCommentVNode("v-if", true)];
+  }), createElementVNode("div", {
     class: normalizeClass(_ctx.n("container"))
   }, [renderSlot(_ctx.$slots, "title", {}, () => [_ctx.title ? (openBlock(), createElementBlock("div", {
     key: 0,
@@ -2724,7 +2730,7 @@ var Card = defineComponent({
     var floaterHeight = ref("100%");
     var floaterTop = ref("auto");
     var floaterLeft = ref("auto");
-    var floaterPosition = ref("static");
+    var floaterPosition = ref(void 0);
     var floaterOverflow = ref("hidden");
     var contentHeight = ref("0px");
     var opacity = ref("0");
@@ -2797,7 +2803,7 @@ var Card = defineComponent({
         dropdownFloaterTop = "auto";
         dropdownFloaterLeft = "auto";
         floaterOverflow.value = "hidden";
-        floaterPosition.value = "static";
+        floaterPosition.value = void 0;
         floated.value = false;
       }, props2.floatingDuration);
     };
