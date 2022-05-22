@@ -2642,7 +2642,7 @@ function render$Q(_ctx, _cache) {
       left: _ctx.floaterLeft,
       overflow: _ctx.floaterOverflow,
       position: _ctx.floaterPosition,
-      borderRadius: _ctx.floating ? "0px" : void 0,
+      borderRadius: _ctx.floaterBorderRadius,
       zIndex: _ctx.floated ? _ctx.zIndex : void 0,
       transition: _ctx.floated ? "background-color " + _ctx.floatingDuration + "ms, border-radius " + _ctx.floatingDuration + "ms, width " + _ctx.floatingDuration + "ms, height " + _ctx.floatingDuration + "ms, top " + _ctx.floatingDuration + "ms, left " + _ctx.floatingDuration + "ms" : void 0
     })
@@ -2731,6 +2731,7 @@ var Card = defineComponent({
     var floaterLeft = ref("auto");
     var floaterPosition = ref(void 0);
     var floaterOverflow = ref("hidden");
+    var floaterBorderRadius = ref(void 0);
     var contentHeight = ref("0px");
     var opacity = ref("0");
     var {
@@ -2774,6 +2775,7 @@ var Card = defineComponent({
           contentHeight.value = "auto";
           opacity.value = "1";
           floaterOverflow.value = "auto";
+          floaterBorderRadius.value = "0px";
           floated.value = true;
         }), props2.ripple ? RIPPLE_DELAY : 0);
       });
@@ -2789,6 +2791,7 @@ var Card = defineComponent({
       floaterHeight.value = holderHeight.value;
       floaterTop.value = dropdownFloaterTop;
       floaterLeft.value = dropdownFloaterLeft;
+      floaterBorderRadius.value = void 0;
       contentHeight.value = "0px";
       opacity.value = "0";
       showFloatingButtons.value = false;
@@ -2833,6 +2836,7 @@ var Card = defineComponent({
       floaterLeft,
       floaterPosition,
       floaterOverflow,
+      floaterBorderRadius,
       contentHeight,
       opacity,
       zIndex,
