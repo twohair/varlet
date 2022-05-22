@@ -2681,26 +2681,25 @@ function render$Q(_ctx, _cache) {
       opacity: _ctx.opacity,
       transition: "opacity " + _ctx.floatingDuration * 2 + "ms"
     })
-  }, [renderSlot(_ctx.$slots, "content")], 6)) : createCommentVNode("v-if", true)], 2), _ctx.showToolBar ? (openBlock(), createElementBlock("div", {
+  }, [renderSlot(_ctx.$slots, "content")], 6)) : createCommentVNode("v-if", true)], 2), _ctx.showFloatingButtons ? (openBlock(), createElementBlock("div", {
     key: 0,
-    class: normalizeClass(_ctx.classes(_ctx.n("toolbar"), "var--box")),
+    class: normalizeClass(_ctx.classes(_ctx.n("floating-buttons"), "var--box")),
     style: normalizeStyle({
       zIndex: _ctx.zIndex,
       opacity: _ctx.opacity,
       transition: "opacity " + _ctx.floatingDuration * 2 + "ms"
     })
-  }, [renderSlot(_ctx.$slots, "toolbar-close", {}, () => [createVNode(_component_var_button, {
+  }, [renderSlot(_ctx.$slots, "close-button", {}, () => [createVNode(_component_var_button, {
     size: "large",
     round: "",
-    class: normalizeClass(_ctx.classes(_ctx.n("toolbar-close"), "var-elevation--6")),
+    class: normalizeClass(_ctx.classes(_ctx.n("close-button"), "var-elevation--6")),
     onClick: withModifiers(_ctx.close, ["stop"])
   }, {
     default: withCtx(() => [createVNode(_component_var_icon, {
-      name: "window-close",
-      size: "24px"
+      name: "window-close"
     })]),
     _: 1
-  }, 8, ["class", "onClick"])]), renderSlot(_ctx.$slots, "toolbar-extra")], 6)) : createCommentVNode("v-if", true)], 6)), [[_directive_ripple, {
+  }, 8, ["class", "onClick"])])], 6)) : createCommentVNode("v-if", true)], 6)), [[_directive_ripple, {
     disabled: !_ctx.ripple || _ctx.floater
   }]]), createElementVNode("div", {
     class: normalizeClass(_ctx.n("holder")),
@@ -2738,7 +2737,7 @@ var Card = defineComponent({
       zIndex
     } = useZIndex(() => props2.floating, 1);
     var isRow = computed(() => props2.layout === "row");
-    var showToolBar = ref(false);
+    var showFloatingButtons = ref(false);
     var floated = ref(false);
     useLock(() => props2.floating, () => isRow);
     var dropdownFloaterTop = "auto";
@@ -2766,7 +2765,7 @@ var Card = defineComponent({
           floaterPosition.value = "fixed";
           dropdownFloaterTop = floaterTop.value;
           dropdownFloaterLeft = floaterLeft.value;
-          showToolBar.value = true;
+          showFloatingButtons.value = true;
           yield doubleRaf();
           floaterTop.value = "0";
           floaterLeft.value = "0";
@@ -2792,7 +2791,7 @@ var Card = defineComponent({
       floaterLeft.value = dropdownFloaterLeft;
       contentHeight.value = "0px";
       opacity.value = "0";
-      showToolBar.value = false;
+      showFloatingButtons.value = false;
       dropper = setTimeout(() => {
         holderWidth.value = "auto";
         holderHeight.value = "auto";
@@ -2839,7 +2838,7 @@ var Card = defineComponent({
       zIndex,
       isRow,
       close,
-      showToolBar,
+      showFloatingButtons,
       floated
     };
   }
