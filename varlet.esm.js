@@ -2626,15 +2626,18 @@ function render$Q(_ctx, _cache) {
   var _component_var_icon = resolveComponent("var-icon");
   var _component_var_button = resolveComponent("var-button");
   var _directive_ripple = resolveDirective("ripple");
-  return openBlock(), createElementBlock("div", {
+  return withDirectives((openBlock(), createElementBlock("div", {
     ref: "card",
-    class: normalizeClass(_ctx.classes(_ctx.n(), [_ctx.isRow, _ctx.n("--layout-row")])),
+    class: normalizeClass(_ctx.classes(_ctx.n(), [_ctx.isRow, _ctx.n("--layout-row")], [_ctx.elevation, "var-elevation--" + _ctx.elevation, "var-elevation--1"])),
+    style: normalizeStyle({
+      zIndex: _ctx.floated ? _ctx.zIndex : void 0
+    }),
     onClick: _cache[0] || (_cache[0] = function() {
       return _ctx.onClick && _ctx.onClick(...arguments);
     })
-  }, [withDirectives((openBlock(), createElementBlock("div", {
+  }, [createElementVNode("div", {
     ref: "cardFloater",
-    class: normalizeClass(_ctx.classes(_ctx.n("floater"), [_ctx.elevation, "var-elevation--" + _ctx.elevation, "var-elevation--1"])),
+    class: normalizeClass(_ctx.classes(_ctx.n("floater"))),
     style: normalizeStyle({
       width: _ctx.floaterWidth,
       height: _ctx.floaterHeight,
@@ -2642,9 +2645,7 @@ function render$Q(_ctx, _cache) {
       left: _ctx.floaterLeft,
       overflow: _ctx.floaterOverflow,
       position: _ctx.floaterPosition,
-      borderRadius: _ctx.floaterBorderRadius,
-      zIndex: _ctx.floated ? _ctx.zIndex : void 0,
-      transition: _ctx.floated ? "background-color " + _ctx.floatingDuration + "ms, border-radius " + _ctx.floatingDuration + "ms, width " + _ctx.floatingDuration + "ms, height " + _ctx.floatingDuration + "ms, top " + _ctx.floatingDuration + "ms, left " + _ctx.floatingDuration + "ms" : void 0
+      transition: _ctx.floated ? "background-color " + _ctx.floatingDuration + "ms, width " + _ctx.floatingDuration + "ms, height " + _ctx.floatingDuration + "ms, top " + _ctx.floatingDuration + "ms, left " + _ctx.floatingDuration + "ms" : void 0
     })
   }, [renderSlot(_ctx.$slots, "image", {}, () => {
     var _ctx$imageHeight;
@@ -2699,15 +2700,15 @@ function render$Q(_ctx, _cache) {
       name: "window-close"
     })]),
     _: 1
-  }, 8, ["class", "onClick"])])], 6)) : createCommentVNode("v-if", true)], 6)), [[_directive_ripple, {
-    disabled: !_ctx.ripple || _ctx.floater
-  }]]), createElementVNode("div", {
+  }, 8, ["class", "onClick"])])], 6)) : createCommentVNode("v-if", true)], 6), createElementVNode("div", {
     class: normalizeClass(_ctx.n("holder")),
     style: normalizeStyle({
       width: _ctx.holderWidth,
       height: _ctx.holderHeight
     })
-  }, null, 6)], 2);
+  }, null, 6)], 6)), [[_directive_ripple, {
+    disabled: !_ctx.ripple || _ctx.floater
+  }]]);
 }
 var Card = defineComponent({
   render: render$Q,
@@ -2731,7 +2732,6 @@ var Card = defineComponent({
     var floaterLeft = ref("auto");
     var floaterPosition = ref(void 0);
     var floaterOverflow = ref("hidden");
-    var floaterBorderRadius = ref(void 0);
     var contentHeight = ref("0px");
     var opacity = ref("0");
     var {
@@ -2775,7 +2775,6 @@ var Card = defineComponent({
           contentHeight.value = "auto";
           opacity.value = "1";
           floaterOverflow.value = "auto";
-          floaterBorderRadius.value = "0px";
           floated.value = true;
         }), props2.ripple ? RIPPLE_DELAY : 0);
       });
@@ -2791,7 +2790,6 @@ var Card = defineComponent({
       floaterHeight.value = holderHeight.value;
       floaterTop.value = dropdownFloaterTop;
       floaterLeft.value = dropdownFloaterLeft;
-      floaterBorderRadius.value = void 0;
       contentHeight.value = "0px";
       opacity.value = "0";
       showFloatingButtons.value = false;
@@ -2836,7 +2834,6 @@ var Card = defineComponent({
       floaterLeft,
       floaterPosition,
       floaterOverflow,
-      floaterBorderRadius,
       contentHeight,
       opacity,
       zIndex,
