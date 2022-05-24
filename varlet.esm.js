@@ -2691,14 +2691,16 @@ function render$Q(_ctx, _cache) {
       transition: "opacity " + _ctx.floatingDuration * 2 + "ms"
     })
   }, [renderSlot(_ctx.$slots, "close-button", {}, () => [createVNode(_component_var_button, {
-    size: "large",
+    "var-card-cover": "",
     round: "",
     class: normalizeClass(_ctx.classes(_ctx.n("close-button"), "var-elevation--6")),
     onClick: withModifiers(_ctx.close, ["stop"])
   }, {
     default: withCtx(() => [createVNode(_component_var_icon, {
-      name: "window-close"
-    })]),
+      "var-card-cover": "",
+      name: "window-close",
+      class: normalizeClass(_ctx.n("close-button-icon"))
+    }, null, 8, ["class"])]),
     _: 1
   }, 8, ["class", "onClick"])])], 6)) : createCommentVNode("v-if", true)], 6), createElementVNode("div", {
     class: normalizeClass(_ctx.n("holder")),
