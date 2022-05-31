@@ -83,13 +83,14 @@ varlet-cli test -wa
 `)],-1),W=s("h4",null,"\u751F\u6210\u66F4\u65B0\u65E5\u5FD7",-1),X=s("pre",{class:"hljs"},[s("code",null,`varlet-cli changelog
 `)],-1),Y=s("h4",null,"\u53D1\u5E03\u7EC4\u4EF6\u5E93",-1),Z=s("pre",{class:"hljs"},[s("code",null,`varlet-cli release
 `)],-1),ss=s("h4",null,"\u751F\u6210\u4E00\u4E2A\u9879\u76EE\u6A21\u677F",-1),ts=s("pre",{class:"hljs"},[s("code",null,`varlet-cli gen <projectName>
-`)],-1),ls={class:"card"},es=s("h3",null,"Babel",-1),ns=s("p",null,[t("\u5BF9 "),s("code",null,"babel"),t(" \u8FDB\u884C\u914D\u7F6E\uFF0C\u9996\u5148\u5728 "),s("code",null,"package.json"),t(" \u4E2D\u6307\u5B9A\u76EE\u6807\u6D4F\u89C8\u5668")],-1),ds=s("pre",{class:"hljs"},[s("code",null,[t(`{
+`)],-1),ls=s("h4",null,"\u521B\u5EFA\u7EC4\u4EF6\u6A21\u677F\u6587\u4EF6",-1),es=s("pre",{class:"hljs"},[s("code",null,`varlet-cli create <componentName>
+`)],-1),ns={class:"card"},ds=s("h3",null,"Babel",-1),os=s("p",null,[t("\u5BF9 "),s("code",null,"babel"),t(" \u8FDB\u884C\u914D\u7F6E\uFF0C\u9996\u5148\u5728 "),s("code",null,"package.json"),t(" \u4E2D\u6307\u5B9A\u76EE\u6807\u6D4F\u89C8\u5668")],-1),as=s("pre",{class:"hljs"},[s("code",null,[t(`{
   `),s("span",{class:"hljs-attr"},'"browserslist"'),t(`: [
     `),s("span",{class:"hljs-string"},'"Chrome >= 51"'),t(`,
     `),s("span",{class:"hljs-string"},'"iOS >= 10"'),t(`
   ]
 }
-`)])],-1),os=s("p",null,[t("\u521B\u5EFA "),s("code",null,"babel.config,js")],-1),as=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-comment"},"// babel.config.js"),t(`
+`)])],-1),cs=s("p",null,[t("\u521B\u5EFA "),s("code",null,"babel.config,js")],-1),rs=s("pre",{class:"hljs"},[s("code",null,[s("span",{class:"hljs-comment"},"// babel.config.js"),t(`
 `),s("span",{class:"hljs-built_in"},"module"),t(`.exports = {
   `),s("span",{class:"hljs-attr"},"presets"),t(`: [
     [
@@ -100,7 +101,7 @@ varlet-cli test -wa
     ],
   ],
 }
-`)])],-1),cs={class:"card"},rs=d("<h3>Git \u548C Npm</h3><h4>Git-hook</h4><p><code>simple-git-hooks</code>\uFF0C<code>lint-staged</code> \u914D\u5408 <code>eslint</code>\uFF0C<code>stylelint</code>\uFF0C<code>varlet-cli commit-lint</code> \u505Acommit\u524D\u7684\u68C0\u67E5\uFF0C<code>package.json</code> \u914D\u7F6E\u5982\u4E0B</p>",3),is=s("pre",{class:"hljs"},[s("code",null,[t(`{
+`)])],-1),is={class:"card"},hs=d("<h3>Git \u548C Npm</h3><h4>Git-hook</h4><p><code>simple-git-hooks</code>\uFF0C<code>lint-staged</code> \u914D\u5408 <code>eslint</code>\uFF0C<code>stylelint</code>\uFF0C<code>varlet-cli commit-lint</code> \u505Acommit\u524D\u7684\u68C0\u67E5\uFF0C<code>package.json</code> \u914D\u7F6E\u5982\u4E0B</p>",3),ps=s("pre",{class:"hljs"},[s("code",null,[t(`{
   `),s("span",{class:"hljs-attr"},'"simple-git-hooks"'),t(`: {
     `),s("span",{class:"hljs-attr"},'"pre-commit"'),t(": "),s("span",{class:"hljs-string"},'"pnpm exec lint-staged --allow-empty --concurrent false"'),t(`,
     `),s("span",{class:"hljs-attr"},'"commit-msg"'),t(": "),s("span",{class:"hljs-string"},'"npx --no-install varlet-cli commit-lint $1"'),t(`
@@ -138,8 +139,8 @@ varlet-cli test -wa
     ]
   }
 }
-`)])],-1),hs=s("p",null,"\u6302\u8F7D\u94A9\u5B50",-1),ps=s("pre",{class:"hljs"},[s("code",null,`npx simple-git-hooks
-`)],-1),us=s("p",null,[t("\u521B\u5EFA "),s("code",null,".prettierignore")],-1),js=s("pre",{class:"hljs"},[s("code",null,`// .prettierignore
+`)])],-1),us=s("p",null,"\u6302\u8F7D\u94A9\u5B50",-1),js=s("pre",{class:"hljs"},[s("code",null,`npx simple-git-hooks
+`)],-1),gs=s("p",null,[t("\u521B\u5EFA "),s("code",null,".prettierignore")],-1),_s=s("pre",{class:"hljs"},[s("code",null,`// .prettierignore
 coverage/**
 es/**
 umd/**
@@ -147,7 +148,7 @@ site/**
 public/**
 src/*/__tests__/**
 *.md
-`)],-1),gs={class:"card"},_s=s("h3",null,"Typescript",-1),ms=s("p",null,[t("\u521B\u5EFA "),s("code",null,"tsconfig.json")],-1),bs=s("pre",{class:"hljs"},[s("code",null,[t(`{
+`)],-1),ms={class:"card"},bs=s("h3",null,"Typescript",-1),vs=s("p",null,[t("\u521B\u5EFA "),s("code",null,"tsconfig.json")],-1),ys=s("pre",{class:"hljs"},[s("code",null,[t(`{
   `),s("span",{class:"hljs-attr"},'"compilerOptions"'),t(`: {
     `),s("span",{class:"hljs-attr"},'"strict"'),t(": "),s("span",{class:"hljs-literal"},"true"),t(`,
     `),s("span",{class:"hljs-attr"},'"downlevelIteration"'),t(": "),s("span",{class:"hljs-literal"},"true"),t(`,
@@ -160,4 +161,4 @@ src/*/__tests__/**
     `),s("span",{class:"hljs-attr"},'"jsx"'),t(": "),s("span",{class:"hljs-string"},'"preserve"'),t(`
   }
 }
-`)])],-1),vs=s("div",{class:"card"},[s("h3",null,"\u53D1\u5E03\u524D\u6CE8\u610F"),s("ul",null,[s("li",null,[t("1."),s("code",null,"npm"),t(" \u7684\u4ED3\u5E93\u6E90\u5FC5\u987B\u6307\u5411 "),s("code",null,"npm"),t(" \u5B98\u65B9\u955C\u50CF")]),s("li",null,[t("2.\u6267\u884C "),s("code",null,"npm login"),t(" \u8FDB\u884C\u767B\u5F55")])])],-1);function ys(fs,xs,ks,Cs,ws,Ns){const l=a("var-site-code-example");return c(),r("div",h,[p,s("div",u,[j,g,e(l,{"playground-ignore":""},{default:n(()=>[_]),_:1}),m]),b,s("div",v,[y,f,e(l,{"playground-ignore":""},{default:n(()=>[x]),_:1}),k,e(l,{"playground-ignore":""},{default:n(()=>[C]),_:1}),w,e(l,{"playground-ignore":""},{default:n(()=>[N]),_:1})]),S,s("div",V,[z,T,e(l,{"playground-ignore":""},{default:n(()=>[M]),_:1})]),s("div",B,[$,E,e(l,{"playground-ignore":""},{default:n(()=>[P]),_:1}),A,e(l,{"playground-ignore":""},{default:n(()=>[I]),_:1}),L,e(l,{"playground-ignore":""},{default:n(()=>[O]),_:1}),D,e(l,{"playground-ignore":""},{default:n(()=>[G]),_:1}),H,e(l,{"playground-ignore":""},{default:n(()=>[R]),_:1}),F,e(l,{"playground-ignore":""},{default:n(()=>[J]),_:1}),q,e(l,{"playground-ignore":""},{default:n(()=>[K]),_:1}),Q,e(l,{"playground-ignore":""},{default:n(()=>[U]),_:1}),W,e(l,{"playground-ignore":""},{default:n(()=>[X]),_:1}),Y,e(l,{"playground-ignore":""},{default:n(()=>[Z]),_:1}),ss,e(l,{"playground-ignore":""},{default:n(()=>[ts]),_:1})]),s("div",ls,[es,ns,e(l,{"playground-ignore":""},{default:n(()=>[ds]),_:1}),os,e(l,{"playground-ignore":""},{default:n(()=>[as]),_:1})]),s("div",cs,[rs,e(l,{"playground-ignore":""},{default:n(()=>[is]),_:1}),hs,e(l,{"playground-ignore":""},{default:n(()=>[ps]),_:1}),us,e(l,{"playground-ignore":""},{default:n(()=>[js]),_:1})]),s("div",gs,[_s,ms,e(l,{"playground-ignore":""},{default:n(()=>[bs]),_:1})]),vs])}var Vs=o(i,[["render",ys]]);export{Vs as default};
+`)])],-1),fs=s("div",{class:"card"},[s("h3",null,"\u53D1\u5E03\u524D\u6CE8\u610F"),s("ul",null,[s("li",null,[t("1."),s("code",null,"npm"),t(" \u7684\u4ED3\u5E93\u6E90\u5FC5\u987B\u6307\u5411 "),s("code",null,"npm"),t(" \u5B98\u65B9\u955C\u50CF")]),s("li",null,[t("2.\u6267\u884C "),s("code",null,"npm login"),t(" \u8FDB\u884C\u767B\u5F55")])])],-1);function xs(ks,Cs,ws,Ns,Ss,Vs){const l=a("var-site-code-example");return c(),r("div",h,[p,s("div",u,[j,g,e(l,{"playground-ignore":""},{default:n(()=>[_]),_:1}),m]),b,s("div",v,[y,f,e(l,{"playground-ignore":""},{default:n(()=>[x]),_:1}),k,e(l,{"playground-ignore":""},{default:n(()=>[C]),_:1}),w,e(l,{"playground-ignore":""},{default:n(()=>[N]),_:1})]),S,s("div",V,[z,T,e(l,{"playground-ignore":""},{default:n(()=>[M]),_:1})]),s("div",B,[$,E,e(l,{"playground-ignore":""},{default:n(()=>[P]),_:1}),A,e(l,{"playground-ignore":""},{default:n(()=>[I]),_:1}),L,e(l,{"playground-ignore":""},{default:n(()=>[O]),_:1}),D,e(l,{"playground-ignore":""},{default:n(()=>[G]),_:1}),H,e(l,{"playground-ignore":""},{default:n(()=>[R]),_:1}),F,e(l,{"playground-ignore":""},{default:n(()=>[J]),_:1}),q,e(l,{"playground-ignore":""},{default:n(()=>[K]),_:1}),Q,e(l,{"playground-ignore":""},{default:n(()=>[U]),_:1}),W,e(l,{"playground-ignore":""},{default:n(()=>[X]),_:1}),Y,e(l,{"playground-ignore":""},{default:n(()=>[Z]),_:1}),ss,e(l,{"playground-ignore":""},{default:n(()=>[ts]),_:1}),ls,e(l,{"playground-ignore":""},{default:n(()=>[es]),_:1})]),s("div",ns,[ds,os,e(l,{"playground-ignore":""},{default:n(()=>[as]),_:1}),cs,e(l,{"playground-ignore":""},{default:n(()=>[rs]),_:1})]),s("div",is,[hs,e(l,{"playground-ignore":""},{default:n(()=>[ps]),_:1}),us,e(l,{"playground-ignore":""},{default:n(()=>[js]),_:1}),gs,e(l,{"playground-ignore":""},{default:n(()=>[_s]),_:1})]),s("div",ms,[bs,vs,e(l,{"playground-ignore":""},{default:n(()=>[ys]),_:1})]),fs])}var Ts=o(i,[["render",xs]]);export{Ts as default};
