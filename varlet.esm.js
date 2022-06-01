@@ -10830,6 +10830,10 @@ var props$p = {
     type: Boolean,
     default: false
   },
+  autofocus: {
+    type: Boolean,
+    default: false
+  },
   validateTrigger: {
     type: Array,
     default: () => ["onInput", "onClear"]
@@ -11086,7 +11090,8 @@ var Input = defineComponent({
     };
     var validate = () => v(props2.rules, props2.modelValue);
     var focus = () => {
-      el.value.focus();
+      var _el$value;
+      (_el$value = el.value) == null ? void 0 : _el$value.focus();
     };
     var blur = () => {
       el.value.blur();
@@ -11097,6 +11102,10 @@ var Input = defineComponent({
       resetValidation
     };
     call(bindForm, inputProvider);
+    onMounted(() => {
+      if (props2.autofocus)
+        focus();
+    });
     return {
       el,
       id,
