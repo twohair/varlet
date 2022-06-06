@@ -801,6 +801,9 @@ function unmounted(el) {
 }
 function updated$1(el, binding) {
   var _binding$value3, _binding$value$touchm2, _binding$value4;
+  if (el._ripple.tasker) {
+    el._ripple.removeRipple();
+  }
   el._ripple = _extends$d({}, el._ripple, (_binding$value3 = binding.value) != null ? _binding$value3 : {}, {
     touchmoveForbid: (_binding$value$touchm2 = (_binding$value4 = binding.value) == null ? void 0 : _binding$value4.touchmoveForbid) != null ? _binding$value$touchm2 : Context.touchmoveForbid,
     tasker: null
