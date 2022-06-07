@@ -13277,7 +13277,7 @@ function render$h(_ctx, _cache) {
   var _component_var_form_details = resolveComponent("var-form-details");
   var _directive_ripple = resolveDirective("ripple");
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(_ctx.n("warp"))
+    class: normalizeClass(_ctx.n("wrap"))
   }, [createElementVNode("div", {
     class: normalizeClass(_ctx.n())
   }, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.toNumber(_ctx.count), (val) => {
@@ -15068,7 +15068,8 @@ var Space = defineComponent({
         }
         return createVNode("div", {
           "style": {
-            margin
+            margin,
+            width: "100%"
           }
         }, [child]);
       });
